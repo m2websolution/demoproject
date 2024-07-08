@@ -1,0 +1,146 @@
+<div class="common-mat-dialog-padding">
+  <div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <h6 class="common-mat-dialog-header-title">Set Limit</h6>
+    <mat-icon
+      matPrefix
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      style="width: 20px; height: 25px"
+      class="cursor-pointer"
+    ></mat-icon>
+  </div>
+  <hr style="margin: 24px 0px 0px" />
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between baseline"
+    class="set-limit-count-main-sec-margin"
+  >
+    <div class="counter-main-sec w-50 border-right">
+      <mat-card-actions
+        fxLayout="row"
+        fxLayoutAlign="center baseline"
+        fxLayoutGap="12px"
+        class="togggle-margin-sec"
+      >
+        <h6>Email</h6>
+        <mat-slide-toggle
+          [(ngModel)]="updateCompanyProfile.HasEmail"
+        ></mat-slide-toggle>
+      </mat-card-actions>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between baseline"
+        fxLayoutGap="12px"
+        fxLayoutGap.lt-sm="6px"
+        class="increment-decrement-sec"
+      >
+        <button type="button"
+          [disabled]="!updateCompanyProfile.HasEmail"
+          mat-flat-button
+          color="primary"
+          class="btn-decrement"
+          (click)="decrement(0)"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_minus_icon'"
+          ></mat-icon>
+        </button>
+        <span class="counter-font">{{ updateCompanyProfile.EmailLimit }}</span>
+        <button type="button"
+          [disabled]="!updateCompanyProfile.HasEmail"
+          mat-flat-button
+          color="primary"
+          class="btn-increment"
+          (click)="increment(0)"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_add_icon'"
+          ></mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="vertical-line"></div>
+
+    <div class="counter-main-sec w-50">
+      <mat-card-actions
+        fxLayout="row"
+        fxLayoutAlign="center baseline"
+        fxLayoutGap="12px"
+        class="togggle-margin-sec"
+      >
+        <h6>SMS</h6>
+        <mat-slide-toggle
+          [(ngModel)]="updateCompanyProfile.HasSMS"
+        ></mat-slide-toggle>
+      </mat-card-actions>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between baseline"
+        fxLayoutGap="12px"
+        fxLayoutGap.lt-sm="6px"
+        class="increment-decrement-sec"
+      >
+        <button type="button"
+          [disabled]="!updateCompanyProfile.HasSMS"
+          mat-flat-button
+          color="primary"
+          class="btn-decrement"
+          (click)="decrement(1)"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_minus_icon'"
+          ></mat-icon>
+        </button>
+        <span class="counter-font">{{ updateCompanyProfile.SMSLimit }}</span>
+        <button type="button"
+          [disabled]="!updateCompanyProfile.HasSMS"
+          mat-flat-button
+          color="primary"
+          class="btn-increment"
+          (click)="increment(1)"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_add_icon'"
+          ></mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card-section">
+    <h6 class="note-font gap-2 m-0">
+      <mat-icon [svgIcon]="'i_icon_set_limit'"></mat-icon> Note
+    </h6>
+    <mat-card-subtitle class="unlimited-email-sms-text-font"
+      >To Set Unlimited Email & SMS limit set values to zero.</mat-card-subtitle
+    >
+  </div>
+
+  <mat-card-actions
+    align="end"
+    class="add-manual-buttons gap-2 set-limit-buttom-footer-margin-sec"
+  >
+    <button
+      color="primary"
+      class="primary-button me-2"
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      (click)="updateCompany()"
+    >
+      Submit
+    </button>
+
+    <button
+      mat-dialog-close
+      class="secondary-button"
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+    >
+      Cancel
+    </button>
+  </mat-card-actions>
+</div>

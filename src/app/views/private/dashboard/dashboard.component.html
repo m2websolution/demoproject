@@ -1,0 +1,235 @@
+<div class="dashboard-container">
+  <!-- <app-alerts class="error-msg"></app-alerts> -->
+  <mat-card-actions class="review-rating-card-header-section">
+    <section class="mat-typography">
+      <h1 class="common-main-title-font">Dashboard</h1>
+    </section>
+  </mat-card-actions>
+
+  <!-- Notification model -->
+  <div *ngIf="notificationModel1">
+    <mat-card class="alerts-card">
+      <div class="justify-content-between">
+        <div class="justify-content-row">
+          <div class="error-alert-txt">
+            <mat-card-subtitle class="common-font-14px" *ngIf="smsCredit"
+              >SMS credit used more than 90%</mat-card-subtitle
+            >
+            <mat-card-subtitle class="common-font-14px" *ngIf="emailCredit"
+            >Email credit are exceeded</mat-card-subtitle
+          >
+          </div>
+        </div>
+        <div class="justify-content-row">
+          <button
+            class="buy-credits-button buy-credits-button-responsive"
+            mat-flat-button
+            color="warn"
+            (click)="redirectAddOn()"
+          >
+            Buy <span> Credits</span>
+          </button>
+          <mat-icon style="color: #71717a; cursor: pointer" (click)="closeCard($event)">close</mat-icon>
+        </div>
+      </div>  
+    </mat-card>
+    </div>
+
+        <!-- Warning popup -->
+        <div *ngIf="warningModel">
+          <mat-card class="warning-card">
+            <div class="justify-content-between">
+              <div class="justify-content-row">
+                <div class="error-alert-txt">
+                  <mat-card-subtitle class="common-font-14px text-c" 
+                    >We have stopped sending SMS review request due to A2P Regulations,
+                    integrate your own Twilio account to continue SMS review request.</mat-card-subtitle
+                  >
+                </div>
+              </div>
+              <div class="justify-content-row">
+                <button
+                  class="buy-credits-button buy-credits-button-responsive"
+                  mat-flat-button
+                  color="warn"
+                  (click)="redirectToTwilio()"
+                >
+                  Connect <span> Now</span>
+                </button>
+                <mat-icon style="color: #71717a; cursor: pointer" (click)="closeCard($event)">close</mat-icon>
+              </div>
+            </div>  
+          </mat-card>
+        </div>
+
+  <div fxHide.lt-md fxShow class="profile-card-sec" *ngIf="isSquareBox">
+    <app-card
+      class="col-md-3 col-12"
+      *ngFor="let data of cardData"
+      [data]="data"
+      [selectedCard]="selectedCard"
+      [selectItem]="selectItem"
+    ></app-card>
+  </div>
+
+  <swiper fxShow.lt-md fxHide [config]="config">
+    <div class="swiper-wrapper">
+      <div class="col-md-3 swiper-slide" *ngFor="let data of cardData">
+        <app-card
+          class="col-md-3 col-12"
+          [data]="data"
+          [selectedCard]="selectedCard"
+          [selectItem]="selectItem"
+        ></app-card>
+      </div>
+    </div>
+  </swiper>
+
+  <!-- ==================All Platform Review======================= -->
+  <div class="all-pr-sec platform-review-section">
+    <mat-card-actions
+      class="review-rating-card-header-section"
+      style="height: 45px"
+    >
+      <section class="mat-typography">
+        <h1>All Platform Review</h1>
+      </section>
+    </mat-card-actions>
+
+    <hr class="hr-tag" />
+    <app-platfom-mobail-web
+      [inputmodel]="model"
+      [review]="totalReview"
+    ></app-platfom-mobail-web>
+  </div>
+
+  <!-- =================Over All Review & Ratings================== -->
+  <div class="all-pr-sec">
+    <mat-card-actions class="review-rating-card-header-section">
+      <section class="mat-typography">
+        <h1>Over All Review & Ratings</h1>
+      </section>
+
+      <section
+        class="mat-typography overall-review-select"
+        style="display: flex"
+      >
+        <div id="reportrange" class="range-picker-ui">
+          <i class="fa fa-calendar"></i>&nbsp;
+          <span class="range-picker-sepened-fornt"
+            >{{ startDate }} - {{ endDate }}
+          </span>
+          <i class="fa fa-caret-down"></i>
+        </div>
+      </section>
+    </mat-card-actions>
+    <hr class="hr-tag" />
+    <div class="row all-review-rating">
+      <div
+        *ngFor="let data of reviewRatingData"
+        class="col-6 col-md-6 col-sm-6 col-lg-4 p-2"
+      >
+        <app-review-rating-card [data]="data"></app-review-rating-card>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="main-average-rating-sec col-12"
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    fxLayout.gt-md="row-reverse"
+    fxLayoutGap="1em"
+  >
+    <div
+      ngClass.lt-md="col-12"
+      fxFlex="0 1 auto"
+      ngClass="col-6"
+      class="grab-your-review-sec"
+    >
+      <div class="grab-your-review" fxHide.lt-sm>
+        <div class="d-flex flex-column">
+          <div class="grab-review-title">
+            <p>Welcome back, {{ profileName }}!</p>
+            <h2>Grab Your Review Now</h2>
+          </div>
+
+          <button mat-flat-button class="black-button">Grab Now</button>
+        </div>
+        <div>
+          <img class="grab-review-img" src="assets/images/grab_review.png" />
+        </div>
+      </div>
+
+      <div class="average-rating">
+        <app-averagerating
+          [data]="starratingdata"
+          [ratingModel]="model"
+        ></app-averagerating>
+      </div>
+    </div>
+    <div
+      ngClass.lt-md="col-12"
+      fxFlex="0 1 auto"
+      ngClass="col-6"
+      class="all-pr-sec"
+    >
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Sentiment Analysis</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <app-doughnut [sentiment]="sentimentModel" />
+    </div>
+  </div>
+
+  <div class="col-12" fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="1em">
+    <div
+      fxLayout="column"
+      class="all-pr-sec"
+      ngClass.lt-sm="col-12"
+      ngClass.gt-sm="col-md-6"
+    >
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Email Conversion</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="mt-1" *ngIf="notEmailConversionStatsList">
+        <h5 class="text-center my-auto">No data available.</h5>
+      </div>
+        <div class="chart-container stacked-bar" *ngIf="!notEmailConversionStatsList">
+          <canvas id="email-conversion">{{ emailConversionchart }}</canvas>
+        </div>
+    </div>
+    <div
+      fxLayout="column"
+      fxFlex="0 1 auto"
+      class="all-pr-sec"
+      ngClass.lt-sm="col-12"
+      ngClass.gt-sm="col-md-6"
+    >
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Overall Sentiment</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="overall-sentiment-graph-container mt-2">
+        <div class="d-flex justify-content-center">
+           <div id="power-gauge"></div>
+        </div>
+      </div>
+      <div class="overall-sentiment-label-container mt-2">
+        <div class="row label-container label-card">
+            <div class="label-circle-container d-flex align-items-baseline col-4" *ngFor="let item of overallSentiment; let i=index">
+                <div class="label-circle" [ngStyle]="{ 'background-color': item.color }"></div>
+                <label>{{ item.name }}</label>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

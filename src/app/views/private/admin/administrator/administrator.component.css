@@ -1,0 +1,375 @@
+.admin-main-container .admin-main-container h4 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0px;
+}
+
+.admin-main-container h5 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0;
+}
+
+.admin-main-container h6 {
+  margin: 0;
+}
+
+.admin-main-container h2 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+  margin: 0px;
+}
+
+.admin-main-container h1 {
+  margin: 0px;
+}
+
+.admin-main-container p {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 0px;
+}
+
+.admin-main-container label {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name-container {
+  display: flex;
+  gap: 24px;
+}
+
+.admin-footer-btn {
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 600px) {
+  .pagination-section {
+    flex-direction: column !important;
+  }
+
+  .admin-main-container h5 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .admin-main-container h4 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .admin-main-container h3 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .admin-main-container h2 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .admin-main-container h1 {
+    font-weight: 600;
+    font-size: 18px !important;
+    line-height: 24px;
+  }
+
+  .admin-main-container label {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .admin-form-group {
+    gap: 4px;
+  }
+}
+
+.horizontal-line-margin {
+  margin: 32px 0px 16px 0px;
+}
+
+.tab-contents {
+  margin-top: 24px;
+}
+
+.domain-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* -------------white-label-options------------------- */
+
+.record-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  margin-top: 32px;
+}
+
+.domain-table-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.verify-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.verify-container .not-verified-text {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f95250;
+}
+
+.verify-container .verify-btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.verify-container .not-verified {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.verify-container .not-verified mat-icon {
+  height: 29px;
+  width: 24px;
+}
+
+.admin-table {
+  overflow-x: auto;
+}
+
+.sub-tab-group {
+  display: block;
+}
+
+.sub-tab-group-mobile {
+  display: none;
+}
+
+.domain-record-table {
+  overflow-x: auto;
+}
+
+/* ----------------Add Chips--------------------------- */
+
+.company-profile-chips {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 12px 12px 24px;
+  gap: 8px;
+  width: max-content;
+  height: 64px;
+  background: #e2f2ff;
+  border-radius: 36px;
+  justify-content: center;
+}
+
+.edit-delete-icons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.icon-btn {
+  border: none;
+  outline: none;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-profile-chips {
+  gap: 8px;
+  width: auto;
+}
+
+.company-profile-chips-add-icon mat-icon {
+  height: 27px;
+  width: 20px;
+}
+
+@media (max-width: 959px) {
+  /* ----------------Add Chips--------------------------- */
+  .company-profile-chips {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    gap: 4px;
+    width: 100%;
+    height: 46px;
+    background: #e2f2ff;
+    border-radius: 36px;
+    justify-content: space-between;
+  }
+
+  .common-font-16px {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    color: #18181b;
+  }
+
+  .company-profile-chips-add-icon mat-icon {
+    width: 14px;
+    height: 22px;
+  }
+
+  /* -----------------------Search Table----------------------- */
+  .input-full-width {
+    width: 100%;
+  }
+
+  .input-full-width-ref .input-full-width {
+    margin-bottom: 16px;
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1600px) {
+  /* ----------------Add Chips--------------------------- */
+  .company-profile-chips {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    gap: 4px;
+    /* width: 200px; */
+    height: 46px;
+    background: #e2f2ff;
+    border-radius: 36px;
+    justify-content: space-between;
+  }
+
+  .common-font-16px {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    line-height: 24px !important;
+    color: #18181b;
+  }
+
+  .company-profile-chips button {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 20px !important;
+    text-align: center;
+  }
+
+  /* -----------------------Search Table----------------------- */
+  .input-full-width {
+    width: 100%;
+  }
+
+  .company-profile-admin .input-full-width-ref .input-full-width {
+    /* margin-bottom: 16px; */
+  }
+}
+
+@media (max-width: 600px) {
+  .record-container {
+    margin-top: 24px;
+    gap: 20px;
+  }
+
+  .verify-container .verify-btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .verify-container .verify-btn-group button {
+    width: calc(50% - 6px);
+  }
+
+  .domain-button button {
+    width: 100%;
+  }
+
+  .name-container {
+    flex-direction: column;
+  }
+
+  .admin-footer-btn button {
+    width: 100%;
+  }
+
+  .sub-tab-group {
+    display: none;
+  }
+
+  .sub-tab-group-mobile,
+  .sub-tab-group-mobile mat-form-field {
+    display: block;
+    width: 100%;
+  }
+
+  .horizontal-line-margin {
+    margin: 16px 0px 16px 0px;
+  }
+
+  .edit-delete-icons {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .record-container {
+    margin-top: 20px;
+    gap: 16px;
+  }
+
+  .verify-container .verify-btn-group {
+    /* gap: 8px; */
+    flex-direction: column;
+  }
+
+  .verify-container .verify-btn-group button {
+    width: 100%;
+  }
+}
+
+.administration-margin-sec {
+  margin: 17px 0px;
+}

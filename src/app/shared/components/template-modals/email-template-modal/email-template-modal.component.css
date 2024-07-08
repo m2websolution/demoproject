@@ -1,0 +1,23 @@
+@media only screen and (max-width: 600px) {
+  h3 {
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    color: #18181b;
+  }
+}
+
+.preview-button-border {
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  width: 100%;
+}
+
+.preview-button {
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  width: 100%;
+  color: #fff;
+  background-color: #196CFA;
+  height: 55px;
+  max-width: 300px;
+}

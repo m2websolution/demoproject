@@ -1,0 +1,208 @@
+.widget-modal-container {
+  display: flex;
+  gap: 30px;
+  height: 650px;
+}
+
+.widget-modal-container .left-part {
+  width: 25%;
+  position: relative;
+}
+.widget-modal-container .right-part {
+  width: 1084px;
+}
+
+.preview-cards {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.widget-badge-card {
+  display: flex;
+  width: 100%;
+}
+
+.custom-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.customize-chip {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 14px;
+  gap: 12px;
+
+  height: 50px;
+
+  background: #f4f4f5;
+
+  border: 1.5px solid #e4e4e7;
+  border-radius: 16px;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.customize-chip-logo {
+  width: 24px;
+  height: 24px;
+}
+
+.chip-close-icon {
+  width: 16px;
+  height: 26px;
+}
+
+.preview-container {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-top: 120px;
+}
+
+.get-code-container {
+  position: static;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+}
+.get-code-container .get-code-btn {
+  padding: 16px 32px;
+}
+
+@media (max-width: 600px) {
+  .get-code-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    padding: 0px 20px;
+  }
+
+  .widget-modal-container .left-part {
+    position: relative;
+  }
+
+  .widget-main-modal .mat-icon {
+    height: 27px;
+    width: 14px;
+  }
+  .get-code-container {
+    padding: 0px 20px;
+  }
+  .get-code-container .get-code-btn {
+    width: 100%;
+  }
+
+  .widget-modal-container .right-part {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .widget-modal-container .left-part {
+    width: 25%;
+    position: static;
+  }
+
+  .preview-container {
+    display: block;
+    margin: 0px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .preview-cards {
+    overflow: hidden;
+    padding-bottom: 50px !important;
+  }
+
+  .widget-badge-card {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+  }
+
+  .widget-modal-container {
+    height: auto;
+  }
+
+  .review-badge-content {
+    width: 100%;
+  }
+
+  .widget-badge-card {
+    width: auto;
+  }
+}
+.review-badge-content .my-review-catings-card {
+  background-color: #fff !important;
+  border: 1px solid #e4e4e7 !important;
+  border-radius: 16px !important;
+  height: 216px !important;
+  margin-bottom: 5px;
+  padding: 24px 32px;
+  position: relative;
+}
+
+.img-border {
+  border-radius: inherit !important; /* Given important as overlapped by other style*/
+}
+
+.copy-icon {
+  font-size: 16px;
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  overflow: visible !important; /* Given important as overlapped by other style*/
+}
+
+.js-code-text {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 10px 16px;
+  gap: 8px;
+  width: max-content;
+  background: #f3f3f3;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.js-code-text-font {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.js-code-text {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 14px 6px;
+  gap: 8px;
+  width: 780px;
+  background: #f3f3f3;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+.code-container {
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+h6 {
+  font-size: .875em;
+  color: var(--bs-code-color);
+  word-wrap: break-word;
+}

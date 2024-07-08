@@ -1,0 +1,35 @@
+<div class="m-3 m-webwsolution-main-content">
+  <div class="m2solutionlikedislike-svg-section">
+    <div
+      class="d-flex justify-content-center review-screen-sectting-emoji-sec"
+    >
+      <span class="review_screen_opecity">
+        <mat-icon (click)="happyFaceReview()"
+          matPrefix
+          [svgIcon]="'review_screen_smile'"
+          class="cursor-pointer review-screen-sectting-emoji-sec"
+        ></mat-icon>
+
+        <h6 class="review-screen-sectting-emoji-sub-sec-font">Great</h6>
+      </span>
+
+      <span class="review_screen_opecity">
+        <mat-icon (click)="neutralFaceReview()"
+          matPrefix
+          [svgIcon]="'review_screen_neutral'"
+          class="cursor-pointer"
+        ></mat-icon>
+
+        <h6 class="review-screen-sectting-emoji-sub-sec-font">Good</h6>
+      </span>
+      <span class="review_screen_opecity">
+        <mat-icon (click)="badFaceReview()"
+          matPrefix
+          [svgIcon]="'review_screen_unhappy'"
+          class="cursor-pointer"
+        ></mat-icon>
+        <h6 class="review-screen-sectting-emoji-sub-sec-font">Bad</h6>
+      </span>
+    </div>
+  </div>
+</div>

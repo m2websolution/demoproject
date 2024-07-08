@@ -1,0 +1,146 @@
+/* font for input field labels */
+.common-label-font {
+  width: 50%;
+}
+
+/* margin for input field labels */
+label {
+  margin-bottom: 0.5em;
+}
+
+/* image container */
+#avatar-container {
+  position: relative;
+}
+
+.cross-icon {
+  margin-right: 5px;
+}
+
+/* style for phone field dropdown */
+.form-field-phone {
+  z-index: 2;
+  position: relative;
+}
+
+/* style for photo overlay */
+#avatar-photo,
+#add-photo-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  height: 200px;
+  border: 2px solid #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+  border-radius: 24px;
+}
+
+#add-photo-overlay {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  background-color: rgba(233, 236, 239, 0.6);
+}
+
+#add-avatar-photo-button {
+  position: absolute;
+  z-index: 3;
+  color: #13293d;
+}
+
+.center-positon-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 24px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.edit_icon_delete_background {
+  background: #fff;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* style for uploaded photo */
+.avatar-photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* logo header text width and font */
+.avtar-legal-width-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #18181b;
+  margin-bottom: 0.75em;
+}
+
+/* update button width */
+.update-btn-full-width button {
+  padding: 16px 24px;
+  gap: 12px;
+  width: 104px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+/* Start Heta CSS */
+
+.edit_icon_delete_background .mat-icon {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .row-card-input-container-width {
+    margin-bottom: 0.75em !important; /* Given important as overlapped by other style*/
+  }
+
+  .avtar-legal-width-font {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  #avatar-container {
+    width: 100%;
+  }
+
+  #avatar-photo {
+    width: 100%;
+    height: 140px;
+  }
+
+  #add-photo-overlay {
+    width: 100%;
+    height: 140px;
+  }
+
+  .phone-number {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 800px) {
+  .update-btn-full-width button {
+    width: 100% !important; /* Given important as overlapped by other style*/
+  }
+
+  .common-container-card mat-card-actions {
+    padding: 0 !important; /* Given important as overlapped by other style*/
+  }
+}

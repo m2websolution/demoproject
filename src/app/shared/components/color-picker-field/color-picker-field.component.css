@@ -1,0 +1,62 @@
+/* --------------Custom Color-Picker--------------- */
+
+.color-group-field {
+  display: flex;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid #e4e4e7;
+  padding: 16px 0px 16px 16px;
+  /* color: rgba(0, 0, 0, 0.87) !important; */
+  color: #ff0000 !important;
+}
+
+.color-group-field .color-text {
+  width: 100%;
+}
+.color-group-field .color-picker-section {
+  width: 60px;
+  border-left: 1.5px solid #d4d4d8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-group-field .color-picker-section .color-picker {
+  background-color: transparent !important;
+  width: 25px;
+  height: 25px;
+}
+
+.color-group-field input,
+.color-group-field input:focus,
+.color-group-field select:focus,
+.color-group-field textarea:focus,
+.color-group-field button:focus {
+  border: none;
+  outline: none;
+}
+
+.color-group-field input,
+.color-group-field select,
+.color-group-fieldtextarea {
+  /* color: #ff0000; */
+  color: rgb(52 52 52);
+  font-size: 14px;
+}
+
+@media (max-width: 500px) {
+  .color-group-field {
+    padding: 14px 0px 14px 14px;
+  }
+
+  .color-group-field .color-picker-section {
+    width: 55px;
+  }
+
+  .color-group-field .color-picker-section .color-picker {
+    height: 27px;
+    width: 27px;
+  }
+}
+
+/* --------------Custom Color-Picker--------------- */

@@ -1,0 +1,172 @@
+<div class="widget-main-modal modal-padding">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="d-flex justify-content-between">
+      <h2>Masonry Grid</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+
+    <div class="widget-modal-container">
+      <div class="modal-header modal-header-mobile" [hidden]="isShowJsCodeBlock" *ngIf="!dialogData.isAllow">
+        <h6>Upgrade your plan to access this widget</h6>
+        <button color="primary" class="primary-button">UPGRADE NOW</button>
+      </div>
+
+      <div class="left-part">
+        <app-widget-customize
+          [totalReviews]="masonryData.TotalReviews"
+          [widgetData]="dialogData"
+          (fieldValuesChanged)="onFieldValuesChanged($event)"
+          (customizationDataChanged)="widgetDataChanged($event)"
+          (showReviewSummaryData)="showOverallRatings($event)"
+          (isShowJsBlock)="showJsBlock($event)"
+        ></app-widget-customize>
+      </div>
+      <div class="right-part" [hidden]="isShowJsCodeBlock">
+        <div class="modal-header modal-header-web" *ngIf="!dialogData.isAllow">
+          <h6>Upgrade your plan to access this widget</h6>
+          <button color="primary" class="primary-button">UPGRADE NOW</button>
+        </div>
+        <div
+          class="overall-rating-component preview-main-section-margin-top"
+          *ngIf="masonryData.Reviews && isShowOverallRatingsBlock"
+        >
+          <div>
+            <h3>Overall Rating</h3>
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="m-0 me-2">
+                <strong class="">{{
+                  isRatingNaN(masonryData.AverageRating)
+                    ? 0
+                    : masonryData.AverageRating
+                }}</strong>
+              </h3>
+              <app-start-rating
+                [starClickable]="false"
+                [id]="{
+                  stars: isRatingNaN(masonryData.AverageRating)
+                    ? 0
+                    : masonryData.AverageRating,
+                  selected: true
+                }"
+              ></app-start-rating>
+            </div>
+
+            <div class="mt-3">
+              <h3>{{ masonryData.TotalReviews }} reviews</h3>
+            </div>
+          </div>
+          <div>
+            <button class="secondary-button">LEAVE A REVIEW</button>
+          </div>
+        </div>
+        <div class="preview-main-section-margin-top">
+          <h3>Preview</h3>
+
+          <div
+            *ngIf="masonryData.Reviews"
+            fxLayout.xs="row wrap "
+            fxLayout="row wrap"
+            class="flex-container"
+            fxLayoutGap.gt-md="17px"
+            fxLayoutGap.lt-lg="10px"
+          >
+            <mat-card
+              class="widget-masonry-card flex-item mb-3"
+              *ngFor="let item of masonryData.Reviews; let i = index"
+              fxFlex.lt-md="0 1 calc(100%)"
+              fxFlex.lt-lg="0 1 calc(50% - 10px)"
+              fxFlex.gt-md="0 1 calc(32% - 10px)"
+              [ngStyle]="{ background: state.backColor }"
+            >
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <img
+                    mat-card-image
+                    class="widget-masonry-avatar me-2"
+                    [src]="item.ProfileImgUrl"
+                    alt="Google Icon"
+                  />
+                  <div>
+                    <h5 class="m-0" [ngStyle]="{ color: state.fontColor }">
+                      <strong class="masonry-grid-card-name-font">{{
+                        item.ReviewBy
+                      }}</strong>
+                    </h5>
+                    <p
+                      class="m-0"
+                      [ngStyle]="{
+                        color: state.date_disc
+                      }"
+                    >
+                      {{ item.Date }}
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="card-footer-logo-img"
+                  *ngIf="item.ReviewSource !== 'Other'"
+                >
+                  <img
+                    mat-card-image
+                    class="widget-masonry-review-source-avatar"
+                    src="assets/social-logo/{{ item.ReviewSource }}.png"
+                    alt="Google Icon"
+                  />
+                </div>
+                <div
+                  class="card-footer-logo-img"
+                  *ngIf="item.ReviewSource === 'Other'"
+                >
+                  <img
+                    mat-card-image
+                    class="widget-masonry-review-source-avatar"
+                    src="favicon.ico"
+                    alt="Google Icon"
+                  />
+                </div>
+              </div>
+              <p class="d-flex align-items-center mt-3">
+                <app-start-rating
+                  [starClickable]="false"
+                  [id]="{ stars: item.Rating, selected: true }"
+                ></app-start-rating>
+              </p>
+
+              <div class="row customer-review-sec">
+                <div class="p-0 review-container">
+                  <div
+                    [ngStyle]="{
+                      color: state.date_disc
+                    }"
+                    class="masonry-grid-card-description-font"
+                    #descriptionElement
+                    [innerHTML]="item.ReviewDetails"
+                    [class.expanded]="isDescriptionExpanded[i]"
+                    [ngClass]="{ 'd-inline': isDescriptionExpanded[i], 'expand-content': descriptionElementHeights[i] > 96}"
+
+                  ></div>
+
+                  <a
+                    *ngIf="descriptionElementHeights[i] > 96"
+                    href="javascript:;"
+                    (click)="toggleDescription(i)"
+                    [ngClass]="{ 'ms-2': isDescriptionExpanded[i] }"
+                    >{{ isDescriptionExpanded[i] ? 'read less' : 'read more' }}</a
+                  >
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

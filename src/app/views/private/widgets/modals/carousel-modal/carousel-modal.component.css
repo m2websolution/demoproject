@@ -1,0 +1,148 @@
+.widget-modal-container {
+  display: flex;
+  gap: 30px;
+}
+
+.widget-modal-container .left-part {
+  width: 400px;
+}
+.widget-modal-container .right-part {
+  width: 1084px;
+}
+
+.widget-star-group {
+  height: 36px;
+  width: 23px;
+  margin-right: 4px;
+}
+
+.widget-carousel-card {
+  width: 320px;
+  padding: 77px 32px;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.widget-carousel-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 36px !important; /* Given important as overlapped by other style*/
+}
+
+.preview-cards {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.widget-carousel-logo {
+  width: 32px;
+  height: 32px;
+}
+
+.preview-cards .swiper-button-prev,
+.preview-cards .swiper-button-next {
+  border: white;
+}
+
+.preview-cards .swiper-toolbar-custom {
+  background-color: white;
+}
+
+.swiper-button-next:after,
+.swiper-container-rtl .swiper-button-prev:after,
+.swiper-button-prev:after,
+.swiper-container-rtl .swiper-button-next:after {
+  scale: 2.2;
+}
+
+.preview-cards .swiper-button-prev:hover,
+.preview-cards .swiper-button-next:hover {
+  background-color: lightcyan;
+}
+
+.swiper-arrow-possiton {
+  display: block !important;
+}
+
+.carousel-swiper {
+  width: 320px;
+}
+
+@media (max-width: 600px) {
+  .widget-carousel-card {
+    padding: 36px 15px;
+  }
+
+  .carousel-swiper,
+  .widget-carousel-card {
+    width: 220px;
+  }
+
+  .swiper-toolbar-custom {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 400px) {
+  .widget-carousel-card {
+    padding: 32px 5px;
+  }
+
+  .carousel-swiper,
+  .widget-carousel-card {
+    width: 200px;
+  }
+}
+
+.autoplay-position {
+  position: absolute !important; /* Given important as overlapped by other style */
+}
+
+.customer-review-sec .expand-content,
+.read-owner-txt .expand-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit to 4 lines */
+  -webkit-box-orient: vertical;
+}
+
+.customer-review-sec .expand-content.expanded,
+.read-owner-txt .expand-content.expanded {
+  -webkit-line-clamp: unset; /* Show all lines when expanded */
+}
+
+.customer-review-sec .expand-content.d-inline,
+.read-owner-txt .expand-content.d-inline {
+  display: inline;
+}
+
+.customer-review-sec .expand-content.ml-5,
+.read-owner-txt .expand-content.ml-5 {
+  margin-left: 5px;
+}
+
+.review-container {
+  width: 90%;
+  margin: 0.75em 2px 0.5em 1em;
+}
+
+.masonry-grid-card-description-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.swiper-container {
+  height: 560px !important; /* Given important as overlapped by other style*/
+  overflow-y: auto;
+}

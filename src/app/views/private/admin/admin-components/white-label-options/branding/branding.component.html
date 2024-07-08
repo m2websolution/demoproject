@@ -1,0 +1,75 @@
+<div class="branding-container">
+  <div class="branding-grid-section" [ngClass]="isDetail ? 'd-none' : ''">
+    <div class="branding-card" *ngFor="let item of adminDetails">
+      <div class="branding-card-header">
+        <div>
+          <h3 class="mb-0">{{ item.CompanyName }}</h3>
+          <div class="d-flex flex-row">
+           <span class="mt-2"> Review(30 days): {{ item.TotalReviews }}/
+            {{ item.TotalRatingAverage }}</span>
+            <span class="stars"><app-start-rating [id]="{
+              stars: item.TotalReviews,
+            }"></app-start-rating></span>
+           </div>
+        </div>
+        <div class="header-buttons d-none d-lg-flex d-md-flex d-sm-flex">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="viewProfile(item.CompanyName)"
+          >
+            View Profile
+          </button>
+          <button mat-flat-button class="info-icon">
+            <mat-icon [svgIcon]="'three_dot_icon'"></mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="counter-section">
+        <div class="counter-data">
+          <mat-icon [svgIcon]="'community'"></mat-icon>
+          <h5 class="text-secondary">
+            No. of Users: <span class="text-dark">{{ item.TotalUsers }}</span>
+          </h5>
+        </div>
+      </div>
+      <div class="social-section-open">
+        <div class="social-section slide">
+          <div *ngFor="let item1 of item.siteDetail">
+            <img
+              class="social-icon"
+              [src]="'assets/social-logo/' + item1.SiteName + '.png'"
+              alt="{{ item1.SiteName }}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="counter-section">
+        <div class="counter-data">
+          <mat-icon [svgIcon]="'message_small'"></mat-icon>
+          <h5 class="text-secondary">
+            Last Invitation sent:
+            <span class="text-dark">{{ item.LastInvitationSentDate }}</span>
+          </h5>
+        </div>
+      </div>
+
+      <div
+        class="header-buttons header-buttons-xs d-lg-none d-md-none d-sm-none mt-3"
+      >
+        <button
+          class="view-profile"
+          mat-flat-button
+          color="primary"
+          (click)="viewProfile(item.CompanyName)"
+        >
+          View Profile
+        </button>
+        <button mat-flat-button class="info-icon">
+          <mat-icon [svgIcon]="'three_dot_icon'"></mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

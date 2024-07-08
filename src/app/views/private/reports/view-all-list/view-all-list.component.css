@@ -1,0 +1,34 @@
+.positive {
+    color: #008000;
+}
+
+.mixed {
+    color: #faa81a;
+}
+
+.negative {
+    color: #ff0000;
+}
+
+.width {
+    width: 35%;
+}
+
+.my-report {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--accent-color) !important;
+}
+
+.custom-container {
+    margin-left: auto;
+    display: flex;
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}

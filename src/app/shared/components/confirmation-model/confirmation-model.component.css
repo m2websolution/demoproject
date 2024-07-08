@@ -1,0 +1,104 @@
+.disconnect-modal {
+  background-image: url("../../../../assets/images/Modal-Bg.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dc-info-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #71717a;
+  margin-bottom: 5px;
+}
+
+.dc-info-sec mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 32px;
+}
+
+.dc-dialog-sec .mdc-dialog__title::before {
+  height: auto;
+}
+
+.dc-dialog-sec {
+  margin-top: 0.5em;
+}
+
+.dis-google-txt {
+  margin: 2.5em 0em 1em 0em;
+}
+
+.secondary-button {
+  color: #18181b;
+  width: 80px;
+}
+
+.material-icons {
+  color: black;
+  font-size: 20px;
+}
+
+.mat-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-message {
+  text-align: center;
+}
+
+.fw-bold {
+  font-weight: bold !important; /* Given important as overlapped by other style*/
+}
+
+.skyblue-font {
+  color: #0d6efd !important; /* Given important as overlapped by other style*/
+}
+
+.light-grey {
+  color: lightgray !important; /* Given important as overlapped by other style*/
+}
+
+.dialog-box {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.date-label {
+  text-align: end;
+  padding-right: 3%;
+  color: grey !important; /* Given important as overlapped by other style*/
+}
+
+.common-font-14px {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--accent-color);
+}
+
+ /* Added css style for popupa*/
+.common-font-16px { 
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--accent-color);
+  padding: 0 20px 9px;
+}
+
+.black-color {
+  color: #000 !important; /* Given important as overlapped by other style*/
+}
+
+ /* Added css style for Upgrade Img*/
+.upgrade-img {
+  height: 100px; 
+}

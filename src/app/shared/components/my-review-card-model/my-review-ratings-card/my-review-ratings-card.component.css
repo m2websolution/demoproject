@@ -1,0 +1,69 @@
+.my-review-title-row-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-review-catings-card {
+  background-color: #fff !important;
+  border: 1px solid #e4e4e7 !important;
+  border-radius: 16px !important;
+  height: -webkit-fill-available;
+  margin-bottom: 5px;
+  padding: 24px 32px;
+  position: relative;
+}
+.active {
+  border: "none" !important;
+  color: #ffffff !important;
+  background-size: cover !important;
+  background-image: url("../../../../../assets/images/overAllreviewCardBG.svg") !important;
+}
+.active .my-review-title {
+  color: #fff !important;
+}
+.active .rating-point {
+  color: #fff !important;
+}
+.star {
+  color: #faa81a !important;
+}
+.rating-point {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  color: #000000;
+}
+
+.backgroud-set {
+  background-image: url("../../../../../assets/images/myreviewsCardBg.svg");
+  background-size: cover;
+}
+
+.my-review-footer-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.my-review-catings-card mat-card-header,
+.my-review-catings-card .mdc-card__actions {
+  padding: 0px;
+}
+
+.my-review-catings-card .image-container {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.avg-rating-stars {
+  display: flex;
+  gap: 16px;
+}
+
+@media (min-width: 960px) and (max-width: 1500px) {
+  .avg-rating-stars {
+    gap: 2%;
+  }
+}

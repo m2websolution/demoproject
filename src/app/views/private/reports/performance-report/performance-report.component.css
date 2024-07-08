@@ -1,0 +1,320 @@
+.report-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.overall-review-rating-card {
+  padding: 20px 24px;
+}
+
+.performance-report-card-container {
+  display: flex;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.performance-report-card-container .my-report-card {
+  padding: 20px 24px;
+  width: 50%;
+
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  gap: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.report-card-inside {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-rating-chip {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 5px;
+}
+.positive {
+  background: #dcfce7;
+  color: #22c55e !important;
+}
+
+.negative {
+  background: #ffced3;
+  color: #fe3f34 !important;
+}
+
+.review-rating-card-logo {
+  width: 78.3px;
+  height: 84.83px;
+}
+
+.review-rating {
+  display: flex;
+  gap: 30px;
+}
+.review-rating .review-platform-card {
+  width: 100%;
+}
+
+.review-rating .review-platform-card .chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.performance-report .chart-label-container {
+  display: flex;
+  gap: 0px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.performance-report .chart-label-container .label-container {
+  /* width: 50%; */
+}
+.performance-report .chart-label-container .label-circle-container {
+  padding-left: 40px;
+}
+
+.table-logos {
+  height: 30px;
+  width: 30px;
+}
+
+.performance-table-container table thead th,
+table tbody tr td {
+  /* text-align: start !important;
+  padding: 0px 10px !important; */
+}
+
+.performance-report-card-container mat-icon {
+  height: 40px;
+  /* width: 32px; */
+  width: 80%;
+}
+.text-align-start-force {
+  text-align: start !important;
+}
+
+.performance-report-card-container .my-report-card h3 {
+  white-space: nowrap;
+}
+
+.performance-report .review-rating-card-header-section {
+  flex-wrap: nowrap;
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1365px) {
+  .review-img-area .review-rating-card-logo {
+    width: 60px !important;
+  }
+
+  .performance-report-card-container mat-icon {
+    height: 40px;
+    width: 27px;
+  }
+}
+
+@media only screen and (min-width: 682px) and (max-width: 1200px) {
+  .review-img-area .review-rating-card-logo {
+    width: 50px !important;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .review-rating-chip {
+    font-size: 10px;
+  }
+
+  .review-rating {
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 682px) {
+  .performance-report-card-container {
+    flex-direction: column;
+  }
+
+  .performance-report-card-container .my-report-card {
+    width: 100%;
+  }
+
+  .review-rating {
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .review-rating-chip {
+    font-size: 10px;
+  }
+  .review-rating-chip {
+    width: 50px;
+    height: 28px;
+    padding: 2px 4px;
+  }
+  .review-rating-chip p {
+    font-size: 14px;
+    /* line-height: 14px; */
+  }
+  .review-rating-chip .mat-icon {
+    width: 18px !important;
+  }
+
+  .performance-report .review-rating {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .performance-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+
+  .performance-report .chart-label-container .label-container {
+    width: 100%;
+  }
+
+  .chart-label-container .label-container {
+    gap: 16px 0px;
+  }
+
+  .performance-report-card-container {
+    margin-top: 20px;
+    gap: 16px 0px;
+  }
+
+  .performance-report-card-container .my-report-card {
+    padding: 16px;
+  }
+
+  .card-stars mat-icon {
+    width: 25px;
+  }
+
+  .review-img-area .review-rating-card-logo {
+    width: 60px !important;
+  }
+
+  /* .performance-report-card-action {
+    flex-direction: column;
+    justify-content: start;
+  } */
+
+  .performance-report-card-action mat-form-field {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .review-img-area .review-rating-card-logo {
+    width: 50px !important;
+  }
+
+  .card-stars mat-icon {
+    width: 20px !important;
+  }
+
+  .performance-report .chart-label-container .label-circle-container {
+    padding-left: 0px;
+  }
+
+  .performance-report-card-container .my-report-card {
+    padding: 12px;
+  }
+
+  .card-stars {
+    gap: 2px;
+  }
+
+  .performance-report-card-container .my-report-card {
+    gap: 0px;
+  }
+
+  .review-rating-chip {
+    width: 40px;
+    margin: 0px;
+  }
+
+  .review-rating-chip p {
+    font-size: 12px;
+  }
+
+  .review-rating-chip .mat-icon {
+    width: 15px;
+  }
+
+  .report-card-inside .card-stars {
+    gap: 2px;
+  }
+}
+.from-to-date-component {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .from-to-date-component {
+    display: block;
+    align-items: center;
+  }
+}
+
+.custom-card-body {
+  padding: 20px;
+}
+
+.rating-reviews-container {
+  gap: 5px;
+  display: flex;
+}
+
+.platform {
+  width: calc(60% - 3px);
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-size: 45px;
+}
+
+.stars-outer::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: #d2d2d2;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
+
+.stars-inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: #ffa500;
+}
+
+.circle-container {
+  display: contents;
+  align-items: center;
+  gap: 5px;
+}

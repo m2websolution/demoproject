@@ -1,0 +1,18 @@
+<div class="color-group-field">
+  <input
+    type="text"
+    class="color-text"
+    [value]="value"
+    [id]="id"
+    (change)="changehandler($event)"
+  />
+  <div class="color-picker-section">
+    <input
+      type="color"
+      class="color-picker"
+      [value]="value"
+      [id]="id"
+      (change)="changehandler($event)"
+    />
+  </div>
+</div>

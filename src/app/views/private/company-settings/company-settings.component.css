@@ -1,0 +1,156 @@
+.company-setting-card {
+  padding: 1.5em 2em 2em 2em;
+}
+label {
+  margin-bottom: 0.5em;
+}
+#avatar-container {
+  position: relative;
+}
+
+.cross-icon {
+  margin-right: 5px;
+}
+
+.form-field-phone {
+  z-index: 2;
+  position: relative;
+}
+
+#avatar-photo,
+#add-photo-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  height: 200px;
+  border: 2px solid #ffffff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.24);
+  border-radius: 24px;
+}
+
+#add-photo-overlay {
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  background-color: rgba(233, 236, 239, 0.6);
+}
+
+#add-avatar-photo-button {
+  position: absolute;
+  z-index: 3;
+  color: #13293d;
+}
+
+#remove-avatar-photo-button {
+  position: absolute;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  top: 5%;
+  right: 5%;
+  z-index: 3;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.57);
+  border-radius: 12px;
+}
+
+#remove-avatar-photo-button:hover {
+  background-color: #e74c3c;
+}
+
+.center-positon-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 24px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.edit_icon_delete_background {
+  background: #ffffff;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.08);
+}
+.avatar-photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.avtar-legal-width-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #18181b;
+  margin-bottom: 0.75em;
+}
+.update-btn-full-width button {
+  padding: 16px 24px;
+  gap: 12px;
+  width: 104px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+/* Start Heta CSS */
+
+.edit_icon_delete_background .mat-icon {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .row-card-input-container-width {
+    margin-bottom: 0.75em !important;
+  }
+  .breadcrumb {
+    padding: 0px 0;
+  }
+
+  .avtar-legal-width-font {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  #avatar-container {
+    width: 100%;
+  }
+  #avatar-photo {
+    width: 100%;
+    height: 140px;
+  }
+  #add-photo-overlay {
+    width: 100%;
+    height: 140px;
+  }
+  .phone-number {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 800px) {
+  .update-btn-full-width button {
+    width: 100% !important;
+  }
+
+  .common-container-card mat-card-actions {
+    padding: 0px !important;
+  }
+}
+
+
+.custom-no-hover .mat-form-field-outline-thick {
+  opacity: 0 !important;
+}

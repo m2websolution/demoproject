@@ -1,0 +1,127 @@
+<mat-card class="common-container-card company-profile-admin">
+  <div
+    class="flex-container"
+    fxLayout="row"
+    fxLayoutAlign="space-between baseline"
+    fxLayout.lt-md="column"
+    fxLayoutAlign.lt-md=""
+  >
+    <div class="flex-item input-full-width-ref">
+      <mat-form-field
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <input type="text" matInput placeholder="Search" #searchId [(ngModel)]="searchQuery"/>
+        <mat-icon matSuffix color="#A1A1AA" svgIcon="search_icon_grey" />
+      </mat-form-field>
+    </div>
+    <div
+      class="flex-item"
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutGap="20px"
+      fxLayoutGap.lt-md="10px"
+    >
+      <div>
+        <div class="company-profile-chips">
+          <h6 class=" common-font-16px m-0">
+            Email Used : {{usedEmail}}/{{totalEmail}}
+          </h6>
+          <button mat-mini-fab color="primary" >
+            <mat-icon
+            [svgIcon]="'add'"
+          ></mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="company-profile-chips">
+          <h6 class=" common-font-16px m-0">
+            SMS used : {{usedSMS}}/{{totalSMS}}
+          </h6>
+          <button mat-mini-fab color="primary" >
+            <mat-icon
+            [svgIcon]="'add'"
+          ></mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="overflow: auto">
+      <table mat-table [dataSource]="pagedItems" class="mat-elevation-z8">
+        <ng-container matColumnDef="company_name">
+          <th mat-header-cell *matHeaderCellDef>Company Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.CompanyName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="shortname">
+          <th mat-header-cell *matHeaderCellDef>Shortname</th>
+          <td mat-cell *matCellDef="let element">{{ element.ShortName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.Email }}</td>
+        </ng-container>
+        <ng-container matColumnDef="creation_date">
+          <th mat-header-cell *matHeaderCellDef>Creation Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.CreationDate }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email_limit">
+          <th mat-header-cell *matHeaderCellDef>Email Limit</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.UsedEmail}} used out of {{ element.EmailLimit }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="sms_limit">
+          <th mat-header-cell *matHeaderCellDef>SMS Limit</th>
+          <td mat-cell *matCellDef="let element">{{element.UsedSMS}} used out of {{ element.SMSLimit }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element" class="px-3">
+            <!-- <span class="edit_underscor_delete_red_gap">
+              <mat-icon
+                (click)="onSeltLimit()"
+                [svgIcon]="'edit_underscor'"
+                class="edit_underscor"
+              ></mat-icon>
+            </span>
+            <span>
+              <mat-icon
+                [svgIcon]="'tags_delete_red'"
+                class="tags_delete_red"
+              ></mat-icon>
+            </span> -->
+
+            <div class="edit-delete-icons">
+              <button class="icon-btn edit_underscor" (click)="onSeltLimit(element.ProfileId, isEmail, isSMS)">
+                <mat-icon [svgIcon]="'edit_underscor'"></mat-icon>
+              </button>
+              <button class="icon-btn tags_delete_red" (click)="deleteCompanyProfile(element.ProfileId)">
+                <mat-icon [svgIcon]="'tags_delete_red'"></mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <app-paginator
+      [pager]="pager"
+      (setPage)="setPage($event)"
+      (setItems)="setItemsSorting($event)"
+    ></app-paginator>
+  </div>
+</mat-card>

@@ -1,0 +1,136 @@
+<mat-card-actions
+  style="display: flex; flex-direction: column; align-items: start"
+  class="tab-content-title-margin"
+>
+  <mat-card-title class="customization-option-tab-content-header-font"
+    >Private Feedback Workflow</mat-card-title
+  >
+  <mat-card-subtitle class="instructions-presented-font">
+    These visitors are presented with a contact form or custom feedback form.
+  </mat-card-subtitle>
+</mat-card-actions>
+<form [formGroup]="privateFeedbackWorkflowForm" (ngSubmit)="submit()">
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  fxLayoutGap="10px"
+  class="row-card-input-container-margin-bottom p-0"
+>
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Review Header Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        placeholder="Review Header Message"
+        formControlName="ReviewHeaderMessage"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackWorkflowForm.get('ReviewHeaderMessage').touched &&
+          privateFeedbackWorkflowForm.get('ReviewHeaderMessage').hasError('required')
+        "
+        >Review header message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Thank You Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        placeholder="Thank You Message"
+        formControlName="ThankyouMessage"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackWorkflowForm.get('ThankyouMessage').touched &&
+          privateFeedbackWorkflowForm.get('ThankyouMessage').hasError('required')
+        "
+        >Thank you message is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  class="row-card-input-container-margin-bottom p-0"
+  fxLayoutGap="10px"
+>
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Private Review Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        formControlName="PrivateReviewMessage"
+        placeholder="Public Review Message"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackWorkflowForm.get('PrivateReviewMessage').touched &&
+          privateFeedbackWorkflowForm.get('PrivateReviewMessage').hasError('required')
+        "
+        >Private review message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Private Review Link Text</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        formControlName="PrivateReviewLinkText"
+        placeholder="Click Here"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackWorkflowForm.get('PrivateReviewLinkText').touched &&
+          privateFeedbackWorkflowForm.get('PrivateReviewLinkText').hasError('required')
+        "
+        >Private review link text is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+<span class="d-flex align-items-center">
+  <mat-slide-toggle style="padding-right: 5px" formControlName="HidePublicReviewMessage"></mat-slide-toggle>
+  <span>Hide Public Review Message </span>
+</span>
+
+<div class="mt-4 btn-save d-flex justify-content-end">
+  <button type="submit" mat-flat-button color="primary" [disabled]="privateFeedbackWorkflowForm.invalid">Save Changes</button>
+</div>
+</form>

@@ -1,0 +1,72 @@
+<div class="p-3" [ngClass]="dialogData.message !== 'Are you sure you want to Downgrade Subscription?' ? 'd-block' : 'd-none'">
+    <div class="d-flex justify-content-between">
+        <h5>Payment method</h5>
+        <mat-icon matPrefix (click)="close()" [svgIcon]="'close_icon_blue'" style="width: 20px; height: 25px"
+            class="cursor-pointer"></mat-icon>
+    </div>
+    <div class="d-flex radio-buttons">
+        <label>
+            <input type="radio" name="paymentOption" value="existing" [(ngModel)]="selectedOption"
+                (change)="setSelectedOption('existing')" />
+            Use existing card
+        </label>
+        <label>
+            <input type="radio" name="paymentOption" value="new" [(ngModel)]="selectedOption"
+                (change)="setSelectedOption('new')" />
+            Add new card
+        </label>
+    </div>
+    <div [ngClass]="selectedOption === 'new' ? 'd-block' : 'd-none'" class="new-card-form">
+        <div class="accepted-payment-methods">
+            <p>We accept</p>
+            <img src="../../../../../../../../assets/images/visa.jpg" height="35px" width="35px">
+            <img src="../../../../../../../../assets/images/master-visa-img.jpg" height="35px" width="35px">
+            <img src="../../../../../../../../assets/images/american-express.png" height="35px" width="35px">
+        </div>
+        <div>
+            <div class="row-card-input-container-width row-card-input-container-margin-bottom p-0">
+                <label class="common-label-font">Card Number</label>
+                <div id="cardNumber"></div>
+                <div *ngIf="invalidCard" class="text-danger mb-2">Invalid card number</div>
+            </div>
+            <mat-card-actions fxLayout="row" fxLayoutGap.gt-sm="10px"
+                class="row-card-input-container-margin-bottom p-0 expiry-date-ccv-width-sec-responsive">
+                <div class="row-card-input-container-width">
+                    <label class="common-label-font">Expiry Date</label>
+                    <div id="cardExpiryDate"></div>
+                </div>
+                <div class="row-card-input-container-width">
+                    <label class="common-label-font">CVC</label>
+                    <div id="cardCvv"></div>
+                </div>
+            </mat-card-actions>
+        </div>
+    </div>
+    <div [ngClass]="selectedOption === 'existing' ? 'd-block' : 'd-none'" class="existing-card-list">
+        <div>Card: **** **** **** {{cardDetails?.LastDigits}}</div>
+        <div>Expiry Date: {{cardDetails?.ExpMonth}}/{{cardDetails?.ExpYear}}</div>
+    </div>
+    <div class="mt-3">
+        <input type="checkbox" [(ngModel)]="termsAccepted">
+        I have read the <a>Terms & Service</a>
+    </div>
+    <div class="button-container mt-2">
+        <button color="primary" class="primary-button" [class.disabled-button]="!termsAccepted"
+            [disabled]="!termsAccepted" (click)="submit()">Submit</button>
+    </div>
+</div>
+
+<div class="common-mat-dialog-padding" [ngClass]="dialogData.message === 'Are you sure you want to Downgrade Subscription?' ? 'd-block' : 'd-none'">
+    <div class="card-update-confirmation-main-sec">
+        <h6>{{dialogData.message}}</h6>
+    </div>
+    <mat-card-actions fxLayoutAlign="center center" class="card-update-confirmation-button-sec">
+        <button mat-dialog-close class="secondary-button" fxFlex.xs="0 1 calc(100%-10px)"
+            fxFlex.sm="0 1 calc(100%-10px)">
+            No
+        </button>
+        <button (click)="onConfirmUpdateCard()" color="primary" class="primary-button" fxFlex.xs="0 1 calc(100%-10px)" fxFlex.sm="0 1 calc(100%-10px)">
+            Yes, sure
+        </button>
+    </mat-card-actions>
+</div>

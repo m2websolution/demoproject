@@ -1,0 +1,19 @@
+.company-profile-chips-add-icon {
+  padding: 7px;
+  gap: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.company-profile-chips-add-icon mat-icon {
+  width: 18px;
+  height: 26px;
+}
+
+.company-profile-admin {
+  gap: 24px;
+}

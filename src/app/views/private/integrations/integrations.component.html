@@ -1,0 +1,124 @@
+<div fxLayout="column" [ngClass]="isDetail ? '' : 'd-none'">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Integrations</a>
+      </li>
+    </ol>
+  </nav>
+
+  <mat-card class="common-container-card mb-4" *ngIf="this.upgradeIntegration">
+    <div>
+      <mat-card-actions
+        fxLayout="row "
+        fxLayout.xs="column "
+        fxLayoutGap="10px"
+      >
+        <div class="w-100 copy-bord-color">
+          <label class="common-label-font">Access Key</label>
+          <mat-form-field
+            class="input-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <input
+              type="text"
+              matInput
+              placeholder="Thank You Message"
+              value="{{ accessKey }}"
+              [disabled]="!this.upgradeIntegration"
+            />
+            <mat-icon
+              matSuffix
+              color="success"
+              [svgIcon]="'copy_key_bord'"
+              (click)="copyAccessKey(accessKey)"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="w-100 copy-bord-color">
+          <label class="common-label-font">Profile Key </label>
+          <mat-form-field
+            class="input-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <input
+              type="text"
+              matInput
+              placeholder="Thank You Message"
+              value="{{ profileKey }}"
+              [disabled]="!this.upgradeIntegration"
+            />
+            <mat-icon
+              matSuffix
+              color="success"
+              [svgIcon]="'copy_key_bord'"
+              (click)="copyProfileKey(profileKey)"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+
+  <div
+    fxLayout.xs="row wrap "
+    fxLayout="row wrap"
+    class="intergration-container"
+  >
+
+  <div
+  fxFlex.xs="0 1 calc(100%-10px)"
+  fxFlex.sm="0 1 calc(48%-10px)"
+  fxFlex.md="0 1 calc(30%-10px)"
+  class="integrations-layout-card cursor-pointer"
+  fxFlex.gt-lg="0 1 calc(502px)"
+  fxFlex.gt-md="0 1 calc(30%-10px)"
+  *ngFor="let item of data"
+  [ngClass]="item.name"
+  (click)="handleItemClick(item.name)"
+>
+<div class="lock-container">
+  <img src="assets/svg/icons/outlined/lock_icon.svg"
+   *ngIf="!this.upgradeIntegration"/>
+</div>
+
+<div class="manage">
+  <i class='fa fa-check active' 
+     *ngIf="item.name === 'jobber' && !isjobberConnected">
+  </i>
+  <i class='fa fa-check active'  
+     *ngIf="item.name === 'quickbooks' && !isquickbooksConnected">
+  </i>
+  <i class='fa fa-check active' 
+  *ngIf="item.name === 'isn' && !isISNConnected">
+</i>
+</div>
+
+  <mat-icon [svgIcon]="item.name"></mat-icon>
+</div>
+
+
+  </div>
+</div>
+
+<div [ngClass]="isDetail ? 'd-none' : ''">
+<div [ngSwitch]="itemName">
+  <div *ngSwitchCase="'isn'">
+    <app-integrations-detail (detailUpdate)="toggleScreen($event)"></app-integrations-detail>
+  </div>
+  <div *ngSwitchCase="'ziper'">
+    <app-integrations-zapier (detailUpdate)="toggleScreen($event)"></app-integrations-zapier>
+  </div>
+  <div *ngSwitchCase="'jobber'">
+
+    <app-integrations-jobber (detailUpdate)="toggleScreen($event)" ></app-integrations-jobber>
+  </div>
+  <div *ngSwitchCase="'quickbooks'">
+    <app-quickbooks (detailUpdate)="toggleScreen($event)"></app-quickbooks>
+
+  </div>
+</div>
+

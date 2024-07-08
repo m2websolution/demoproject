@@ -1,0 +1,66 @@
+<div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Integrations</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+<div
+  class="my-2 mb-4 d-flex justify-content-end d-xl-none d-md-none arrow-left-ref cursor-pointer"
+  fxLayout="row "
+  fxLayoutGap="16px"
+  fxLayoutGap.xs="8px"
+  (click)="toggleScreen()"
+>
+  <span>
+    <mat-icon class="keyboard_arrow_left" color="primary"
+      >keyboard_arrow_left</mat-icon
+    >
+  </span>
+  <div class="back-to-intingrations-font common-primary-text">
+    Back to Integrations
+  </div>
+</div>
+
+<mat-card class="common-container-card">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="integrations-detail-right-input-margin"
+  >
+
+    <div class="flex-item isn-ref">
+      <mat-icon [svgIcon]="'ziper_black'"></mat-icon>
+
+    </div>
+    <div
+      class="flex-item arrow-left-ref keyboard_arrow_left_none cursor-pointer d-none d-sm-none d-md-flex"
+      fxLayout="row "
+      fxLayoutGap="16px"
+      (click)="toggleScreen()"
+    >
+      <span>
+        <mat-icon class="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+      </span>
+      <span class="back-to-intingrations-font">Back to Integrations</span>
+    </div>
+  </div>
+  <div>
+    <zapier-full-experience
+      [signUpEmail]="Email"
+      [signUpFirstName]="firstName"
+      [signUpLastName]="lastName"
+      [clientId]="'UZQCa97gUNvr2r9HylISdrI9KwC9tMuanWsSUaYY'"
+      [theme]="'light'"
+      [zapManagerDisplay]="'show'"
+      [appSearchBarDisplay]="'show'"
+      [zapLimit]="10"
+      [zapCallToActionDisplay]="'show'"
+      [zapCreateFromScratchDisplay]="'show'"
+    ></zapier-full-experience>
+  </div>
+  
+</mat-card> 

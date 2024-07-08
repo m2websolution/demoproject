@@ -1,0 +1,96 @@
+<div class="bulk-invite-component" (window:resize)="onResize($event)">
+  <nav
+    class="header-breadcrumb"
+    style="
+      --bs-breadcrumb-divider: url(
+        &#34;data:image/svg + xml,
+        %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+      );
+    "
+    aria-label="breadcrumb"
+  >
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Get Reviews</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">Bulk Invite</li>
+    </ol>
+  </nav>
+  <mat-card class="app-main-card" [ngClass]="breakPoint == 1 ? '' : 'p-3'">
+    <mat-card-content>
+      <mat-card
+        class="app-sub-card"
+        [ngClass]="breakPoint == 1 ? 'p-3' : 'p-4'"
+      >
+        <p class="text-dark">
+          Your CSv Must Contain the headers firstname, Lastname, Email, Phone
+          number (Optional) and Country code (Optional), optional headers only
+          required when sending SMS invitations.
+          <a class="d-inline cursor-pointer" (click)="downloadCSV()">Download Sample CSV</a>
+        </p>
+      </mat-card>
+
+      <mat-card class="app-custom-upload mt-4 mb-4">
+        <input type="file" class="custom-input" (input)="exportCustomer($event)" #fileInput/>
+        <mat-icon [svgIcon]="'upload'" class="custom-input-icon"></mat-icon>
+        <p
+          class="custom-input-text"
+          [ngClass]="breakPoint == 1 ? 'p-3' : 'p-4'"
+        >
+          Drag & Drop or&nbsp;<a>Choose File</a>&nbsp;to upload CVS or TXT
+        </p>
+      </mat-card>
+
+      <div class="mt-lg-4 mb-4">
+        <div
+          class="align-items-center justify-content-end"
+          [ngClass]="breakPoint == 1 ? 'd-block' : 'd-flex '"
+        >
+          <div
+            class="custom-chip me-2"
+            [ngClass]="
+              breakPoint == 1 ? 'w-100 custom-chip-responsive' : 'custom-chip'
+            "
+            style="background-color: #e2f2ff"
+          >
+            <p
+              class="d-flex align-items-center w-100" *ngIf="emailSmsLimit"
+              [ngClass]="breakPoint == 1 ? 'justify-content-between' : ''"
+            >
+              SMS: {{emailSmsLimit.UsedSMS}}/{{emailSmsLimit.SMSLimit}}
+             
+            </p>
+            <button mat-mini-fab color="primary" >
+              <mat-icon
+              [svgIcon]="'add'"
+            ></mat-icon>
+            </button>
+          </div>
+          <div
+            class="custom-chip"
+            [ngClass]="
+              breakPoint == 1 ? 'w-100 custom-chip-responsive' : 'custom-chip'
+            "
+            style="background-color: #fff9c3"
+          >
+            <p
+              class="d-flex align-items-center w-100" *ngIf="emailSmsLimit"
+              [ngClass]="breakPoint == 1 ? 'justify-content-between ' : ''"
+            >
+              EMAIL: {{emailSmsLimit.UsedEmail}}/{{emailSmsLimit.EmailLimit}}
+            </p>
+            <button mat-mini-fab color="accent" >
+              <mat-icon
+              [svgIcon]="'add'"
+            ></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="importedInvitationList.CustomerList" class="mt-lg-4" style="overflow: auto">
+        <app-table [data]="importedInvitationList.CustomerList"></app-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

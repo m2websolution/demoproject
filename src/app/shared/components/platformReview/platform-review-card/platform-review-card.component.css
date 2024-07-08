@@ -1,0 +1,56 @@
+.platform-review-card {
+  position: relative;
+  min-height: 148px;
+}
+
+.platformreviewcardactive {
+  background-image: url(../../../../../assets/images/AllReviewBackgroundDesign.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 16px !important;
+  overflow: hidden;
+  height: 120px;
+  box-shadow: none;
+  position: relative;
+  padding: 16px;
+  background-position: center center;
+}
+
+.platformreviewcardactive .mat-mdc-card-header {
+  padding: 0 !important;
+}
+
+.platformreviewcardactive .platform-review-title {
+  color: #fff;
+}
+
+.platformreviewcardactive .mdc-card__actions {
+  display: inline-block;
+  padding: 0;
+}
+
+.platformreviewcardactive img {
+  width: 50px;
+  height: 50px;
+  right: -2px;
+  top: calc(100% - 50%);
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.platformreviewcardactive p {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  color: #ffffff;
+  margin-top: 48px;
+  display: inline-block;
+}
+
+.platformreviewcardactive p span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #ffffff;
+  margin-left: 2px;
+}

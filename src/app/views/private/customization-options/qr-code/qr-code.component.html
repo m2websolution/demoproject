@@ -1,0 +1,163 @@
+<div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Customization Options</a>
+        <!-- <mat-icon [svgIcon]="'bradcrum_next_arrow'"></mat-icon> -->
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">QR Code</li>
+    </ol>
+  </nav>
+</div>
+
+<div *ngIf="qrCodeVisible">
+<mat-card class="qr-code-main-page-card"> 
+  <div class="qr-inner-page d-flex justify-content-end">
+    <button
+      mat-flat-button
+      color="primary"
+      class="create-emploay-button-width"
+      (click)="onEmploayQrCode()"
+      *ngIf="qrCodeVisible"
+    >
+      <mat-icon style="line-height: 0px" svgIcon="add_icon"
+      ></mat-icon> Create
+      Employee QR Code
+    </button>
+
+    <button
+    mat-flat-button
+    color="primary"
+    class="create-emploay-button-width"
+    (click)="openPermissionDialog()"
+    *ngIf="!qrCodeVisible"
+  >
+  <img src="assets/svg/icons/outlined/lock_icon.svg"/>     
+  Create Employee QR Code
+  </button>
+
+  </div>
+  <div class="m-3 qr-code-main-content" >
+    <div class="give-me-fleed-back-sec">
+      <mat-card-subtitle class="common-primary-text"
+        >Give Your Feedback</mat-card-subtitle
+      >
+
+      <mat-card-title>Your Company Name</mat-card-title>
+    </div>
+    <qrcode
+      *ngIf="domainName"
+      (qrCodeURL)="onChangeURL($event)"
+      [qrdata]="domainName"
+      [width]="512"
+      [errorCorrectionLevel]="'M'"
+    ></qrcode>
+    <a 
+      [href]="qrCodeDownloadLink"
+      download="qrcode"
+      mat-flat-button
+      color="primary"
+      class="download-qr-code-button-width"
+    >
+      <mat-icon style="line-height: 0px" svgIcon="download_icon"></mat-icon
+      >Download QR Code
+    </a>
+  </div>
+</mat-card>
+
+<mat-card class="qr-code-main-page-card p-4"  *ngIf="dataSource?.length > 0">
+  <mat-card-title class="table-heading-qr-codes">QR Codes</mat-card-title>
+  <div style="overflow: auto">
+    <table
+      mat-table
+      *ngIf="dataSource.length > 0"
+      [dataSource]="pagedItems"
+      class="mat-elevation-z8"
+      (window:resize)="onResize($event)"
+    >
+      <ng-container matColumnDef="srno">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.EmployeeName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Department</th>
+        <td mat-cell *matCellDef="let element">{{ element.Department }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="errorlog">
+        <th mat-header-cell *matHeaderCellDef>Download</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <span class="errorlog">
+            <qrcode
+              [hidden]="true"
+              (qrCodeURL)="onChangeURLEmployee($event, i)"
+              [qrdata]="element.QRcodeURL"
+              [width]="512"
+              [errorCorrectionLevel]="'M'"
+            ></qrcode>
+            <a [href]="qrCodeDownloadLinks[i]" download="qrcode"
+              ><mat-icon [svgIcon]="'download_yellow'"></mat-icon
+            ></a>
+          </span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
+        <td mat-cell *matCellDef="let element" class="text-center px-3">
+          <div class="edit-delete-icons">
+            <button
+              type="button"
+              class="icon-btn edit_underscor"
+              (click)="editEmployee(element)"
+            >
+              <mat-icon [svgIcon]="'edit_underscor'"></mat-icon>
+            </button>
+            <button
+              type="button"
+              class="icon-btn tags_delete_red"
+              (click)="deleteEmployee(element.Id)"
+            >
+              <mat-icon [svgIcon]="'tags_delete_red'"></mat-icon>
+            </button>
+          </div>
+          <!-- <span class="edit_underscor_delete_red_gap">
+            <mat-icon
+              [svgIcon]="'edit_underscor'"
+              class="edit_underscor"
+            ></mat-icon>
+          </span>
+          <span>
+            <mat-icon
+              [svgIcon]="'tags_delete_red'"
+              class="tags_delete_red"
+            ></mat-icon>
+          </span> -->
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <app-paginator
+    [pager]="pager"
+    [selectedSortItem]="pagesize"
+    (setPage)="setPage($event)"
+    (setItems)="setItemsSorting($event)"
+  ></app-paginator>
+</mat-card>
+</div>
+
+<div *ngIf="!qrCodeVisible">
+<mat-card class="common-container-card"> 
+  <button
+  mat-flat-button
+  color="primary"
+  class="create-emploay-button-width align-right"
+  (click)="openPermissionDialog()"
+>
+<img src="assets/svg/icons/outlined/lock_icon.svg" /> 
+  Please upgrade account
+</button>
+</mat-card>
+</div>

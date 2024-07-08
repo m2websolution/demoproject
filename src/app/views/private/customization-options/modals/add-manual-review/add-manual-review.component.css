@@ -1,0 +1,105 @@
+.input-full-width {
+    width: 100%;
+  }
+  .add-manual-review-main-section {
+    padding: 10px 24px !important;
+    max-height: 100vh;
+  }
+
+  .manual-review {
+    width: 20px;
+    height: 25px
+  }
+
+  .rating {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .star-rating {
+    margin: 0 10px 5px;
+  }
+  
+  @media (max-width: 500px) {
+    .add-manual-review-start-img-defurance-beetweem {
+      display: grid !important;
+      justify-content: center !important;
+      align-items: start !important;
+      height: 40px !important;
+    }
+    .add-manual-review-start-img-defurance-beetweem .star-grap {
+      display: grid !important;
+      gap: 50% !important;
+      margin-bottom: 10px !important;
+      position: absolute;
+    }
+    .add-manual-review-start-img-defurance-beetweem img {
+      width: 208px;
+      height: 110px;
+      right: 0;
+      position: absolute;
+      margin: 10px;
+    }
+    .add-manual-review-start-img-defurance-beetweem h5 {
+      display: none !important;
+    }
+    .add-manual-input-row {
+      display: grid !important;
+      gap: 0px !important;
+      justify-content: none !important;
+    }
+    .start-responsive-time {
+      margin: 20px;
+    }
+  
+    .add-manual-buttons button {
+      padding: 16px 22px !important;
+    }
+  }
+  .add-manual-review-start-img-defurance-beetweem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px !important;
+    padding: 24px;
+    height: 50px;
+    background: #fafafb;
+  
+    border: 1px solid #f4f4f5;
+    border-radius: 8px;
+    position: relative;
+  }
+  .add-manual-review-start-img-defurance-beetweem .star-grap {
+    /* display: grid;
+    gap: 100%;
+    margin-bottom: 50px;
+     */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .add-manual-input-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .star-container mat-icon {
+    height: 34px;
+    width: 34px;
+  }
+
+  .post-review-section{
+    margin: 24px 0px ;
+
+  }
+  .post-review-section-font{
+    font-family: 'Manrope';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 26px;
+
+color: #18181B;
+
+  }
+

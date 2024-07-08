@@ -1,0 +1,27 @@
+<div class="common-mat-dialog-padding">
+  <div class="cance-subscribption-main-sec">
+    <h6>Are you sure you want to canceled your subscription?</h6>
+  </div>
+  <mat-card-actions
+    fxLayoutAlign="center center"
+    class="cance-subscribption-button-sec"
+  >
+    <button
+      mat-dialog-close
+      class="secondary-button"
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+    >
+      Close
+    </button>
+    <button
+      color="primary"
+      class="primary-button"
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      (click)="onConfirmCancel()"
+    >
+      Yes, sure
+    </button>
+  </mat-card-actions>
+</div>

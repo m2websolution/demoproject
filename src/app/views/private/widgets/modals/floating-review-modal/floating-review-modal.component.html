@@ -1,0 +1,115 @@
+<div class="widget-main-modal modal-padding">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="d-flex justify-content-between">
+      <h2>Floating Review</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+
+    <div class="widget-modal-container">
+      <div class="modal-header modal-header-mobile" [hidden]="isShowJsCodeBlock" *ngIf="!dialogData.isAllow">
+        <h6>Upgrade your plan to access this widget</h6>
+        <button color="primary" class="primary-button">UPGRADE NOW</button>
+      </div>
+
+      <div class="left-part">
+        <app-widget-customize
+          [widgetData]="dialogData"
+          (fieldValuesChanged)="onFieldValuesChanged($event)"
+          (customizationDataChanged)="widgetDataChanged($event)"
+          (getSelectedWidgetPosition)="getWidgetPosition($event)"
+          (isShowJsBlock)="showJsBlock($event)"
+        ></app-widget-customize>
+      </div>
+      <div class="right-part" [hidden]="isShowJsCodeBlock">
+        <div class="modal-header modal-header-web" *ngIf="!dialogData.isAllow">
+          <h6>Upgrade your plan to access this widget</h6>
+          <button color="primary" class="primary-button">UPGRADE NOW</button>
+        </div>
+        <div class="mt-3 preview-cards-container">
+          <h3>Preview</h3>
+          <div class="preview-cards" #previewCardsContainer *ngIf="floatingReviewData.Reviews"
+          [ngStyle]="{'justify-content': selectedWidgetPosition}">
+            <mat-card
+              *ngFor="let item of floatingReviewData.Reviews; let i = index"
+              [@fadeIn]="i === currentCardIndex ? 'visible' : 'hidden'"
+              class="widget-floating-card"
+              [ngStyle]="{
+                background: state.backColor,
+                left: selectedWidgetPosition === 'left' ? 20 : '',
+                right: selectedWidgetPosition === 'right' ? 10 : ''
+              }"
+            >
+              <div class="floating-header">
+                <img
+                  mat-card-image
+                  class="widget-floating-avatar"
+                  [src]="item.ProfileImgUrl"
+                  alt="Google Icon"
+                />
+                <h5
+                  class="floating-header m-0"
+                  [ngStyle]="{ color: state.fontColor }"
+                >
+                  <strong>{{ item.ReviewBy }}</strong>
+                </h5>
+              </div>
+              <div class="floating-star-container">
+                <div *ngIf="item.ReviewSource !== 'Other'">
+                  <img
+                    mat-card-image
+                    class="widget-floating-logo"
+                    src="assets/social-logo/{{ item.ReviewSource }}.png"
+                    alt="Google Icon"
+                  />
+                </div>
+                <div *ngIf="item.ReviewSource === 'Other'">
+                  <img
+                    mat-card-image
+                    class="widget-floating-logo"
+                    src="favicon.ico"*
+                    alt="Google Icon"
+                  />
+                </div>
+                <p>
+                  <app-start-rating
+                    [starClickable]="false"
+                    [id]="{ stars: item.Rating, selected: true }"
+                  ></app-start-rating>
+                </p>
+              </div>
+
+              <div class="row customer-review-sec">
+                <div class="p-0 review-container">
+                  <div
+                    [ngStyle]="{
+                      color: state.date_disc
+                    }"
+                    class="masonry-grid-card-description-font expand-content"
+                    #descriptionElement
+                    [innerHTML]="item.ReviewDetails"
+                    [class.expanded]="isDescriptionExpanded[i]"
+                    [ngClass]="{ 'me-2': isDescriptionExpanded[i] }"
+                  ></div>
+
+                  <a
+                    *ngIf="descriptionElementHeights[i] >= 96"
+                    href="javascript:;"
+                    (click)="toggleDescription(i)"
+                    >{{ isDescriptionExpanded[i] ? 'read less' : 'read more' }}</a
+                  >
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.backgroud-set {
+  background-image: url("../../../../assets/images/dashboardBG-Design.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px 8px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 16px !important;
+  border: 1px solid #e4e4e7 !important;
+  height: 100%;
+}
+.dashboard-card mat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  border-radius: 16px !important;
+  color: #ffffff !important;
+  width: 32px;
+  height: 32px;
+}
+.dashboard-card {
+  padding: 1em;
+}
+
+.dashboard-card mat-card-header,
+.dashboard-card mat-card-content {
+  padding: 0px !important;
+}
+.selectedBG {
+  background-color: #dcfce7 !important;
+  border: 1px solid #22c55e !important;
+  background-image: url("../../../../assets/images/dashboardBG-Design-green.svg");
+}
+
+.selectedTick {
+  background-color: #22c55e !important;
+}
+
+.selectedCT {
+  color: #16a34a;
+}
+.selectedCC p {
+  color: #16a34a;
+}

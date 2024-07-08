@@ -1,0 +1,275 @@
+<div class="" (window:resize)="onResize($event)">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Widgets</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">
+        Social Sharing
+      </li>
+    </ol>
+  </nav>
+  <mat-card *ngIf="socialVisible" class="common-container-card" [ngClass]="screenSize == 'sm' ? 'p-3' : 'p-4'">
+    <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)" *ngIf="socialSharingStatus">
+      <mat-tab label="Facebook" class="social-tab">
+        <form [formGroup]="facebookForm">
+          <div class="sharing-enable-margin-sec d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap">
+              <mat-slide-toggle [(ngModel)]="socialSharingStatus.IsActive"
+                (change)="onFacebookSharingToggleChange($event)" [ngModelOptions]="{standalone: true}">
+                <p class="ms-1" style="color: #18181b">
+                  Facebook Sharing enable
+                </p>
+              </mat-slide-toggle>
+              <img src="../../../../assets/images/continue_with_facebook_image.png" class="img"
+                style="height: 50px;  cursor: pointer;" (click)="noFacebookListing()"
+                *ngIf="!socialSharingStatus?.IsConnected && socialSharingStatus.IsActive">
+            </div>
+
+            <button mat-flat-button (click)="deactivateSocialSharing('Facebook')" color="warn" class="icon-refrence"
+              *ngIf="socialSharingStatus?.IsConnected && socialSharingStatus.IsActive">
+              <mat-icon matPrefix [svgIcon]="'delete'"></mat-icon>
+              <span class="d-none d-lg-block">Delete</span>
+            </button>
+          </div>
+
+          <ng-container *ngIf="socialSharingStatus?.IsConnected && socialSharingStatus.IsActive">
+
+            <mat-card-actions fxLayout="row " fxLayout.xs="column " fxLayoutGap="10px" class="m-0 p-0 mb-3">
+              <div class="row-card-input-container-width">
+                <section class="mat-typography">
+                  <label class="company-setting-lable-title">Facebook Page *</label>
+
+                  <mat-form-field appearance="outline" class="input-full-width downIcon">
+                    <mat-select placeholder="All" disableOptionCentering class="company-dropdown" formControlName="facebookPage">
+                      <mat-option *ngFor="let item of facebookAccountDetails" [value]="item.id">
+                        {{ item.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div
+                    *ngIf="facebookForm.get('facebookPage').invalid && facebookForm.get('facebookPage').touched"
+                    class="text-danger">
+                    Facebook Page is required.
+                  </div>
+                </section>
+              </div>
+
+              <div class="row-card-input-container-width">
+                <section class="mat-typography">
+                  <label class="company-setting-lable-title">Max Number of Posts Per Day</label>
+                  <mat-form-field appearance="outline" class="input-full-width downIcon">
+                    <mat-select placeholder="All" formControlName="maxPostsPerDay" disableOptionCentering class="company-dropdown">
+                      <mat-option *ngFor="let number of numbers" [value]="number">
+                        {{ number }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </section>
+              </div>
+            </mat-card-actions>
+
+
+            <div class="w-100">
+              <label class="common-label-font">Post template *</label>
+              <mat-form-field class="input-full-width" appearance="outline" subscriptSizing="dynamic">
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+                  placeholder=""
+                  value="Thanks {firstname} for your {rating} - star feedback on {source}: {reviewtext} {reviewtexturl}"
+                  cdkAutosizeMaxRows="5" formControlName="postTemplate"></textarea>
+              </mat-form-field>
+              <div *ngIf="facebookForm.get('postTemplate').invalid && facebookForm.get('postTemplate').touched" class="text-danger">
+                Post template is required.
+              </div>
+            </div>
+            <div fxLayout="row  " fxLayout.xs="row   " fxLayoutGap="10px" class="mt-3 mb-3 scrollbar-overflow">
+              <span class="d-flex social-sharring-tags" *ngFor="let item of templateTags">
+                <h6 class="social-sharring-tags-font">{{ item }}</h6>
+                <mat-icon class="justify-content-between align-items-center copy-icon"
+                  (click)="copyItem(item)">content_copy</mat-icon>
+              </span>
+            </div>
+            <div class="mb-3">
+              <label class="exclude-star-rating-font">Exclude star ratings</label>
+              <div class="scrollbar-overflow" fxLayout="row" fxLayoutGap="10px">
+                <div *ngFor="let item of excludeStarRatingsForFacebook" class="cursor-pointer social-share-stars"
+                  (click)="toggleSelectForFacebook(item)">
+                  <div [ngClass]="
+                    item.selected
+                      ? 'star-ratting-section-backgroud-yellow'
+                      : 'star-ratting-section-backgroud'
+                  ">
+                    <app-start-rating (ratingChanged)="setValues($event)" [starType]="'orange'"
+                      [id]="item"></app-start-rating>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-xs-4 exclude-card-sec">
+              <label class="common-label-font">Exclude Review Sites</label>
+
+              <div fxLayout.xs="row  " fxLayout="row " fxLayoutGap="15px" fxLayoutGap.gt-md="10px" fxLayoutGap.md="10px"
+                fxLayoutGap.sm="10px" class="scrollbar-overflow">
+                <mat-card *ngFor="let data of excludeReviewSitesForFacebook" class="exclude-star-ratings-card" [ngClass]="
+                  data?.isActive == 1
+                    ? 'excludeactiveborder common-border-primary'
+                    : ''
+                " (click)="selectExcludeReviewSitesForFacebook(data.id)">
+                <div class="round">
+                  <img class="exclude-starratings-img" mat-card-image [src]="'assets/social-logo/' + data.title + '.png'" alt="Photo of a Shiba Inu" />
+                </div>
+                  <h6>{{ data.title }}</h6>
+                </mat-card>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <mat-slide-toggle formControlName="excludeReviewsWithNoText"></mat-slide-toggle>
+              <span class="ms-1">Exclude reviews with NO TEXT</span>
+            </div>
+            <div class="mt-4 d-flex justify-content-start save-btn-row">
+              <button mat-flat-button color="primary" class="social-save-btn" [disabled]="facebookForm.invalid" (click)="saveForm()">
+                Save
+              </button>
+            </div>
+          </ng-container>
+        </form>
+      </mat-tab>
+      <mat-tab label="Google">
+        <form [formGroup]="googleForm">
+          <div class="mt-3 mb-lg-4 mb-sm-2 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap">
+              <mat-slide-toggle [(ngModel)]="socialSharingStatus.IsActive" [ngModelOptions]="{standalone: true}"
+                (change)="onGoogleSharingToggleChange($event)">
+                <p class="ms-1">Google sharing enable</p>
+              </mat-slide-toggle>
+              <div class="d-flex bordered-container mx-auto mt-2 justify-content-center" (click)="noGoogleListing()"
+                *ngIf="!socialSharingStatus?.IsConnected && socialSharingStatus.IsActive">
+                <img src="../../../../assets/images/google_logo_image.png" class="google-logo" />
+                <div class="review-site-auth">Sign in with Google</div>
+              </div>
+            </div>
+
+            <button mat-flat-button (click)="deactivateSocialSharing('Google')" color="warn" class="icon-refrence"
+              *ngIf="socialSharingStatus?.IsConnected && socialSharingStatus.IsActive">
+              <mat-icon matPrefix [svgIcon]="'delete'" style="height: 30px"></mat-icon>
+              <span class="d-none d-lg-block">Delete</span>
+            </button>
+          </div>
+
+          <ng-container *ngIf="socialSharingStatus?.IsConnected && socialSharingStatus.IsActive">
+            <mat-card-actions fxLayout="row " fxLayout.xs="column " fxLayoutGap="10px" class="m-0 p-0 mb-3">
+              <div class="row-card-input-container-width">
+                <section class="mat-typography">
+                  <label class="company-setting-lable-title">Google Business Location *</label>
+                  <mat-form-field appearance="outline" class="input-full-width downIcon">
+                    <mat-select placeholder="All" disableOptionCentering class="company-dropdown"
+                      formControlName="googleBusinessLocation">
+                      <mat-option *ngFor="let location of accountDetails" [value]="location.Id">
+                        {{ location.LocationName }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div
+                    *ngIf="googleForm.get('googleBusinessLocation').invalid && googleForm.get('googleBusinessLocation').touched"
+                    class="text-danger">
+                    Google Business Location is required.
+                  </div>
+                </section>
+              </div>
+
+              <div class="row-card-input-container-width">
+                <section class="mat-typography">
+                  <label class="company-setting-lable-title">Max Number of Posts Per Day</label>
+                  <mat-form-field appearance="outline" class="input-full-width downIcon">
+                    <mat-select placeholder="All" disableOptionCentering class="company-dropdown"
+                      formControlName="maxPostsPerDay">
+                      <mat-option *ngFor="let number of numbers" [value]="number">
+                        {{ number }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </section>
+              </div>
+            </mat-card-actions>
+
+            <div class="w-100">
+              <label class="platform-review-title">Post template *</label>
+              <mat-form-field class="input-full-width" appearance="outline" subscriptSizing="dynamic">
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+                  placeholder=""
+                  value="Thanks {firstname} for your {rating} - star feedback on {source}: {reviewtext} {reviewtexturl}"
+                  cdkAutosizeMaxRows="5" formControlName="postTemplate"></textarea>
+              </mat-form-field>
+              <div *ngIf="googleForm.get('postTemplate').invalid && googleForm.get('postTemplate').touched"
+                class="text-danger">
+                Post template is required.
+              </div>
+            </div>
+            <div fxLayout="row  " fxLayout.xs="row   " fxLayoutGap="10px" class="mt-3 mb-3 scrollbar-overflow">
+              <span class="d-flex social-sharring-tags" *ngFor="let item of templateTags">
+                <h6 class="social-sharring-tags-font">{{ item }}</h6>
+                <mat-icon class="justify-content-between align-items-center copy-icon"
+                  (click)="copyItem(item)">content_copy</mat-icon>
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <label class="exclude-star-rating-font">Exclude star ratings</label>
+              <div fxLayout="row  " fxLayout.xs="row  " fxLayoutGap="10px" class="scrollbar-overflow">
+                <div *ngFor="let item of excludeStarRatingsForGoogle" class="cursor-pointer social-share-stars"
+                  (click)="toggleSelectForGoogle(item)">
+                  <div [ngClass]="
+                      item.selected
+                        ? 'star-ratting-section-backgroud-yellow'
+                        : 'star-ratting-section-backgroud'
+                    ">
+                    <app-start-rating (ratingChanged)="setValues($event)" [starType]="'orange'"
+                      [id]="item"></app-start-rating>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-xs-4 exclude-card-sec">
+              <h6>Exclude Review Sites</h6>
+
+              <div fxLayout.xs="row  " fxLayout="row " fxLayoutGap="15px" fxLayoutGap.gt-md="10px" fxLayoutGap.md="10px"
+                fxLayoutGap.sm="10px" class="scrollbar-overflow">
+                <mat-card *ngFor="let data of excludeReviewSitesForGoogle" class="exclude-star-ratings-card"
+                  [ngClass]="{ excludeactiveborder: data?.isActive == 1 }"
+                  (click)="selectExcludeReviewSitesForGoogle(data.id)">
+                  <div class="round">
+                    <img class="exclude-starratings-img" mat-card-image
+                      [src]="'assets/social-logo/' + data.title + '.png'" alt="Photo of a Shiba Inu" />
+                  </div>
+                  <h6>{{ data.title }}</h6>
+                </mat-card>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <mat-slide-toggle formControlName="excludeReviewsWithNoText"></mat-slide-toggle>
+              <span class="ms-1">Exclude reviews with NO TEXT</span>
+            </div>
+            <div class="d-flex justify-content-start save-btn-row">
+              <button mat-flat-button color="primary" class="social-save-btn" [disabled]="googleForm.invalid"
+                (click)="saveForm()">
+                Save
+              </button>
+            </div>
+          </ng-container>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+
+
+  <div *ngIf="!socialVisible">
+    <mat-card class="common-container-card">
+      <button mat-flat-button color="primary" class="create-emploay-button-width align-right"
+        (click)="openPermissionDialog()">
+        <img src="assets/svg/icons/outlined/lock_icon.svg" /> Please upgrade account
+      </button>
+    </mat-card>
+
+  </div>

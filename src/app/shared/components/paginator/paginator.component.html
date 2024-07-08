@@ -1,0 +1,77 @@
+<div
+  class="pagination-section"
+  style="margin-top: 16px; margin-bottom: 16px"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  fxLayoutAlign-lt-xs=""
+>
+  <section>
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li
+        [ngClass]="
+          pager.currentPage === 1
+            ? 'pagination__item pagination__item--disabled'
+            : 'pagination__item'
+        "
+      >
+        <a (click)="setPageNew(pager.currentPage - 1)"><</a>
+      </li>
+
+      <li
+        *ngFor="let page of pager.pages"
+        [ngClass]="
+          pager.currentPage === page
+            ? 'pagination__item pagination__item--active'
+            : 'pagination__item'
+        "
+      >
+        <div *ngIf="page == '...'; else setPage">
+          <a>{{ page }}</a>
+        </div>
+
+        <ng-template #setPage>
+          <a (click)="setPageNew(page)">{{ page }}</a>
+        </ng-template>
+      </li>
+
+      <li
+        [ngClass]="
+          pager.currentPage === pager.totalPages
+            ? 'pagination__item pagination__item--disabled'
+            : 'pagination__item'
+        "
+      >
+        <a (click)="setPageNew(pager.currentPage + 1)">></a>
+      </li>
+    </ul>
+  </section>
+
+  <div
+    class="pagination-select"
+    fxLayout="row"
+    fxLayoutAlign="space-between baseline"
+    fxLayoutAlign.lt-md=""
+  >
+    <span class="sort-selecte-section-text-responsive-none"> Items per page&nbsp;</span>
+    <section class="mat-typography">
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="downIcon"
+        class="padination-sort-dropdown-width"
+      >
+        <mat-select
+          placeholder="Select"
+          disableOptionCentering
+          class="company-dropdown"
+          [(ngModel)]="selectedSortItem"
+          (ngModelChange)="onSelectedShort()"
+        >
+          <mat-option *ngFor="let data of sortList" [value]="data.value">
+            {{ data.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+  </div>
+</div>

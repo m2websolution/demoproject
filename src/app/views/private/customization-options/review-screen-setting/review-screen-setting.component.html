@@ -1,0 +1,19 @@
+<div
+  fxLayout="row wrap "
+  fxLayout.xs="row wrap "
+  fxLayout.md="row wrap "
+  class="justify-content-center app-connected-platforms-card-gap"
+>
+  <div
+    *ngFor="
+      let data of breakpoint === 1
+        ? cardPlatformData.slice(0, connectedPlatformCount)
+        : cardPlatformData
+    "
+  >
+    <div class="app-connected-platforms-card-responsive-width">
+      <app-connected-platforms-card [connected]="3" [data]="data">
+      </app-connected-platforms-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+.add-sms-email-btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 128px;
+  height: 40px;
+  background: var(--primary-color);
+  border-radius: 8px;
+  color: #ffffff;
+  border: #008eff;
+}
+
+.edit_underscor_delete_red_gap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  justify-content: end;
+  margin-right: 10px;
+}
+
+
+
+.yellow_border_i_cion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  width: 40px;
+  height: 40px;
+  background: #fff9c3;
+  border-radius: 20px;
+}
+@media (max-width: 680px) {
+  .add-sms-email-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 8px;
+    gap: 8px;
+    width: max-content;
+    height: 40px;
+    background:  var(--primary-color);
+    border-radius: 8px;
+    color: #ffffff;
+    border: #008eff;
+  }
+  .edit_underscor_delete_red_gap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: end;
+    margin-right: 10px;
+  }
+
+  .description {
+    min-width: 318px !important;
+  }
+
+
+  
+}
+
+.margin-right {
+  margin-right: 25%;
+}
+
+.add-sms-email-btn {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.add-sms-email-btn.disabled-btn {
+  background-color: #d6d6d6;
+  color: #6c757d;
+  border: 1px solid #d6d6d6;
+  cursor: not-allowed;
+}

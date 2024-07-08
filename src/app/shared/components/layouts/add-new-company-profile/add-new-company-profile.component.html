@@ -1,0 +1,375 @@
+<div class="common-mat-dialog-padding">
+  <div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <h6 class="common-mat-dialog-header-title">New Company Profile</h6>
+    <mat-icon *ngIf="closeButtonVisible"
+      matPrefix
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      style="width: 20px; height: 25px"
+      class="cursor-pointer"
+    ></mat-icon>
+  </div>
+  <hr />
+  <mat-card class="common-container-card">
+    <div fxLayout="column" fxLayoutGap.gt-xs="16px">
+      <form [formGroup]="companySettingsForm" (ngSubmit)="submit()">
+        <mat-card-actions
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          class="mb-4"
+        >
+          <div>
+            <h6 class="avtar-legal-width-font">Logo (Legal width: 400px)</h6>
+          </div>
+          <div id="avatar-container">
+            <img
+              id="avatar-photo"
+              #avatarImg
+              class="avatar-photo"
+              [src]="
+                companySettings.LogoURL
+                  ? companySettings.LogoURL
+                  : 'assets/images/default_image.jpg'
+              "
+              (mouseenter)="showAddPhotoOverlay = true"
+              alt="avatar photo"
+            />
+
+            <div
+              *ngIf="showAddPhotoOverlay"
+              id="add-photo-overlay"
+              class="avatar-photo"
+              (mouseleave)="showAddPhotoOverlay = false"
+            >
+              <mat-card-actions
+                fxLayoutGap="10px"
+                class="center-positon-absolute"
+              >
+                <button
+                  type="button"
+                  mat-icon-button
+                  (click)="openFileInput(fileInput)"
+                  class="edit_icon_delete_background"
+                >
+                  <mat-icon [svgIcon]="'edit_icon_blue'"></mat-icon>
+                </button>
+                <button
+                  type="button"
+                  mat-icon-button
+                  *ngIf="photo && photo !== ''"
+                  (click)="removePhoto()"
+                  class="edit_icon_delete_background"
+                >
+                  <mat-icon [svgIcon]="'delete_warring_icon'"> </mat-icon>
+                </button>
+              </mat-card-actions>
+            </div>
+
+            <input
+              #fileInput
+              type="file"
+              (change)="addPhoto($event)"
+              name="avatar"
+              accept="image/png, image/jpeg"
+              class="d-none"
+            />
+          </div>
+        </mat-card-actions>
+
+        <mat-card-actions
+          fxLayout="row "
+          fxLayout.xs="column "
+          fxLayoutGap="10px"
+        >
+          <div class="row-card-input-container-width">
+            <label class="common-label-font">Company Name*</label>
+            <mat-form-field
+              class="input-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <input
+                type="text"
+                matInput
+                placeholder="Company Name"
+                formControlName="Company_Name"
+                (blur)="callValidateAPI()"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                companySettingsForm.get('Company_Name').touched &&
+                companySettingsForm.get('Company_Name').hasError('required')
+              "
+              >Company name is required</mat-error
+            >
+          </div>
+
+          <div class="row-card-input-container-width">
+            <label class="common-label-font">Unique Profile Name*</label>
+            <mat-form-field
+              class="input-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <input
+                type="text"
+                matInput
+                placeholder="Unique Profile Name"
+                formControlName="Unique_Profile_Name"
+                (blur)="callValidateAPI()"
+              />
+              <span matSuffix *ngIf="getValidateResponse.isUserNameValid">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="5 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path
+                    d="M9 16.2l-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4L9 16.2z"
+                    fill="green"
+                  />
+                </svg>
+              </span>
+
+              <!-- Red cross icon for error -->
+              <span
+                class="cross-icon"
+                matSuffix
+                *ngIf="
+                  !getValidateResponse.isUserNameValid &&
+                  getValidateResponse.isUserNameValid !== undefined
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="red"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <line
+                    x1="8"
+                    y1="8"
+                    x2="16"
+                    y2="16"
+                    stroke="red"
+                    stroke-width="2"
+                  />
+                  <line
+                    x1="8"
+                    y1="16"
+                    x2="16"
+                    y2="8"
+                    stroke="red"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                companySettingsForm.get('Company_Name').touched &&
+                companySettingsForm.get('Company_Name').hasError('required')
+              "
+              >Unique profile name is required</mat-error
+            >
+          </div>
+        </mat-card-actions>
+
+        <mat-card-actions
+          fxLayout="row "
+          fxLayout.xs="column"
+          fxLayoutGap="10px"
+        >
+          <div class="row-card-input-container-width">
+            <section class="mat-typography">
+              <label class="common-label-font">Timezone: *</label>
+
+              <mat-form-field
+                appearance="outline"
+                class="form-element input-full-width"
+              >
+                <mat-select
+                  placeholder="All"
+                  disableOptionCentering
+                  formControlName="TimeZone"
+                >
+                  <mat-option
+                    *ngFor="let country of timeZones"
+                    [value]="country.id"
+                    >{{ country.text }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div class="row-card-input-container-width">
+            <section class="mat-typography">
+              <label class="common-label-font">Industry*</label>
+
+              <mat-form-field
+                appearance="outline"
+                class="form-element input-full-width"
+              >
+                <mat-select
+                  placeholder="All"
+                  disableOptionCentering
+                  formControlName="Industry"
+                >
+                  <mat-option
+                    *ngFor="let industry of industries"
+                    [value]="industry.IndustriesName"
+                    >{{ industry.IndustriesName }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </section>
+          </div>
+        </mat-card-actions>
+        <mat-card-actions
+          fxLayout="row "
+          fxLayout.xs="column "
+          fxLayoutGap="10px"
+        >
+          <div class="row-card-input-container-width">
+            <label class="common-label-font">Person Name</label>
+            <mat-form-field
+              class="input-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <input
+                type="text"
+                matInput
+                placeholder="Person name"
+                formControlName="Person_Name"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                companySettingsForm.get('Person_Name').touched &&
+                companySettingsForm.get('Person_Name').hasError('required')
+              "
+              >Unique profile name is required</mat-error
+            >
+          </div>
+
+          <div class="row-card-input-container-width">
+            <label class="common-label-font">Phone Number</label>
+            <mat-form-field
+              appearance="outline"
+              class="input-full-width form-field-phone"
+            >
+              <div class="w-100 d-flex text-dark phone-number">
+                <span class="w-100"
+                  ><input
+                    matInput
+                    #phoneNumberInput
+                    type="text"
+                    placeholder="Phone Number"
+                    formControlName="Phone_Number"
+                /></span>
+              </div>
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                companySettingsForm.get('Phone_Number').touched &&
+                companySettingsForm.get('Phone_Number').hasError('required')
+              "
+              >Phone Number is required</mat-error
+            >
+          </div>
+        </mat-card-actions>
+        <mat-card-actions
+          fxLayout="row "
+          fxLayout.xs="column "
+          fxLayoutGap="10px"
+        >
+          <div class="row-card-input-container-width">
+            <label class="common-label-font">Email Address*</label>
+            <mat-form-field
+              class="input-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <input
+                type="text"
+                matInput
+                formControlName="Email_Address"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+                placeholder="Email address"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                companySettingsForm.get('Email_Address').touched &&
+                companySettingsForm.get('Email_Address').hasError('required')
+              "
+              >Email Address is required</mat-error
+            >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                companySettingsForm.get('Email_Address').touched &&
+                companySettingsForm.get('Email_Address').hasError('pattern')
+              "
+              >Invalid email format</mat-error
+            >
+          </div>
+
+          <div class="row-card-input-container-width">
+            <section class="mat-typography">
+              <label class="common-label-font">Country</label>
+
+              <mat-form-field
+                appearance="outline"
+                class="form-element input-full-width"
+              >
+                <mat-select
+                  placeholder="All"
+                  disableOptionCentering
+                  formControlName="Country"
+                >
+                  <mat-option *ngFor="let country of world" [value]="country.code">{{
+                    country.name
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </section>
+          </div>
+        </mat-card-actions>
+        <div class="mt-4 d-flex justify-content-end update-btn-full-width">
+          <button
+            type="submit"
+            mat-flat-button
+            color="primary"
+            [disabled]="
+              companySettingsForm.invalid ||
+              !getValidateResponse.isUserNameValid
+            "
+          >
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>

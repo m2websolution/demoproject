@@ -1,0 +1,77 @@
+<mat-card class="common-container-card">
+  <h6 class="common-main-title-font">Payment and Plan Detail</h6>
+  <mat-card class="paymet-detail-sub-card">
+    <h6 class="monthly-fee-title-font">New {{!toggleValueStandard ? 'Monthly' : 'Annually'}} fee</h6>
+
+    <div class="w-100">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="new-payment-fee-dec-margin-bottom-sec">
+        <h6 class="small-font-payment-detail m-0">{{plan?.PlanName ? plan?.PlanName : plan?.planName}}</h6>
+
+        <h6 class="small-font-payment-detail m-0">$ {{!toggleValueStandard ? plan?.Price : (+plan?.Price)*12 }}</h6>
+
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="new-payment-fee-dec-margin-bottom-sec"
+        *ngIf="toggleValueStandard">
+        <h6 class="small-font-payment-detail m-0">Save Amount</h6>
+        <h6 class="small-font-payment-detail m-0 text-danger">$ {{(((+plan?.Price)*20 / 100)*12).toFixed(2)}}</h6>
+      </div>
+      <hr />
+      <div fxLayout="row " fxLayoutAlign="space-between center" class="new-payment-fee-dec-margin-bottom-sec">
+        <h6 class="total-font-payment-detail m-0">Total</h6>
+
+        <h6 class="total-font-payment-detail m-0">$ {{!toggleValueStandard ? plan?.Price : (((+plan?.Price)*12) -
+          (((+plan?.Price)*20 / 100)*12)).toFixed(0) }}
+          {{!toggleValueStandard ? 'Monthly' : 'Annually'}}</h6>
+      </div>
+
+      <div fxLayout="row " fxLayoutAlign="start center" fxLayoutGap="8px" class="new-payment-fee-dec-margin-bottom-sec">
+        <mat-icon [svgIcon]="'tick_square'"></mat-icon>
+
+        <div class="small-font-payment-detail">Cancel anytime</div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="paymet-detail-sub-card" *ngIf="planName === 'business'">
+    <ng-container *ngIf="plan">
+      <div class="select-plan-existing-radio inactive-radio-border-color payment-method-section">
+        <h6 class="monthly-fee-font">Plan Feature</h6>
+        <div *ngFor="let item of plan?.info">
+          <div fxLayout="row" fxLayoutGap="8" fxLayoutAlign="start center">
+            <div>
+              <mat-icon matPrefix mat-dialog-close [svgIcon]="'right_redius_active'"></mat-icon>
+            </div>
+            <h6 class="m-0 unlimited-review-platform-font">
+              {{item}}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </mat-card>
+  <mat-card-actions align="end" class="add-manual-buttons">
+    <ng-container *ngIf="!plan?.monthlyPlanId">
+      <button color="success"
+        [disabled]="currentPlan?.name === plan?.PlanName && currentPlan?.price === +(!toggleValueStandard ? plan?.Price : (((plan?.Price * 12) - (((plan?.Price * 20 / 100) * 12))).toFixed(0)))"
+        class="primary-button success-button me-2" fxFlex.xs="0 1 calc(100%-10px)" fxFlex.sm="0 1 calc(100%-10px)"
+        (click)="handleSubscriptionClick()">
+        {{
+        currentPlan ? currentPlan?.name === plan?.PlanName && currentPlan?.price === +(!toggleValueStandard ? plan?.Price
+        : (((plan?.Price
+        *
+        12) - (((plan?.Price * 20 / 100) * 12))).toFixed(0))) ?
+        "Already Subscribed"
+        :
+        (currentPlan?.price > +(!toggleValueStandard ? plan?.Price : (((plan?.Price * 12) - (((plan?.Price * 20 / 100) *
+        12))).toFixed(0))) ? "Downgrade Subscription" : "Upgrade Subscription") : "Subscription"
+        }}
+      </button>
+    </ng-container>
+    <ng-container *ngIf="plan?.monthlyPlanId">
+      <button color="success" class="primary-button success-button me-2" fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)" (click)="handleSubscriptionClick()">
+        Subscription
+      </button>
+    </ng-container>
+  </mat-card-actions>
+</mat-card>

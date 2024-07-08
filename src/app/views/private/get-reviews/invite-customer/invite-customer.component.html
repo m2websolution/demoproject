@@ -1,0 +1,274 @@
+<div class="invite-customer" (window:resize)="onResize($event)">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Get Reviews</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">
+        Invite Customer
+      </li>
+    </ol>
+  </nav>
+  <div class="row px-2" *ngIf="helpDocumentation">
+    <p
+      class="header-help-text common-primary-text d-flex justify-content-end gap-1"
+    >
+      <mat-icon [svgIcon]="'question_mark_blue'"></mat-icon> View Help
+      Documentation
+    </p>
+  </div>
+  <mat-card class="app-main-card" [ngClass]="breakPoint == 1 ? '' : 'p-3'">
+    <mat-card-content>
+      <mat-card class="app-sub-card" [ngClass]="breakPoint == 1 ? '' : 'p-3'">
+        <mat-card-content class="py-0 send-invitation-card">
+          <div class="d-flex align-items-center">
+            <div class="invite-section h-100">
+              <div class="invite-send-section">
+                <div>
+                  <h2 class="common-mat-dialog-header-title">
+                    Send Invitations
+                  </h2>
+                  <p class="">
+                    Your Grab Review Team is ready to go, know a few friends or
+                    customer who’d like to explore review with you?
+                  </p>
+                </div>
+                <div>
+                  <mat-checkbox
+                    class="example-margin checkbox-name"
+                    color="primary"
+                    [(ngModel)]="EmailSelect"
+                    (click)="clearEmailPhoneNumber()"
+                  >
+                    Email
+                  </mat-checkbox>
+                  <mat-checkbox 
+                    class="example-margin checkbox-name"
+                    color="primary"
+                    [(ngModel)]="SMSSelect"
+                    (click)="clearEmailPhoneNumber()"
+                    [disabled]="!isSMSVisible"
+                  >
+                    SMS
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="send-invitation-img h-100">
+              <div class="d-flex justify-content-center">
+                <img
+                  src="assets/images/invite_customer.png"
+                  height="215px"
+                  width="400px"
+                  alt="LOGO"
+                />
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div class="invite-customer-subpart2 mt-2 mb-2 mt-lg-5 mb-lg-5">
+        <div class="customer-detail-section">
+          <div class="w-100">
+            <h2 class="common-mat-dialog-header-title">Customer Details</h2>
+            <form [formGroup]="inviteForm">
+              <div class="customer-detail-container">
+                <div
+                  class="mt-lg-3"
+                  [ngClass]="
+                    breakPoint == 1
+                      ? 'w-100'
+                      : !EmailSelect && !SMSSelect
+                      ? 'w-100'
+                      : 'w-50 field-gap'
+                  "
+                >
+                  <div class="form-group">
+                    <label class="common-label-font">First Name</label>
+                    <mat-form-field appearance="outline">
+                      <input
+                        matInput
+                        type="text"
+                        formControlName="firstName"
+                        placeholder="Enter Customer First Name"
+                      />
+                    </mat-form-field>
+                    <mat-error
+                      class="error-message"
+                      *ngIf="
+                        inviteForm.get('firstName').touched &&
+                        inviteForm.get('firstName').hasError('required')
+                      "
+                      >First Name is required</mat-error
+                    >
+                  </div>
+                </div>
+                <div
+                  class="mt-3"
+                  [ngClass]="
+                    breakPoint == 1
+                      ? 'w-100'
+                      : !EmailSelect && !SMSSelect
+                      ? 'w-100'
+                      : 'w-50 field-gap'
+                  "
+                >
+                  <div class="form-group">
+                    <label class="common-label-font">Last Name</label>
+                    <mat-form-field appearance="outline">
+                      <input
+                        matInput
+                        type="text"
+                        formControlName="lastName"
+                        placeholder="Enter Customer Last Name"
+                      />
+                    </mat-form-field>
+                    <mat-error
+                      class="error-message"
+                      *ngIf="
+                        inviteForm.get('lastName').touched &&
+                        inviteForm.get('lastName').hasError('required')
+                      "
+                      >Last Name is required</mat-error
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="mt-3"
+                  [ngClass]="
+                    EmailSelect
+                      ? breakPoint == 1
+                        ? 'w-100 field-gap'
+                        : !SMSSelect
+                        ? 'w-100 field-gap'
+                        : 'w-50 field-gap'
+                      : 'd-none'
+                  "
+                >
+                  <div class="form-group">
+                    <label class="common-label-font">Email Address</label>
+                    <mat-form-field appearance="outline">
+                      <input
+                        matInput
+                        type="email"
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+                        formControlName="email"
+                        placeholder="Enter Your Email Address"
+                      />
+                    </mat-form-field>
+                    <mat-error
+                      class="error-message"
+                      *ngIf="
+                        inviteForm.get('email').touched &&
+                        inviteForm.get('email').hasError('required')
+                      "
+                      >Email is required</mat-error
+                    >
+                    <mat-error
+                      class="error-message"
+                      *ngIf="
+                        inviteForm.get('email').touched &&
+                        inviteForm.get('email').hasError('pattern')
+                      "
+                      >Invalid email format</mat-error
+                    >
+                  </div>
+                </div>
+                <div
+                  class="mt-3"
+                  [ngClass]="
+                    SMSSelect
+                      ? breakPoint == 1
+                        ? 'w-100 field-gap'
+                        : !EmailSelect
+                        ? 'w-100 field-gap'
+                        : 'w-50 field-gap'
+                      : 'd-none'
+                  "
+                >
+                  <div class="form-group">
+                    <label class="common-label-font">Phone Number</label>
+                    <mat-form-field
+                      class="form-field-phone"
+                      appearance="outline"
+                    >
+                      <div class="w-100 d-flex text-dark">
+                        <span class="w-100"
+                          ><input
+                            matInput
+                            #phoneInput
+                            type="number"
+                            formControlName="phoneNumber"
+                            placeholder="Phone Number"
+                            (input)="onPhoneNumberChange()"
+                        /></span>
+                      </div>
+                    </mat-form-field>
+                    <mat-error
+                      class="error-message"
+                      *ngIf="
+                        inviteForm.get('phoneNumber').touched &&
+                        inviteForm.get('phoneNumber').hasError('required')
+                      "
+                      >Phone Number is required</mat-error
+                    >
+                    <mat-error
+                      class="error-message"
+                      *ngIf="
+                        inviteForm.get('phoneNumber').touched &&
+                        !inviteForm.get('phoneNumber').hasError('required') &&
+                        !isValidPhoneNumber
+                      "
+                      >Invalid phone number format</mat-error
+                    >
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="">
+          <h2
+            [ngClass]="breakPoint == 1 ? ' mt-2' : 'mb-lg-4'"
+            class="mb-md-2 common-main-title-font"
+          >
+            Remaining Emails & SMS
+          </h2>
+
+          <div class="circular-progress-container">
+            <app-circular-progress
+              [data]="emailUsedData"
+              [id]="'emailprogress'"
+            />
+            <app-circular-progress [data]="smsUsedData" [id]="'smsProgress'" />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p>
+          <mat-checkbox
+            class="example-margin invite-checkbox"
+            color="primary"
+            [(ngModel)]="isOptinSelect"
+          >
+            I certify that all customers have opted in to receive these
+            communications
+          </mat-checkbox>
+        </p>
+      </div>
+      <button
+        (click)="submit()"
+        type="submit"
+        mat-flat-button
+        color="primary"
+        class="mt-2 invite-customer-btn"
+        [disabled]="!isOptinSelect || !(EmailSelect || SMSSelect)"
+      >
+        Invite Customer
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

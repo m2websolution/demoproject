@@ -1,0 +1,207 @@
+<mat-card-actions class="justify-content-column tab-content-title-margin">
+  <mat-card-title class="customization-option-tab-content-header-font"
+    >Private Feedback Form</mat-card-title
+  >
+</mat-card-actions>
+<form [formGroup]="privateFeedbackForm" (ngSubmit)="submit()">
+<mat-card-actions
+  fxLayout="column "
+  fxLayout.xs="column "
+  fxLayoutGap="24px"
+  fxLayoutGap.xs="12px"
+  class="provate-form-responsive-width"
+>
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Message Placeholder Text</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        placeholder="Review Header Message"
+        formControlName="MessagePlaceholderText"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackForm.get('MessagePlaceholderText').touched &&
+          privateFeedbackForm.get('MessagePlaceholderText').hasError('required')
+        "
+        >Message placeholder text is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+    <div
+      fxLayout="row "
+      fxLayoutAlign="space-between center"
+      fxLayout.xs="column-reverse "
+      fxLayoutAlign.xs="start"
+      fxLayoutGap="24px"
+      fxLayoutGap.xs="12px"
+    >
+       <label class="common-label-font">Name Placeholder</label>
+      <div fxAlign.xs="start" class="d-flex gap-2 align-items-center">
+        <span class="m-1 d-flex align-items-center">
+          <mat-slide-toggle class="mr-2" formControlName="NameRequired"></mat-slide-toggle>
+          <span>Required</span>
+        </span>
+
+        <span class="m-1 d-flex align-items-center">
+          <mat-slide-toggle class="mr-2" formControlName="NameShowField" (change)="nameValidation()"></mat-slide-toggle>
+          <span> Show Field</span>
+        </span>
+      </div>
+    </div>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input type="text" matInput placeholder="Name" formControlName="NamePlaceholder"/>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackForm.get('NamePlaceholder').touched &&
+          privateFeedbackForm.get('NamePlaceholder').hasError('required')
+        "
+        >Name placeholder is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between center"
+      fxLayout.xs="column-reverse "
+      fxLayoutAlign.xs="start"
+      fxLayoutGap="24px"
+      fxLayoutGap.xs="12px"
+    >
+       <label class="common-label-font">Email Placeholder</label>
+      <div fxAlign.xs="start" class="d-flex gap-2">
+        <span class="m-1 d-flex align-items-center">
+          <mat-slide-toggle class="mr-2" formControlName="EmailRequired"></mat-slide-toggle>
+          <span>Required</span>
+        </span>
+
+        <span class="m-1 d-flex align-items-center">
+          <mat-slide-toggle class="mr-2" formControlName="EmailShowField" (change)="emailValidation()"></mat-slide-toggle>
+          <span> Show Field</span>
+        </span>
+      </div>
+    </div>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input type="text" matInput placeholder="Email" formControlName="EmailPlaceholder" />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackForm.get('EmailPlaceholder').touched &&
+          privateFeedbackForm.get('EmailPlaceholder').hasError('required')
+        "
+        >Email placeholder is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxLayout.xs="column-reverse "
+      fxLayoutAlign.xs="start"
+      fxLayoutGap="24px"
+      fxLayoutGap.xs="12px"
+    >
+       <label class="common-label-font">Phone Number Placeholder</label>
+      <div fxAlign.xs="start" class="d-flex gap-2">
+        <span class="m-1 d-flex align-items-center">
+          <mat-slide-toggle class="mr-2" formControlName="PhoneNumberRequired"></mat-slide-toggle>
+          <span>Required</span>
+        </span>
+
+        <span class="m-1 d-flex align-items-center">
+          <mat-slide-toggle class="mr-2" formControlName="PhoneNumberShowField" (change)="phoneNumberValidation()"></mat-slide-toggle>
+          <span> Show Field</span>
+        </span>
+      </div>
+    </div>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input type="text" matInput placeholder="Phone" formControlName="PhoneNumberPlaceholder"/>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackForm.get('PhoneNumberPlaceholder').touched &&
+          privateFeedbackForm.get('PhoneNumberPlaceholder').hasError('required')
+        "
+        >Phone placeholder is required</mat-error
+      >
+  </div>
+
+  <div
+    class="row-card-input-container-width"
+    fxLayoutGap="24px"
+    fxLayoutGap.xs="12px"
+  >
+     <label class="common-label-font">Submit Button Text</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input type="text" matInput placeholder="Submit" formControlName="SubmitButtonText"/>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackForm.get('SubmitButtonText').touched &&
+          privateFeedbackForm.get('SubmitButtonText').hasError('required')
+        "
+        >Submit button text is required</mat-error
+      >
+  </div>
+
+  <div
+    class="row-card-input-container-width"
+    fxLayoutGap="24px"
+    fxLayoutGap.xs="12px"
+  >
+     <label class="common-label-font">Close Button Text</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input type="text" matInput placeholder="Close" formControlName="CloseButtonText"/>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          privateFeedbackForm.get('CloseButtonText').touched &&
+          privateFeedbackForm.get('CloseButtonText').hasError('required')
+        "
+        >Close button text is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+
+<div class="mt-4 btn-save d-flex justify-content-end">
+  <button type="submit" mat-flat-button color="primary" [disabled]="privateFeedbackForm.invalid">Save Changes</button>
+</div>
+</form>

@@ -1,0 +1,158 @@
+.widget-modal-container {
+  display: flex;
+  gap: 30px;
+}
+
+.widget-modal-container .left-part {
+  width: 400px;
+}
+.widget-modal-container .right-part {
+  width: 1084px;
+}
+
+.widget-star-group {
+  height: 36px;
+  width: 23px;
+  margin-right: 4px;
+}
+
+.widget-review-card {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.widget-review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px !important; /* Given important as overlapped by other style*/
+}
+
+.preview-cards {
+  display: flex;
+  gap: 17px;
+  flex-wrap: wrap;
+  height: 400px;
+  overflow-y: auto;
+  margin-top: 16px;
+}
+
+.read-more-section {
+  display: grid;
+  margin: 0px 0px 0px 45px;
+  border-left: 4px solid #faa81a;
+  height: auto;
+}
+
+
+.widget-review-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.list-view-preview-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overall-rating-component {
+  display: flex;
+  justify-content: space-between;
+}
+
+.overall-rating-component .secondary-button {
+  width: auto;
+}
+
+.list-view-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 600px) {
+  .widget-review-card {
+    padding: 12px;
+  }
+
+  .list-view-preview-bottom {
+    margin-top: 10px;
+  }
+  .overall-rating-component {
+    display: block;
+  }
+
+  .overall-rating-component .secondary-button {
+    width: 100%;
+  }
+
+  .list-view-stars {
+    gap: 2px;
+  }
+
+  .list-grid-card-name-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    line-height: 28px;
+  }
+
+  .list-grid-card-description-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 300 !important;
+    font-size: 12px !important;
+    line-height: 24px;
+  }
+}
+.list-grid-card-name-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.list-grid-card-description-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.customer-review-sec .expand-content,
+.read-owner-txt .expand-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit to 4 lines */
+  -webkit-box-orient: vertical;
+}
+
+.customer-review-sec .expand-content.expanded,
+.read-owner-txt .expand-content.expanded {
+  -webkit-line-clamp: unset; /* Show all lines when expanded */
+}
+
+.customer-review-sec .expand-content.d-inline,
+.read-owner-txt .expand-content.d-inline {
+  display: inline;
+}
+
+.customer-review-sec .expand-content.ml-5,
+.read-owner-txt .expand-content.ml-5 {
+  margin-left: 5px;
+}
+
+.review-container {
+  width: 90%;
+  margin: 0.75em 2px 0.5em 1em;
+}

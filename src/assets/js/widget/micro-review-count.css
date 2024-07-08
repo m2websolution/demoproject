@@ -1,0 +1,216 @@
+*{
+	box-sizing: border-box;
+}
+.rsw-parent-mrc {
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 500;
+	display: inline-block;
+	align-items: baseline;
+}
+.rsw-span-mrc {
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	margin: 0px 0px -4px 0px;
+	padding: 0px 10px;
+}
+
+.rsw-star-rating-mrc {
+	width: 120px;
+	padding-right: 5px;
+}
+
+.rsw-rating-mrc {
+	padding: 0px 5px;
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 500;
+}
+.rsw-parent-mrc2 a{
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 600;
+}
+
+#review-count {
+	font-size: 100%;
+	letter-spacing: 1px;
+}
+
+/* New added */
+.stars-outer-mrc{
+	display: inline-block;
+		position: relative;
+		font-size: 22px;
+	}
+	
+	.stars-outer-mrc::before {
+		content: "🟊🟊🟊🟊🟊";
+		color: #d2d2d2;
+		font-size: 24px;
+
+	}
+	
+	.stars-inner-mrc {
+		position: absolute;
+		top: 0;
+		left: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 0%;
+		font-size: 22px;
+	}
+	
+	.stars-inner-mrc::before {
+		content: "🟊🟊🟊🟊🟊";
+		color: #FAA81A;
+		font-size: 24px;
+
+	}
+
+	.rew_microcount-powerBy{
+		text-align: center;
+		display: inline-flex;
+		align-items: center;
+		width: 100%;
+		justify-content: center;
+		font-size: 14px;
+		font-family: Consolas;
+		letter-spacing: 2px;
+	}
+	
+
+
+.rsw-parent-main{
+	padding: 24px;
+	border-radius: 8px;
+	border: 1px solid rgba(228, 228, 231, 1);
+	width: 100%;
+	max-width: 1084px;
+	margin: 0 auto;
+	display: flex;
+	background-repeat: no-repeat !important;
+	background-size: contain !important;
+}
+
+.rew_micro-review-image{
+	width: 50%;
+	text-align: right;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+/* .rew_micro-review-image img{
+	width: 100%;
+} */
+
+.rew_micro-review-content{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.rsw-parent-mrc2, .rsw-parent-mrc{
+	text-align: center !important;
+}
+.rsw-parent-mrc2{
+	display: flex;
+}
+@media screen and (max-width: 600px) {
+	.rsw-parent-mrc2{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.rew_micro-review-content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.rew_micro-review-image {
+		width: 50% !important;
+		text-align: right;
+	}
+	.rew_micro-review-image img{
+		width: 100% !important;
+		text-align: right;
+	}
+	.rsw-parent-main{
+		gap: 20px !important;
+	}
+}
+
+@media screen and (max-width: 378px) {
+	.rsw-parent-main{
+		flex-direction: column !important;
+		gap: 20px;
+		text-align: center;
+		align-items: center;
+
+	}
+	.rsw-parent-mrc2, .rsw-parent-mrc{
+		text-align: center !important;
+	}
+	.rew_micro-review-content,
+	.rew_micro-review-image{
+		width: 100%;
+		justify-content: center !important;
+		align-items: center;
+		text-align: center;
+	}
+	.rew_micro-review-image img{
+		width: 50%;
+	}
+}
+
+
+/* New Stars */
+
+  .micro-review-star-rating {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+  }
+  .star{
+	display: inline-block;
+	position: relative;
+	font-size: 18px;
+	/* margin-left: 2%; */
+	margin-top: 0%;
+  }
+  .star::before{
+	display: block;
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: url(assets/svg/icons/outlined/star_outlined.svg) no-repeat center;
+	background-size: contain;
+  }
+
+  .star-fill::before{
+	display: block;
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: url('assets/svg/icons/filled/star.svg') no-repeat center;
+	background-size: contain;
+	/* position: absolute;
+	top: 0;
+	left: 0; */
+	z-index: 1;
+	overflow: hidden;
+	/* white-space: nowrap; */
+  }
+
+  .star-fill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	overflow: hidden;
+}

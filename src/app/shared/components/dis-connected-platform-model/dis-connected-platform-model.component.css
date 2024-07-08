@@ -1,0 +1,73 @@
+.disconnect-modal {
+  background-image: url("../../../../assets/images/Modal-Bg.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.dc-info-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #71717a;
+
+  margin-bottom: 5px;
+}
+.dc-info-sec mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 32px;
+}
+.dc-dialog-sec .mdc-dialog__title::before {
+  height: auto;
+}
+.dc-dialog-sec {
+  margin-top: 2.5em;
+  margin-bottom: 1.5em;
+}
+
+.dis-google-txt {
+  margin: 2.5em 0em 1em 0em;
+}
+
+.dis-connected-platform-title {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 412px;
+}
+.mat-expansion-panel-header {
+  height: 30px;
+  color: #52525b !important;
+  border-radius: 16px !important;
+}
+.secondary-button {
+  color: #18181b;
+}
+@media (max-width: 500px) {
+  .dis-connected-platform-title {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 412px;
+  }
+  .mat-expansion-panel-header {
+    height: 52px;
+    width: 100% !important;
+    display: flex;
+    color: #52525b !important;
+    border-radius: 16px !important;
+  }
+
+  .dc-info-sec {
+    justify-content: flex-start;
+    display: flex;
+  }
+}

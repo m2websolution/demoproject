@@ -1,0 +1,76 @@
+<div fxLayout="row" fxLayoutGap="10" fxHide.lt-md fxShow>
+  <div class="col-md-2 col-2 all-review-col" *ngIf="inputmodel">
+    <mat-card class="platform-review-staticcard cursor-pointer">
+      <mat-card-header>
+        <mat-card-title class="platform-review-title"
+          >All Reviews</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-actions>
+        <p>
+          {{ review.totalReviewBefore }}
+          ->
+          {{ review.totalReviews }}
+          <span>({{ review.totalReviews - review.totalReviewBefore }})</span>
+        </p>
+        <img
+          class="img overall-img"
+          mat-card-image
+          src="assets/images/overalldesignnew.svg"
+          alt="any"
+        />
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-md-10 col-10 all-review-col2" *ngIf="inputmodel">
+    <swiper [config]="configplatform" (window:resize)="onResize($event)">
+      <div class="swiper-wrapper slide">
+        <div
+          class="col-md-4 slide-card"
+          *ngFor="
+            let data of inputmodel.data.Platform_Ratings_Dashboard;
+            let first = first
+          "
+          [ngClass]="{ 'first-element': first }"
+        >
+          <app-platform-review-card
+            [data]="data"
+            [selectedPlatformData]="selectedPlatformData"
+            [selectPlatform]="selectPlatform"
+          ></app-platform-review-card>
+        </div>
+        <!-- <div class="col-md-3 swiper-slide" *ngFor="let data of platformData">
+          <app-platform-review-card
+            [data]="data"
+            [selectedPlatformData]="selectedPlatformData"
+            [selectPlatform]="selectPlatform"
+            [ReviewSites]="inputmodel.data.ReviewSites"
+          ></app-platform-review-card>
+        </div> -->
+      </div>
+    </swiper>
+  </div>
+</div>
+<!-- Mobbile -->
+
+<div
+  fxShow.lt-md
+  fxHide
+  class="all-platform-container mobile-slide"
+  *ngIf="inputmodel"
+>
+  <div
+    class="all-platform-item"
+    *ngFor="
+      let data of inputmodel.data.Platform_Ratings_Dashboard;
+      let first = first
+    "
+    [ngClass]="{ 'first-element': first }"
+  >
+    <app-platform-review-card
+      [data]="data"
+      [selectedPlatformData]="selectedPlatformData"
+      [selectPlatform]="selectPlatform"
+    ></app-platform-review-card>
+  </div>
+</div>

@@ -1,0 +1,297 @@
+.app-main-card {
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: none;
+}
+
+.app-sub-card {
+  background-color: #fafafa;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #f4f4f5;
+  background-image: url("/assets/images/send_invitation_bg.svg");
+}
+
+.form-field-phone {
+  z-index: 2;
+}
+
+.mat-grid-tile div.mat-grid-tile-content {
+  display: block;
+}
+
+.checkbox-name {
+  margin-right: 10px;
+}
+
+.checkbox-name label {
+  font-family: "Manrope";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.invite-section {
+  height: 200px !important;
+}
+
+.invite-send-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.invite-customer-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 190px;
+  width: 190px;
+  border-radius: 50%;
+  background-color: #fafafa;
+  border: 10px solid green;
+}
+
+.customer-detail-container .mdc-text-field--outlined {
+  height: 56px !important;
+}
+
+.customer-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.field-gap {
+  padding-right: 15px;
+}
+
+.invite-customer-subpart2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.customer-detail-section {
+  width: 70%;
+  margin-right: 15px;
+}
+
+.invite-customer .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.remaining-email-progress {
+  margin-top: 0.5rem;
+}
+
+.invite-checkbox .mdc-checkbox__background {
+  border-color: #d4d4d8 !important;
+}
+
+.invite-send-section p {
+  width: 70%;
+}
+
+.breadcrumb .actives {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #18181b !important;
+}
+
+.header-help-text {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 7px;
+  text-align: right;
+  align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.circular-progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circular-progress-container app-circular-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .customer-detail-container {
+    display: block;
+    gap: 0px;
+  }
+
+  .field-gap {
+    padding: 0px;
+  }
+
+  .invite-customer-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    border: 10px solid green;
+  }
+
+  .invite-customer-subpart2 {
+    display: block;
+  }
+
+  .customer-detail-section {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .checkbox-name label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .app-sub-card {
+    background-image: url("../../../../../assets/images/card-bg-light-rotate.svg");
+    background-size: contain;
+  }
+
+  .remaining-email-progress {
+    margin-top: 1rem;
+  }
+
+  .invite-customer-btn {
+    width: 100%;
+    height: 44px !important;
+  }
+
+  .invite-section {
+    height: 100% !important;
+  }
+
+  .invite-send-section p {
+    width: 100%;
+  }
+
+  .send-invitation-img {
+    display: none;
+  }
+
+  .send-invitation-card .invite-send-section {
+    padding: 10px 0px;
+  }
+
+  .remaining-section {
+    margin-top: 3rem !important;
+  }
+
+  .header-help-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .invite-customer-subpart2 {
+    display: block;
+  }
+
+  .customer-detail-section {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .remaining-email-progress {
+    margin-top: 1rem;
+  }
+
+  .send-invitation-img {
+    display: none;
+  }
+
+  .invite-send-section p {
+    width: 100%;
+  }
+
+  .invite-section {
+    height: 100% !important;
+  }
+
+  .send-invitation-card .invite-send-section {
+    padding: 10px 0px;
+  }
+
+  .remaining-section {
+    margin-top: 3rem !important;
+  }
+
+  .header-help-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .circular-progress-container {
+    display: block;
+  }
+}
+
+.remaining-emails-sms-background {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+  gap: 8px;
+  width: fit-content;
+  background: #f4f4f5;
+  border-radius: 16px;
+}
+
+.remaining-emails-sms-sec {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.remaining-emails-sms-sec h6 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: #a1a1aa;
+  margin: 0px;
+}

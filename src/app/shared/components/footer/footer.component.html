@@ -1,0 +1,36 @@
+<mat-card
+  fxLayout.lt-md="column"
+  fxLayout="row"
+  class="bg-transparent shadow-none py-4 justify-content-between align-items-center"
+>
+  <div
+    ngStyle.lt-lg="font-size:14px"
+    ngStyle.lt-md="font-size:14px"
+    ngStyle.lt-sm="font-size:12px"
+    ngStyle.sm="font-size:12px"
+    ngStyle.md="font-size:12px"
+    *ngIf="conditionVisible"
+  >
+    All © copyright reserved by grab your review.
+  </div>
+  <div class="footer-menu-list">
+    <a
+      ngStyle.lt-lg="font-size:18px"
+      ngStyle.lt-md="font-size:18px"
+      ngStyle.lt-sm="font-size:12px"
+      ngStyle.sm="font-size:12px"
+      ngStyle.md="font-size:12px"
+      *ngIf="conditionVisible"
+      >Terms & Conditions</a
+    >
+    <a
+      ngStyle.lt-lg="font-size:18px"
+      ngStyle.lt-md="font-size:18px"
+      ngStyle.lt-sm="font-size:12px"
+      ngStyle.sm="font-size:12px"
+      ngStyle.md="font-size:12px"
+      *ngIf="conditionVisible"
+      >Privacy Policy</a
+    >
+  </div>
+</mat-card>

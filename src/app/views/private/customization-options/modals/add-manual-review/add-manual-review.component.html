@@ -1,0 +1,189 @@
+<div class="add-manual-review-main-section overflow-auto">
+  <form [formGroup]="manualReviewForm" (ngSubmit)="submit()">
+    <div class="dailog-box-contant-fixed-responsive-time">
+      <mat-card-actions
+        class="d-flex justify-content-between align-items-center"
+      >
+        <h5>Share Your Feedback</h5>
+        <mat-icon
+          matPrefix
+          mat-dialog-close
+          [svgIcon]="'close_icon_blue'"
+          class="cursor-pointer manual-review"
+        ></mat-icon>
+      </mat-card-actions>
+      <hr />
+      <mat-card-actions
+        class="add-manual-review-start-img-defurance-beetweem d-flex flex-row align-items-center justify-content-between"
+      >
+        <h5 class="mt-1 rating">Add Your Ratings</h5>
+        <span class="star-rating">
+          <app-start-rating
+            [starClickable]="true"
+            (ratingChanged)="setValues($event)"
+          ></app-start-rating>
+        </span>
+      </mat-card-actions>
+      <mat-error class="error-message" *ngIf="!isRatingValid"
+        >Rating is required</mat-error
+      >
+
+      <span class="post-review-section">
+        <h6 class="post-review-section-font">
+          {{
+            dialogData.reviewScreenDetails.ReviewPageSettings
+              .ReviewHeaderMessage
+          }}
+        </h6>
+      </span>
+      <div class="w-100">
+        <label class="platform-review-title">Feedback</label>
+        <mat-form-field
+          class="input-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="3"
+            placeholder="{{
+              dialogData.reviewScreenDetails.ReviewPageSettings
+                .MessagePlaceholderText
+            }}"
+            cdkAutosizeMaxRows="5"
+            formControlName="Message"
+          ></textarea>
+        </mat-form-field>
+        <mat-error
+          class="error-message"
+          *ngIf="
+            formSubmitted &&
+            manualReviewForm.get('Message').hasError('required')
+          "
+          >Feedback is required</mat-error
+        >
+      </div>
+      <mat-label
+        *ngIf="dialogData.reviewScreenDetails.ReviewPageSettings.NameShowField"
+        >Name</mat-label
+      >
+
+      <mat-form-field
+        *ngIf="dialogData.reviewScreenDetails.ReviewPageSettings.NameShowField"
+        class="input-full-width"
+        appearance="outline"
+      >
+        <input
+          matInput
+          placeholder="{{
+            dialogData.reviewScreenDetails.ReviewPageSettings.NamePlaceholder
+          }}"
+          value=""
+          formControlName="Name"
+        />
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          formSubmitted && manualReviewForm.get('Name').hasError('required')
+        "
+        >Name is required</mat-error
+      >
+      <div class="add-manual-input-row">
+        <div
+          *ngIf="
+            dialogData.reviewScreenDetails.ReviewPageSettings.EmailShowField
+          "
+          class="form-group"
+        >
+          <label class="common-label-font">Email</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              type="text"
+              placeholder="{{
+                dialogData.reviewScreenDetails.ReviewPageSettings
+                  .EmailPlaceholder
+              }}"
+              formControlName="Email"
+            />
+          </mat-form-field>
+          <mat-error
+            class="error-message"
+            *ngIf="
+              formSubmitted && manualReviewForm.get('Email').hasError('required')
+            "
+            >Email is required</mat-error
+          >
+        </div>
+        <div
+          *ngIf="
+            dialogData.reviewScreenDetails.ReviewPageSettings
+              .PhoneNumberShowField
+          "
+          class="form-group"
+        >
+          <label class="common-label-font">Phone Number</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              type="text"
+              placeholder="{{
+                dialogData.reviewScreenDetails.ReviewPageSettings
+                  .PhoneNumberPlaceholder
+              }}"
+              formControlName="Phone"
+            />
+          </mat-form-field>
+          <mat-error
+            class="error-message"
+            *ngIf="
+              formSubmitted &&
+              manualReviewForm.get('Phone').hasError('required')
+            "
+            >Phone number is required</mat-error
+          >
+        </div>
+      </div>
+    </div>
+
+    <span class="post-review-section">
+      <h6 class="post-review-section-font pt-2">
+        {{
+          dialogData.reviewScreenDetails.ReviewPageSettings
+            .PrivateReviewMessage
+        }}<a (click)="redirectToReview()">
+          {{
+            dialogData.reviewScreenDetails.ReviewPageSettings
+              .PrivateReviewLinkText
+          }}</a
+        >
+      </h6>
+    </span>
+    <mat-card-actions
+      class="mt-2 add-manual-buttons d-flex justify-content-end gap-2 p-0"
+    >
+      <button
+        type="button"
+        mat-dialog-close
+        class="secondary-button"
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)"
+      >
+        {{ dialogData.reviewScreenDetails.ReviewPageSettings.CloseButtonText }}
+      </button>
+
+      <button
+        type="submit"
+        color="primary"
+        class="primary-button me-2"
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)"
+      >
+        {{ dialogData.reviewScreenDetails.ReviewPageSettings.SubmitButtonText }}
+      </button>
+    </mat-card-actions>
+  </form>
+</div>

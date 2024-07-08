@@ -1,0 +1,173 @@
+<div
+  class="main-customize-container h-100 d-flex flex-column justify-content-between"
+>
+  <div *ngIf="!isShowJsCodeBlock">
+    <h3>Customize</h3>
+    <div class="mt-3 select-theme-tabs">
+      <label class="mb-2">Select Theme</label>
+      <div class="tab-groups-primary-color-ref">
+        <mat-tab-group
+          #tabGroup
+          class="h-100 tab-groups mb-2"
+          (selectedTabChange)="tabChanged($event)"
+        >
+          <mat-tab label="LIGHT"> </mat-tab>
+          <mat-tab label="DARK"> </mat-tab>
+          <mat-tab label="CUSTOM">
+            <div class="modal-field-group mt-3">
+              <div class="modal-field form-group">
+                <label class="">Font Color</label>
+                <app-color-picker-field
+                  [id]="'fontColor'"
+                  [value]="state.fontColor"
+                  (handleChange)="changehandler($event)"
+                ></app-color-picker-field>
+              </div>
+              <div class="modal-field form-group bg-color-field">
+                <label class="">Background Color</label>
+                <app-color-picker-field
+                  [id]="'backColor'"
+                  [value]="state.backColor"
+                  (handleChange)="changehandler($event)"
+                ></app-color-picker-field>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+
+    <div class="mt-3" [ngClass]="footer ? '' : 'd-none'">
+      <div class="form-group mt-3">
+        <label class="mb-2">Number of reviews to display</label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            (selectionChange)="getReviewsList()"
+            placeholder="20"
+            [(ngModel)]="selectedPageSize"
+          >
+            <mat-option value="10">10</mat-option>
+            <mat-option value="20">20</mat-option>
+            <mat-option value="50">50</mat-option>
+            <mat-option value="100">100</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group mt-3">
+        <label class="mb-2">Show reviews above star rating</label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            (selectionChange)="getReviewsList()"
+            placeholder="1 star & more"
+            [(ngModel)]="selectedRating"
+          >
+            <mat-option value="1">1 star & more</mat-option>
+            <mat-option value="2">2 star & more</mat-option>
+            <mat-option value="3">3 star & more</mat-option>
+            <mat-option value="4">4 star & more</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="mt-4">
+        <p>
+          <mat-slide-toggle
+            [(ngModel)]="executeReviewWithNoText"
+            (change)="getReviewsList()"
+          >
+            Exclude reviews with no text
+          </mat-slide-toggle>
+        </p>
+      </div>
+      <div
+        class="mt-4"
+        *ngIf="
+          widgetData.widgetName !== 'Floating Review' &&
+          widgetData.widgetName !== 'Carousel'
+        "
+      >
+        <p>
+          <mat-slide-toggle
+            (change)="toggleOverallRatings()"
+            [(ngModel)]="showReviewSummary"
+            >Show review summary</mat-slide-toggle
+          >
+        </p>
+      </div>
+      <div
+        class="mt-4"
+        *ngIf="
+          widgetData.widgetName === 'Carousel'
+        "
+      >
+        <p>
+          <mat-slide-toggle
+            (change)="autoPlayCarouselCard()"
+            [(ngModel)]="autoPlayCarousel"
+            >Autoplay Carousel</mat-slide-toggle
+          >
+        </p>
+      </div>
+      <div
+        class="form-group mt-3"
+        *ngIf="widgetData.widgetName === 'Floating Review'"
+      >
+        <label class="mb-2">Widget Position</label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            (selectionChange)="getSelectedWidget()"
+            placeholder="1 star & more"
+            [(ngModel)]="selectedWidgetPosition"
+          >
+            <mat-option value="left">Left</mat-option>
+            <mat-option value="right">Right</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="get-code-container d-flex justify-content-end"
+    *ngIf="!isShowJsCodeBlock"
+  >
+    <button
+      color="primary"
+      (click)="generateJavascriptCode(widgetData.widgetName)"
+      [disabled]="!widgetData.isAllow"
+      class="primary-button get-code-btn"
+    >
+      Get Code
+    </button>
+  </div>
+  <div
+    [hidden]="!isShowJsCodeBlock"
+    *ngIf="widgetJsCode"
+    fxLayout="row wrap"
+    fxLayout.xs="row wrap"
+    fxLayoutGap="10px"
+    class="mt-3 mb-3 scrollbar-overflow"
+  >
+    <div class="d-flex">
+      <h5 class="js-code-text-font">
+        Add this code to the HTML of your website where you want to display your
+        widget
+      </h5>
+      <mat-icon
+        class="justify-content-between align-items-center copy-icon"
+        (click)="copyJsCode(widgetJsCode)"
+        >content_copy</mat-icon
+      >
+    </div>
+  </div>
+  <div [hidden]="!isShowJsCodeBlock" class="js-code-text code-container">
+    <code>{{ widgetJsCode }}</code>
+  </div>
+  <div [hidden]="!isShowJsCodeBlock">
+    <button mat-stroked-button type="button"
+      (click)="backToPreview()"
+      class="primary-button get-code-btn"
+    >
+      Back
+    </button>
+  </div>
+</div>

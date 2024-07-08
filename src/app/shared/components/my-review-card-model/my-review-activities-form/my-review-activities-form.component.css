@@ -1,0 +1,169 @@
+.form-element {
+  width: 100%;
+}
+
+.platform-review-title {
+  margin: 0.75em 0.5em;
+}
+
+.sentimant-channels-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #18181b;
+  margin: 1em 0;
+}
+
+.acivity-search {
+  margin-top: 1.5em;
+  height: 48px;
+}
+
+.all-activity-card {
+  padding: 1.25em;
+}
+
+.mat-mdc-checkbox.sentiment-label label {
+  font-family: "Manrope" !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #71717a !important;
+}
+
+.like-dislick-button-width-section a {
+  width: 100%;
+}
+
+mat-card {
+  border-radius: 20px;
+}
+
+.landingpage-card button {
+  height: 48px;
+  min-width: 48px;
+  width: 48px;
+}
+
+.mdc-card__actions {
+  align-items: baseline !important;
+}
+
+.hr_tag {
+  border: 1px solid #f4f4f5;
+}
+
+.your-nanding-page-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+.your-nanding-page-card h6 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #18181b;
+  margin-bottom: 16px;
+}
+
+.your-landing-page-section h3 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #18181b;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 500px) {
+  .your-nanding-page-card {
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0px;
+    margin-bottom: 0px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .your-nanding-page-card {
+    margin-bottom: 0px !important;
+  }
+
+  .your-landing-page-section {
+    margin: 10px 0px !important;
+  }
+
+  .mat-bottom-sheet-container {
+    padding: 8px 20px !important;
+  }
+
+  .all-activity-card {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .your-landing-page-section {
+    margin: 10px 0px !important;
+  }
+
+  .mat-bottom-sheet-container {
+    padding: 8px 20px !important;
+  }
+
+  .all-activity-card {
+    padding: 0px;
+  }
+}
+
+.m-10 {
+  margin: 10px !important;
+}
+
+.review-icon {
+  width: 20px;
+  height: 25px;
+}
+
+.edit-btn {
+  margin-right: 10px;
+  background-color: #22c55e;
+}
+
+.all-activity-mat-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-text {
+  margin: 0 5px;
+  display: inline-block;
+  width: calc(100% - 50px);
+  text-align: center;
+}
+
+.range-picker-ui {
+  width: 100%;
+}

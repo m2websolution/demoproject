@@ -1,0 +1,396 @@
+<div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Widgets</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">Email Widgets</li>
+    </ol>
+  </nav>
+</div>
+
+<mat-card class="common-container-card" (window:resize)="onResize($event)" *ngIf="emaiilVisible">
+  <div
+    fxLayout.xs="row wrap "
+    fxLayout="row wrap"
+    fxLayoutGap.gt-lg="10px"
+    fxLayoutGap.gt-md="10px"
+    fxLayoutGap.md="10px"
+    fxLayoutGap.sm="10px"
+  >
+    <mat-card
+      fxFlex.xs="0 1 calc(100%)"
+      fxFlex.sm="0 1 calc(50%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      class="email-widgets-card"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+    >
+      <div class="email-widgets-card-margin">
+        <div
+          class="flex-container"
+          fxLayout="row"
+          fxLayoutAlign="space-between baseline"
+        >
+          <div class="flex-item">
+            <h6 class="common-main-title-font">Faces</h6>
+          </div>
+          <div class="flex-item copy_key_bord_bg_sec">
+            <mat-icon
+              matSuffix
+              color="success"
+              [svgIcon]="'copy_key_bord_white'"
+              (click)="copyToClipboard('faces')"
+            ></mat-icon>
+          </div>
+        </div>
+
+        <!-- Written inline style as I need to copy both html and css for the element -->
+        <div
+          id="faces"
+          style="font-family: 'Manrope'; display: flex; flex-direction: column"
+        >
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 20px;
+              line-height: 28px;
+              color: #27272a;
+              margin-bottom: 10px;
+            "
+          >
+            How did we do?
+          </h6>
+          <div
+            class="d-flex justify-content-start review-screen-sectting-emoji-sec mt-3 mb-3"
+            style="display: flex; justify-content: start; gap: 20px"
+          >
+            <span class="review_screen_opecity" style="opacity: 1">
+              <mat-icon
+                matPrefix
+                [svgIcon]="'review_screen_unhappy'"
+                class="cursor-pointer"
+                style="width: 60px; height: 60px"
+              ></mat-icon>
+            </span>
+            <span class="review_screen_opecity" style="opacity: 1">
+              <mat-icon
+                matPrefix
+                [svgIcon]="'review_screen_neutral'"
+                class="cursor-pointer"
+                style="width: 60px; height: 60px"
+              ></mat-icon>
+            </span>
+            <span class="review_screen_opecity" style="opacity: 1">
+              <mat-icon
+                matPrefix
+                [svgIcon]="'review_screen_smile'"
+                class="cursor-pointer review-screen-sectting-emoji-sec"
+                style="width: 60px; height: 60px"
+              ></mat-icon>
+            </span>
+          </div>
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 16px;
+              line-height: 24px;
+              color: #3f3f46;
+              margin-top: 0;
+            "
+          >
+            Click to rate your experience with M2 Wb Solution
+          </h6>
+        </div>
+      </div>
+      <div class="section-bottom section-bottom-gap-margin-bg">
+        <div class="cursor">
+          <span>
+            <a (click)="copyHTML('faces')"> Click here</a> to copy HTML</span
+          >
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card
+      fxFlex.xs="0 1 calc(100%)"
+      fxFlex.sm="0 1 calc(50%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      class="email-widgets-card"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+    >
+      <div class="email-widgets-card-margin">
+        <div
+          class="flex-container"
+          fxLayout="row"
+          fxLayoutAlign="space-between baseline"
+        >
+          <div class="flex-item">
+            <h6 class="common-main-title-font">Stars</h6>
+          </div>
+          <div class="flex-item copy_key_bord_bg_sec">
+            <mat-icon
+              matSuffix
+              color="success"
+              [svgIcon]="'copy_key_bord_white'"
+              (click)="copyToClipboard('stars')"
+            ></mat-icon>
+          </div>
+        </div>
+
+        <!-- Written inline style as I need to copy both html and css for the element -->
+        <div id="stars" style="display: flex; flex-direction: column">
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 20px;
+              line-height: 28px;
+              color: #27272a;
+              margin-bottom: 10px;
+            "
+          >
+            How did we do?
+          </h6>
+          <div
+            class="d-flex justify-content-start review-screen-sectting-emoji-sec app-start-rating-hight mt-3 mb-3"
+            style="display: flex; justify-content: start; gap: 20px"
+          >
+            <div style="display: flex; align-items: center">
+              <mat-icon
+                [ngStyle]="starwidth"
+                *ngFor="let star of stars"
+                title="{{ star.display }}"
+                style="height: 40px !important"
+                [svgIcon]="star.checked ? 'star' : 'star_outlined'"
+              >
+              </mat-icon>
+            </div>
+          </div>
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 16px;
+              line-height: 24px;
+              color: #3f3f46;
+              margin-top: 20px;
+            "
+          >
+            Click to rate your experience with M2 Wb Solution
+          </h6>
+        </div>
+      </div>
+      <div class="section-bottom section-bottom-gap-margin-bg">
+        <div class="cursor">
+          <span>
+            <a (click)="copyHTML('stars')"> Click here</a> to copy HTML</span
+          >
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card
+      fxFlex.xs="0 1 calc(100%)"
+      fxFlex.sm="0 1 calc(50%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      class="email-widgets-card"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+    >
+      <div class="email-widgets-card-margin">
+        <div
+          class="flex-container"
+          fxLayout="row"
+          fxLayoutAlign="space-between baseline"
+        >
+          <div class="flex-item">
+            <h6 class="common-main-title-font">Thumbs</h6>
+          </div>
+          <div class="flex-item copy_key_bord_bg_sec">
+            <mat-icon
+              matSuffix
+              color="success"
+              [svgIcon]="'copy_key_bord_white'"
+              (click)="copyToClipboard('thumbs')"
+            ></mat-icon>
+          </div>
+        </div>
+
+        <!-- Written inline style as I need to copy both html and css for the element -->
+        <div id="thumbs" style="display: flex; flex-direction: column">
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 20px;
+              line-height: 28px;
+              color: #27272a;
+              margin-bottom: 10px;
+            "
+          >
+            How did we do?
+          </h6>
+          <div
+            class="d-flex justify-content-start mt-3 mb-3"
+            style="display: flex; justify-content: start; gap: 20px"
+          >
+            <span>
+              <!-- Written inline style as I need to copy both html and css for the element -->
+              <mat-icon
+                [svgIcon]="'thumb-down-up'"
+                style="
+                  -webkit-user-select: none;
+                  user-select: none;
+                  background-repeat: no-repeat;
+                  display: inline-block;
+                  fill: currentColor;
+                  height: auto;
+                  width: 64px;
+                  overflow: hidden;
+                "
+              ></mat-icon>
+            </span>
+            <span>
+              <!-- Written inline style as I need to copy both html and css for the element -->
+              <mat-icon
+                [svgIcon]="'thumb-down-down'"
+                style="
+                  -webkit-user-select: none;
+                  user-select: none;
+                  background-repeat: no-repeat;
+                  display: inline-block;
+                  fill: currentColor;
+                  height: auto;
+                  width: 64px;
+                  overflow: hidden;
+                "
+              ></mat-icon>
+            </span>
+          </div>
+          <!-- Written inline style as I need to copy both html and css for the element -->
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 16px;
+              line-height: 24px;
+              color: #3f3f46;
+            "
+          >
+            Click to rate your experience with M2 Wb Solution
+          </h6>
+        </div>
+      </div>
+      <div class="section-bottom section-bottom-gap-margin-bg">
+        <div class="cursor">
+          <span>
+            <a (click)="copyHTML('thumbs')"> Click here</a> to copy HTML</span
+          >
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card
+      fxFlex.xs="0 1 calc(100%)"
+      fxFlex.sm="0 1 calc(50%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      class="email-widgets-card"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+    >
+      <div class="email-widgets-card-margin">
+        <div
+          class="flex-container"
+          fxLayout="row"
+          fxLayoutAlign="space-between baseline"
+        >
+          <div class="flex-item">
+            <h6 class="common-main-title-font">NPS</h6>
+          </div>
+          <div class="flex-item copy_key_bord_bg_sec">
+            <mat-icon
+              matSuffix
+              color="success"
+              [svgIcon]="'copy_key_bord_white'"
+              (click)="copyToClipboard('nps')"
+            ></mat-icon>
+          </div>
+        </div>
+
+        <!-- Written inline style as I need to copy both html and css for the element -->
+        <div id="nps" style="display: flex; flex-direction: column">
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 20px;
+              line-height: 28px;
+              color: #27272a;
+              margin-bottom: 10px;
+            "
+          >
+            How did we do?
+          </h6>
+          <div
+            class="d-flex justify-content-start mt-3 mb-3"
+            style="display: flex; justify-content: start; gap: 20px"
+          >
+            <span>
+              <mat-icon
+                [svgIcon]="'nps_number'"
+                style="width: fit-content; height: 44px; padding-right: 26px"
+              ></mat-icon>
+            </span>
+          </div>
+          <!-- Written inline style as I need to copy both html and css for the element -->
+          <h6
+            style="
+              font-family: 'Manrope';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 16px;
+              line-height: 24px;
+              color: #3f3f46;
+              margin-top: 20px;
+            "
+          >
+            Click to rate your experience with M2 Wb Solution
+          </h6>
+        </div>
+      </div>
+      <div class="section-bottom section-bottom-gap-margin-bg">
+        <div class="cursor">
+          <span>
+            <a (click)="copyHTML('nps')"> Click here</a> to copy HTML</span
+          >
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</mat-card>
+
+<div *ngIf="!emaiilVisible">
+  <mat-card class="common-container-card"> 
+    <button
+    mat-flat-button
+    color="primary"
+    class="create-emploay-button-width align-right"
+    (click)="openPermissionDialog()"
+  >
+  <img src="assets/svg/icons/outlined/lock_icon.svg"  />    
+   Please upgrade account
+  </button>
+</mat-card>
+
+</div>

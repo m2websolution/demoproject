@@ -1,0 +1,174 @@
+.app-sub-card {
+  background-color: #fafafa;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: none;
+  padding: 16px;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 16px;
+}
+
+.custom-chip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  height: 64px;
+  background: #ffffff;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 32px;
+}
+
+.custom-input {
+  color: #18181b;
+  font-size: 16px;
+  font-family: "Manrope";
+  font-weight: 500;
+  line-height: 24px;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 32px;
+  padding: 12px;
+  width: auto;
+  margin-right: 10px;
+  height: 64px;
+}
+
+.input-error {
+  padding-left: 20px;
+}
+
+.custom-input:focus {
+  outline: none;
+  /* Remove outline when focused */
+}
+
+.custom-chip-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  width: 160px;
+  height: 64px;
+  background: #e2f2ff;
+  border-radius: 36px;
+  cursor: pointer;
+}
+
+
+
+.custom-chip-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.receive-notification-email-font {
+  max-width: 500px;
+  color: #18181b;
+}
+
+.not_qualto_icon_width {
+  width: 24px;
+  height: 24px;
+}
+
+.notification-toggle-width {
+  width: 272px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-toggle-width span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #344054;
+}
+
+@media (max-width: 800px) {
+  .app-sub-card {
+    padding: 12px;
+  }
+  label {
+    font-size: 13px;
+  }
+
+  .not_qualto_icon_ref mat-icon {
+    transform: scale(1.3);
+  }
+  .common-container-card-innner-title {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #18181b;
+  }
+  .common-container-card {
+    gap: 20px;
+  }
+  .custom-chip {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 48px;
+  }
+  .custom-chip-2 {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: ce;
+  }
+  .custom-chip-icon {
+    padding: -1px;
+    gap: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+  }
+
+  .custom-chip-avtar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50px;
+  }
+  .notification-toggle-width {
+    width: 100% !important;
+  }
+  .notification-toggle-width span {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 22px;
+    color: #344054;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
+  .notification-toggle-margin-bottom {
+    margin-bottom: 10px !important;
+  }
+}
+
+.custom-chip-avtar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.notification-toggle-margin-bottom {
+  margin-bottom: 24px;
+}
+.not_qualto_icon {
+  width: 18.5px;
+  height: 18.5px;
+}

@@ -1,0 +1,49 @@
+<div class="px-3 py-4 disconnect-modal">
+  <mat-card-actions style="display: flex; justify-content: space-between">
+    <h5></h5>
+    <i
+      class="material-icons"
+      mat-dialog-close
+      style="color: black; font-size: 20px"
+    >
+      close
+    </i>
+  </mat-card-actions>
+  <div style="text-align: center">
+    <img
+      style="width: 100%"
+      mat-card-image
+      src="assets/svg/logos/Vector.svg"
+      alt="Photo of a Shiba Inu"
+    />
+    <div style="text-align: center" class="mt-4">
+      <h3 class="dis-connected-platform-title">
+        Disconnect {{siteName}} From Grab You Reviews
+      </h3>
+    </div>
+    <div class="dis-google-txt common-font-16px">
+      Disconnecting {{siteName}} Will:
+    </div>
+    <div class="dc-info-sec common-font-14px">
+      <mat-icon color="primary">arrow_forward_ios</mat-icon>
+      <span>Step Review Collection From {{siteName}}</span>
+    </div>
+    <div class="dc-info-sec common-font-14px">
+      <mat-icon color="primary">arrow_forward_ios</mat-icon>
+      <span>Delete Add {{siteName}} Reviews From Grab Your Reviews</span>
+    </div>
+
+    <div class="dc-dialog-sec">
+      <h1 mat-dialog-title class="common-font-16px">
+        Are You Sure You Still Want to Disconnect {{siteName}}?
+      </h1>
+    </div>
+
+    <div mat-dialog-actions class="d-flex flex-nowrap justify-content-center">
+      <button mat-flat-button color="warn" class="me-2" (click)="disconnectPlatform()">Disconnect</button>
+
+      <button mat-dialog-close class="secondary-button">Cancel</button>
+    </div>
+  </div>
+  <div></div>
+</div>

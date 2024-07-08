@@ -1,0 +1,203 @@
+h3 {
+  font-family: "Manrope" !;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #27272a;
+}
+
+.custom-input {
+  color: #18181b;
+  font-size: 16px;
+  font-family: "Manrope";
+  font-weight: 500;
+  line-height: 24px;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 32px;
+  padding: 12px;
+  width: auto;
+  margin-right: 10px;
+  height: 64px;
+}
+
+.input-error {
+  padding-left: 20px;
+}
+
+.custom-input:focus {
+  outline: none;
+  /* Remove outline when focused */
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.app-main-card {
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: none;
+}
+
+.app-sub-card {
+  background-color: #fafafa;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: none;
+  border: 1.5px solid #e4e4e7;
+}
+
+.email-setting-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+
+  width: 157px;
+  height: 56px;
+  background: #e2f2ff;
+  border-radius: 16px;
+  border: none !important;
+}
+
+.field-suffix {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 17px 13px;
+  gap: 10px;
+  font-size: 14px;
+
+  width: 128px;
+  height: 56px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+
+  background: #d9d9d9;
+}
+
+.field-suffix-resp {
+  padding: 15px 8px;
+  font-size: 14px;
+  width: 128px;
+  height: 56px;
+}
+
+.custom-chip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  width: auto;
+  height: 64px;
+  background: #ffffff;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 32px;
+}
+
+
+.custom-chip-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.remove-extra-field .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+.breadcrumb .actives {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #18181b !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-chip-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+  }
+
+  .email-setting-button {
+    padding: 10px 16px;
+    width: 140px;
+    height: 50px;
+  }
+
+  .custom-chip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+    width: 286px;
+    height: 48px;
+    background: #ffffff;
+    border: 1.5px solid #e4e4e7;
+    border-radius: 32px;
+  }
+
+  .custom-chip img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+  }
+
+
+
+  label {
+    font-size: 14px;
+  }
+
+  .email-setting-container .app-sub-card .masterCardContent {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+}
+
+.get-review-title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 16px 0px;
+  gap: 4px;
+}
+
+@media (max-width: 500px) {
+  .responsive-time-dot {
+    display: inline-block;
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .email-setting-container .app-sub-card .masterCardContent {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 867px) {
+  .email-setting-form-field {
+    display: flex;
+    flex-direction: column;
+  }
+}

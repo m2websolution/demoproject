@@ -1,0 +1,66 @@
+.connected-card-padding {
+  padding-right: 15px;
+}
+
+.review-platform-container {
+  margin-top: 2.5em;
+}
+
+.connected-platform-card-row {
+  margin-top: 2em;
+}
+
+.connected-platform-card-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 30px;
+  width: auto;
+
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1280px) {
+  .connected-platform-card p {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .connected-card-padding {
+    padding-right: 0px;
+  }
+
+  .review-platform-container {
+    margin-top: 20px;
+  }
+
+  .connected-platform-card-section {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+
+}
+
+@media (max-width: 991px) {
+  .connected-platform-card {
+    margin-bottom: 1em;
+  }
+}
+
+.connect-platforms-scroll {
+  width: 100%;
+  overflow-x: scroll;
+  justify-content: start !important;  /* Given important as overlapped by other style*/
+}
+
+.connected-platform-cards-scroll {
+  flex-wrap: nowrap !important; /* Given important as overlapped by other style*/
+  width: 98% !important; /* Given important as overlapped by other style*/
+  padding-bottom: 10px;
+}

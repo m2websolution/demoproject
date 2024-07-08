@@ -1,0 +1,189 @@
+<div class="share-review-main-section">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="share-review-title-deetween">
+      <h2 class="common-main-title-font">Share the review</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+    <div class="d-flex">
+      <div class="chooseyourtemplete-section mt-4">
+        <h6 class="common-font-16px">Choose your Templete</h6>
+        <div class="color-picker">
+          <div *ngFor="let codes of colorCodes">
+            <div
+              style="margin: 5px"
+              (click)="onSelect(codes)"
+              class="color-picker-radius"
+              [ngClass]="
+                codes.colorCode == selctedColor ? 'selectedBorder' : ''
+              "
+              [ngStyle]="{ 'background-color': codes.colorCode }"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="chooseyourtemplete-section mt-4">
+        <h6 class="common-font-16px">Choose your Custom color theme</h6>
+        <div
+          class="color-picker-div"
+          [ngStyle]="{ 'background-color': selctedColor }"
+        >
+          <input
+            type="color"
+            title="Choose color from picker"
+            class="color-picker-input"
+            [(ngModel)]="selctedColor"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="space-between d-flex">
+      <div class="panel-to-hide">
+        <label class="mx-1 my-3">Content Post</label>
+        <mat-card class="content-post-card">
+          <div>
+            <h6 class="common-font-14px">
+              Thanks for the review. "first_name" !, I’m so glad to hear your
+              experience with us was positive, and i really appreciate you
+              taking the time to share your thoughts.
+            </h6>
+
+            <div style="margin-top: 20px">
+              See Review: <br />
+              <h6 class="common-font-14px">https:/www.m2webdesigning.com</h6>
+            </div>
+          </div>
+        </mat-card>
+        <button
+          mat-stroked-button
+          style="
+            margin-top: 10px;
+            font-family: 'Manrope';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+          "
+        >
+          <mat-icon svgIcon="generate_caption"></mat-icon>
+          Generate Caption
+        </button>
+
+        <mat-card-actions
+          style="
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0px !important;
+          "
+        >
+          <h6 class="m-0">Facebook</h6>
+          <mat-slide-toggle></mat-slide-toggle>
+        </mat-card-actions>
+        <mat-card-actions
+          style="
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0px !important;
+          "
+        >
+          <h6 class="m-0">Instagram</h6>
+          <mat-slide-toggle></mat-slide-toggle>
+        </mat-card-actions>
+      </div>
+      <div class="template-width">
+        <div class="template-content">
+          <div
+            class="review-proviedeby-main-card"
+            [ngStyle]="{ 'background-color': selctedColor }"
+          >
+            <mat-card class="review-proviedeby-inner-cards">
+              <div class="review-proviedeby-inner-cards-margin">
+                <mat-card-actions class="text-center">
+                  <app-start-rating
+                    [starClickable]="false"
+                    [id]="{
+                      stars: dialogData.reviewData.Rating,
+                      selected: true
+                    }"
+                  ></app-start-rating>
+                </mat-card-actions>
+                <div>
+                  <h6 [innerHTML]="dialogData.reviewData.ReviewDetails">
+                  </h6>
+
+                  <div
+                    style="
+                      margin-top: 1.25em;
+                      display: flex;
+                      justify-content: center;
+                    "
+                  >
+                    <mat-card-actions
+                      class="d-flex flex-column align-items-center"
+                    >
+                      <div class="conected-platform-img-section">
+                        <img
+                          *ngIf="dialogData.reviewData.ProfileImgUrl"
+                          class="imgs"
+                          mat-card-image
+                          [src]="dialogData.reviewData.ProfileImgUrl"
+                          src="assets/images/Share_Avtar.svg"
+                          alt="Photo of a Shiba Inu"
+                        />
+                        <div
+                          class="img-custom-platform"
+                          *ngIf="!dialogData.reviewData.ProfileImgUrl"
+                        >
+                          {{ dialogData.reviewData.ReviewBy.substring(0, 1) }}
+                        </div>
+                      </div>
+                      <mat-card-title class="priview-card-title">
+                        {{ dialogData.reviewData.ReviewBy }}
+                      </mat-card-title>
+                      <mat-card-subtitle
+                        class="priview-card-subtitle common-font-14px"
+                      >
+                        {{ dialogData.ReviewSource }}
+                      </mat-card-subtitle>
+                    </mat-card-actions>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+            <div class="reviews-prowered-by-font common-font-14px lh-0">
+              <span>Reviews prowered by</span>
+            </div>
+            <div class="reviews-prowered-by-font common-font-14px">
+              <div><mat-icon svgIcon="Brand Logo"></mat-icon></div>
+              <span>Grab your reviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div fxLayout="row" style="margin: 10px">
+  <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100" fxLayoutGap="5px">
+    <button
+      fxFlex.sm="100%"
+      fxFlex.xs="100%"
+      mat-flat-button
+      color="primary"
+      (click)="downloadAsImage(dialogData.reviewData.ReviewBy)"
+    >
+      <mat-icon [svgIcon]="'download_with_line'"></mat-icon>
+      Download
+    </button>
+    <button fxFlex.sm="100%" fxFlex.xs="100%" mat-flat-button color="primary" class="panel-to-hide">
+      Share
+    </button>
+  </div>
+</div>

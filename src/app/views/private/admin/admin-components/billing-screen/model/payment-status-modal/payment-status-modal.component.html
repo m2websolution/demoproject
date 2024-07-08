@@ -1,0 +1,8 @@
+<div class="dialog-content">
+  <img
+    [src]="data.title === 'Payment Successful' ? '../../../../../../../../assets/images/payement-success.png' : '../../../../../../../../assets/images/payement-failed.png'"
+    height="200px">
+  <h3 class="mb-3"
+    [ngClass]="{'text-success': data.title === 'Payment Successful', 'text-danger': data.title === 'Payment Cancelled'}">
+    {{ data.title }}</h3>
+</div>

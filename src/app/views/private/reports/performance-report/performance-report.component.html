@@ -1,0 +1,269 @@
+<mat-card-actions
+  fxLayout="row "
+  fxLayoutAlign="space-between baseline"
+  fxLayout.sm="column"
+  fxLayout.xs="column"
+  style="margin-bottom: 16px"
+>
+  <div
+    fxLayout.xs="row"
+    fxLayout.sm="row"
+    fxAlign.xs="start"
+    style="width: max-content"
+  >
+    <nav class="header-breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item first-item">
+          <a href="#" class="common-main-title-font">Reports</a>
+        </li>
+        <li class="breadcrumb-item actives" aria-current="page">
+          Performance Report
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="from-to-date">
+    <div class="from-to-date-component">
+      <label class="me-2">From:</label>
+      <mat-form-field appearance="outline" class="form-element input-full-width">
+        <input matInput placeholder="mm-dd-yyyy" [matDatepicker]="fromDatePicker" [(ngModel)]="fromDate" (dateChange)="dateChanged($event)" />
+        <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #fromDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="from-to-date-component">
+      <label class="me-2">To:</label>
+      <mat-form-field appearance="outline" class="form-element input-full-width">
+        <input matInput placeholder="mm-dd-yyyy" [matDatepicker]="toDatePicker" [(ngModel)]="toDate" (dateChange)="dateChanged($event)" />
+        <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #toDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-card-actions>
+
+<div class="report-page performance-report">
+  <div
+    ngClass.lt-md="col-12"
+    fxFlex="0 1 auto"
+    ngClass="col-12"
+    class="all-pr-sec"
+  >
+    <mat-card-actions class="review-rating-card-header-section">
+      <section class="mat-typography">
+        <h1>Over All Review & Ratings</h1>
+      </section>
+      <div
+        class="d-none d-lg-block d-md-block d-sm-block performance-report-card-action"
+      >
+        <mat-form-field appearance="outline" value="All">
+          <mat-select placeholder="All">
+            <mat-option value="None" class="dropdown-option">None</mat-option>
+            <mat-option value="All" class="dropdown-option">All</mat-option>
+            <mat-option value="Surat" class="dropdown-option">Surat</mat-option>
+            <mat-option value="Vadodara" class="dropdown-option"
+              >Vadodara</mat-option
+            >
+            <mat-option value="Rajkot" class="dropdown-option"
+              >Rajkot</mat-option
+            >
+            <mat-option value="Junagadh" class="dropdown-option"
+              >Junagadh</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-actions>
+
+    <hr class="hr-tag" />
+    <div class="d-lg-none d-md-none d-sm-none performance-report-card-action">
+      <mat-form-field appearance="outline" value="All">
+        <mat-select placeholder="All">
+          <mat-option value="None" class="dropdown-option">None</mat-option>
+          <mat-option value="All" class="dropdown-option">All</mat-option>
+          <mat-option value="Surat" class="dropdown-option">Surat</mat-option>
+          <mat-option value="Vadodara" class="dropdown-option"
+            >Vadodara</mat-option
+          >
+          <mat-option value="Rajkot" class="dropdown-option">Rajkot</mat-option>
+          <mat-option value="Junagadh" class="dropdown-option"
+            >Junagadh</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="performance-report-card-container">
+      <mat-card class="my-report-card">
+        <div>
+          <h3>Average Rating</h3>
+          <div class="report-card-inside">
+            <h2 class="text-primary">{{overAllReport?.totalAvgReviews}}</h2>
+            <div class="card-stars">
+              <div class='stars-outer'>
+                <div class='stars-inner' [style.width.%]="averageRatingPr"></div>
+              </div>
+              <mat-card-title class="review-rating-chip" [ngClass]="(+overAllReport?.totalAvgReviews) > (+overAllReport?.prevAvgRatings) ? 'positive' : 'negative'">
+                <span class="d-flex justify-content align-items-center" *ngIf="(+overAllReport?.totalAvgReviews) != (+overAllReport?.prevAvgRatings)">
+                  <p style="margin: 0px" [ngClass]="(+overAllReport?.totalAvgReviews) > (+overAllReport?.prevAvgRatings) ? 'positive' : 'negative'"> {{ ((+overAllReport?.totalAvgReviews) - (+overAllReport?.prevAvgRatings)).toFixed(2) }}</p>
+                  &nbsp;<mat-icon
+                    style="height: 29px; width: 24px"
+                    [svgIcon]="(+overAllReport?.totalAvgReviews) > (+overAllReport?.prevAvgRatings) ? 'going_up' : 'tavor'"
+                  ></mat-icon>
+                </span>
+              </mat-card-title>
+            </div>
+          </div>
+        </div>
+        <mat-card-actions class="review-img-area img-padding">
+          <img
+            class="review-rating-card-logo"
+            mat-card-image
+            [src]="'assets/images/positive-review.svg'"
+            alt="Photo of a Shiba Inu"
+          />
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="my-report-card">
+        <div>
+          <h3>Total Reviews</h3>
+          <div class="report-card-inside">
+            <h2 class="text-primary">{{overAllReport?.totalReviews}}</h2>
+            <div class="card-stars">
+              <div class='stars-outer'>
+                <div class='stars-inner' [style.width.%]="100"></div>
+              </div>
+              <mat-card-title class="review-rating-chip" [ngClass]="(+overAllReport?.totalReviews) > (+overAllReport?.prevTotalReviews) ? 'positive' : 'negative'">
+                <span class="d-flex justify-content align-items-center" *ngIf="(+overAllReport?.totalReviews) != (+overAllReport?.prevTotalReviews)">
+                  <p style="margin: 0px" [ngClass]="(+overAllReport?.totalReviews) > (+overAllReport?.prevTotalReviews) ? 'positive' : 'negative'"> {{ ((+overAllReport?.totalReviews) - (+overAllReport?.prevTotalReviews)).toFixed(2) }}</p>
+                  &nbsp;<mat-icon
+                    style="height: 29px; width: 24px"
+                    [svgIcon]="(+overAllReport?.totalReviews) > (+overAllReport?.prevTotalReviews) ? 'going_up' : 'tavor'"
+                  ></mat-icon>
+                </span>
+              </mat-card-title>
+            </div>
+          </div>
+        </div>
+        <mat-card-actions class="review-img-area img-padding">
+          <img
+            class="review-rating-card-logo"
+            mat-card-image
+            [src]="'assets/images/invitation.svg'"
+            alt="Photo of a Shiba Inu"
+          />
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="review-rating">
+    <div
+      class="all-pr-sec review-platform-card"
+      ngClass.lt-lg="col-12"
+      ngClass.lg="col-6"
+      fxFlex="0 1 auto"
+    >
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Review By Platform</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="mt-5" *ngIf="notReviewByPlatformData">
+        <h5 class="text-center my-auto">No data available.</h5>
+      </div>
+      <div class="chart-label-container" *ngIf="siteWiseRatings.length > 0">
+        <app-doughnut-platform #doughnutPlatformComponent [data]="reviewData" [id]="'review'" />
+        <div class="row label-container label-card">
+          <div class="col-6" [ngClass]="reviewLabels.length === 1 ? 'circle-container' : reviewLabels.length === 2 ? 'platform' : 'label-circle-container'" *ngFor="let item of reviewLabels">
+            <div class="label-circle" [ngStyle]="{ 'background-color': item.color }"></div>
+            <label>{{ item.name }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="all-pr-sec review-platform-card"
+      ngClass.lt-lg="col-12"
+      ngClass.lg="col-6"
+      fxFlex="0 1 auto"
+    >
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Rating By Platform</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+        <div class="mt-5" *ngIf="notRatingByPlatformData">
+          <h5 class="text-center my-auto">No data available.</h5>
+        </div>
+        <div *ngIf="!notRatingByPlatformData">
+          <app-stacked-bar #stackedBarComponent [id]="'rating-stacked'" [stackedbarData]="ratingStackedbarData" />
+        </div>
+    </div>
+  </div>
+  <div class="col-12" fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="1em" *ngIf="profileWise.length > 0">
+    <div fxLayout="column" class="all-pr-sec" ngClass.lt-sm="col-12" ngClass.gt-sm="col-md-6"
+      *ngFor="let item of profileWise">
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>{{ item?.companyName }}</h1>
+        </section>
+      </mat-card-actions>
+      <div class="rating-reviews-container">Avg Rating: {{ item?.totalAvgRating }}
+        <mat-card-title class="review-rating-chip" [ngClass]="(+item?.totalAvgRating) > (+item?.prevTotalAvgRating) ? 'positive' : 'negative'" *ngIf="(+item?.totalAvgRating) != (+item?.prevTotalAvgRating)">
+          <span class="d-flex justify-content align-items-center">
+            <p style="margin: 0px" [ngClass]="(+item?.totalAvgRating) > (+item?.prevTotalAvgRating) ? 'positive' : 'negative'"> {{ ((+item?.totalAvgRating) - (+item?.prevTotalAvgRating)).toFixed(2) }}</p>
+            &nbsp;<mat-icon
+              style="height: 29px; width: 24px"
+              [svgIcon]="(+item?.totalAvgRating) > (+item?.prevTotalAvgRating) ? 'going_up' : 'tavor'"
+            ></mat-icon>
+          </span>
+        </mat-card-title>
+      </div>
+      <div class="custom-card-body">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-4">
+              </div>
+              <div class="col-4">
+                <h6>Rating</h6>
+              </div>
+              <div class="col-4">
+                <h6>Reviews</h6>
+              </div>
+            </div>
+            <div class="row" *ngFor="let site of item?.ratings">
+              <div class="col-4 mt-1">
+                <img [src]="'assets/svg/logos/' + site?.SiteName.toLowerCase() + '_icon.svg'" class="table-logos" />
+              </div>
+              <div class="col-4 mt-1 rating-reviews-container">{{ site?.Rating }}
+                <mat-card-title class="review-rating-chip" [ngClass]="(+site?.Rating) > (+site?.prevRating) ? 'positive' : 'negative'" *ngIf="(+site?.Rating) != (+site?.prevRating)">
+                  <span class="d-flex justify-content align-items-center">
+                    <p style="margin: 0px" [ngClass]="(+site?.Rating) > (+site?.prevRating) ? 'positive' : 'negative'"> {{ ((+site?.Rating) - (+site?.prevRating)).toFixed(2) }}</p>
+                    &nbsp;<mat-icon
+                      style="height: 29px; width: 24px"
+                      [svgIcon]="(+site?.Rating) > (+site?.prevRating) ? 'going_up' : 'tavor'"
+                    ></mat-icon>
+                  </span>
+                </mat-card-title>
+              </div>
+              <div class="col-4 mt-1 rating-reviews-container">{{ site?.Reviews }}
+                <mat-card-title class="review-rating-chip" [ngClass]="(+site?.Reviews) > (+site.prevReviews) ? 'positive' : 'negative'" *ngIf="(+site?.Reviews) != (+site.prevReviews)">
+                  <span class="d-flex justify-content align-items-center">
+                    <p style="margin: 0px" [ngClass]="(+site?.Reviews) > (+site.prevReviews) ? 'positive' : 'negative'"> {{
+                      ((+site?.Reviews) - (+site.prevReviews)).toFixed(2) }}</p>
+                    &nbsp;<mat-icon style="height: 29px; width: 24px"
+                      [svgIcon]="(+site?.Reviews) > (+site.prevReviews) ? 'going_up' : 'tavor'"></mat-icon>
+                  </span>
+                </mat-card-title>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

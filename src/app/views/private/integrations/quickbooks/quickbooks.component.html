@@ -1,0 +1,162 @@
+<div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+    <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item first-item">
+          <a href="#" class="common-main-title-font">Integrations</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  
+  <div
+    class="my-2 mb-4 d-flex justify-content-end d-xl-none d-md-none arrow-left-ref cursor-pointer"
+    fxLayout="row "
+    fxLayoutGap="16px"
+    fxLayoutGap.xs="8px"
+    (click)="toggleScreen()"
+  >
+    <span>
+      <mat-icon class="keyboard_arrow_left" color="primary"
+        >keyboard_arrow_left</mat-icon
+      >
+    </span>
+    <div class="back-to-intingrations-font common-primary-text">
+      Back to Integrations
+    </div>
+  </div>
+  
+  <mat-card class="common-container-card">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="integrations-detail-right-input-margin"
+    >
+    <div class="flex-item quickbooks-ref">
+      <mat-icon [svgIcon]="'quickbooks_black'"></mat-icon>
+
+    </div>
+      <div
+        class="flex-item arrow-left-ref keyboard_arrow_left_none cursor-pointer d-none d-sm-none d-md-flex"
+        fxLayout="row "
+        fxLayoutGap="16px"
+        (click)="toggleScreen()"
+      >
+        <span>
+          <mat-icon class="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+        </span>
+        <span class="back-to-intingrations-font">Back to Integrations</span>
+      </div>
+    </div>
+    <div
+      fxLayout.xs="column  "
+      fxLayout.sm="column  "
+      fxLayout="row "
+      fxLayoutAlign.gt-lg="center start"
+      fxLayoutAlign.gt-md="center start"
+      fxLayoutAlign.gt-sm="center start"
+      fxLayoutGap.gt-lg="32px"
+      fxLayoutGap.gt-md="32px"
+      fxLayoutGap.gt-sm="32px"
+      class="app-get-review-template-margin-section"
+    >
+      <div
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)"
+        fxFlex.md="0 1 calc(50%-10px)"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+        class="app-get-review-template-margin-bottom"
+      >
+
+      <div class="integrations-detail-right-input-margin">
+        <div *ngIf="quickbooksVisible" class="centered-div">
+          <div class="login-container">
+            <button mat-button (click)="loginQuickBooks()" class="add">Connect to QuickBooks</button>
+          </div>
+        </div>
+      </div>
+
+      <form [formGroup]="quickbooksIntegrationForm">
+        <div *ngIf="!quickbooksVisible">
+          <div style="display: flex; align-items: center;">
+            <mat-icon style="position: relative; height: 31px; color: green;" class="circle-icon">check_circle</mat-icon>
+            <h6>Your QuickBooks account is connected</h6>
+          </div>
+      
+          <div>
+            <h5 class="invitation">Choose when to send review invitation</h5>
+            <mat-radio-group [(ngModel)]="selectedOption" formControlName="selectedRadio">
+              <mat-radio-button value="Invoice">Invoice</mat-radio-button>
+              <mat-radio-button value="Customer">Customer</mat-radio-button>
+            </mat-radio-group>
+            <div>
+              <div class="mt-4 mb-4 d-flex justify-content-end centered-content-inner">
+                <button mat-flat-button color="primary" (click)="updateQuickbooksDetails()">Update</button>
+                <button mat-button color="warn" class="del-btn" (click)="deleteIntegration(quickIntegrationId)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+      
+      <div
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)"
+        fxFlex.md="0 1 calc(50%-10px)"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+      >
+      <mat-card class="integrations-detail-right-card">
+        <h1 class="font-weight">How Grab Your Reviews and QuickBooks® integration works:</h1>
+        <ng-container *ngIf="selectedOption === 'Invoice'; else option2Content">
+          <ol class="ml-1 ul">
+            <li>
+               Whenever a new invoice is created, the integration will automatically trigger a review request 
+               to be sent to your customer via email or SMS.
+               <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+            <li>
+              Your customer will receive the review request from Grab Your
+              Reviews, which will prompt them to leave a review for your business on a
+              review sites that you have connected, such as Google, Facebook, Yelp, and more.
+              <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+            <li>
+              Once your customer leaves a review, it will be displayed in your Grab Your Reviews account.
+              <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+            <li>
+              You can then respond to the review directly from your Grab Your Reviews account and monitor
+              your online reputation more effectively.
+              <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+          </ol>
+        </ng-container>
+        <ng-template #option2Content>
+          <ol class="ml-1 ul">
+            <li>
+              Whenever a new customer is created, the integration will automatically trigger a review request
+               to be sent to your customer via email or SMS.
+               <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+            <li>
+              Your customer will receive the review request from Grab Your Reviews, which will prompt them to 
+              leave a review for your business on a review sites that you have connected, such as Google, Facebook, 
+              Yelp, and more.
+              <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+            <li>
+              Once your customer leaves a review, it will be displayed in your Grab Your Reviews account.
+              <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+            <li>
+              You can then respond to the review directly from your Grab Your Reviews account and monitor your
+              online reputation more effectively.
+              <mat-icon style="top: 7px; position: relative" color="primary">info</mat-icon>
+            </li>
+          </ol>
+        </ng-template>
+      </mat-card>
+      
+  

@@ -1,0 +1,86 @@
+<mat-card-actions class="my-review-title-row-section">
+  <h3 class="common-main-title-font">My Reviews</h3>
+  <div
+    style="display: flex; flex-direction: row; align-items: baseline; gap: 10px"
+  >
+    <h6 class="auto-respose-font">Auto Respose</h6>
+    <mat-slide-toggle
+      [(ngModel)]="getMyReviewList.AutoResponse"
+      (click)="setAutoResponse(getMyReviewList.AutoResponse)"
+    ></mat-slide-toggle>
+    <div fxHide.lt-lg="true" fxShow class="add-review-manually-button">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="AddManualReviewFormDialog()"
+      >
+        <mat-icon style="line-height: 0px" svgIcon="add_icon"></mat-icon> Add
+        review manually
+      </button>
+    </div>
+  </div>
+</mat-card-actions>
+
+<!-- Need to confirm with client before removing this below commented code-->
+<!-- <app-platfom-mobail-web></app-platfom-mobail-web> -->
+
+<div
+  fxLayout="row"
+  fxLayoutGap="10px"
+  fxHide
+  fxShow.lt-lg="true"
+  class="my-3 add-review-manually-button"
+>
+  <button
+    mat-flat-button
+    color="primary"
+    class="w-100"
+    (click)="AddManualReviewFormDialog()"
+  >
+    <mat-icon style="line-height: 0px" svgIcon="add_icon"></mat-icon> Add review
+    manually
+  </button>
+  <button mat-flat-button color="accent" (click)="openBottomSheet()">
+    <img src="assets/svg/icons/filled/Slider.svg" />
+  </button>
+</div>
+<app-paginator
+  #paginatorComponent
+  [pager]="pager"
+  [selectedSortItem]="myReviewModel.pagesize"
+  (setPage)="setPage($event)"
+  (setItems)="setItemsSorting($event)"
+></app-paginator>
+
+<div fxLayout="row" ngClass="row">
+  <div ngClass.gt-md="col-9" ngClass.lt-md="col-12">
+    <div *ngFor="let data of pagedItems" style="margin-bottom: 15px">
+      <app-my-review-profile-card
+        [paginatorComponent]="paginatorComponent"
+        [data]="data"
+        [myReviewProfileCardFooter]="true"
+        [isMyReviewsData]="true"
+        (updateFilter)="updateFilters($event)"
+      ></app-my-review-profile-card>
+    </div>
+
+    <div *ngIf="(!pagedItems || pagedItems.length === 0) && !loading">
+      <img class="no-data-img" alt="No Data Available" src="assets/svg/icons/Grab Review - Common Icons/no-review.svg" />
+    </div>
+  </div>
+  <div ngClass.gt-md="col-3" fxShow fxHide.lt-lg="true">
+    <app-my-review-activities-form
+      [getReviewsData]="getReviewsData"
+      [myReviewActivitesPermission]="true"
+      (updateFilter)="updateFilters($event)"
+    ></app-my-review-activities-form>
+  </div>
+</div>
+
+<app-paginator
+  #paginatorComponent
+  [pager]="pager"
+  [selectedSortItem]="myReviewModel.pagesize"
+  (setPage)="setPage($event)"
+  (setItems)="setItemsSorting($event)"
+></app-paginator>

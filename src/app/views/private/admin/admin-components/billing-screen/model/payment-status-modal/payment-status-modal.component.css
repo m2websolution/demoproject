@@ -1,0 +1,16 @@
+.dialog-content {
+    text-align: center;
+}
+
+.status-icon {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.success-icon {
+    color: green;
+}
+
+.cancelled-icon {
+    color: red;
+}

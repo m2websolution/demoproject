@@ -1,0 +1,278 @@
+<div class="email-setting-container" (window:resize)="onResize($event)">
+  <nav
+    class="header-breadcrumb"
+    style="
+      --bs-breadcrumb-divider: url(
+        &#34;data:image/svg + xml,
+        %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+      );
+    "
+    aria-label="breadcrumb"
+  >
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Get Reviews</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">
+        Email Settings
+      </li>
+    </ol>
+  </nav>
+  <mat-card class="app-main-card" [ngClass]="breakPoint == 1 ? 'p-3' : 'p-4'">
+    <div>
+      <button class="email-setting-button common-primary-text">
+        Email Settings
+      </button>
+    </div>
+    <div [ngClass]="breakPoint == 1 ? 'mt-3' : 'mt-5'">
+      <form [formGroup]="emailSettingsForm" (ngSubmit)="submit()">
+        <!-- ----------------Fields---------------- -->
+        <div
+          class="remove-extra-field email-setting-form-field"
+          [ngClass]="
+            breakPoint == 1 ? 'd-block' : 'd-flex justify-content-between'
+          "
+          style="gap: 20px"
+        >
+          <div class="form-group mb-2">
+            <label class="mb-2">Sender Name</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="text"
+                placeholder="M2 Web Solution"
+                formControlName="fromName"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                emailSettingsForm.get('fromName').touched &&
+                emailSettingsForm.get('fromName').hasError('required')
+              "
+              >First Name is required</mat-error
+            >
+          </div>
+          <div class="form-group">
+            <label class="mb-2">{{
+              breakPoint == 1
+                ? "Send invitation response to"
+                : "If customer replies to invitation, send the reply to"
+            }}</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="text"
+                placeholder="info@m2webdesing.com"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+                formControlName="replyToEmail"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                emailSettingsForm.get('replyToEmail').touched &&
+                emailSettingsForm.get('replyToEmail').hasError('required')
+              "
+              >Email is required</mat-error
+            >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                emailSettingsForm.get('replyToEmail').touched &&
+                emailSettingsForm.get('replyToEmail').hasError('pattern')
+              "
+              >Invalid email format</mat-error
+            >
+          </div>
+        </div>
+        <!-- -----------------Radio Buttons----------------- -->
+        <div class="mt-3">
+          <div class="form-group">
+            <label class="mb-2">Sender Email</label>
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group"
+              [(ngModel)]="selectedRadio"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-radio-button
+                class="example-margin d-block"
+                color="primary"
+                [value]="1"
+                (change)="setSelectedStatus(1)"
+              >
+                Send from noreply@reviewuz.com
+              </mat-radio-button>
+              <mat-radio-button
+                class="example-margin d-block"
+                color="primary"
+                [value]="2"
+                (change)="setSelectedStatus(2)"
+                ngDefaultControl
+              >
+                Send email using your own username
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="mt-4" [ngClass]="selectedRadio === 2 ? '' : 'd-none'">
+            <div class="form-group">
+              <label
+                class="mb-2"
+                fxLayout="row "
+                fxLayout.xs="column "
+                fxLayout.sm="column "
+                >Enter username*
+                <span> (You can use letters, numbers and periods)</span></label
+              >
+              <mat-form-field
+                appearance="outline"
+                subscriptSizing="dynamic"
+                [ngClass]="breakPoint == 1 ? 'w-100' : 'w-50'"
+              >
+                <div
+                  matSuffix
+                  class="field-suffix"
+                  [ngClass]="
+                    breakPoint == 1 ? 'field-suffix-resp' : 'field-suffix'
+                  "
+                >
+                  @reviewuz.com
+                </div>
+                <input
+                  matInput
+                  formControlName="fromEmail"
+                  type="text"
+                  placeholder="Username"
+                />
+              </mat-form-field>
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  emailSettingsForm.get('fromEmail').touched &&
+                  emailSettingsForm.get('fromEmail').hasError('required')
+                "
+                >Username is required</mat-error
+              >
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  emailSettingsForm.get('fromEmail').touched &&
+                  emailSettingsForm.get('fromEmail').hasError('pattern')
+                "
+                >Invalid username format</mat-error
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------------Email Chips------------------ -->
+        <div class="mt-3">
+          <mat-card
+            class="app-sub-card"
+            [ngClass]="breakPoint == 1 ? '' : 'p-3'"
+          >
+            <mat-card-content class="p-2 masterCardContent">
+              <label class="common-label-font"
+                >Send email notification to</label
+              >
+
+              <div
+                class="mt-1"
+                [ngClass]="breakPoint === 1 ? '' : 'd-flex flex-wrap'"
+              >
+                <div
+                  *ngFor="let email of notificationEmails"
+                  class="custom-chip mb-3 me-2"
+                  [ngClass]="breakPoint == 1 ? 'w-100' : ''"
+                >
+                  <label class="responsive-time-dot">{{ email.Email }}</label>
+                  <button
+                    type="button"
+                    mat-mini-fab
+                    color="warn"
+                    *ngIf="notificationEmails.length > 1"
+                    (click)="removeEmail(email.NotificationId)"
+                  >
+                    <mat-icon [svgIcon]="'delete'"></mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <input
+                    type="button"
+                    *ngIf="inputEmail"
+                    class="custom-input"
+                    #newEmailInput
+                    type="text"
+                    [formControl]="emailControl"
+                    placeholder="Enter new email"
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+                    (blur)="onEnterEmail($event)"
+                    (keydown.enter)="onEnterEmail($event)"
+                  />
+                  <mat-error
+                    class="error-message input-error"
+                    *ngIf="emailControl.invalid && emailControl.touched"
+                  >
+                    <span *ngIf="emailControl.errors['pattern']"
+                      >Invalid email format.</span
+                    >
+                  </mat-error>
+                </div>
+
+                <div
+                  type="button"
+                  (click)="addCustomChip()"
+                  class="custom-chip me-2"
+                  [ngClass]="
+                    breakPoint === 1
+                      ? 'w-100 custom-chip-responsive  mt-2'
+                      : 'custom-chip'
+                  "
+                  style="background-color: #e2f2ff"
+                >
+                  <button type="button" mat-mini-fab color="primary">
+                    <mat-icon [svgIcon]="'add'"></mat-icon>
+                  </button>
+                  <p
+                    class="d-flex align-items-center w-100"
+                    [ngClass]="
+                      breakPoint === 1 ? 'justify-content-between ' : ''
+                    "
+                  >
+                    <label class="common-label-font common-primary-text"
+                      >Add Email</label
+                    >
+                  </p>
+                </div>
+
+                <!-- <div
+                  class="custom-chip-2"
+                  [ngClass]="breakPoint == 1 ? 'w-100 mt-2' : ''"
+                >
+                  <mat-icon
+                    [svgIcon]="'add'"
+                    class="custom-chip-icon common-primary-bg"
+                    color="primary"
+                  ></mat-icon>
+                  
+                </div> -->
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <div class="mt-3 d-flex justify-content-end">
+            <button
+              type="submit"
+              [disabled]="this.emailSettingsForm.invalid"
+              mat-flat-button
+              color="primary"
+              [ngClass]="breakPoint == 1 ? 'w-100' : ''"
+            >
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,655 @@
+<div (window:resize)="onResize($event)">
+  <div
+    fxLayout.xs="column  "
+    fxLayout.sm="column  "
+    fxLayout="row "
+    fxLayoutAlign.gt-lg="center center"
+    fxLayoutAlign.gt-md="center center"
+    fxLayoutAlign.gt-sm="center center"
+    fxLayoutGap.gt-lg="32px"
+    fxLayoutGap.gt-md="32px"
+    fxLayoutGap.gt-sm="32px"
+    class="app-get-review-template-margin-section"
+  >
+    <div
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+    >
+      <h2
+        [ngClass]="
+          breakPoint == 1
+            ? ' templateData_title_responsive  mt-2 mb-2'
+            : ' common-main-title-font '
+        "
+      >
+        {{ templateData }}
+      </h2>
+    </div>
+
+    <div
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+    >
+      <div
+        fxLayout="row "
+        fxLayout.xs="column "
+        fxLayout.sm="column "
+        class="d-flex justify-content-end"
+      >
+        <div
+          class="header-timezone me-2 justify-content-between"
+          fxFlex="0 1 calc(70%-10px)"
+          [ngClass]="breakPoint == 1 ? 'mb-3 ' : ' '"
+        >
+          <span fxLayout="row wrap " fxFlex.xs="0 1 calc(100%-10px)">
+            <p>Your Timezone : &nbsp;</p>
+            <strong> {{ timezone }}</strong>
+          </span>
+          <div class="header-timezone-icon common-primary-bg">
+            <mat-icon [svgIcon]="'edit'" (click)="editTimeZone()"></mat-icon>
+          </div>
+        </div>
+        <div [ngClass]="isCreateTemplate ? 'd-none' : ''">
+          <button
+            type="button"
+            mat-flat-button
+            color="warn"
+            class="delete-button text-white"
+            fxFlex.xs="0 1 calc(100%-10px)"
+            fxFlex.sm="0 1 calc(100%-10px)"
+            [ngClass]="breakPoint == 1 ? 'mb-3 w-100 ' : ' '"
+            (click)="deleteTemplate()"
+          >
+            <mat-icon
+              matPrefix
+              [svgIcon]="'delete'"
+              style="width: 25px; height: 30px"
+            ></mat-icon>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    fxLayout.xs="column  "
+    fxLayout.sm="column  "
+    fxLayout="row "
+    fxLayoutGap="32px"
+  >
+    <div
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(50%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      fxFlex.gt-lg="0 1  {{
+        templateType == 'SMS' ? ' calc(70%-10px)' : ' calc(50%-10px)'
+      }}"
+      fxFlex.gt-md="0 1  {{
+        templateType == 'SMS' ? ' calc(70%-10px)' : ' calc(50%-10px)'
+      }}"
+      style="position: relative"
+    >
+      <form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+        <mat-card class="app-sub-card2" *ngIf="templateType==='Email' || templateType==='Email'">
+          <mat-card-content>
+            <p class="note-label">
+              <label class="text-danger">Note :</label>
+              <span class="common-font-14px"
+                >There may be 1 hour difference while sending Review
+                Request.</span
+              >
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+        <div
+          class="mt-lg-3 tab-remindForReview dispaplay-block gap-16"
+          
+          [ngClass]="templateType === 'Feedback' ? 'd-none' : ' d-flex  '"
+        >
+          <div class="form-group">
+            <label class="mat-card-form-fild-lable-margin">{{
+              templateType == "Email" ? "Email Name" : "Template Name"
+            }}</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="text"
+                placeholder="First review request"
+                formControlName="name"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                templateForm.get('name').touched &&
+                templateForm.get('name').hasError('required')
+              "
+              >{{
+                templateType === "Email" ? "Email Name" : "Template Name"
+              }}
+              is required</mat-error
+            >
+          </div>
+          <div class="form-group">
+            <label class="mat-card-form-fild-lable-margin">Send Interval</label>
+            <mat-form-field
+              appearance="outline"
+              value="option1"
+              class="downIcon"
+            >
+              <mat-select
+                placeholder="As soon as possible"
+                class="company-dropdown"
+                formControlName="sendInterval"
+                (selectionChange)="onIntervalChange($event)"
+              >
+                <mat-option
+                  *ngFor="let interval of sendIntervalDays"
+                  [value]="interval"
+                  >{{
+                    interval === "assoonaspossible"
+                      ? "As soon as possible"
+                      : interval === "Custom"
+                      ? "Custom"
+                      : interval + (interval === "1" ? " day" : " days")
+                  }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group" *ngIf="country === 'India (भारत)' && templateType === 'SMS'">
+            <label class="mat-card-form-fild-lable-margin">Select Template</label>
+            <mat-form-field
+              appearance="outline"
+              value="option1"
+              class="downIcon"
+            >
+              <mat-select
+                placeholder="Select your option"
+                class="company-dropdown"
+                formControlName="template"
+                (selectionChange)="onTemplateChange($event)"
+              >
+                <mat-option
+                  *ngFor="let item of templateDropDown"
+                  [value]="item.template"
+                  >{{item.title}}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="
+              templateForm.get('sendInterval').value !== 'Custom'
+                ? 'd-none'
+                : ''
+            "
+          >
+            <label class="mat-card-form-fild-lable-margin">Days</label>
+            <mat-form-field appearance="outline">
+              <input matInput type="number" formControlName="time" />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                templateForm.get('time').touched &&
+                templateForm.get('time').hasError('max')
+              "
+            >
+              Days should not exceed 60.</mat-error
+            >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                templateForm.get('time').touched &&
+                templateForm.get('time').hasError('min')
+              "
+            >
+              Days should not less than 1.</mat-error
+            >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                templateForm.get('time').touched &&
+                templateForm.get('time').hasError('required')
+              "
+            >
+              Days required.</mat-error
+            >
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="
+              templateForm.get('sendInterval').value === 'assoonaspossible'
+                ? 'd-none'
+                : ''
+            "
+          >
+            <label class="mat-card-form-fild-lable-margin">Time</label>
+            <mat-form-field appearance="outline" value="option1">
+              <mat-select placeholder="09:30 AM" formControlName="sentTime">
+                <mat-option *ngFor="let time of times" [value]="time">{{
+                  time
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div
+          class="mt-0"
+          [ngClass]="templateType === 'Feedback' ? 'mt-3' : ''"
+          [ngClass]="templateType === 'SMS' ? 'd-none' : ' d-flex'"
+        >
+          <div class="form-group">
+            <label class="mat-card-form-fild-lable-margin">Subject</label>
+            <mat-form-field appearance="outline" class="d-flex">
+              <div class="d-flex gap-16">
+                <div
+                  *ngIf="templateData === 'First Review Request'"
+                  class="d-flex"
+                  [ngClass]="breakPoint === 1 ? 'd-none ' : ' '"
+                >
+                <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]"  [svgIcon]="'star'"></mat-icon>
+                </div>
+
+                <input
+                  class="mx-1"
+                  matInput
+                  type="text"
+                  formControlName="subjectLine"
+                  placeholder="How many stars would you give {Firstname}?"
+                />
+              </div>
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                templateForm.get('subjectLine').touched &&
+                templateForm.get('subjectLine').hasError('required')
+              "
+              >Subject is required</mat-error
+            >
+          </div>
+        </div>
+        <div class="mt-0">
+          <div class="form-group">
+            <div class="d-flex justify-content-between align-items-center">
+              <label class="mat-card-form-fild-lable-margin"
+                >{{ templateType }} Text</label
+              >
+              <label
+                class="cursor-pointer"
+                (click)="openTemplateModal()"
+                [ngClass]="templateType === 'SMS' ? 'd-none' : ''"
+                ><a>Preview Email</a></label
+              >
+            </div>
+
+            <!-- <div *ngIf="templateType === 'Feedback'; else other_content">
+              <mat-card >
+            
+                <mat-form-field appearance="outline" class="mt-1 position-relative">
+                  <textarea #textarea matInput class="text-container" formControlName="message"></textarea>
+            
+                  <div *ngIf="templateType === 'SMS'">
+                    <mat-icon matPrefix [svgIcon]="'smail_emoji_icon'" class="smail_emoji_icon"></mat-icon>
+                  </div>
+
+              </mat-form-field>
+              
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  templateForm.get('message').touched &&
+                  templateForm.get('message').hasError('required')
+                "
+                >{{ templateType }} text is required</mat-error
+              >              
+              </mat-card>
+            </div> -->
+
+            <div *ngIf="templateType === 'Feedback'; else other_content">
+              <!-- Added code feedback template ckeditor -->
+              <div class="mt-2">
+                <ckeditor
+                  id="ck-editor-sec"
+                  style="border-radius: 16px"
+                  aria-placeholder="HELOWIN"
+                  [editor]="editor"
+                  [config]="config"
+                  formControlName="message"
+                ></ckeditor>
+
+                <div *ngIf="templateType === 'SMS'">
+                  <mat-icon matPrefix [svgIcon]="'smail_emoji_icon'" class="smail_emoji_icon"></mat-icon>
+                </div>
+  
+                  <!-- Error Messages -->
+                  <mat-error
+                  class="error-message"
+                  *ngIf="
+                    templateForm.get('message').touched &&
+                    templateForm.get('message').hasError('invalidReviewUrlButton')
+                  "
+                  >Invalid reviewbuttonurl format</mat-error
+                >
+                <mat-error
+                  class="error-message"
+                  *ngIf="
+                    templateForm.get('message').touched &&
+                    templateForm.get('message').hasError('required')
+                  "
+                  >{{ templateType }} text is required</mat-error
+                >
+                </div>
+              </div>
+            
+             
+            <ng-template #other_content>
+              <mat-form-field *ngIf="templateType === 'SMS'"
+                appearance="outline"
+                [class.bg-color]="country === 'India (भारत)' && templateType === 'SMS'"
+                class="mt-1 position-relative"
+              >
+              <div >
+                <textarea 
+                  #textarea
+                  matInput
+                  class="text-container"
+                  formControlName="message"
+                ></textarea>
+              </div>
+              
+                <div *ngIf="templateType === 'SMS'">
+                  <mat-icon
+                    matPrefix
+                    [svgIcon]="'smail_emoji_icon'"
+                    class="smail_emoji_icon"
+                  ></mat-icon>
+                </div>
+
+              <!-- <button
+                color="accent"
+                mat-flat-button
+                class="review-us-float"
+                [ngClass]="
+                  templateType == 'SMS' ||
+                  templateData == 'One Last Reminder' ||
+                  templateData == 'Create New Template'
+                    ? 'd-none'
+                    : ' d-block'
+                "
+              >
+                Review Us
+              </button> -->
+              </mat-form-field>
+
+              <!-- Added code email template ckeditor -->
+              <div *ngIf="templateType === 'Email'"
+              appearance="outline"
+              [class.bg-color]="country === 'India (भारत)' && templateType === 'SMS'"
+              class="mt-1 position-relative"
+            >
+            <div class="mt-2">
+              <ckeditor
+                id="ck-editor-sec"
+                style="border-radius: 16px"
+                aria-placeholder="HELOWIN"
+                [editor]="editor"
+                [config]="config"
+                formControlName="message"
+              ></ckeditor>
+            </div>
+            
+              <div *ngIf="templateType === 'SMS'">
+                <mat-icon
+                  matPrefix
+                  [svgIcon]="'smail_emoji_icon'"
+                  class="smail_emoji_icon"
+                ></mat-icon>
+              </div>
+
+            <!-- <button
+              color="accent"
+              mat-flat-button
+              class="review-us-float"
+              [ngClass]="
+                templateType == 'SMS' ||
+                templateData == 'One Last Reminder' ||
+                templateData == 'Create New Template'
+                  ? 'd-none'
+                  : ' d-block'
+              "
+            >
+              Review Us
+            </button> -->
+            </div>
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  templateForm.get('message').touched &&
+                  templateForm.get('message').hasError('invalidReviewUrlButton')
+                "
+                >Invalid reviewbuttonurl format</mat-error
+              >
+              <!-- <mat-error
+                class="error-message"
+                *ngIf="
+                  templateForm.get('message').touched &&
+                  templateForm.get('message').hasError('noHtmlTags')
+                "
+                >HTML tags are not allowed.</mat-error
+              > -->
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  templateForm.get('message').touched &&
+                  templateForm.get('message').hasError('required')
+                "
+                >{{ templateType }} text is required</mat-error
+              >
+            </ng-template>
+          </div>
+        </div>
+
+        <div
+          fxLayout="row wrap "
+          fxLayout.xs="row wrap  "
+          fxLayoutGap="10px"
+          class="mt-3 mb-3 scrollbar-overflow"
+        >
+        <div  *ngFor="let item of templateTags" >
+          <span *ngIf="!(templateType === 'SMS' && item === 'reviewurlbutton')"
+            class="d-flex social-sharring-tags"
+          >
+            <h6 class="social-sharring-tags-font">{{ item }}</h6>
+            <mat-icon
+              class="justify-content-between align-items-center copy-icon"
+              (click)="copyItem(item)"
+              >content_copy</mat-icon
+            >
+          </span>
+        </div>
+        </div>
+
+        <div
+          [ngClass]="
+            breakPoint === 4 || breakPoint === 2
+              ? 'save-tamplate-btn-unresponsive mt-3'
+              : 'save-tamplate-btn-unresponsive-position-relative mt-3'
+          "
+        >
+          <button
+            type="submit"
+            fxFlex.xs="0 1 calc(100%-10px)"
+            fxFlex.sm="0 1 calc(100%-10px)"
+            mat-flat-button
+            color="primary"
+          >
+            Save Template
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      fxFlex.gt-lg="0 1 {{
+        templateType == 'SMS' ? ' calc(30%-10px)' : ' calc(50%-10px)'
+      }}"
+      fxFlex.gt-md="0 1 {{
+        templateType == 'SMS' ? ' calc(30%-10px)' : ' calc(50%-10px)'
+      }}"
+    >
+      <div
+        *ngIf="
+          templateType == 'SMS' || templateType == 'Feedback';
+          else elseBlock
+        "
+      >
+        <app-sms-template
+          templateType="{{ templateType }}"
+          [message]="replaceWordsInSentence(this.templateForm.get('message').value)"
+          [logo]="logo"
+        ></app-sms-template>
+      </div>
+      <ng-template #elseBlock>
+        <div
+          class="show-template mb-lg-3"
+          *ngIf="replacementValues.length === 7"
+        >
+          <app-email-template-modal
+            [preview]="
+              replaceWordsInSentence(this.templateForm.get('message').value)
+            "
+            [logo]="logo"
+          ></app-email-template-modal>
+        </div>
+      </ng-template>
+      <form [formGroup]="testForm" (ngSubmit)="testEmailSms()" *ngIf="templateType==='Email' || templateType==='Email'">
+        <mat-card class="app-sub-card">
+          <mat-card-content>
+            <div class="form-group">
+              <label class="mb-2">Test {{ templateType }}</label>
+              <mat-form-field appearance="outline" class="test-email-input">
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Andrea"
+                  formControlName="name"
+                />
+              </mat-form-field>
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  formSubmitted && testForm.get('name').hasError('required')
+                "
+                >Name is required</mat-error
+              >
+            </div>
+            <div class="form-group">
+              <label class="mb-2 mt-3"
+                >Enter the test
+                {{ templateType === "SMS" ? "number" : "email" }} here</label
+              >
+              <mat-form-field
+                appearance="outline"
+                class="test-email-input"
+                *ngIf="templateType === 'Email'"
+              >
+                <input
+                  matInput
+                  type="{{ templateType === 'SMS' ? 'string' : 'email' }}"
+                  [placeholder]="
+                    templateType === 'Email'
+                      ? 'm2websolution@gmail.com'
+                      : '+91 85645 32412'
+                  "
+                  formControlName="email"
+                  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+                />
+              </mat-form-field>
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  formSubmitted &&
+                  templateType === 'Email' &&
+                  testForm.get('email').hasError('pattern')
+                "
+                >Invalid {{ templateType }} format</mat-error
+              >
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  formSubmitted &&
+                  templateType === 'Email' &&
+                  testForm.get('email').hasError('required')
+                "
+                >{{ templateType }} is required</mat-error
+              >
+              <mat-form-field
+                appearance="outline"
+                class="form-field-phone"
+                *ngIf="templateType === 'SMS'"
+              >
+                <input
+                  matInput
+                  #phoneInput
+                  (input)="onPhoneNumberChange()"
+                  [placeholder]="'+91 85645 32412'"
+                  formControlName="sms"
+                />
+              </mat-form-field>
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  formSubmitted &&
+                  templateType === 'SMS' &&
+                  testForm.get('sms').hasError('required')
+                "
+                >{{ templateType }} is required</mat-error
+              >
+              <mat-error
+                class="error-message"
+                *ngIf="
+                  formSubmitted &&
+                  templateType === 'SMS' &&
+                  !testForm.get('sms').hasError('required') &&
+                  !isValidPhoneNumber
+                "
+                >Invalid phone number format</mat-error
+              >
+            </div>
+            <div
+              class="mt-5"
+              [ngClass]="
+                breakPoint === 1 ? 'w-100' : 'd-flex justify-content-end'
+              "
+            >
+              <button
+                type="submit"
+                mat-flat-button
+                color="primary"
+                fxFlex.xs="0 1 calc(100%-10px)"
+                fxFlex.sm="0 1 calc(100%-10px)"
+              >
+                Test Now
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

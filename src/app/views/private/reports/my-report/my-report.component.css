@@ -1,0 +1,453 @@
+.report-tab-container {
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 0px;
+}
+
+.report-tab-container .report-tabs {
+  order: 1;
+  width: 80%;
+  /* width: 100%; */
+}
+.report-tab-container .report-dropdown {
+  width: 20%;
+  order: 2;
+}
+
+.report-dropdown {
+  display: flex;
+  justify-content: end;
+}
+.report-dropdown .mat-mdc-form-field {
+  width: 123px;
+}
+
+.my-report-card-container {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.my-report-card {
+  padding: 24px 32px;
+
+  border-radius: 16px;
+  width: 100%;
+  height: 185px;
+  min-height: 185px;
+
+  display: flex;
+  flex-direction: column;
+  /* gap: 32px; */
+  justify-content: space-between;
+
+  background-image: url("../../../../../assets/images/my-report-bg.svg") !important;
+  /* background-blend-mode: lighten; */
+  background-size: cover !important;
+  background-position: right !important;
+  background-repeat: no-repeat !important;
+}
+
+.blue-bg-selected {
+  color: white;
+}
+
+.customer-invite-icon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.card-email-icon {
+  width: 56px;
+  height: 56px;
+  background: #e2f2ff;
+  border-radius: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-email-icon mat-icon {
+  width: 29px;
+  height: 29px;
+}
+
+.card-email-icon mat-icon svg path {
+  stroke: #196cfa;
+}
+
+.my-report-charts {
+  display: flex;
+  gap: 30px;
+}
+
+.conversion-stat-labels {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 16px 40px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.overall-sentiment-graph-container {
+  display: flex;
+  gap: 70px;
+  justify-content: space-evenly;
+}
+
+.overall-sentiment-label-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-card {
+  padding: 24px;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+
+  gap: 16px 0px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.review-platform-card .chart-container canvas {
+  width: 250px;
+  height: 250px;
+}
+
+.platform-label-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* width: 356px; */
+}
+
+.platform-label-container .label-circle-container {
+  width: calc(50% - 3px);
+}
+
+.platform {
+  width: calc(60% - 3px);
+}
+
+.sentiment-analysis-chart canvas {
+  width: 100% !important;
+}
+
+.sentiment-platform-container .platform-chart-container,
+.sentiment-platform-container .report-sentiment-chart {
+  width: calc(50% - 15px);
+}
+
+.conversion-container .all-pr-sec {
+  width: calc(50% - 15px);
+}
+
+.sentiment-analysis-labels {
+  width: 100%;
+  display: flex;
+  /* gap: 10px; */
+  gap: 10px 0px;
+  justify-content: space-evenly;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.grey-curve-bg {
+  background-image: url("../../../../../assets/images/my-report-bg-grey.svg") !important;
+}
+
+@media (max-width: 1130px) {
+  .my-report-card {
+    padding: 20px;
+  }
+
+  .my-report-charts {
+    flex-wrap: wrap;
+  }
+
+  .overall-sentiment-graph-container {
+    flex-wrap: wrap;
+    gap: 0px;
+    padding: 0px 16px 16px;
+  }
+
+  .chart-container {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+  }
+
+  .chart-container canvas {
+    width: 100% !important;
+  }
+
+  .qr-conversion-chart .chart-container canvas {
+    height: 450px !important;
+    width: 450px !important;
+  }
+
+  .conversion-stat-labels {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px 2%;
+    margin-top: 20px;
+  }
+
+  .conversion-stat-labels .label-circle-container {
+    width: 48%;
+  }
+
+  .label-card {
+    width: 100%;
+    padding: 16px 14px;
+    gap: 8px 0px;
+  }
+
+  .report-tab-container {
+    margin: 0px 0px 20px;
+  }
+
+  .review-platform-card .chart-container canvas {
+    height: 300px;
+    width: 300px;
+  }
+
+  .sentiment-platform-container .platform-chart-container,
+  .sentiment-platform-container .report-sentiment-chart {
+    width: 100%;
+  }
+
+  .conversion-container {
+    flex-direction: column;
+  }
+
+  .conversion-container .all-pr-sec {
+    width: 100%;
+  }
+
+  .report-tab-container .report-dropdown {
+    /* width: 100%; */
+  }
+}
+
+@media (min-width: 1130px) and (max-width: 1482px) {
+  .report-tabs,
+  .report-dropdown,
+  .report-dropdown mat-form-field {
+    width: 100% !important;
+  }
+
+  .report-tabs
+    .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+    > .mat-mdc-tab-header
+    .mat-mdc-tab {
+    max-width: initial !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .my-report-card-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 745px) {
+  .report-tabs,
+  .report-dropdown,
+  .report-dropdown mat-form-field {
+    width: 100% !important;
+  }
+
+  .report-tabs
+    .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+    > .mat-mdc-tab-header
+    .mat-mdc-tab {
+    max-width: initial !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .my-report-card-container {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .my-report-card {
+    min-height: 152px;
+    height: 152px;
+    gap: 0px;
+  }
+
+  .report-dropdown {
+    width: 100%;
+  }
+  .report-dropdown .mat-mdc-form-field {
+    width: 100%;
+  }
+
+  .chart-container canvas {
+    width: 100% !important;
+  }
+
+  .qr-conversion-chart .chart-container canvas {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .report-tab-container .report-tabs {
+    order: 2;
+    width: 100%;
+  }
+  .report-tab-container .report-dropdown {
+    order: 1;
+    width: 100%;
+    /* margin-bottom: 16px; */
+  }
+
+  .sentiment-analysis-labels {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .my-report-card-container .card-stars mat-icon {
+    width: 27px !important;
+    height: 26px !important;
+  }
+
+  .customer-invite-icon {
+    gap: 12px;
+  }
+
+  .card-email-icon {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+@media (max-width: 400px) {
+  .label-card {
+    padding: 16px 6px;
+  }
+
+  .overall-stat-container .chart-labels {
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1130px) and (max-width: 1450px) {
+  .platform-label-container .label-circle-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1130px) and (max-width: 1340px) {
+  /* .platform-label-container .label-circle-container {
+    width: 100%;
+  } */
+
+  .overall-sentiment-label-container .label-container {
+    flex-direction: column;
+  }
+
+  .overall-sentiment-label-container .label-container .label-circle-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .qr-sentiment-container {
+    /* flex-direction: column !important; */
+    /* gap: 0px; */
+  }
+
+  .qr-sentiment-container .qr-conversion-chart,
+  .qr-sentiment-container .report-sentiment-chart {
+    width: 50% !important;
+  }
+
+  .chart-label-container {
+    gap: 0 !important;
+  }
+
+  .overall-sentiment-label-container .label-container {
+    flex-direction: row;
+  }
+
+  .overall-sentiment-label-container .label-container .label-circle-container {
+    width: 50%;
+  }
+
+  .overall-sentiment-graph-container {
+    gap: 0;
+    flex-direction: column;
+  }
+
+  .qr-sentiment-container .report-sentiment-chart canvas {
+    height: 250px !important;
+    width: 250px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1260px) {
+  .card-stars {
+    gap: 0px !important;
+  }
+}
+
+#qrConversion {
+  width: 276px !important;
+  height: 276px !important;
+}
+.from-to-date-component {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .from-to-date-component {
+    display: block;
+    align-items: center;
+  }
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-size: 45px;
+}
+
+.stars-outer::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: #d2d2d2;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
+
+.stars-inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: #ffa500;
+}
+
+.review-by-platform-chart {
+  width: 50% !important;
+}
+
+.rating-by-platform-chart {
+  height: 300px !important;
+}

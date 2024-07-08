@@ -1,0 +1,44 @@
+/* Global TypoGraphy */
+h2 {
+  font-family: "Manrope";
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: 0em;
+}
+p {
+  font-family: "Manrope";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #71717a;
+}
+label {
+  margin: 2px 5px;
+}
+a {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  color: #196cfa !important;
+}
+
+@media (max-width: 960px) {
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  p {
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

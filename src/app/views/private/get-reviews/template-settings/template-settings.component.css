@@ -1,0 +1,251 @@
+
+
+h3 {
+  font-family: "Manrope" !;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #27272a;
+}
+
+
+.note-label label {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+p {
+  margin: 0px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.app-main-card {
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: none;
+}
+
+.app-sub-card {
+  padding: 8px !important;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.app-sub-card2 {
+  width: 100%;
+  box-shadow: none;
+  gap: 8px;
+  background: #f4f4f5;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 16px;
+  padding: 0px !important;
+}
+
+.app-sub-card3 {
+  padding: 32px 24px;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.breadcrumb .actives {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #18181b !important;
+}
+.get-feedback .sms-email-template-sub-card-header {
+  display: none !important;
+}
+.get-feedback .sms-email-template-sub-inner {
+  margin-top: 0px !important;
+}
+/* ---------------Tab Design------------------- */
+.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+  > .mat-mdc-tab-header
+  .mat-mdc-tab {
+  max-width: max-content !important;
+  margin-right: 20px !important;
+  border-radius: 16px !important;
+}
+/* ---------tab border blue none------------------ */
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
+  .mdc-tab-indicator__content--underline {
+  border: none !important;
+}
+
+.mdc-tab--active,
+.mdc-tab-indicator--active {
+  background-color: #e2f2ff !important;
+}
+
+.mdc-tab--active:hover,
+.mdc-tab-indicator--active :hover {
+  background-color: #e2f2ff !important;
+  border-radius: 16px !important;
+}
+
+/* --------------Template Setting--------------------- */
+
+.header-timezone {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 8px;
+  height: 56px;
+  background: #ffffff;
+  border: 1px solid #d4d4d8;
+  border-radius: 16px;
+}
+
+.header-timezone-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 0.5em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #f95250 !important;
+  color: white;
+}
+
+.mat-grid-tile div.mat-grid-tile-content {
+  display: block;
+}
+
+.subject-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+
+  height: 56px;
+  background: #ffffff;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 16px;
+}
+.text-container {
+  height: 500px !important;
+  background: #ffffff;
+}
+
+.review-us-float {
+  position: absolute !important;
+  bottom: 10px !important;
+  right: -4px !important;
+}
+.mat-mdc-form-field-infix {
+  height: auto !important;
+}
+.test-email-input {
+  height: 56px;
+}
+
+
+.preview-logo {
+  height: 66px;
+  width: 265px;
+}
+
+.tab-select-component {
+  width: 100%;
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .text-container {
+    height: 400px !important;
+    background: #ffffff;
+  }
+  .mat-mdc-card-content {
+    padding: 10px !important;
+  }
+  .app-sub-card3 {
+    padding: 8px;
+    gap: 10px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: none;
+  }
+  .preview-logo {
+    width: 160px;
+    height: 40px;
+  }
+
+  .sub-card1-height label {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #18181b;
+  }
+
+  .app-sub-card button span {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .preview-button {
+    padding: 12px 14px !important;
+    width: 250px !important;
+    height: 44px !important;
+  }
+
+  .show-template {
+    display: none !important;
+  }
+
+  .tab-group .mat-mdc-tab-header {
+    display: none !important;
+  }
+
+  .tab-select-component {
+    width: 100%;
+    display: block;
+  }
+
+  .tab-select-component .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+  }
+
+  .mat-mdc-form-field-textarea-control {
+    vertical-align: unset !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .show-template {
+    display: none !important;
+  }
+
+  .mat-mdc-form-field-textarea-control {
+    vertical-align: unset !important;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .mat-mdc-form-field-textarea-control {
+    vertical-align: unset !important;
+  }
+}

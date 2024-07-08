@@ -1,0 +1,116 @@
+<!-- Header For Web  -->
+<div class="header-web-main">
+  <mat-toolbar>
+    <mat-icon
+      fxHide.gt-md
+      style="width: 150px; height: 50px"
+      svgIcon="logo_name"
+      class="mobile-logo"
+    />
+    <button
+      fxHide.gt-md
+      mat-flat-button
+      color="primary"
+      (click)="sidenav?.toggle()"
+      class="mobile-menu"
+    >
+      <i class="material-icons" style="color: #ffffff; font-size: 30px">menu</i>
+    </button>
+
+    <div fxHide fxShow.gt-md fxLayout="row" class="header-section">
+      <button
+        mat-icon-button
+        class="nav-toggle-btn-responsive"
+        (click)="sidenav?.toggle()"
+        [hidden]="sidenav?.opened"
+        matTooltip="Menu"
+        *ngIf="showMenu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="downIcon"
+      >
+        <mat-select
+          placeholder="Please Select"
+          disableOptionCentering
+          class="company-dropdown"
+          (selectionChange)="onDropdownChange($event)" 
+          [(ngModel)]="selectedCompany"
+        >
+          <mat-option *ngFor="let profile of profiles" [value]="profile.CompanyName">{{profile.CompanyName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="showLockButton">
+      <button
+      mat-flat-button
+      color="primary"
+      style="padding: 16px; width: 231px; height: 56px"
+      (click)="onCompanyProfile()"
+      *ngIf="!companyVisible"
+    >
+      <mat-icon style="line-height: 0px" svgIcon="add_icon"></mat-icon> New
+      Company Profile
+    </button>
+  
+    <button
+      mat-flat-button
+      color="primary"
+      style="padding: 16px; width: 231px; height: 56px"
+      (click)="onUpgradeProfile('limitMessage')"
+      *ngIf="companyVisible"
+    >
+    <mat-icon style="line-height: 0px; width: 25px; height: 38px;" svgIcon="lock_icon"></mat-icon> New
+     Company Profile
+    </button>
+  </div> 
+
+  </div>
+    <div fxHide fxShow.gt-md fxLayout="row" class="header-section">
+      <button
+      fxHide
+      fxShow.gt-md
+      mat-stroked-button
+      style="width: 100%; border-color: #faa81a; margin: 25px; padding-left: 55px; padding-right: 55px;"
+      color="accent"
+      (click)="onUpgradeProfile('upgradeMessage')"
+    >
+      <mat-icon
+        style="height: 24px; width: 24px; line-height: 20px; margin-right: 5px"
+        svgIcon="premium"
+      ></mat-icon>
+      <span>
+        {{ planName }}
+      </span>
+    </button>
+
+    <!--  -->
+
+      <!-- <button color="accent" mat-flat-button>
+        <mat-icon
+          style="height: 24px; width: 24px; margin: 0"
+          svgIcon="notifications"
+        >
+        </mat-icon>
+      </button> -->
+
+      <button mat-flat-button color="primary"
+      routerLink="/admin">
+        <mat-icon
+          style="height: 24px; width: 24px; margin: 0"
+          svgIcon="settings"
+          ></mat-icon>
+      </button>
+      <button mat-flat-button color="warn"
+       class="icon-btn-mr" (click)="logout()">
+        <mat-icon
+          style="height: 24px; width: 24px; line-height: 20px; margin: 0"
+          svgIcon="logout"
+        ></mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>

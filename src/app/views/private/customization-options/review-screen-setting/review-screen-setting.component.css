@@ -1,0 +1,107 @@
+/* m-webwsolution-main-content section */
+.m-webwsolution-main-card {
+  width: 100%;
+  background-image: url("../../../../../assets/svg/icons/filled/m2webwolutionbackground.svg");
+  border-image-repeat: none;
+  position: relative;
+  color: #27272a;
+}
+.m-webwsolution-main-inner-section {
+  margin: 60px 0px 183px 0px;
+}
+.customberibeing-section-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #27272a;
+  margin-bottom: 0;
+}
+.m-webwsolution-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.m-webwsolution-svg {
+  width: 50%;
+  height: auto;
+}
+.m2-web-solution-font {
+  font-family: "ITC Bauhaus";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 120%;
+  text-align: center;
+  color: #27272a;
+}
+
+.thank-you-feedback-font {
+  /* Body Text/B1/Medium 18px */
+
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+
+  color: #3f3f46;
+}
+
+.m2websolutionlogo_svg {
+  width: 50%;
+  height: auto;
+}
+
+.m-webwsolution-section-header {
+  background: #008eff;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.review-setting-preview-section .mat-mdc-card-header {
+  display: flex;
+  padding: 13px !important;
+  justify-content: center;
+}
+.app-connected-platforms-card-gap {
+  gap: 32px;
+}
+@media (max-width: 960px) {
+  .m2-web-solution-font {
+    font-family: "ITC Bauhaus";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 120%;
+    text-align: center;
+    color: #27272a;
+  }
+  .app-connected-platforms-card-gap {
+    gap: 12px !important;
+  }
+
+  .app-connected-platforms-card-responsive-width {
+    width: 162px;
+  }
+}
+
+@media (max-width: 600px) {
+  .m-webwsolution-main-inner-section {
+    margin: 28px 0px 34px 0px;
+  }
+  .thank-you-feedback-font.mt-5{
+    margin: 16px 20px 0 !important;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

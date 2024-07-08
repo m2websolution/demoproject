@@ -1,0 +1,85 @@
+<mat-card-actions
+  fxLayout="row "
+  fxLayoutAlign="space-between center"
+  fxLayout.xs="column"
+  class="custom-review-sec"
+>
+  <div fxLayout.xs="row" fxLayout.sm="row" style="gap: 4px">
+    <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb" style="width: max-content; flex-wrap: nowrap">
+        <li class="breadcrumb-item first-item">
+          <a href="#" class="common-main-title-font">Customization Options</a>
+        </li>
+        <li class="breadcrumb-item actives" aria-current="page">Review Page</li>
+      </ol>
+    </nav>
+  </div>
+  <button (click)="getLink()" [disabled]="!isLinkAvailable()" mat-stroked-button color="primary" class="copy-link-btn common-border-primary">
+    <mat-icon color="primary" style="height: 26px" [svgIcon]="'copy_keyboard'"></mat-icon>
+    Copy Link
+  </button>
+</mat-card-actions>
+
+<mat-card class="common-container-card review-page-tab-ref">
+  <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+    <!-- --------------In Queue Tab------------ -->
+    <mat-tab label="Review Page Settings">
+      <app-review-page-settings [layoutListSettings]="layoutList"
+      [headerOptions]="headerOptions"
+      ></app-review-page-settings>
+    </mat-tab>
+
+    <mat-tab label="Content Settings">
+      <hr class="content-divide-sec" />
+      <mat-form-field
+        appearance="outline"
+        value="selectedTabEmail"
+        class="tab-select-component"
+      >
+        <mat-select
+          [(ngModel)]="selectedTabEmail"
+          (ngModelChange)="tabGroup1.selectedIndex = selectedTabEmail"
+        >
+          <mat-option
+            *ngFor="let tab of contentSettingsTab; let i = index"
+            [value]="i"
+            >{{ tab }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <div class="content-setting-tab-group">
+        <mat-tab-group
+          class="abc"
+          #tabGroup1
+          (selectedTabChange)="tabChanged($event)"
+        >
+          <mat-tab label="Header Options">
+            <div class="mat-tab-margin-container">
+              <app-header-options *ngIf="headerOptions.HeaderFontColor" [header]="headerOptions"></app-header-options>
+            </div>
+          </mat-tab>
+          <mat-tab label="Public Review Workflow">
+            <div class="mat-tab-margin-container">
+              <app-public-review-workflow *ngIf="publicReviewWorkflow.ReviewRequestMessage" [publicReview]="publicReviewWorkflow"></app-public-review-workflow>
+            </div>
+          </mat-tab>
+          <mat-tab label="Private Feedback Workflow">
+            <div class="mat-tab-margin-container">
+              <app-private-feedback-workflow *ngIf="privateFeedbackWorkflow.ReviewHeaderMessage" [privateFeedback]="privateFeedbackWorkflow"></app-private-feedback-workflow>
+            </div>
+          </mat-tab>
+          <mat-tab label="Private Feedback Form">
+            <div class="mat-tab-margin-container">
+              <app-private-feedback-form *ngIf="privateFeedbackForm.MessagePlaceholderText" [privateFeedbackFormSettings]="privateFeedbackForm" ></app-private-feedback-form>
+            </div>
+          </mat-tab>
+          <mat-tab label="Layout Option's">
+            <div class="mat-tab-margin-container">
+              <app-layout-options *ngIf="layoutOptions.GoodExperienceMessage" [layout]="layoutOptions"></app-layout-options>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

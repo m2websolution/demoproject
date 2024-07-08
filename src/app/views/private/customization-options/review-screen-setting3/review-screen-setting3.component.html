@@ -1,0 +1,24 @@
+<div class="m-3 m-webwsolution-main-content">
+  <div class="m2solutionlikedislike-svg-section">
+    <div class="d-flex justify-content-center">
+      <span (window:resize)="onResize($event)">
+        <app-start-rating
+          [starType]="'custom'"
+          [starClickable]="true"
+          (ratingChanged)="setValues($event)"
+          [starwidth]="starwidth"
+        ></app-start-rating>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Added to the model of the thank you message -->
+  <ng-template #dialogContent>
+    <mat-dialog-content class= "d-flex justify-content-center">
+      <h4 class="card-text">Thank you for your feedback.</h4>   
+    </mat-dialog-content>
+    <mat-dialog-actions class="d-flex justify-content-end">
+      <button mat-button mat-dialog-close>OK</button>
+    </mat-dialog-actions>
+  </ng-template>

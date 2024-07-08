@@ -1,0 +1,141 @@
+<div class="widget-main-modal modal-padding">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="d-flex justify-content-between">
+      <h2>Review Collector</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+    <div
+      class="modal-header"
+      *ngIf="!dialogData.isAllow"
+      [hidden]="isShowJsCodeBlock"
+    >
+      <h6>Upgrade your plan to access this widget</h6>
+      <button color="primary" class="primary-button">UPGRADE NOW</button>
+    </div>
+    <div class="customize-section-margin-top" [hidden]="isShowJsCodeBlock">
+      <h3>Customize</h3>
+      <div class="customize-section-margin-top select-theme-tabs">
+        <label class="mb-2">Select Theme</label>
+        <div class="tab-groups-primary-color-ref">
+          <mat-tab-group
+            #tabGroup
+            class="h-100 tab-groups"
+            (selectedTabChange)="tabChanged($event)"
+          >
+            <mat-tab label="LIGHT"> </mat-tab>
+            <mat-tab label="DARK"> </mat-tab>
+            <mat-tab label="CUSTOM">
+              <div class="modal-field-group my-2">
+                <div class="modal-field form-group">
+                  <label class="">Font Color</label>
+                  <app-color-picker-field
+                    [id]="'fontColor'"
+                    [value]="state.fontColor"
+                    (handleChange)="changehandler($event)"
+                  ></app-color-picker-field>
+                </div>
+                <div class="modal-field form-group">
+                  <label class="">Background Color</label>
+                  <app-color-picker-field
+                    [id]="'backColor'"
+                    [value]="state.backColor"
+                    (handleChange)="changehandler($event)"
+                  ></app-color-picker-field>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+        <div class="mt-3 review-collector-preview">
+          <h3>Preview</h3>
+          <div
+            class="mt-3 review-modal-preview"
+            [ngStyle]="{ 'background-color': state.backColor }"
+          >
+            <div class="d-flex flex-column justify-content-between">
+              <div class="modal-text">
+                <h5 *ngIf="widgetReviewSummary" [ngStyle]="{ color: state.fontColor }">
+                  {{ widgetReviewSummary.AvgRating }} out of 5 based
+                  on
+                  <strong>{{
+                    widgetReviewSummary.TotalReviews
+                  }}</strong>
+                </h5>
+              </div>
+              <div>
+                <button
+                  class="preview-button review-collector-btn w-auto d-flex align-items-center"
+                  style="background: transparent"
+                  [ngStyle]="{ borderColor: state.fontColor }"
+                >
+                  <div [ngStyle]="{ color: state.fontColor }">
+                    LEAVE A REVIEW
+                  </div>
+                  <mat-icon class="mx-1" [svgIcon]="'star'"></mat-icon>
+                </button>
+              </div>
+            </div>
+            <div>
+              <img
+                class="preview-image"
+                src="assets/images/review-collector-img.svg"
+                alt="LOGO"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="get-code-container d-flex justify-content-end"
+    [hidden]="isShowJsCodeBlock"
+  >
+    <button
+      *ngIf="!isShowJsCodeBlock"
+      (click)="generateJavascriptCode()"
+      [disabled]="!dialogData.isAllow"
+      color="primary"
+      class="primary-button get-code-btn"
+    >
+      Get Code
+    </button>
+  </div>
+  <div [hidden]="!isShowJsCodeBlock"
+    *ngIf="reviewCollectorJsCode"
+    fxLayout="row wrap "
+    fxLayout.xs="row wrap  "
+    fxLayoutGap="10px"
+    class="mt-3 mb-3 scrollbar-overflow"
+  >
+    <div class="d-flex">
+      <h5 class="js-code-text-font">
+        Add this code to the HTML of your website where you want to display your
+        widget
+      </h5>
+      <mat-icon
+        class="justify-content-between align-items-center copy-icon"
+        (click)="copyJsCode(reviewCollectorJsCode)"
+        >content_copy</mat-icon
+      >
+    </div>
+  </div>
+  <div [hidden]="!isShowJsCodeBlock" class="js-code-text code-container">
+    <code>{{ reviewCollectorJsCode }}</code>
+  </div>
+  <div [hidden]="!isShowJsCodeBlock">
+    <button mat-stroked-button type="button"
+      (click)="backToPreview()"
+      class="primary-button get-code-btn"
+    >
+      Back
+    </button>
+  </div>
+</div>

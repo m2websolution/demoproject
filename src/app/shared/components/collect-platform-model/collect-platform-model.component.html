@@ -1,0 +1,224 @@
+<div [ngClass]="!isModelForConnectPlatform ? 'd-block' : 'd-none'">
+  <div [formGroup]="connectPlatformModelForm" class="collect-platform-form py-4" [ngClass]="
+        data.ReviewSiteName === 'Google' && !isEditMode
+          ? 'collect-platform-google-form-height'
+          : 'collect-platform-form-height'
+      "
+>
+    <mat-card-actions class="collect-platform-form-title">
+      <div class="collect-platform-form-ticon-title-row">
+        <img
+        mat-card-image
+        [src]="
+              data.IsCustom
+                ? data.ImageURL
+                  ? data.ImageURL
+                  : ''
+                : 'assets/social-logo/' + data.ReviewSiteName + '.png'
+            "
+        class="me-2"
+          *ngIf="data.ImageURL || (data.ReviewSiteName && !data.IsCustom)"
+      />
+        <div
+        class="img-custom-platform"
+        *ngIf="!data.ImageURL && data.ReviewSiteName && data.IsCustom"
+      >
+          {{ data.ReviewSiteName.substring(0, 1) }}
+        </div>
+        <h6>{{ title }}</h6>
+      </div>
+
+      <mat-icon
+      matPrefix
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      class="cursor-pointer"
+    ></mat-icon>
+    </mat-card-actions>
+    <mat-divider class="my-3"></mat-divider>
+    <div *ngIf="data.ReviewSiteName === 'Google' && !isEditMode">
+      <div class="map" #map>
+        <div class="pac-card" #pacCard>
+          <div id="pac-container">
+            <input
+            class="pac-input"
+            #pacInput
+            matInput
+            type="text"
+            placeholder="Enter a location"
+          />
+          </div>
+        </div>
+      </div>
+      <div class="infowindow-content" #infowindowContent>
+        <span id="place-name" class="title"></span><br />
+        <span id="place-address"></span>
+      </div>
+    </div>
+    <mat-card-actions
+    fxLayout="row "
+    fxLayout.xs="column "
+    fxLayoutGap="10px"
+    class="input-margin-bottom"
+  >
+      <div class="mt-3 input-full-width" *ngIf="data.ReviewSiteName !== 'Google' || isEditMode">
+        <label class="mb-2 mt-1"
+        >Paste your {{ data.ReviewSiteName }} Profile URL</label
+      >
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input
+          type="url"
+          matInput
+          placeholder="Enter URL"
+          formControlName="SiteURL"
+        />
+        </mat-form-field>
+      <mat-error *ngIf="
+                  connectPlatformModelForm.get('SiteURL').touched &&
+                  connectPlatformModelForm.get('SiteURL').hasError('invalidUrl')
+                ">
+        Invalid Url
+      </mat-error>
+      </div>
+    </mat-card-actions>
+    <div
+    class="collect-platform-link-bloder-section"
+    *ngIf="data.PlaceholderLink"
+  >
+      <p class="m-0" *ngIf="data.ReviewSiteName === 'Google'">
+        <b class="note-section-font">Note:</b>
+        <span
+        class="your-url-look common-font-14px"
+        [innerHTML]="data.Instruction"
+      >
+        </span>
+      </p>
+      <p class="m-0" *ngIf="data.ReviewSiteName !== 'Google'">
+        <b class="note-section-font">Note:</b>
+        <span class="your-url-look common-font-14px">
+          Your {{ data.ReviewSiteName }} URL look like this -</span
+      >
+        <span
+        class="common-primary-text common-font-14px"
+        [innerHTML]="data.PlaceholderLink"
+      >
+        </span>
+      </p>
+    </div>
+
+    <div
+    fxLayout.xs="column"
+    fxAlign.xs="start"
+    class="d-flex mat-slide-toggle-gap"
+      [ngClass]="!data.PlaceholderLink ? 'mt-4' : ''"
+  >
+      <span class="mr-5" *ngIf="data.Category === 'Collect and Get Reviews'">
+        <mat-slide-toggle
+        [checked]="true"
+        class="pr-5"
+        formControlName="CollectReview"
+      ></mat-slide-toggle>
+        <span>Fetch review from this channel</span>
+      </span>
+
+      <span>
+        <mat-slide-toggle
+        [checked]="true"
+        class="pr-5"
+        formControlName="HasDisplayOnReviewPage"
+      ></mat-slide-toggle>
+        <span>
+          Dispaly on review page
+          <mat-icon
+          matPrefix
+          [svgIcon]="'information'"
+          class="cursor-pointer ms-2"
+          #tooltip="matTooltip"
+            (click)="tooltip.toggle()"
+          matTooltip="Info about the action"
+            matTooltipTouchGestures="off"
+        ></mat-icon
+      ></span>
+      </span>
+    </div>
+    <div class="mt-4" [ngClass]="data.ReviewSiteName === 'Google' ? '' : 'mt-6'">
+      <mat-card-actions
+      fxLayoutAlign.sm="center"
+      fxLayoutAlign.xs="center"
+      fxLayoutAlign.md="end"
+        fxLayoutAlign.lg="end"
+      fxLayoutAlign.xl="end"
+      class="mt-2"
+    >
+    <div class="container"
+      [ngClass]="{'justify-content-between': ((data.ReviewSiteName === 'Google' || data.ReviewSiteName === 'Facebook') && !this.data.IsActive), 'justify-content-end': !((data.ReviewSiteName === 'Google' || data.ReviewSiteName === 'Facebook') && !this.data.IsActive)}">
+      <button class="secondary-button left-button" (click)="goBack()"
+        *ngIf="(data.ReviewSiteName === 'Google' || data.ReviewSiteName === 'Facebook') && !this.data.IsActive">
+        Back
+      </button>
+      <div class="d-flex">
+        <button [disabled]="
+                     loading || (data.ReviewSiteName === 'Google' && !isEditMode)
+                       ? !placeId
+                       : !connectPlatformModelForm.valid ||
+                         this.connectPlatformModelForm.get('SiteURL').value === ''
+                   " (click)="connectPlatform()" mat-flat-button color="primary" class="me-2 ml-3">
+          {{ isEditMode ? "Update" : "Connect" }}
+        </button>
+        <button mat-dialog-close class="secondary-button">Cancel</button>
+      </div>
+    </div>
+      </mat-card-actions>
+    </div>
+  </div>
+</div>
+
+<div [ngClass]="isModelForConnectPlatform ? 'd-block' : 'd-none'">
+  <div class="collect-platform-form py-4 connect-platform-height">
+    <mat-card-actions class="collect-platform-form-title">
+      <div class="collect-platform-form-ticon-title-row">
+        <h6>Connect Platform</h6>
+      </div>
+      <mat-icon matPrefix mat-dialog-close [svgIcon]="'close_icon_blue'" class="cursor-pointer"></mat-icon>
+    </mat-card-actions>
+    <hr class="text-muted">
+    <div class="container">
+      <p *ngIf="data.ReviewSiteName === 'Google'">
+        <span class="text-dark">Please read before you connect</span><br>
+        We recommend you to click <span class="text-dark">See edit, create and delete your Google business listings</span>
+        (as shown in the image below) when prompted during the auth flow. As that will give Grab Your Reviews access to help
+        you manage your Google reviews and respond to them through AI.
+      </p>
+      <p *ngIf="data.ReviewSiteName !== 'Google'">
+        <span class="text-dark">Please read before you connect</span><br>
+        We recommend you to click <span class="text-dark">Opt into all current and future</span> (as shown in the image
+        below) when prompted during the auth flow. (Don’t worry, you’ll be able to choose later which page you want to
+        connect with Grab Your Reviews)
+      </p>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-6">
+        <img [src]="data.ReviewSiteName === 'Google' ? '../../../../assets/images/google_image.png' : '../../../../assets/images/facebook_image.png'" class="img">
+      </div>
+      <div class="col-md-6">
+        <div class="connection-with-google">
+          <div class="grid-container">
+            <div *ngIf="data.ReviewSiteName !== 'Google'">
+              <img src="../../../../assets/images/continue_with_facebook_image.png" class="img" style="height: 75px;  cursor: pointer;" (click)="noFacebookListing()">
+            </div>
+            <div class="d-flex bordered-container mx-auto mt-2 justify-content-center" *ngIf="data.ReviewSiteName === 'Google'" (click)="noGoogleListing()">
+              <img src="../../../../assets/images/google_logo_image.png" class="google-logo"
+                *ngIf="data.ImageURL || (data.ReviewSiteName && !data.IsCustom)" />
+              <div class="review-site-auth">Sign in with Google</div>
+            </div>
+            <div class="mt-2 mx-auto custom-text">
+              {{ data.ReviewSiteName === "Google" ? "Don't have google business listing access?" : "Don't have facebook business
+              listing access?" }}
+            </div>
+          </div>
+          <div class="text-center text-primary" style="cursor: pointer;" (click)="handleClick()">click here</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

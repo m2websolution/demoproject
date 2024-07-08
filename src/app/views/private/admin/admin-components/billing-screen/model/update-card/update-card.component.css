@@ -1,0 +1,27 @@
+div#card-errors {
+  color: red;
+}
+
+#cardCvv {
+  padding: 6%;
+  border: 1px solid #e2e5ec;
+  border-radius: 5px;
+}
+
+#cardExpiryDate {
+  padding: 6%;
+  border: 1px solid #e2e5ec;
+  border-radius: 5px;
+}
+
+#cardNumber {
+  padding: 3%;
+  border: 1px solid #e2e5ec;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
+
+.f-b {
+  font-weight: bold;
+}

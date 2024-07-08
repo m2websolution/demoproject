@@ -1,0 +1,85 @@
+<!-- Section for profile usage -->
+<mat-card class="common-container-card company-profile-admin">
+  <div
+    class="flex-container"
+    fxLayout="row"
+    fxLayoutAlign="space-between baseline"
+    fxLayout.lt-md="column"
+    fxLayoutAlign.lt-md=""
+  >
+    <div class="flex-item input-full-width-ref">
+      <mat-form-field
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+
+        <input type="text" matInput placeholder="Search" #searchId [(ngModel)]="searchQuery"/>
+        <mat-icon matSuffix color="#A1A1AA" svgIcon="search_icon_grey" />
+      </mat-form-field>
+    </div>
+    <div>
+      <section
+        class="mat-typography overall-review-select"
+        style="display: flex"
+      >
+        <div id="reportrange" class="range-picker-ui">
+          <i class="fa fa-calendar"></i>&nbsp;
+          <span class="range-picker-sepened-fornt"
+            >{{ startDate }} - {{ endDate }}
+          </span>
+          <i class="fa fa-caret-down"></i>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <div>
+    <div class="overflow-auto">
+      <table mat-table [dataSource]="pagedItems" class="mat-elevation-z8">
+        <ng-container matColumnDef="CompanyName">
+          <th mat-header-cell *matHeaderCellDef>Company Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.CompanyName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="UsedEmailCredit">
+          <th mat-header-cell *matHeaderCellDef>Used Email</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.UsedEmailCredit }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="UsedSMSCredit">
+          <th mat-header-cell *matHeaderCellDef>Used SMS</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.UsedSMSCredit }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="NewReview">
+          <th mat-header-cell *matHeaderCellDef>New Review</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.NewReview }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="AvgRating">
+          <th mat-header-cell *matHeaderCellDef>Average rating</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.AvgRating }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <app-paginator
+      [pager]="pager"
+      (setPage)="setPage($event)"
+      (setItems)="setItemsSorting($event)"
+    ></app-paginator>
+  </div>
+</mat-card>

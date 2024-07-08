@@ -1,0 +1,77 @@
+<div>
+  <mat-card-actions class="review-rating-card-header-section">
+  </mat-card-actions>
+  <div class="title-row">
+    <div
+      class="w-100"
+      fxLayout="row"
+      fxLayoutGap="10px"
+      class="button-add-icon-ref"
+    >
+      <mat-form-field
+        class="input-full-width search-field-hover"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <input type="text" (keyup)="filteredItems()" [(ngModel)]="searchQuery" matInput placeholder="Search Review Platforms" />
+        <mat-icon matSuffix color="#A1A1AA" svgIcon="search_icon_grey" />
+      </mat-form-field>
+      <button
+        fxshow
+        fxHide.gt-sm
+        mat-flat-button
+        class="button-add"
+        color="primary"
+        (click)="customLinkDialog()"
+      >
+        <mat-icon style="color: #ffffff" [svgIcon]="'add_icon'"></mat-icon>
+      </button>
+    </div>
+    <div class="actions">
+      <label class="review-label d-none">{{
+        screenSize == "sm" ? "Sort by:" : "Sort :"
+      }}</label>
+      <section
+        class="mat-typography d-none"
+        style="gap: 16px; display: flex; width: 121px; height: 56px"
+      >
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="downIcon d-none"
+        >
+          <mat-select
+            placeholder="Select"
+            disableOptionCentering
+            class="company-dropdown d-none"
+          >
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>
+
+      <button
+        fxHide.sm
+        fxHide.xs
+        (click)="customLinkDialog()"
+        class="primary-button"
+      >
+        <mat-icon
+          style="width: 17px; height: 25px; color: #ffffff; margin-right: 5px"
+          [svgIcon]="'add_icon'"
+        ></mat-icon>
+        Add Custom Links
+      </button>
+    </div>
+  </div>
+  <div>
+    <app-connected-platforms
+      [filteredConnectedData]="filteredConnectedData"
+      [filteredCollectAndgetReviewsData]="filteredCollectAndgetReviewsData"
+      [filteredGetReviewsData]="filteredGetReviewsData"
+      [searchQueryResult]="searchQuery"
+    >
+    </app-connected-platforms>
+  </div>
+</div>

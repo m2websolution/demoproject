@@ -1,0 +1,179 @@
+<div class="domain-setup-container">
+  <div
+    class="common-container-card flex-column"
+    [ngClass]="isDomainAvailable ? 'd-none' : ''"
+  >
+    <div class="light-gray-card setup-subdomain-card">
+      <div class="setup-subdomain-left">
+        <h3>Setup Sub-Domain</h3>
+        <h3 class="d-flex flex-wrap">
+          Setup Brand Information
+          <div class="yellow-text">>> Setup Sub-Domain</div>
+        </h3>
+      </div>
+      <div class="setup-subdomain-right">
+        <img src="assets/images/setup-domain-bg.svg" class="setup-domain-img" />
+      </div>
+    </div>
+
+    <div class="domain-setup-fields">
+      <form [formGroup]="domainSetupForm" (ngSubmit)="createDomain()">
+        <div class="mb-4 admin-form-group">
+          <label class="common-label-font"
+            >Enter your subdomain<sup>*</sup></label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              matInput
+              type="text"
+              placeholder="reviews.yourdomainname.com"
+              formControlName="DomainName"
+            />
+          </mat-form-field>
+          <mat-error
+            class="error-message"
+            *ngIf="
+              domainSetupForm.get('DomainName').touched &&
+              domainSetupForm.get('DomainName').hasError('required')
+            "
+            >Subdomain name is required</mat-error
+          >
+          <mat-error
+            class="error-message"
+            *ngIf="
+                domainSetupForm.get('DomainName').touched && !domainSetupForm.get('DomainName').hasError('required') &&
+                domainSetupForm.get('DomainName').errors?.['invalidSubdomain']
+              "
+            >Invalid subdomain name format</mat-error
+          >
+        </div>
+        <div class="mb-4 light-gray-card domain-setup-note">
+          <div class="note-info">
+            <mat-icon [svgIcon]="'action_info_filled'"></mat-icon>
+            <h4 class="m-0">Note</h4>
+          </div>
+          <div>
+            <p class="text-dark">For White-Labelling Grab Your Reviews.</p>
+          </div>
+        </div>
+        <div class="domain-button">
+          <button
+            type="submit"
+            mat-flat-button
+            color="primary"
+            [disabled]="domainSetupForm.invalid"
+          >
+            Setup sub-domain
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div
+    class="common-container-card mt-3 flex-column"
+    [ngClass]="isDomainAvailable && !isVerify ? '' : 'd-none'"
+  >
+    <div><h3 class="text-center"></h3></div>
+    <div class="record-container">
+      <div class="domain-table-text">
+        <p class="text-dark">
+          Set the following record on your DNS provider to continue
+        </p>
+        <div class="domain-record-table">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef class="text-start">Type</th>
+              <td mat-cell *matCellDef="let element" class="text-start ps-3">
+                <span>
+                  {{ element.Type }}
+                </span>
+                <span class="icon-container">
+                  <mat-icon
+                    class="icon"
+                    (click)="copyItem(element.Type)"
+                    [svgIcon]="'copy_keyboard'"
+                  />
+                </span>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef class="text-start">Name</th>
+              <td mat-cell *matCellDef="let element" class="text-start ps-3">
+                <span>
+                  {{ element.Name }}
+                </span>
+                <span class="icon-container">
+                  <mat-icon
+                    class="icon"
+                    (click)="copyItem(element.Name)"
+                    [svgIcon]="'copy_keyboard'"
+                  />
+                </span>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+              <th mat-header-cell *matHeaderCellDef class="text-start">
+                Value
+              </th>
+              <td mat-cell *matCellDef="let element" class="text-start ps-3">
+                <span>
+                  {{ element.Value }}
+                </span>
+                <span class="icon-container">
+                  <mat-icon
+                    class="icon"
+                    (click)="copyItem(element.Value)"
+                    [svgIcon]="'copy_keyboard'"
+                  />
+                </span>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+      <div class="verify-container">
+        <div [ngClass]="isVerify ? 'd-none' : ''" class="not-verified">
+          <mat-icon [svgIcon]="'red_cross'"></mat-icon
+          ><label class="not-verified-text">Not verified</label>
+        </div>
+        <div class="verify-btn-group">
+          <button
+            [ngClass]="isVerify ? 'd-none' : ''"
+            type="button"
+            (click)="verifyDomain()"
+            mat-flat-button
+            color="primary"
+          >
+            Verify Domain
+          </button>
+          <button
+            type="button"
+            (click)="deleteDomain()"
+            mat-flat-button
+            color="warn"
+          >
+            Delete Domain
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="common-container-card mt-3 d-flex flex-column justify-content-center align-items-center"
+    [ngClass]="isDomainAvailable && isVerify ? '' : 'd-none'"
+  >
+    <mat-icon class="tick-icon" [svgIcon]="'action_tick_filled'"></mat-icon>
+    <h3>
+      Domain Name:
+      <span class="text-primary">{{ domainDetail.DomainName }}</span>
+    </h3>
+    <h4>You can start using the above domain</h4>
+    <button type="button" (click)="deleteDomain()" mat-flat-button color="warn">
+      Delete Domain
+    </button>
+  </div>
+</div>

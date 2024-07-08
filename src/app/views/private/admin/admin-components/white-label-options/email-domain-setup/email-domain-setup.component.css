@@ -1,0 +1,15 @@
+.primary-email-domain {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.word-break {
+  word-wrap: break-word;
+  width: 300px
+}
+
+.tick-icon {
+  width: 150px;
+  height: 150px;
+}

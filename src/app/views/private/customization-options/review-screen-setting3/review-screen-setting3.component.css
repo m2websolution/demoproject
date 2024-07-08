@@ -1,0 +1,94 @@
+/* m-webwsolution-main-content section */
+.m-webwsolution-main-card {
+  width: 100%;
+  background-image: url("../../../../../assets/svg/icons/filled/m2webwolutionbackground.svg");
+  border-image-repeat: none;
+  position: relative;
+  color: #27272a;
+  height: 100%;
+}
+
+.m-webwsolution-section-linke-dislike-main-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+}
+
+.m-webwsolution-section-linke-dislike-sec {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 28px 20px 34px 20px;
+}
+
+.customberibeing-section-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #27272a;
+}
+
+.m-webwsolution-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.m-webwsolution-main-logo-sec {
+  text-align: center;
+  margin-top: 32px;
+  height: auto;
+  width: 100%;
+}
+
+.m-webwsolution-main-logo-sec mat-icon {
+  width: 550.73px;
+  height: 140px;
+}
+
+.m2websolutionlogo_svg {
+  width: 50%;
+  height: auto;
+}
+
+.m2solutionlikedislike-svg-section {
+  /* margin: 147px 0px 0px; */
+}
+
+@media (max-width: 800px) {
+  .m-webwsolution-main-logo-sec mat-icon {
+    width: 314.7px;
+    height: 80px;
+  }
+
+  .m2solutionlikedislike-svg-section {
+    /* margin: 136px 0px !important; */
+  }
+
+  .m-webwsolution-section-linke-dislike-sec {
+    margin: 0px !important;
+  }
+
+  .m-webwsolution-section-linke-dislike-main-sec {
+    margin: 16px;
+  }
+
+  .m2websolutionlogo_svg {
+    width: 214.7px;
+  }
+}
+
+.card-text {
+  color: black;
+}
+
+

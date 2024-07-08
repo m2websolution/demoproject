@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\views",
+    "\\src\\app\\views\\private",
+    "\\src\\app\\views\\private\\integrations",
+    "\\src\\app\\views\\private\\integrations\\integrations-zapier",
+    "\\src\\app\\views\\public"
+  ],
+  "PreviewInSolutionExplorer": false
+}

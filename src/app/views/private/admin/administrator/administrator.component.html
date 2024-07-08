@@ -1,0 +1,129 @@
+<div class="admin-main-container">
+  <app-alerts class="error-msg"></app-alerts>
+
+  <mat-card-actions class="review-rating-card-header-section">
+    <section class="mat-typography administration-margin-sec">
+      <h1 class="common-main-title-font">Administration</h1>
+    </section>
+
+    <div
+      style="display: flex; flex-direction: row; align-items: center; gap: 10px"
+      [routerLink]="'/dashboard'"
+      role="button"
+    >
+      <mat-icon
+        class="next-arrow"
+        style="scale: 0.5; height: 28px"
+        [svgIcon]="'next_icon_blue'"
+      ></mat-icon>
+      <a> Back to dashboard</a>
+    </div>
+  </mat-card-actions>
+
+  <mat-card class="common-container-card">
+    <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)" [selectedIndex]="openedTab">
+      <!-- (wheel)="scrollTabs($event)" -->
+      <mat-tab *ngFor="let item of adminTabs" label="{{ item.name }}">
+        <div *ngIf="item.subTabs.length > 0">
+          <hr class="horizontal-line-margin" />
+          <!-- ----------------Web Tab Select---------------- -->
+          <div class="sub-tab-group">
+            <mat-tab-group #tabGroup1 (selectedTabChange)="tabChanged1($event)">
+              <mat-tab
+                *ngFor="let item1 of item.subTabs"
+                label="{{ item1 }}"
+              ></mat-tab>
+              <!-- <mat-tab label="Domain Setup"></mat-tab>
+            <mat-tab label="Email Domain setup"></mat-tab> -->
+            </mat-tab-group>
+          </div>
+          <!-- ---------------Mobile Dropdown Select---------------- -->
+          <div class="sub-tab-group-mobile">
+            <mat-form-field appearance="outline" value="openedTab1">
+              <mat-select
+                [(ngModel)]="openedTab1"
+                (ngModelChange)="tabGroup1.selectedIndex = openedTab1"
+              >
+                <mat-option
+                  *ngFor="let tab of item.subTabs; let i = index"
+                  [value]="i"
+                  >{{ tab }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+
+  <div class="tab-contents" [ngSwitch]="openedTab">
+    <ng-template [ngSwitchCase]="0">
+      <app-branding></app-branding>
+    </ng-template>
+    <ng-template [ngSwitchCase]="1">
+      <div [ngSwitch]="openedTab1">
+        <ng-template [ngSwitchCase]="0">
+          <app-brand-information></app-brand-information>
+        </ng-template>
+        <ng-template [ngSwitchCase]="1">
+          <app-domain-setup></app-domain-setup>
+        </ng-template>
+        <ng-template [ngSwitchCase]="2">
+          <app-email-domain-setup></app-email-domain-setup>
+        </ng-template>
+      </div>
+    </ng-template>
+    <ng-template [ngSwitchCase]="2">
+      <app-profile-usage></app-profile-usage>
+    </ng-template>
+    <ng-template [ngSwitchCase]="3">
+      <app-compony-profile></app-compony-profile>
+    </ng-template>
+    <ng-template [ngSwitchCase]="4">
+      <app-usage-addon-purchase></app-usage-addon-purchase>
+    </ng-template>
+    <ng-template [ngSwitchCase]="5">
+      <ng-container [ngSwitch]="selectedType">
+        <div *ngSwitchCase="1">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-bottom: 10px;
+              justify-content: end;
+            "
+            role="button"
+            (click)="selectedType = 0"
+          >
+            <mat-icon
+              class="next-arrow"
+              style="scale: 0.5; height: 28px"
+              [svgIcon]="'next_icon_blue'"
+            ></mat-icon>
+            <a> Back to Billing</a>
+          </div>
+          <app-select-plan-screen></app-select-plan-screen>
+        </div>
+        <div *ngSwitchDefault>
+          <app-billing-screen
+            (onSelectPlan)="onSelectPlan($event)"
+          ></app-billing-screen>
+        </div>
+      </ng-container>
+    </ng-template>
+    <ng-template [ngSwitchCase]="6">
+      <app-admin-users></app-admin-users>
+    </ng-template>
+    <ng-template [ngSwitchCase]="7">
+      <app-twilio-integration></app-twilio-integration>
+    </ng-template>
+    <ng-template [ngSwitchCase]="8">
+      <app-admin-my-account></app-admin-my-account>
+    </ng-template>
+    <ng-template [ngSwitchCase]="9">
+      <app-admin-change-password></app-admin-change-password
+    ></ng-template>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<mat-card class="review-rating-card review-card">
+  <mat-card-actions class="d-flex justify-content-between">
+    <mat-card-header>
+      <mat-card-title class="review-rating-card-title">{{
+        data.title
+      }}</mat-card-title>
+      <mat-card-title class="review-rating-card-sub-title">
+        <p>{{ data.discription }}</p>
+        <mat-card-actions class="review-count-col">
+          <mat-card-title class="review-rating-card-count"
+            >{{ data.count }}
+          </mat-card-title>
+          <mat-card-title
+            class="review-rating-chip"
+            [ngClass]="data.isPositive ? 'positive' : 'negative'"
+          >
+            <span class="d-flex justify-content align-items-center">
+              <p
+                style="margin: 0px"
+                [ngClass]="data.isPositive ? 'positive' : 'negative'"
+              >
+                {{ data.percentage }}%
+              </p>
+              &nbsp;<mat-icon
+                style="height: 29px; width: 24px"
+                [svgIcon]="data.isPositive ? 'going_up' : 'tavor'"
+              ></mat-icon>
+            </span>
+          </mat-card-title>
+        </mat-card-actions>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="review-img-area img-padding">
+      <img
+        class="review-rating-card-logo"
+        mat-card-image
+        [src]="'assets/images/' + data.icon + '.svg'"
+        alt="Photo of a Shiba Inu"
+      />
+    </mat-card-actions>
+  </mat-card-actions>
+</mat-card>

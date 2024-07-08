@@ -1,0 +1,66 @@
+.mat-tab-margin-container {
+  margin-top: 2em;
+}
+.copy-link-btn {
+  background: #e2f2ff;
+  border: 1.5px solid ;
+  border-radius: 8px;
+  padding: 10px;
+  height: 44px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  width: 128px;
+}
+
+/* Heta Css Start */
+
+.custom-review-sec {
+  min-height: initial;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+
+
+hr.content-divide-sec.ng-star-inserted {
+  margin: 32px 0 16px;
+}
+
+@media (max-width: 389px) {
+  .common-container-card {
+    padding: 10px !important;
+  }
+}
+
+@media (max-width: 959px) {
+
+  .header-breadcrumb {
+    padding-top: 0 !important;
+  }
+  hr.content-divide-sec.ng-star-inserted {
+    margin: 16px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .mat-tab-margin-container {
+    margin-top: 1.25em;
+  }
+  .tab-select-component {
+    width: 100%;
+    display: block !important;
+  }
+  .content-setting-tab-group .mat-mdc-tab-body-content {
+    overflow: hidden !important;
+  }
+  .custom-review-sec {
+    align-items: end !important;
+  }
+}
+.tab-select-component {
+  width: 100%;
+  display: none;
+}

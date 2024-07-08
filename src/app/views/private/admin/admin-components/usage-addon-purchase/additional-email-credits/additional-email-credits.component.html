@@ -1,0 +1,174 @@
+<div class="common-mat-dialog-padding">
+  <div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <h6 class="common-mat-dialog-header-title">Additional {{data.message.type}} Credits</h6>
+    <mat-icon
+      matPrefix
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      style="width: 20px; height: 25px"
+      class="cursor-pointer"
+    ></mat-icon>
+  </div>
+  <hr />
+
+  <div class="additional-email-credits-main-section">
+    <div
+      fxLayout="row"
+      fxLayoutAlign.xs="space-between baseline"
+      class="additional-email-credits-toggle-width"
+    >
+      <mat-radio-group
+        [(ngModel)]="radioOptions"
+        name="radioButtons"
+      >
+      <mat-radio-button id="radio_1" value="1" color="primary">
+        <span class="toggale-title-font">One time</span></mat-radio-button
+      >
+      <mat-radio-button id="radio_2" value="2" color="primary"
+        ><span class="toggale-title-font">Recurring</span></mat-radio-button
+      >
+      </mat-radio-group>
+    </div>
+    <div class="increment-decrement-sec">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between baseline"
+        fxLayoutGap="12px"
+        fxLayoutGap.lt-sm="16px"
+      >
+        <button
+          mat-flat-button
+          color="primary"
+          class="btn-decrement"
+          (click)="decrement()"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_minus_icon'"
+          ></mat-icon>
+        </button>
+        <span class="counter-font">{{ counter }}</span>
+        <button
+          mat-flat-button
+          color="primary"
+          class="btn-increment"
+          (click)="increment()"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_add_icon'"
+          ></mat-icon>
+        </button>
+      </div>
+      <span class="dollur-font" *ngIf="data.message.type === 'Email' || data.message.type === 'SMS'">$ {{data.message.type ===
+        "Email" ? (counter/1000)*5 : data.message.type === "SMS" ?
+        (counter/100)*8 : 0}}</span>
+    </div>
+
+    <div class="visha-img-add-new-card-sec">
+      <h6 class="payment-method-font m-0">Payment method</h6>
+      <div
+        class="w-100"
+        fxLayout="column"
+        fxLayout.lt-sm="row"
+        fxLayoutAlign="space-between center"
+      >
+        <!-- <mat-radio-group
+          [(ngModel)]="radioOptions"
+          name="radioButtons"
+         
+        > -->
+        <mat-radio-button
+          id="radio_1"
+          value="1"
+          color="primary"
+          [checked]="addNewCard"
+          (change)="onRadioButtonChange()"
+          *ngIf="false"
+        >
+          <span class="toggale-title-font">Add new card</span></mat-radio-button
+        >
+        <!-- </mat-radio-group> -->
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="12px">
+          <div>
+            <h6 class="we-accept-font m-0">We accept</h6>
+          </div>
+          <img src="assets/images/visa.jpg" class="visa-card-img" />
+          <img src="assets/images/master-visa-img.jpg" class="visa-card-img" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="payment-method-main-sec" [ngClass]="addNewCard ? '' : 'd-none'">
+    <h6 class="new-payment-method-font m-0">New payment method</h6>
+
+    <div class="row-card-input-container-width p-0">
+      <label class="common-label-font">Card Number</label>
+      <mat-form-field class="input-full-width" appearance="outline">
+        <input matInput placeholder="1234 1234 1234 1234" type="number" />
+        <span matPrefix class="px-3">
+          <mat-icon [svgIcon]="'atm_icon'" class="cursor-pointer"></mat-icon>
+        </span>
+        <span matSuffix class="px-3">
+          <mat-icon
+            class="atm-matPrefix-padding-sec"
+            [svgIcon]="'atm_left_icon'"
+            class="cursor-pointer"
+          ></mat-icon
+        ></span>
+      </mat-form-field>
+    </div>
+
+    <mat-card-actions
+      fxLayout="row "
+      fxLayoutGap.gt-sm="10px"
+      class="p-0 expiry-date-ccv-width-sec-responsive"
+    >
+      <div class="row-card-input-container-width">
+        <label class="common-label-font">Expiry Date</label>
+        <mat-form-field
+          class="input-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <input type="text" matInput placeholder="MM / YY" />
+        </mat-form-field>
+      </div>
+
+      <div class="row-card-input-container-width">
+        <label class="common-label-font">CVC</label>
+        <mat-form-field
+          class="input-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <input type="text" matInput placeholder="CVC" />
+        </mat-form-field>
+      </div>
+    </mat-card-actions>
+  </div>
+  <div class="note-card-section">
+    <h6 class="note-font gap-2 m-0">
+      <mat-icon
+        [svgIcon]="'i_icon_set_limit'"
+        #tooltip="matTooltip"
+        (click)="tooltip.toggle()"
+        matTooltip="This will be your default source for all future
+      payments."
+        matTooltipTouchGestures="off"
+      ></mat-icon>
+      Note
+    </h6>
+    <mat-card-subtitle class="unlimited-email-sms-text-font"
+      >This will be your default source for all future
+      payments.</mat-card-subtitle
+    >
+  </div>
+
+  <mat-card-actions class="add-manual-buttons d-flex justify-content-center">
+    <button color="primary" class="primary-button me-2" fxFlex.xs="0 1 calc(100%-10px)" fxFlex.sm="0 1 calc(100%-10px)"
+      (click)="onPurchaseClick()" [disabled]="counter <= 0" [ngClass]="{'disabled-button': counter <= 0}">
+      Purchase
+    </button>
+  </mat-card-actions>
+</div>

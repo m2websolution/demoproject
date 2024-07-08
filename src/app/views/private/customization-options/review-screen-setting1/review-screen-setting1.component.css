@@ -1,0 +1,106 @@
+/* m-webwsolution-main-content section */
+.m-webwsolution-main-card {
+  width: 100%;
+  background-image: url("../../../../../assets/svg/icons/filled/m2webwolutionbackground.svg");
+  border-image-repeat: none;
+  position: relative;
+  color: #27272a;
+  height: 100%;
+}
+.m-webwsolution-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.m-webwsolution-section-linke-dislike-sec {
+  /* margin: 75px 45px; */
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 28px 20px 34px 20px;
+}
+
+.m-webwsolution-section-linke-dislike-main-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+}
+.customberibeing-section-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #27272a;
+}
+
+.m-webwsolution-main-logo-sec {
+  text-align: center;
+  margin-top: 32px;
+  height: auto;
+  width: 100%;
+}
+
+.m-webwsolution-main-logo-sec mat-icon {
+  width: 550.73px;
+  height: 140px;
+}
+.m2websolutionlogo_svg {
+  width: 20%;
+  height: auto;
+}
+.m2solutionlikedislike-svg-section {
+  /* margin: 150px 0px 0px; */
+}
+.m2solutionlikedislike-svg {
+  width: 204px;
+  height: 204px;
+  margin-bottom: 12px;
+}
+.review_screen_opecity {
+  opacity: 0.6;
+}
+.review_screen_opecity:hover {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+@media (max-width: 800px) {
+  .m-webwsolution-main-logo-sec mat-icon {
+    width: 314.7px;
+    height: 80px;
+  }
+  .m2solutionlikedislike-svg-section {
+    /* margin: 136px 0px !important; */
+  }
+  .m-webwsolution-section-linke-dislike-sec {
+    margin: 0px !important;
+  }
+
+  .m-webwsolution-section-linke-dislike-main-sec {
+    margin: 16px;
+  }
+  .m2websolutionlogo_svg {
+    width: 214.7px;
+  }
+  .m2solutionlikedislike-svg {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .m2solutionlikedislike-svg-section {
+    margin: 40px 0px !important;
+  }
+}

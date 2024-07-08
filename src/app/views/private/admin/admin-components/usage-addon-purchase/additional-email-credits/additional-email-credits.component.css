@@ -1,0 +1,293 @@
+.additional-email-credits-main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+.btn-decrement {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  min-width: 48px;
+  height: 48px;
+  background: #fe3f34;
+  border-radius: 16px;
+}
+.btn-increment {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 16px;
+}
+.counter-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #27272a;
+}
+@media (max-width: 500px) {
+  .additional-email-credits-toggle-width {
+    width: 100%;
+  }
+
+  .increment-decrement-sec {
+    display: flex;
+    flex-direction: row !important;
+    gap: 50px !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .visha-img-add-new-card-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .visa-card-img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .we-accept-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    color: #18181b;
+  }
+
+  .unlimited-email-sms-text-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    color: #18181b;
+  }
+  .btn-decrement {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    min-width: 40px;
+    height: 40px;
+    background: #fe3f34;
+    border-radius: 16px;
+  }
+  .btn-increment {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 16px;
+  }
+}
+.dollur-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #faa81a;
+}
+
+.visa-card-img {
+  width: 62.12px;
+  /* height: 39.19px; */
+}
+.note-card-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 8px;
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  margin: 20px 0px;
+}
+.note-card-section .note-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #18181b;
+}
+
+.note-card-section .mat-card-subtitle {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #18181b;
+}
+
+.note-font mat-icon {
+  width: 18.5px;
+  height: 30px;
+}
+
+.new-payment-method-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #18181b;
+}
+
+.row-card-input-container-width {
+  width: 100%;
+}
+
+.row-card-input-container-margin-bottom {
+  margin-bottom: 24px;
+  align-items: baseline;
+}
+
+@media (max-width: 960px) {
+  .row-card-input-container-margin-bottom {
+    margin-bottom: 12px;
+  }
+  .payment-method-main-sec {
+    margin: 0px 0px 0px !important;
+  }
+}
+
+.payment-method-main-sec {
+  margin: 0px 24px 0px;
+}
+@media (max-width: 500px) {
+  .toggale-title-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+  .expiry-date-ccv-width-sec-responsive {
+    width: 50% !important;
+    gap: 3px;
+  }
+
+  .new-payment-method-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+    text-align: center;
+
+    color: #18181b;
+  }
+}
+.payment-method-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  color: #18181b;
+}
+.we-accept-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #18181b;
+}
+
+.purchase-buttom-footer-margin-sec {
+  margin-top: 20px;
+}
+
+.btn-increment-decrement-margin-sec {
+  margin: 20px 0px 16px;
+}
+
+.payment-method-margin-sec {
+  margin: 20px 0px 16px;
+}
+
+.we-accept-margin-sec {
+  margin: 8px 0px 20px;
+}
+
+.counter-font-margin-sec {
+  margin: 0px 0px 20px;
+}
+.atm-matPrefix-padding-sec {
+  padding: 0px 5px 0px;
+}
+
+.increment-decrement-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.visha-img-add-new-card-se {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.payment-method-main-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.increment-decrement-sec mat-icon {
+  height: 2.125rem;
+}
+.unlimited-email-sms-text-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #18181b;
+}
+.toggale-title-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.primary-button.disabled-button {
+  background-color: #d6d6d6;
+  color: #6c757d;
+  border: 1px solid #d6d6d6;
+  cursor: not-allowed;
+}

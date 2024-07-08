@@ -1,0 +1,22 @@
+.employee-qr-code-main-section {
+  padding: 10px 24px !important;
+}
+
+
+.add-manual-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  margin: 16px 0px;
+}
+
+@media (max-width: 500px) {
+  .add-manual-input-row {
+    display: grid !important;
+    gap: 0px !important;
+    justify-content: none !important;
+  }
+  mat-form-field {
+    margin-bottom: 12px;
+  }
+}

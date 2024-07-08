@@ -1,0 +1,76 @@
+<div class="widget-main-modal modal-padding">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="d-flex justify-content-between">
+      <h2>Micro Review Count</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+
+    <div class="widget-modal-container">
+      <div class="left-part">
+        <app-widget-customize
+          [widgetData]="dialogData"
+          (fieldValuesChanged)="onFieldValuesChanged($event)"
+          (isShowJsBlock)="showJsBlock($event)"
+          [footer]="false"
+        ></app-widget-customize>
+      </div>
+      <div class="right-part" [hidden]="isShowJsCodeBlock">
+        <div class="mt-3">
+          <h3>Preview</h3>
+          <div class="preview-cards">
+            <mat-card
+              class="widget-micro-card"
+              [ngStyle]="{ background: state.backColor }"
+            >
+              <div class="micro-left-part">
+                <div
+                  class="micro-text-container"
+                  [ngStyle]="{ color: state.fontColor }"
+                >
+                  <h5 class="m-0">Our customers say</h5>
+                  <h5><strong>Excellent</strong></h5>
+                </div>
+                <div
+                  class="micro-text-container"
+                  [ngStyle]="{ color: state.fontColor }"
+                >
+                  <p class="micro-review-stars">
+                    <app-start-rating
+                      *ngIf="widgetReviewSummary"
+                      [starClickable]="false"
+                      [id]="{
+                        stars: widgetReviewSummary.AvgRating,
+                        selected: true
+                      }"
+                    ></app-start-rating>
+                  </p>
+                  <h5 *ngIf="widgetReviewSummary" class="m-0">
+                    {{ widgetReviewSummary.AvgRating }} out of 5 based on
+                    <strong
+                      >{{ widgetReviewSummary.TotalReviews }} reviews</strong
+                    >
+                  </h5>
+                </div>
+              </div>
+              <div class="micro-review-image-container">
+                <img
+                  mat-card-image
+                  class="widget-micro-image"
+                  src="assets/images/star_picker_man.png"
+                  alt="Google Icon"
+                />
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

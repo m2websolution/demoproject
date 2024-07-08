@@ -1,0 +1,252 @@
+<mat-card-actions fxLayout="row " fxLayoutAlign="space-between baseline" fxLayout.sm="column" fxLayout.xs="column"
+  style="margin-bottom: 16px">
+  <div fxLayout.xs="row" fxLayout.sm="row" fxAlign.xs="start" style="width: max-content">
+    <nav class="header-breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item first-item">
+          <a href="#" class="common-main-title-font">Reports</a>
+        </li>
+        <li class="breadcrumb-item actives" aria-current="page">My Report</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="from-to-date">
+    <div class="from-to-date-component">
+      <label class="me-2">From:</label>
+      <mat-form-field appearance="outline" class="form-element input-full-width">
+        <input matInput placeholder="mm-dd-yyyy" [matDatepicker]="fromDatePicker" [(ngModel)]="fromDate"
+          (dateChange)="dateChanged($event)" />
+        <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #fromDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="from-to-date-component">
+      <label class="me-2">To:</label>
+      <mat-form-field appearance="outline" class="form-element input-full-width">
+        <input matInput placeholder="mm-dd-yyyy" [matDatepicker]="toDatePicker" [(ngModel)]="toDate"
+          (dateChange)="dateChanged($event)" />
+        <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #toDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-card-actions>
+<div class="report-page">
+  <div class="my-report-card-container">
+    <mat-card class="my-report-card blue-bg-selected common-primary-bg">
+      <h3 class="common-mat-dialog-header-title" style="color: #ffffff">
+        Total Reviews
+      </h3>
+      <div>
+        <h2>{{myReport?.TotalReviews}}</h2>
+        <div class='stars-outer'>
+          <div class='stars-inner' [style.width.%]="100"></div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="my-report-card grey-curve-bg">
+      <h3 class="common-mat-dialog-header-title">Average Rating</h3>
+      <div>
+        <h2>{{myReport?.AvgRating}}</h2>
+        <div class='stars-outer'>
+          <div class='stars-inner' [style.width.%]="averageRatingPr"></div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="my-report-card grey-curve-bg">
+      <h3 class="common-mat-dialog-header-title">Customers Invited</h3>
+      <div>
+        <h2></h2>
+        <div class="customer-invite-icon">
+          <span class="card-email-icon">
+            <mat-icon color="primary" [svgIcon]="'email'"></mat-icon>
+          </span>
+          <h2>{{myReport?.CustomersInvited}}</h2>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="my-report-charts sentiment-platform-container">
+    <div class="all-pr-sec report-sentiment-chart">
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Sentiment Analysis</h1>
+        </section>
+        <a routerLink="/reports/view-all-list">View all Sentiments</a>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <app-doughnut [sentiment]="myReport?.sentiment_Analysis" />
+    </div>
+
+    <div class="platform-chart-container">
+      <div class="all-pr-sec review-platform-card" [ngStyle.lt-md]="'margin-bottom: 32px;margin-top: 32px'"
+        [ngStyle.gt-md]="'margin-bottom: 32px'">
+        <mat-card-actions class="review-rating-card-header-section">
+          <section class="mat-typography">
+            <h1>Review By Platform</h1>
+          </section>
+        </mat-card-actions>
+        <hr class="hr-tag" />
+        <div class="mt-5" *ngIf="notReviewByPlatformData">
+          <h5 class="text-center my-auto">No data available.</h5>
+        </div>
+        <div class="chart-label-container">
+          <div class="review-by-platform-chart">
+            <canvas id="review-by-platform">{{ reviewByPlatformchart }}</canvas>
+          </div>
+          <div class="label-container platform-label-container">
+            <div [ngClass]="(reviewLabels.length === 1 || reviewLabels.length === 2) ? 'platform' : 'label-circle-container'" *ngFor="let item of reviewLabels">
+              <div class="label-circle" [ngStyle]="{ 'background-color': item?.color }"></div>
+              <label>{{ item?.name }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="all-pr-sec review-platform-card">
+        <mat-card-actions class="review-rating-card-header-section">
+          <section class="mat-typography">
+            <h1>Rating By Platform</h1>
+          </section>
+        </mat-card-actions>
+        <hr class="hr-tag" />
+        <div class="mt-5" *ngIf="notRatingByPlatformData">
+          <h5 class="text-center my-auto">No data available.</h5>
+        </div>
+        <div class="rating-by-platform-chart" *ngIf="!notRatingByPlatformData">
+          <canvas id="rating-by-platform">{{ ratingByPlatformchart }}</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="all-pr-sec overall-stat-container">
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography w-100 d-flex justify-content-between">
+          <h1>Overall Stats</h1>
+          <div class="chart-labels d-none d-lg-flex d-md-flex d-sm-flex">
+            <div class="label-circle-container">
+              <div class="label-circle" style="background-color: #22c55e"></div>
+              <label class="common-label-font">Review stars</label>
+            </div>
+            <div class="label-circle-container">
+              <div class="label-circle common-primary-bg"></div>
+              <label class="common-label-font">Review Count</label>
+            </div>
+          </div>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="mt-5" *ngIf="notOverallStats">
+        <h5 class="text-center my-auto">No data available.</h5>
+      </div>
+      <div class="chart-container stacked-bar" *ngIf="!notOverallStats">
+        <canvas id="overall-stats">{{ overallStatschart }}</canvas>
+      </div>
+      <div class="chart-labels d-lg-none d-md-none d-sm-none">
+        <div class="label-circle-container">
+          <div class="label-circle common-primary-bg"></div>
+          <label>Review stars</label>
+        </div>
+        <div class="label-circle-container">
+          <div class="label-circle" style="background-color: #faa81a"></div>
+          <label>Review Count</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-report-charts conversion-container">
+    <div ngClass.lt-md="col-12" fxFlex="0 1 auto" ngClass="col-6" class="all-pr-sec sentiment-analysis-chart">
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Email Conversion</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="mt-5" *ngIf="notEmailConversionStatsList">
+        <h5 class="text-center my-auto">No data available.</h5>
+      </div>
+        <div class="chart-container stacked-bar" *ngIf="!notEmailConversionStatsList">
+          <canvas id="email-conversion">{{ emailConversionchart }}</canvas>
+        </div>
+        <div class="conversion-stat-labels" *ngIf="!notEmailConversionStatsList">
+          <div class="label-circle-container" *ngFor="let item of emailConversionData">
+            <div class="label-circle" [ngStyle]="{ 'background-color': item?.color }"></div>
+            <label>{{ item?.name }}</label>
+          </div>
+        </div>
+    </div>
+    <div ngClass.lt-md="col-12" fxFlex="0 1 auto" ngClass="col-6" class="all-pr-sec report-sentiment-chart">
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>SMS Conversion</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="mt-5" *ngIf="notSmsConversionStatsList">
+        <h5 class="text-center my-auto">No data available.</h5>
+      </div>
+        <div class="chart-container stacked-bar" *ngIf="!notSmsConversionStatsList">
+          <canvas id="sms-conversion">{{ smsConversionchart }}</canvas>
+        </div>
+        <div class="conversion-stat-labels" *ngIf="!notSmsConversionStatsList">
+          <div class="label-circle-container" *ngFor="let item of smsConversionData">
+            <div class="label-circle" [ngStyle]="{ 'background-color': item.color }"></div>
+            <label>{{ item.name }}</label>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="my-report-charts qr-sentiment-container">
+    <div ngClass.lt-md="col-12" fxFlex="0 1 auto" ngClass="col-6"
+      class="all-pr-sec report-sentiment-chart qr-conversion-chart">
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>QR Conversion</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="mt-5" *ngIf="notQrCodeConversionStates">
+        <h5 class="text-center my-auto">No data available.</h5>
+      </div>
+      <ng-container>
+        <div class="qr-conversion-chart">
+          <canvas id="qr-conversion">{{ qrConversionchart }}</canvas>
+        </div>
+        <div class="chart-labels justify-content-center mt-2" *ngIf="!notQrCodeConversionStates">
+          <div class="label-circle-container">
+            <div class="label-circle common-primary-bg"></div>
+            <label>Visits</label>
+          </div>
+          <div class="label-circle-container">
+            <div class="label-circle" style="background-color: #faa81a"></div>
+            <label>Delivered</label>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div ngClass.lt-md="col-12" fxFlex="0 1 auto" ngClass="col-6" class="all-pr-sec report-sentiment-chart">
+      <mat-card-actions class="review-rating-card-header-section">
+        <section class="mat-typography">
+          <h1>Overall Sentiment</h1>
+        </section>
+      </mat-card-actions>
+      <hr class="hr-tag" />
+      <div class="overall-sentiment-graph-container">
+        <div class="">
+           <div id="power-gauge"></div>
+        </div>
+      </div>
+      <div class="overall-sentiment-label-container">
+        <div class="row label-container label-card">
+          <div class="label-circle-container col-4" *ngFor="let item of overallSentiment">
+            <div class="label-circle" [ngStyle]="{ 'background-color': item.color }"></div>
+            <label>{{ item.name }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

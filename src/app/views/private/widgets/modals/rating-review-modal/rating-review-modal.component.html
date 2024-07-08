@@ -1,0 +1,128 @@
+<div class="widget-main-modal modal-padding">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="d-flex justify-content-between">
+      <h2>Rating Overview</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+
+    <div class="widget-modal-container">
+      <div class="modal-header modal-header-mobile" [hidden]="isShowJsCodeBlock" *ngIf="!dialogData.isAllow">
+        <h6>Upgrade your plan to access this widget</h6>
+        <button color="primary" class="primary-button">UPGRADE NOW</button>
+      </div>
+      <div class="left-part">
+        <app-widget-customize
+          [widgetData]="dialogData"
+          (fieldValuesChanged)="onFieldValuesChanged($event)"
+          (ratingOverviewDataChanged)="widgetDataChanged($event)"
+          (isShowJsBlock)="showJsBlock($event)"
+          [footer]="false"
+        ></app-widget-customize>
+      </div>
+      <div class="right-part" [hidden]="isShowJsCodeBlock">
+        <div class="modal-header modal-header-web" *ngIf="!dialogData.isAllow">
+          <h6>Upgrade your plan to access this widget</h6>
+          <button color="primary" class="primary-button">UPGRADE NOW</button>
+        </div>
+        <div class="mt-3">
+          <h3>Preview</h3>
+          <div class="preview-cards">
+            <mat-card
+              class="widget-rating-card"
+              [ngStyle]="{ background: state.backColor }"
+            >
+              <div
+                class="rating-left-part"
+                [ngStyle]="{
+                  backgroundColor: state.fontColor == '#000000' ? '#FAFAFB' : ''
+                }"
+              >
+                <div>
+                  <h3 [ngStyle]="{ color: state.fontColor }">
+                    <strong>Ratings Overview</strong>
+                  </h3>
+                </div>
+                <div>
+                  <span
+                    class="rating-value"
+                    [ngStyle]="{ color: state.fontColor }"
+                    >{{ ratingOverviewData.avgRating }}</span
+                  >
+                  <p
+                    class="rating-stars-overview"
+                    *ngIf="ratingOverviewData.avgRating"
+                  >
+                    <app-start-rating
+                      [starClickable]="false"
+                      [id]="{
+                        stars: averageRating,
+                        selected: true
+                      }"
+                    ></app-start-rating>
+                  </p>
+                </div>
+              </div>
+              <div class="rating-right-part">
+                <div>
+                  <h3 [ngStyle]="{ color: state.fontColor }">
+                    Over All Ratings
+                  </h3>
+                </div>
+                <div>
+                  <div
+                    class="rating-slider-container"
+                    *ngFor="
+                      let item of ratingOverviewData.rating;
+                      let i = index
+                    "
+                  >
+                    <div class="rating-number-star" style="width: 20%">
+                      <span
+                        class="rating-review-number"
+                        [ngStyle]="{ color: state.fontColor }"
+                        >{{ item.rating }}</span
+                      >
+                      <mat-icon [svgIcon]="'star'"></mat-icon>
+                    </div>
+                    <mat-slider
+                      [value]="calculatedRatingCount[i]"
+                      class="rating-overview-slider w-auto"
+                    >
+                      <input
+                        matSliderThumb
+                        [value]="calculatedRatingCount[i]"
+                        #itemHeight
+                      />
+                    </mat-slider>
+                    <span
+                      style="width: 10%"
+                      class="rating-review-number"
+                      [ngStyle]="{ color: state.fontColor }"
+                      >{{ item.count }}</span
+                    >
+                  </div>
+                </div>
+                <div class="rating-right-footer">
+                  <p class="" [ngStyle]="{ color: state.fontColor }">
+                    <strong
+                      >Total Review:
+                      {{ ratingOverviewData.totalReviews }}</strong
+                    >
+                  </p>
+                  <a href="javascript:;"><strong>View All Review</strong></a>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

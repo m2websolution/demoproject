@@ -1,0 +1,98 @@
+<mat-card class="sms-email-template-card mb-lg-3" *ngIf="templateType == 'SMS'">
+  <h6 class="preview-font">Preview</h6>
+  <mat-card class="sms-email-template-sub-card">
+    <div class="sms-email-template-sub-card-header">
+      <div class="header-row-content">
+        <span>
+          <mat-icon class="next-arrow" [svgIcon]="'next_icon'"></mat-icon>
+        </span>
+        <span>CB-GRABREV</span>
+      </div>
+
+      <div class="header-row-content">
+        <span>
+          <mat-icon class="search_icon" [svgIcon]="'search_icon'"></mat-icon>
+        </span>
+        <span>
+          <mat-icon
+            class="three_dot_icon"
+            [svgIcon]="'three_dot_icon'"
+          ></mat-icon>
+        </span>
+      </div>
+    </div>
+
+    <div class="header-row-content-pedding">
+      <div *ngIf="templateType == 'Feedbacks'; else elseBlock">
+        <mat-card-content>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div [ngClass]="breakPoint == 1 ? '' : 'd-none'">
+              <mat-icon
+                [svgIcon]="'close'"
+                class="cursor-pointer"
+                mat-dialog-close
+              ></mat-icon>
+            </div>
+          </div>
+            <mat-card-content class="app-sub-card2" [ngClass]="breakPoint == 1 ? 'p-1' : 'p-3'">
+              <mat-card class="app-sub-card3">
+                <div class="d-flex justify-content-center">
+                  <img [src]="logo" alt="LOGO" class="preview-logo" />
+                </div>
+                <div
+                  *ngIf="userMessage || this.dialogData.emailData"
+                  [ngClass]="breakPoint === 1 ? 'mt-2' : 'mt-4'"
+                  [innerHTML]="userMessage"
+                ></div>
+              </mat-card>
+            </mat-card-content> 
+        </mat-card-content>
+      </div>
+      <ng-template #elseBlock>
+        <div class="date-section"><h6>Sat, 17/10</h6></div>
+
+        <mat-card class="sms-email-template-sub-inner">
+          <div
+            *ngIf="message && message.trim().length > 0"
+            [innerHTML]="userMessage"
+          ></div>
+        </mat-card>
+      </ng-template>
+    </div>
+  </mat-card>
+</mat-card>
+
+<!-- Preview Private Feedback Template -->
+<mat-card
+  class="app-sub-card sub-card1-height"
+  [ngClass]="breakPoint == 1 ? 'p-0' : 'p-2'"
+  (window:resize)="onResize($event)"  *ngIf="templateType == 'Feedback'"
+>
+  <mat-card-content *ngIf="templateType == 'Feedback'">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h3 class="preview-font">Preview</h3>
+      <div [ngClass]="breakPoint == 1 ? '' : 'd-none'">
+        <mat-icon
+          [svgIcon]="'close'"
+          class="cursor-pointer"
+          mat-dialog-close
+        ></mat-icon>
+      </div>
+    </div>
+    <mat-card class="app-sub-card2" [ngClass]="breakPoint == 1 ? 'p-1' : 'p-3'">
+      <mat-card-content>
+        <mat-card class="app-sub-card3">
+          <div class="d-flex justify-content-center">
+            <img *ngIf="!isCompany" [src]="logo" alt="LOGO" class="preview-logo" />
+            <h3 *ngIf="isCompany">{{ companyName }}</h3>
+          </div>
+          <div
+            *ngIf="message || this.dialogData.emailData"
+            [ngClass]="breakPoint === 1 ? 'mt-2' : 'mt-4'"
+            [innerHTML]="userMessage"
+          ></div>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

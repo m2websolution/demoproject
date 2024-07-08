@@ -1,0 +1,171 @@
+.leaderboards {
+  /* max-height: 720px; */
+}
+
+.review-rating {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.review-rating .review-platform-card {
+  width: 100%;
+}
+
+.qr-report-green-button .green-button {
+  background-color: #22c55e !important;
+}
+
+.qr-table-container {
+  margin-top: 30px;
+}
+
+.department-leaderboard-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.all-sentiment-dropdown {
+  width: 40%;
+}
+.all-sentiment-dropdown mat-form-field {
+  /* width: 450px; */
+  /* width: 520px; */
+  width: 100%;
+}
+
+.activeChip {
+  width: 85px;
+  height: 34px;
+  background: #dcfce7;
+  border-radius: 16px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #22c55e;
+}
+
+.inActiveChip {
+  width: 85px;
+  height: 34px;
+  background: #ffced3;
+  border-radius: 16px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f95250;
+}
+
+.td-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.increase-icon {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  background: #dcfce7;
+  border-radius: 4px;
+}
+
+.increase-icon-color {
+  color: #22c55e;
+}
+
+@media (max-width: 960px) {
+  .review-rating {
+    flex-direction: column !important;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .leaderboards .chart-labels {
+    flex-wrap: wrap;
+    justify-content: start !important;
+    gap: 10px !important;
+  }
+
+  .qr-table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+
+  .department-leaderboard-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column !important;
+    gap: 16px;
+  }
+
+  .department-leaderboard-section .date-picker-container,
+  .department-leaderboard-section .date-picker-container mat-form-field,
+  .qr-report-green-button,
+  .qr-report-green-button button {
+    width: 100%;
+  }
+
+  .all-sentiment-dropdown mat-form-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .all-sentiment-dropdown {
+    width: 100%;
+  }
+}
+.from-to-date-component {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .from-to-date-component {
+    display: block;
+    align-items: center;
+  }
+}
+
+.card {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  border: none;
+}
+
+.qr-code {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.message {
+  color: #888;
+}
+
+.empty-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  height: 100px;
+}
+
+.positive {
+  background: #dcfce7;
+  color: #22c55e !important;
+}
+
+.negative {
+  background: #ffced3;
+  color: #fe3f34 !important;
+}

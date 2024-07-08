@@ -1,0 +1,31 @@
+@import url("./_spacing.css");
+@import url("./typography.css");
+@import url("./_material-override.css");
+@import url("./_layouts.css");
+@include fab.core-styles;
+@use "@material/fab";
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+@font-face {
+  font-family: "Manrope";
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/Manrope-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../fonts/Manrope-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Manrope";
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/Manrope-Bold.ttf") format("truetype");
+}

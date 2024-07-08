@@ -1,0 +1,588 @@
+<div class="" (window:resize)="onResize($event)">
+  <nav
+    class="header-breadcrumb"
+    style="
+      --bs-breadcrumb-divider: url(
+        &#34;data:image/svg + xml,
+        %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+      );
+    "
+    aria-label="breadcrumb"
+  >
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Widgets</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">
+        Website Widgets
+      </li>
+    </ol>
+  </nav>
+
+  <mat-card class="common-container-card" *ngIf="socialVisible">
+    <div>
+      <div fxLayout="row wrap " fxLayout.xs="column " fxLayoutGap="15px">
+        <div
+          class="web-widget-style flex-item"
+          *ngFor="let permission of websiteWidgetPermissions.widgetLayout"
+        >
+          <div [ngSwitch]="permission.name">
+            <div class="web-widget-inner" *ngSwitchCase="'Review Collector'">
+              <mat-card class="widget-sub-card">
+                <div class="grey-container">
+                  <div class="grey-block block-half"></div>
+                  <div class="grey-block block-half"></div>
+                </div>
+                <div class="grey-container mt-2">
+                  <div class="grey-block w-100"></div>
+                </div>
+                <div class="outline-white-btn mt-3">
+                  <h2>Review Us</h2>
+                  <span class="ms-1">
+                    <mat-icon [svgIcon]="'star'"></mat-icon>
+                  </span>
+                </div>
+                <div class="awesome-review-text mt-3 text-center">
+                  <p>Awesome 4.8 out of 230 reviews</p>
+                </div>
+                <div class="blank-tile mt-3"></div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Review Collector'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenReviewCollectorModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+            <div class="web-widget-inner" *ngSwitchCase="'Masonry Grid'">
+              <mat-card class="widget-sub-card">
+                <div class="masonry-preview-header">
+                  <div class="widget-avatar">
+                    <img
+                      mat-card-image
+                      class="widget-avatar-preview"
+                      src="assets/images/widget_avatar.png"
+                      alt="Google Icon"
+                    />
+                  </div>
+                  <div class="w-100">
+                    <div class="grey-container">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-25"></div>
+                    </div>
+                    <div class="preview-star mt-2">
+                      <mat-icon
+                        [svgIcon]="'star'"
+                        *ngFor="let i of [1, 2, 3, 4, 5]"
+                      ></mat-icon>
+                    </div>
+                  </div>
+                </div>
+                <div class="blank-tile verified-google mt-3"></div>
+                <div class="outline-btn-with-logo outline-white-btn mt-3 mt-16">
+                  <p class="me-1">Verified on Google</p>
+                  <img
+                    mat-card-image
+                    src="assets/svg/logos/google_icon.svg"
+                    alt="Google Icon"
+                  />
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Masonry Grid'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenMasnoryGridModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+            <div class="web-widget-inner" *ngSwitchCase="'Carousel'">
+              <mat-card class="widget-sub-card">
+                <div class="widget-avatar d-flex justify-content-center">
+                  <img
+                    mat-card-image
+                    class="widget-avatar-preview-60"
+                    src="assets/images/Avatar.svg"
+                    alt="Google Icon"
+                  />
+                </div>
+                <div class="preview-star mt-2 d-flex justify-content-center">
+                  <mat-icon
+                    [svgIcon]="'star'"
+                    *ngFor="let i of [1, 2, 3, 4, 5]"
+                  ></mat-icon>
+                </div>
+                <div class="website-widget-preview-body mt-3">
+                  <div>
+                    <mat-icon
+                      [svgIcon]="'prev_grey_icon'"
+                      class="swipe-icons"
+                    ></mat-icon>
+                  </div>
+                  <div class="blank-tile-1 w-75"></div>
+                  <div>
+                    <mat-icon
+                      [svgIcon]="'next_grey_icon'"
+                      class="swipe-icons"
+                    ></mat-icon>
+                  </div>
+                </div>
+                <div class="website-widget-grey-box mt-1">
+                  <div class="grey-block-2 w-50"></div>
+                </div>
+                <div class="website-widget-grey-box mt-1">
+                  <div class="grey-block-2 w-25"></div>
+                </div>
+                <div class="outline-btn-with-logo outline-white-btn mt-3">
+                  <p class="me-1">Verified on Google</p>
+                  <img
+                    mat-card-image
+                    src="assets/svg/logos/google_icon.svg"
+                    alt="Google Icon"
+                  />
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Carousel'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenCarouselModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+            <div class="web-widget-inner" *ngSwitchCase="'List View'">
+              <mat-card class="widget-sub-card">
+                <div class="masonry-preview-header line">
+                  <div class="widget-avatar">
+                    <img
+                      mat-card-image
+                      class="widget-avatar-preview"
+                      src="assets/images/widget_avatar.png"
+                      alt="Google Icon"
+                    />
+                  </div>
+                  <div class="w-100">
+                    <div class="grey-container">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-25"></div>
+                    </div>
+                    <div class="preview-star mt-2">
+                      <mat-icon
+                        [svgIcon]="'star'"
+                        *ngFor="let i of [1, 2, 3, 4, 5]"
+                      ></mat-icon>
+                    </div>
+                  </div>
+                </div>
+                <div class="blank-tile verified-google mt-3"></div>
+                <div
+                  class="end-google-verify-btn outline-btn-with-logo outline-white-btn mt-3"
+                >
+                  <p class="me-1">Verified on Google</p>
+                  <img
+                    mat-card-image
+                    src="assets/svg/logos/google_icon.svg"
+                    alt="Google Icon"
+                  />
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'List View'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenListViewModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  class="lock-btn"
+                  [svgIcon]="'lock_fill'"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+            <div class="web-widget-inner" *ngSwitchCase="'Floating Review'">
+              <mat-card class="widget-sub-card justify-content-end">
+                <div class="floating-preview-card">
+                  <div class="widget-avatar">
+                    <img
+                      mat-card-image
+                      class="widget-avatar-preview"
+                      src="assets/images/widget_avatar.png"
+                      alt="Google Icon"
+                    />
+                  </div>
+                  <div class="floating-preview-right">
+                    <div
+                      class="d-flex justify-content-between align-items-center w-100"
+                    >
+                      <div class="grey-container w-100">
+                        <div class="grey-block w-50"></div>
+                      </div>
+                      <div>
+                        <img
+                          mat-card-image
+                          src="assets/svg/logos/google_icon.svg"
+                          alt="Google Icon"
+                        />
+                      </div>
+                    </div>
+                    <div class="preview-star mt-2">
+                      <mat-icon
+                        [svgIcon]="'star'"
+                        *ngFor="let i of [1, 2, 3, 4, 5]"
+                      ></mat-icon>
+                    </div>
+                    <div class="blank-tile mt-3"></div>
+                  </div>
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Floating Review'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenFloatingReviewModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+            <div class="web-widget-inner" *ngSwitchCase="'Micro Review Count'">
+              <mat-card class="widget-sub-card">
+                <div class="w-100">
+                  <div class="micro-review-grey-container">
+                    <div class="grey-container">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                  </div>
+                  <div class="grey-container mt-2 w-100">
+                    <div class="grey-block w-100"></div>
+                  </div>
+                  <div class="micro-review-preview-body mt-2">
+                    <div class="preview-line-part">
+                      <p>
+                        Our customer says
+                        <strong class="inline-block">Excellent</strong>
+                      </p>
+                      <div class="micro-review-star-container">
+                        <mat-icon
+                          class="micro-review-star"
+                          [svgIcon]="'star'"
+                          *ngFor="let i of [1, 2, 3, 4, 5]"
+                        ></mat-icon>
+                      </div>
+                    </div>
+                    <p class="text-center">4.8 out of 5 based on 250 reviews</p>
+                  </div>
+                  <div class="micro-review-grey-container mt-2">
+                    <div class="grey-container w-100">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container w-100">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                  </div>
+                  <div class="blank-tile-1 w-100 mt-2 verified-google"></div>
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Micro Review Count'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenMicroReviewModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+            <div
+              class="web-widget-inner responsive-width"
+              *ngSwitchCase="'Rating Overview'"
+            >
+              <mat-card class="widget-sub-card rating-overview">
+                <div class="h-100">
+                  <h5><strong>Rating Overview</strong></h5>
+                  <div class="rating-overview-body mt-3">
+                    <div class="rating-overview-left">
+                      <p class="text-dark">
+                        5/<span class="text-secondary">5</span>
+                      </p>
+                      <div class="micro-review-star-container">
+                        <mat-icon
+                          class="micro-review-star mb-1"
+                          [svgIcon]="'star'"
+                          *ngFor="let i of [1, 2, 3, 4, 5]"
+                        ></mat-icon>
+                      </div>
+                      <span class="common-font-14px mt-2 text-primary"
+                        >230 Reviews</span
+                      >
+                    </div>
+                    <div class="rating-overview-right">
+                      <div
+                        class="rating-preview-container"
+                        *ngFor="let item of data"
+                      >
+                        <div class="rating-preview-star" style="width: 20%">
+                          <span class="rating-preview-number">{{
+                            item.number
+                          }}</span>
+                          <mat-icon
+                            [svgIcon]="'star'"
+                            class="preview-star-icon"
+                          ></mat-icon>
+                        </div>
+                        <div class="rating-slider-preview" style="width: 60%">
+                          <mat-slider
+                            min="1"
+                            max="5"
+                            step="0.5"
+                            value="item.value"
+                            class="rating-preview-slider"
+                          >
+                            <input
+                              matSliderThumb
+                              value="{{ item.value }}"
+                              #itemHeight
+                            />
+                          </mat-slider>
+                        </div>
+                        <span
+                          class="rating-preview-number"
+                          style="width: 20%"
+                          >{{ item.total }}</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Rating Overview'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenRatingOverviewModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+            <div
+              class="web-widget-inner responsive-width"
+              *ngSwitchCase="'Slider'"
+            >
+              <mat-card class="widget-sub-card">
+                <div class="w-100">
+                  <div class="micro-review-grey-container">
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                  </div>
+                  <div class="grey-container mt-2 w-100">
+                    <div class="grey-block w-100"></div>
+                  </div>
+                  <div class="mt-3 slider-preview-container">
+                    <div
+                      class="slider-preview-card"
+                      *ngFor="let i of [1, 2, 3]"
+                    >
+                      <div class="widget-avatar-slider">
+                        <img
+                          mat-card-image
+                          class="widget-icon-preview-slider"
+                          src="assets/images/widget_avatar.png"
+                          alt="Google Icon"
+                        />
+                      </div>
+                      <div class="micro-review-star-container">
+                        <mat-icon
+                          class="micro-review-star mb-1"
+                          [svgIcon]="'star'"
+                          *ngFor="let i of [1, 2, 3, 4, 5]"
+                        ></mat-icon>
+                      </div>
+                      <p class="text-center">AlenaStanton</p>
+                      <div>
+                        <img
+                          style="height: 35px; width: 35px"
+                          class="widget-icon-preview-slider"
+                          mat-card-image
+                          src="assets/svg/logos/google_icon.svg"
+                          alt="Google Icon"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Slider'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }} (Coming Soon..)
+              </button>
+            </div>
+            <div
+              class="web-widget-inner responsive-width"
+              *ngSwitchCase="'Review Badges'"
+            >
+              <mat-card class="widget-sub-card">
+                <div class="w-100">
+                  <div class="micro-review-grey-container">
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container mt-2">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                  </div>
+                  <div class="grey-container mt-2 w-100">
+                    <div class="grey-block w-100"></div>
+                  </div>
+                  <div class="review-badge-preview-container mt-2">
+                    <div class="review-badge-preview" *ngFor="let i of [1, 2]">
+                      <div class="h-100 d-flex align-self-center">
+                        <img
+                          mat-card-image
+                          src="assets/svg/logos/google_icon.svg"
+                          alt="Google Icon"
+                        />
+                      </div>
+                      <div>
+                        <div class="grey-container mt-2">
+                          <div class="grey-block-3 w-75"></div>
+                        </div>
+                        <div class="preview-line-part">
+                          <p>5.0</p>
+                          <div class="review-badge-star-container">
+                            <mat-icon
+                              class="review-badge-star mb-1"
+                              [svgIcon]="'star'"
+                              *ngFor="let i of [1, 2, 3, 4, 5]"
+                            ></mat-icon>
+                          </div>
+                        </div>
+                        <div class="grey-container mt-2">
+                          <div class="grey-block-3 w-75"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="micro-review-grey-container mt-2">
+                    <div class="grey-container w-100">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                    <div class="grey-container w-100">
+                      <div class="grey-block w-100"></div>
+                    </div>
+                  </div>
+                  <div class="blank-tile-1 w-100 mt-2 verified-google"></div>
+                </div>
+              </mat-card>
+              <button
+                *ngIf="permission.name === 'Review Badges'"
+                mat-flat-button
+                color="primary"
+                class="preview-modal-btn"
+                (click)="OpenReviewBadgesModal(permission.isAllow, permission.name)"
+              >
+                <mat-icon
+                  *ngIf="!permission.isAllow"
+                  matPrefix
+                  [svgIcon]="'lock_fill'"
+                  class="lock-btn"
+                ></mat-icon>
+                {{ permission.name }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <div *ngIf="!socialVisible">
+    <mat-card class="common-container-card"> 
+      <button
+      mat-flat-button
+      color="primary"
+      class="create-emploay-button-width align-right"
+      (click)="openPermissionDialog()"
+    >
+    <img src="assets/svg/icons/outlined/lock_icon.svg" />    
+     Please upgrade account
+    </button>
+  </mat-card>
+
+</div>

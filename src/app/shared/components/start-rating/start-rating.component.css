@@ -1,0 +1,23 @@
+.star {
+  cursor: pointer;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.star-is-active {
+  color: #faa81a;
+  height: 30px;
+}
+
+.star-height {
+  height: 40px !important;
+}
+
+.star-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1px;
+}

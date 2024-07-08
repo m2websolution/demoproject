@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 24px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.img-section {
+  box-sizing: border-box;
+
+  border-radius: 30px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img {
+  width: 48px;
+  height: 48px;
+}
+
+.average-rating-section {
+  background-color: #196cfa;
+  color: #ffffff;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background-image: url(../../../../assets/images/AverageBackgroundDesign.svg);
+  background-repeat: no-repeat;
+}
+
+.average-rating-section2 {
+  background-color: #ffffff;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.average-rating-title {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+}
+.view-all-review-button {
+  display: flex !important;
+  justify-content: end !important;
+  color: #196cfa;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
+.view-all-review-button button {
+  color: #196cfa !important;
+}
+.right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.over-all-review-title {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #18181b;
+}
+.star {
+  color: #faa81a;
+}
+.total-Review-text-section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 28px;
+}
+.total-Review-text-section span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #18181b;
+}
+.total-Review-text-section h3 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+  color: #18181b;
+  margin-bottom: 0px;
+}
+.right-content {
+  margin-top: 32px;
+}
+.left-content {
+  margin-top: 32px;
+}
+.average-rattings-contant {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.average-rating-text {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  width: max-content;
+}
+
+.rating-start-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 14px;
+  margin-top: 24px;
+}
+.rating-start-section .rating-number-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+  color: #ffffff;
+}
+
+.aveage-rating-main mat-card-header {
+  padding: 0px;
+}
+
+.number-star {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 0px 2px;
+}
+
+.number-star mat-icon {
+  margin-bottom: 4px;
+}
+
+.star-group {
+  display: flex;
+  gap: 16px;
+}
+
+.text-container {
+  gap: 18px;
+}
+
+.text-container .overall-text {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #27272a;
+}
+
+.text-container .overall-text-small {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.aveage-rating-main span.overall-text-small {
+  color: #27272a;
+}
+.right-section-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-end;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+
+  .average-rating-section {
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+  }
+
+  .average-rating-section2 {
+    background-color: #ffffff;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .left-content,
+  .right-content {
+    margin-top: 24px;
+  }
+
+  .rating-start-section {
+    margin-top: 16px !important;
+  }
+
+  .rating-start-section .rating-number-font {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .total-Review-text-section {
+    margin-top: 0px;
+    flex-direction: row;
+  }
+
+  .right-section-end {
+    margin-top: 20px;
+    align-items: center;
+  }
+
+  .total-Review-text-section span {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .total-Review-text-section h3 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .right-section-end .mdc-card__actions {
+    min-height: max-content;
+  }
+}

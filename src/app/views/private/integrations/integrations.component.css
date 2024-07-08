@@ -1,0 +1,77 @@
+.copy-bord-color .mat-mdc-form-field-input-control.mdc-text-field__input,
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+  height: auto;
+  color: #196cfa;
+}
+.integration-card {
+  padding: 1.5em 2em 2em;
+}
+label {
+  margin-bottom: 0.5em;
+}
+
+.integrations-layout-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  height: 150px;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+}
+
+.integrations-layout-card mat-icon {
+  width: 160px;
+  height: 36.42px;
+}
+.ziper {
+  background: #ff4a00;
+}
+.intigrately {
+  background: #ff6b01;
+}
+.pabbly {
+  background: #20b276;
+}
+.isn {
+  background: #008eff;
+}
+.jobber {
+  background: #000;
+}
+.quickbooks {
+  background: #14324f;
+}
+
+
+.intergration-container {
+  gap: 30px;
+}
+@media (max-width: 800px) {
+  .integrations-layout-card {
+    margin-right: 0px !important;
+  }
+
+  .intergration-container {
+    gap: 15px;
+  }
+}
+
+/* Check mark logo css */
+.active {
+  color: rgb(21, 225, 75);
+  font-size: 30px;
+  float: right;
+  margin-top: -31px;
+  margin-left: 11em;
+}
+
+/* Lock image css */
+.lock-container {
+  display: flex;
+  align-items: flex-start; 
+  margin-right: 20em;
+  margin-top: -34px;
+  margin-bottom: 12px;
+}

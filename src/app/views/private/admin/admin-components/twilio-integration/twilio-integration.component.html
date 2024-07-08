@@ -1,0 +1,148 @@
+<mat-card class="common-container-card company-profile-admin">
+    <h3 class="common-main-title-font">Twilio Integration</h3>
+    <div
+      class="flex-container"
+      fxLayout="row"
+      fxLayoutAlign="space-between baseline"
+      fxLayout.lt-md="column"
+      fxLayoutAlign.lt-md=""
+    >
+
+<!-- Added form content for adding default integration text box and updating details -->
+<form #defaultSettings="ngForm" (submit)="updateDefaultTwilioIntegration(defaultSettings.value)">
+  <mat-card>
+    <div>
+      <mat-card-actions fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+        <div class="w-100 copy-bord-color">
+          <label class="common-label-font">Default Account SID</label>
+          <mat-form-field class="input-full-width" appearance="outline" subscriptSizing="dynamic">
+            <input type="text" matInput placeholder="Default Account SID" required #defaultAccountSID="ngModel"
+              name="defaultAccountSID" [(ngModel)]="defaultSID">
+          </mat-form-field>
+          <span class="error" *ngIf="defaultAccountSID.invalid && defaultAccountSID.touched">Default Account SID is
+            required</span>
+        </div>
+        <div class="w-100 copy-bord-color">
+          <label class="common-label-font">Default Auth Token</label>
+          <mat-form-field class="input-field" appearance="outline" subscriptSizing="dynamic">
+            <input matInput #defaultAuthToken="ngModel" required [(ngModel)]="defaultToken"
+              [type]="defaultHide ? 'text' : 'password'" name="defaultAuthToken" placeholder="Default AuthToken">
+            <button mat-icon-button matSuffix (click)="toggleDefaultPasswordVisibility()" type="button">
+              <mat-icon>{{ defaultHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <span class="error" *ngIf="defaultAuthToken.invalid && defaultAuthToken.touched">Default Auth Token is
+            required</span>
+        </div>
+        <button type="submit" color="primary" class="add-sms-email-btn">Verify & Save</button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</form>
+<!-- Added grid to patch values -->
+<div class="flex-item" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="10px">
+</div>
+</div>
+<div>
+  <div style="overflow: auto">
+    <table mat-table [dataSource]="pagedItems" class="mat-elevation-z8">
+      <ng-container matColumnDef="company_name">
+        <th mat-header-cell *matHeaderCellDef>Company Name</th>
+        <td mat-cell *matCellDef="let element"> {{ element.CompanyName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="shortname">
+        <th mat-header-cell *matHeaderCellDef>Unique Profile Name</th>
+        <td mat-cell *matCellDef="let element"> {{ element.ShortName }} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Company Email Address</th>
+        <td mat-cell *matCellDef="let element"> {{ element.Email }} </td>
+      </ng-container>
+      <ng-container matColumnDef="account_sid">
+        <th mat-header-cell *matHeaderCellDef>Account SID</th>
+        <td mat-cell *matCellDef="let element"> {{ element.TwilioSID }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element" class="px-3">
+
+          <div class="edit-delete-icons">
+            <button class="icon-btn edit_underscor" (click)="onSetTwilioAccount(element.ProfileId)">
+              <mat-icon [svgIcon]="'edit_underscor'"></mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <app-paginator [pager]="pager" (setPage)="setPage($event)" (setItems)="setItemsSorting($event)"></app-paginator>
+</div>
+</mat-card>
+
+<!-- Added model -->
+<ng-template #setLimitDialog let-dialogRef>
+  <div class="common-mat-dialog-padding">
+    <form id="manageform" #manageform="ngForm" (submit)="SetTwilioDetails()">
+      <div fxLayout="row" fxLayoutAlign="space-between baseline">
+        <h6 class="common-mat-dialog-header-title">Twilio Integration</h6>
+        <mat-icon matPrefix mat-dialog-close [svgIcon]="'close_icon_blue'" class="cursor-pointer"></mat-icon>
+      </div>
+      <hr style="margin: 24px 0px 0px" />
+      <div fxLayout="column" class="set-limit-count-main-sec-margin">
+        <div class="counter-main-sec">
+          <mat-card-actions fxLayout="row" fxLayoutGap="12px" class="toggle-margin-sec">
+            <h6>Use Default Twilio Account</h6>
+            <mat-slide-toggle id="HasUseDefaultTwilioCredential" name="HasUseDefaultTwilioCredential"
+              #HasUseDefaultTwilioCredential="ngModel"
+              [(ngModel)]="twilioSetSIDModel.HasUseDefaultTwilioCredential"></mat-slide-toggle>
+          </mat-card-actions>
+          <div *ngIf="!twilioSetSIDModel.HasUseDefaultTwilioCredential" class="form-container">
+            <div class="form-row">
+              <div class="form-item Left">
+                <mat-label>Subaccount SID</mat-label>
+              </div>
+              <div class="form-item right">
+                <mat-label>Subaccount AuthToken</mat-label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-item">
+                <mat-form-field class="input-field" appearance="outline">
+                  <input matInput #AccountSID="ngModel" required [(ngModel)]="twilioSetSIDModel.AccountSID"
+                    name="AccountSID" placeholder="Subaccount SID">
+                </mat-form-field>
+                <mat-error class="error"  *ngIf="(AccountSID.hasError('required') && (AccountSID.touched ||
+								AccountSID.dirty))">
+                  Account SID is required
+                </mat-error>
+              </div>
+              <div class="form-item">
+                <mat-form-field class="input-field" appearance="outline">
+                  <input matInput #AuthToken="ngModel" required [(ngModel)]="twilioSetSIDModel.AuthToken"
+                    [type]="hide ? 'password' : 'text'" name="AuthToken" placeholder="Subaccount AuthToken">
+                  <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <mat-error class="error"  *ngIf="(AuthToken.hasError('required') && (AuthToken.touched ||
+								AuthToken.dirty))">
+                  Subaccount AuthToken
+                </mat-error>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-card-actions align="end" class="add-manual-buttons gap-2 set-limit-bottom-footer-margin-sec"
+        style="margin-top: 40px;">
+        <button type="submit" color="primary" class="primary-button me-2">Submit</button>
+        <button mat-dialog-close class="secondary-button">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </div>
+</ng-template>

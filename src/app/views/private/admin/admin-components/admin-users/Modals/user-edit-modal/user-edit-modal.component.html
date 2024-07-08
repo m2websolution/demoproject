@@ -1,0 +1,190 @@
+<div
+  class="user-edit-modal widget-main-modal modal-padding dailog-box-contant-fixed-responsive-time overflow-scroll"
+>
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+    <div class="">
+      <div class="edit-modal-header">
+        <h4>Add User</h4>
+        <mat-icon
+          matPrefix
+          mat-dialog-close
+          [svgIcon]="'close_icon_blue'"
+          class="cursor-pointer header"
+        ></mat-icon>
+      </div>
+      <hr />
+    </div>
+    <div class="edit-user-form overflow-auto 60vh">
+      <div class="edit-user-first-form">
+        <div class="name-container">
+          <div class="w-100 admin-form-group">
+            <label class="common-label-font">First Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                type="text"
+                placeholder="Enter Customer First Name"
+                formControlName="FirstName"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                userForm.get('FirstName').touched &&
+                userForm.get('FirstName').hasError('required')
+              "
+              >First Name is required</mat-error
+            >
+          </div>
+          <div class="w-100 admin-form-group">
+            <label class="common-label-font">Last Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input
+                matInput
+                type="text"
+                placeholder="Enter Customer Last Name"
+                formControlName="LastName"
+              />
+            </mat-form-field>
+            <mat-error
+              class="error-message"
+              *ngIf="
+                userForm.get('LastName').touched &&
+                userForm.get('LastName').hasError('required')
+              "
+              >Last Name is required</mat-error
+            >
+          </div>
+        </div>
+        <div class="w-100 admin-form-group">
+          <label class="common-label-font">Email</label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              matInput
+              type="text"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+              placeholder="Enter Email Address"
+              formControlName="Email"
+            />
+          </mat-form-field>
+          <mat-error
+            class="error-message"
+            *ngIf="
+              userForm.get('Email').touched &&
+              userForm.get('Email').hasError('required')
+            "
+            >Email is required</mat-error
+          >
+          <mat-error
+            class="error-message"
+            *ngIf="
+              userForm.get('Email').touched &&
+              userForm.get('Email').hasError('pattern')
+            "
+            >Email is required</mat-error
+          >
+        </div>
+        <div class="w-100 admin-form-group custom-dropdown-section">
+          <label class="common-label-font">Company</label>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select placeholder="All" multiple formControlName="ProfileId">
+              <mat-select-trigger>
+                <div class="custom-multiple-dropdown">
+                  <span
+                    *ngFor="let item of selected"
+                    class="dropdown-selected-item"
+                    >{{ item }}</span
+                  >
+                </div>
+              </mat-select-trigger>
+
+              <mat-option
+                *ngFor="let profile of profileList"
+                [value]="profile.ProfileId"
+                class="dropdown-option"
+                >{{ profile.CompanyName }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="name-container checkbox-names">
+          <mat-checkbox
+            formControlName="CanLogin"
+            class="example-margin checkbox-name"
+            color="primary"
+          >
+            Can Login?
+          </mat-checkbox>
+          <mat-checkbox
+            formControlName="HasApi"
+            class="example-margin checkbox-name"
+            color="primary"
+          >
+            Has API access?
+          </mat-checkbox>
+        </div>
+      </div>
+      <div class="custom-permission-section">
+        <div><label class="common-label-font">Permission</label></div>
+        <div class="custom-permission-checkbox">
+          <div class="name-container checkbox-names">
+            <mat-checkbox
+              formControlName="landingPage"
+              class="example-margin checkbox-name"
+              color="primary"
+            >
+              Landing Page
+            </mat-checkbox>
+            <mat-checkbox
+              formControlName="widgets"
+              class="example-margin checkbox-name"
+              color="primary"
+            >
+              Widgets
+            </mat-checkbox>
+          </div>
+          <div class="name-container checkbox-names">
+            <mat-checkbox
+              formControlName="invites"
+              class="example-margin checkbox-name"
+              color="primary"
+            >
+              Invites
+            </mat-checkbox>
+            <mat-checkbox
+              formControlName="reporting"
+              class="example-margin checkbox-name"
+              color="primary"
+            >
+              Reporting
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      fxLayoutAlign.lt-sm="end"
+      fxLayoutAlign="end"
+      class="custom-link-actions user-edit-footer-btns"
+    >
+      <button
+        type="submit"
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)"
+        class="custom-btn primary-button me-2"
+      >
+        Submit
+      </button>
+
+      <button
+        type="button"
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)"
+        mat-dialog-close
+        class="custom-btn secondary-button"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

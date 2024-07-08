@@ -1,0 +1,488 @@
+<!-- Private Feedback page block, will be displayed if isPrivateFeedbackData is true -->
+<mat-card class="my-review-card-main-section" *ngIf="isPrivateFeedbackData">
+  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-card-header class="align-content">
+      <div class="custom-img">
+        {{ privateFeedbackData.Name.substring(0, 1) }}
+      </div>
+      <div>
+        <mat-card-title>{{ privateFeedbackData.Name }}</mat-card-title>
+        <mat-card-subtitle class="common-primary-text">{{
+          privateFeedbackData.FeedbackDate
+        }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <div class="d-flex align-items-center gap-2">
+      <!-- Client recommendation to keep below commented code -->
+      <!-- <button
+        mat-flat-button
+        color="warn"
+        (click)="deleteManualReview(privateFeedbackData.Id)"
+        class="reviews_delete_btn"
+      >
+        <img src="assets/svg/icons/outlined/delete.svg" />
+      </button> -->
+
+      <!-- Reply button section -->
+      <button type="button"
+        *ngIf="!privateFeedbackData.FeedbackReply"
+        mat-flat-button
+        color="primary"
+        class="replay-text-none reply-btn"
+        (click)="SendPrivateFeedbackReplyDialog(privateFeedbackData)"
+      >
+        <img src="assets/svg/icons/filled/Extra Icon (1).svg" />
+        <span class="ml-5">Reply</span>
+      </button>
+
+      <!-- Already Replied section -->
+      <button type="button"
+        *ngIf="privateFeedbackData.FeedbackReply"
+        mat-flat-button
+        class="replay-text-none replied_btn positive-bg"
+      >
+        <img src="assets/svg/icons/filled/check_box_on_icon.svg.svg" />
+        <span class="ml-5">Already Replied</span>
+      </button>
+    </div>
+  </mat-card-actions>
+
+  <!-- Feedback section -->
+  <div class="row customer-review-sec">
+    <div class="p-0 review-container">
+      <div
+        class="expand-content"
+        #descriptionElement
+        [innerHTML]="privateFeedbackData.FeedBack"
+        [class.expanded]="showMore"
+        [ngClass]="{ 'd-inline': showMore }"
+      ></div>
+      <a
+        *ngIf="isDescriptionShowButton"
+        href="javascript:;"
+        (click)="toggleShowMore()"
+        [ngClass]="{ 'ml-5': showMore }"
+        >{{ showMore ? "read less" : "read more" }}</a
+      >
+    </div>
+  </div>
+
+  <!-- Feedback reply section -->
+  <mat-card-actions
+    class="p-0"
+    *ngIf="
+      privateFeedbackData.FeedbackReply || privateFeedbackData.FeedbackReplyDate
+    "
+  >
+    <div class="read-more-section">
+      <div class="read-owner-txt">
+        <h6>
+          Reply from owner at
+          <span class="reply-from-owner-data-font">{{
+            privateFeedbackData.FeedbackReplyDate
+          }}</span>
+        </h6>
+        <div class="p-0">
+          <div
+            class="expand-content"
+            #replyElement
+            [innerHTML]="privateFeedbackData.FeedbackReply"
+            [class.expanded]="showMore"
+            [ngClass]="{ 'd-inline': showMore }"
+          ></div>
+          <a
+            *ngIf="isReplyShowButton"
+            href="javascript:;"
+            (click)="toggleShowMore()"
+            [ngClass]="{ 'ml-5': showMore }"
+            >{{ showMore ? "read less" : "read more" }}</a
+          >
+        </div>
+      </div>
+    </div>
+  </mat-card-actions>
+
+  <div class="my-review-card-footer-left-section">
+    <!-- Star Rating Section -->
+    <div class="my-review-card-footer-left-logo-start-row">
+      <div class="card-footer-logo-img">
+        <img
+          class="review-source-image"
+          src="favicon.ico"
+          alt="Card image cap"
+        />
+      </div>
+      <div class="line-section-display">
+        <div class="line-section-margin">
+          <span class="line-section"></span>
+        </div>
+        <div class="mr-10">{{ privateFeedbackData.Rating }}</div>
+        <span class="material-icons review-profile-stars">
+          <app-start-rating
+            [starClickable]="false"
+            [id]="{ stars: privateFeedbackData.Rating, selected: true }"
+          ></app-start-rating>
+        </span>
+      </div>
+    </div>
+
+    <div class="line-section-margin">
+      <span class="line-section"></span>
+    </div>
+  </div>
+
+  <!-- View more details and move to reviews button section -->
+  <div class="mt-3">
+    <div class="view-more-detials-button m-0">
+      <button mat-stroked-button class="my-review-profile-widgets-button-font" (click)="viewMoreDetails(privateFeedbackData)">
+        View More Details
+      </button>
+      <button (click)="moveToReviews(privateFeedbackData.Id)" class="my-review-profile-widgets-button-font" mat-stroked-button>
+        Move To Reviews
+      </button>
+    </div>
+  </div>
+</mat-card>
+
+<!-- My Reviews page block, will be displayed if isMyReviewsData is true -->
+<mat-card class="my-review-card-main-section" *ngIf="isMyReviewsData">
+  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <!-- ProfileImgUrl section -->
+    <mat-card-header class="align-content">
+      <div>
+        <img
+          *ngIf="data.ProfileImgUrl"
+          mat-card-avatar
+          class="example-header-image"
+          [src]="data.ProfileImgUrl ? data.ProfileImgUrl : ''"
+        />
+      </div>
+      <div class="custom-img" *ngIf="!data.ProfileImgUrl && data.ReviewBy">
+        {{ data.ReviewBy.substring(0, 1) }}
+      </div>
+      <div>
+        <mat-card-title>{{ data.ReviewBy }}</mat-card-title>
+        <mat-card-subtitle class="common-primary-text">{{
+          data.Date
+        }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+
+    <div class="d-flex align-items-center gap-2">
+      <!-- Sentiment section for webview -->
+      <div fxHide.lt-sm *ngIf="myReviewProfileCardFooter === true">
+        <div *ngIf="sentimentPermissions !== null">
+          <div *ngIf="!sentimentPermissions.HasSentiments">
+            <span class="tag lock-tag">
+              <mat-icon>lock</mat-icon>Lock Sentiment</span
+            >
+          </div>
+          <div
+            *ngIf="
+              sentimentPermissions.HasSentiments &&
+              data.reviewSentiment === 'Positive'
+            "
+          >
+            <span class="tag positive-bg"> {{ data.reviewSentiment }}</span>
+          </div>
+          <div
+            *ngIf="
+              sentimentPermissions.HasSentiments &&
+              data.reviewSentiment === 'Mixed'
+            "
+          >
+            <span class="tag neutral-bg"> {{ data.reviewSentiment }}</span>
+          </div>
+          <div
+            *ngIf="
+              sentimentPermissions.HasSentiments &&
+              data.reviewSentiment === 'Negative'
+            "
+          >
+            <span class="tag negative-bg"> {{ data.reviewSentiment }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete button section -->
+      <button
+        mat-flat-button
+        color="warn"
+        (click)="deleteManualReview(data.Id)"
+        class="reviews_delete_btn"
+        *ngIf="data.ReviewSource === 'Other'"
+      >
+        <img src="assets/svg/icons/outlined/delete.svg" />
+      </button>
+
+      <!-- Reply button section -->
+      <button
+        *ngIf="
+          data.IsReplayToOurSys && !data.Reply && data.ReviewSource !== 'Other'
+        "
+        mat-flat-button
+        color="primary"
+        class="replay-text-none reply-btn"
+        (click)="SendManualReviewReplayeDialog(data)"
+      >
+        <img src="assets/svg/icons/filled/Extra Icon (1).svg" />
+        <span class="ml-5">Reply</span>
+      </button>
+
+      <!-- Already Replied button section -->
+      <button
+        *ngIf="data.IsReplayToOurSys && data.Reply"
+        mat-flat-button
+        class="replay-text-none replied_btn positive-bg"
+      >
+        <img src="assets/svg/icons/filled/check_box_on_icon.svg.svg" />
+        <span class="ml-5">Already Repllied</span>
+      </button>
+    </div>
+  </mat-card-actions>
+
+  <!-- Sentiment section for mobile/tablet view -->
+  <div fxHide fxShow.lt-sm *ngIf="myReviewProfileCardFooter === true">
+    <div *ngIf="sentimentPermissions !== null">
+      <div *ngIf="!sentimentPermissions.HasSentiments">
+        <span class="mr-10 tag lock-tag">
+          <mat-icon>lock</mat-icon>Lock Sentiment</span
+        >
+      </div>
+      <div
+        *ngIf="
+          sentimentPermissions.HasSentiments &&
+          data.reviewSentiment === 'Positive'
+        "
+      >
+        <span class="mr-10 tag positive-bg"> Positives</span>
+      </div>
+      <div
+        *ngIf="
+          sentimentPermissions.HasSentiments && data.reviewSentiment === 'Mixed'
+        "
+      >
+        <span class="mr-10 tag neutral-bg"> Mixed</span>
+      </div>
+      <div
+        *ngIf="
+          sentimentPermissions.HasSentiments &&
+          data.reviewSentiment === 'Negative'
+        "
+      >
+        <span class="mr-10 tag negative-bg"> {{ data.reviewSentiment }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Description Section -->
+  <div class="row customer-review-sec">
+    <div class="p-0 review-container">
+      <div
+        class="expand-content"
+        #descriptionElement
+        [innerHTML]="data.ReviewDetails"
+        [class.expanded]="showMore"
+        [ngClass]="{ 'd-inline': showMore }"
+      ></div>
+      <a
+        *ngIf="isDescriptionShowButton"
+        href="javascript:;"
+        (click)="toggleShowMore()"
+        [ngClass]="{ 'ml-5': showMore }"
+        >{{ showMore ? "read less" : "read more" }}</a
+      >
+    </div>
+  </div>
+
+  <!-- Review Reply Section -->
+  <mat-card-actions class="p-0" *ngIf="data.Reply || data.ReplyDate">
+    <div class="read-more-section">
+      <div class="read-owner-txt">
+        <h6>
+          Reply from owner at
+          <span class="reply-from-owner-data-font">{{ data.ReplyDate }}</span>
+        </h6>
+        <div class="p-0">
+          <div
+            class="expand-content"
+            #replyElement
+            [innerHTML]="data.Reply"
+            [class.expanded]="showMore"
+            [ngClass]="{ 'd-inline': showMore }"
+          ></div>
+          <a
+            *ngIf="isReplyShowButton"
+            href="javascript:;"
+            (click)="toggleShowMore()"
+            [ngClass]="{ 'ml-5': showMore }"
+            >{{ showMore ? "read less" : "read more" }}</a
+          >
+        </div>
+      </div>
+    </div>
+  </mat-card-actions>
+
+  <div
+    *ngIf="myReviewProfileCardFooter === true; else elseBlock"
+    class="mt-3 my-review-card-main-footer-section"
+  >
+    <div class="my-review-card-footer-left-section">
+      <!-- Star Rating Section -->
+      <div class="my-review-card-footer-left-logo-start-row">
+        <div class="card-footer-logo-img" *ngIf="data.ReviewSource !== 'Other'">
+          <img
+            class="review-source-image"
+            src="assets/social-logo/{{ data.ReviewSource }}.png"
+            alt="Card image cap"
+          />
+        </div>
+        <div class="card-footer-logo-img" *ngIf="data.ReviewSource === 'Other'">
+          <img
+            class="review-source-image"
+            src="favicon.ico"
+            alt="Card image cap"
+          />
+        </div>
+        <div class="line-section-display">
+          <div class="line-section-margin">
+            <span class="line-section"></span>
+          </div>
+          <div class="mr-10">{{ data.Rating }}</div>
+          <span class="material-icons review-profile-stars">
+            <app-start-rating
+              [starClickable]="false"
+              [id]="{ stars: data.Rating, selected: true }"
+            ></app-start-rating>
+          </span>
+        </div>
+      </div>
+
+      <div class="line-section-margin">
+        <span class="line-section"></span>
+      </div>
+    </div>
+    <!-- Remove from widgets and Share on Social button section -->
+    <div class="remove-from-Widgets-responsive">
+      <button
+        mat-stroked-button
+        (click)="updateReviewSettings(data.Id, data.HasShowOnWidget)"
+        class="my-review-profile-widgets-button-font mx-2"
+      >
+        {{ data.HasShowOnWidget ? "Remove from Widgets" : "Add to Widgets" }}
+      </button>
+      <button
+        class="my-review-profile-widgets-button-font"
+        mat-stroked-button
+        (click)="ShareReviewCardDialog(data)"
+      >
+        Share on Social
+      </button>
+    </div>
+  </div>
+
+  <ng-template #elseBlock>
+    <div class="view-more-detials-button m-0">
+      <button mat-stroked-button class="my-review-profile-widgets-button-font">
+        View More Detials
+      </button>
+      <button class="my-review-profile-widgets-button-font" mat-stroked-button>
+        Move To Reviews
+      </button>
+    </div>
+  </ng-template>
+
+  <!-- Tag section -->
+  <div *ngIf="myReviewProfileCardFooter" class="tag-scroll">
+    <div class="tag-and-deisgn-row-section">
+      <span class="footer-add-tags">
+        <input
+          #tagInput
+          type="text"
+          placeholder="Add #Tag"
+          (keypress)="onKeyPress($event)"
+          (keydown)="addTag($event, data.Id)"
+        />
+      </span>
+      <span class="footer-tags d-flex" *ngFor="let tag of data.Tags"
+        ><h6>{{ tag.Tag }}</h6>
+        <mat-icon
+          class="f16 cursor-pointer"
+          color="warn"
+          (click)="deleteTag(tag.Id)"
+          >delete</mat-icon
+        ></span
+      >
+    </div>
+  </div>
+
+  <!-- Mentions Section -->
+  <div *ngIf="myReviewProfileCardFooter === true && data.wordSentiment.length > 0" class="mentions-section">
+    <div class="mentions-inner-section">
+      <div class="mentions-inner-title">
+        <h6>Mentions</h6>
+        <div
+          class="mentions-scroll"
+          [ngClass]="{
+            lockActive:
+              sentimentPermissions !== null &&
+              !sentimentPermissions.HasSentiments
+          }"
+        >
+          <div
+            [ngClass]="
+              sentimentPermissions !== null &&
+              !sentimentPermissions.HasSentiments
+                ? 'bulr-section'
+                : 'd-flex'
+            "
+          >
+            <div
+              class="bulr-inner-section"
+              *ngFor="let sentiment of data.wordSentiment"
+            >
+              <span
+                *ngIf="
+                  sentimentPermissions !== null &&
+                  sentimentPermissions.HasSentiments
+                "
+                [ngClass]="sentiment.sentiment"
+                >{{ sentiment.word }}</span
+              >
+            </div>
+            <div
+              [ngClass]="
+                sentimentPermissions !== null &&
+                !sentimentPermissions.HasSentiments
+                  ? 'bulr-section'
+                  : 'd-flex'
+              "
+            >
+              <div
+                *ngIf="
+                  sentimentPermissions !== null &&
+                  !sentimentPermissions.HasSentiments
+                "
+                class="bulr-inner-section"
+              >
+                <span class="positive">Text</span>
+                <span class="positive">Text</span>
+                <span class="negative">Text</span>
+                <span class="positive">Text</span>
+                <span class="negative">Text</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        *ngIf="
+          sentimentPermissions !== null && !sentimentPermissions.HasSentiments
+        "
+        class="mentions-lock-img"
+      >
+        <img src="assets/svg/icons/outlined/lock_icon.svg" />
+      </div>
+    </div>
+  </div>
+</mat-card>

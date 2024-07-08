@@ -1,0 +1,236 @@
+*{
+	box-sizing: border-box;
+}
+.rsw_container-b {
+	max-width: 1140px;
+	width: 100%;
+	padding-right: var(--bs-gutter-x, 0.75rem);
+	padding-left: var(--bs-gutter-x, 0.75rem);
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.rsw_mt-3-b {
+	margin-top: 1rem !important;
+}
+
+.rsw_row-b {
+	--bs-gutter-x: 1.5rem;
+	--bs-gutter-y: 0;
+	display: flex;
+	flex-wrap: wrap;
+	/* margin-top: calc(-1 * var(--bs-gutter-y));
+	margin-right: calc(-0.5 * var(--bs-gutter-x));
+	margin-left: calc(-0.5 * var(--bs-gutter-x)); */
+}
+
+.rsw_col-4-b {
+	flex: 0 0 auto;
+	width: 33.33333333%;
+}
+.rsw_col-4-b.rsw_col-sm-12-b {
+    width: 40%;
+}
+
+.rsw_col-6-b {
+	flex: 0 0 auto;
+	width: 50%;
+}
+.rsw_col-8-b {
+	flex: 0 0 66.6666666667%;
+	max-width: 66.6666666667%;
+}
+
+.rsw_link-b {
+	color: #0d6efd;
+	text-decoration: underline;
+}
+
+.rsw_parent-b {
+	text-align: right;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.rsw_card-b {
+	/* position: relative; */
+	display: flex;
+    margin: 2%;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(228, 228, 231, 1);
+	border-radius: 16px;
+}
+
+.rsw_col-12-b {
+	flex: 0 0 auto;
+	width: 100%;
+	margin: 1%;
+}
+.rsw_col-12-b b{
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: 700;
+}
+.rsw_row-b.rsw_p-5-b.rsw_flex-center-b{
+	position: relative;
+	padding: 24px 32px 24px 24px;
+	background-repeat: no-repeat !important; 
+	background-size: cover !important;
+}
+
+
+.rsw_flex-center-b {
+	align-items: center;
+	justify-content: center;
+}
+
+.rsw_rating-b {
+	/* display: inline-flex; */
+	/* align-items: center; */
+}
+.rsw_rating-b h3{
+	margin-top: 32px !important;
+	font-size: 48px;
+	line-height: 56px;
+	font-weight: 600;
+}
+
+.rsw_review-platform-logo-parent-b {
+	display: inline-flex;
+	justify-content: center;
+}
+.rsw_review-platform-logo-parent-b img{
+	width: 190px;
+	/* position: absolute; */
+	/* right: 0;
+	bottom: 0; */
+}
+@media screen and (max-width: 1024px) {
+	.rsw_col-4-b.rsw_col-sm-12-b {
+		width: 60%;
+	}
+}
+@media screen and (max-width: 600px) {
+	.rsw_col-sm-12-b {
+		width: 100% !important;
+	}
+	.rsw_review-platform-logo-parent-b img{
+		width: 80px;
+	}
+}
+@media screen and (max-width: 375px) {
+	.rsw_review-platform-logo-parent-b img{
+		width: 40px !important;
+	}
+	.rsw_rating-b h3 {
+		margin-top: 24px !important;
+		font-size: 38px;
+		line-height: 44px;
+		font-weight: 600;
+	}
+	.rsw_row-b.rsw_p-5-b.rsw_flex-center-b {
+		position: relative;
+		padding: 16px 16px 16px 16px;
+	}
+	.stars-outer-bg::before {
+		font-size: 30px;
+		content: "🟊🟊🟊🟊🟊";
+		color: #d2d2d2;
+	}
+	.stars-inner-bg::before {
+		font-size: 30px;
+		content: "🟊🟊🟊🟊🟊";
+		color: #FAA81A;
+	}
+	.rsw_container-b {
+		max-width: unset;
+		width: unset;
+		padding-right: unset;
+		padding-left: unset;
+		margin-right: unset;
+		margin-left: unset;
+	}
+}
+
+
+/* New added */
+.stars-outer-bg{
+	display: inline-block;
+    position: relative;
+	font-size: 18px;
+	/* margin-left: 2%; */
+    margin-top: 0%;
+    margin-bottom: 1%;
+	}
+	
+	.stars-outer-bg::before {
+		font-size: 40px;
+		content: "🟊🟊🟊🟊🟊";
+		color: #d2d2d2;
+	}
+	
+	.stars-inner-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 0%;
+	}
+	
+	.stars-inner-bg::before {
+		font-size: 40px;
+		content: "🟊🟊🟊🟊🟊";
+		color: #FAA81A;
+	}
+
+/* New Star CSS */
+	.star-rating {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		margin-top: 8px;
+	  }
+	  .star{
+		display: inline-block;
+		position: relative;
+		font-size: 18px;
+		/* margin-left: 2%; */
+		margin-top: 0%;
+	  }
+	  .star::before{
+		display: block;
+		content: '';
+		width: 34px;
+		height: 34px;
+		background: url('assets/svg/icons/outlined/star_outlined.svg') no-repeat center;
+		background-size: contain;
+	  }
+
+	  .star-fill::before{
+		display: block;
+		content: '';
+		width: 34px;
+		height: 34px;
+		background: url('assets/svg/icons/filled/star.svg') no-repeat center;
+		background-size: contain;
+		/* position: absolute;
+		top: 0;
+		left: 0; */
+		z-index: 1;
+		overflow: hidden;
+		/* white-space: nowrap; */
+	  }
+
+	  .star-fill {
+		position: absolute;
+		top: 0;
+		left: 0;
+		white-space: nowrap;
+		overflow: hidden;
+	}

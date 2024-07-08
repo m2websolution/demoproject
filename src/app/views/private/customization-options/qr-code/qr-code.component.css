@@ -1,0 +1,287 @@
+.qr-code-main-page-card {
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.create-emploay-button-width {
+  padding: 16px 20px 16px 16px;
+  gap: 8px;
+  width: 268px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+.qr-code-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.give-me-fleed-back-sec {
+  margin: 24px 0px;
+}
+
+.give-me-fleed-back-sec mat-card-title {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+}
+
+.download-qr-code-button-width {
+  padding: 16px;
+  gap: 12px;
+  width: 214px;
+  height: 56px;
+  background: #22c55e;
+  border-radius: 16px;
+  margin: 40px 0px;
+}
+
+.qr-code-svg {
+  width: 512px;
+  height: 512px;
+}
+
+.table-heading-qr-codes {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+
+  color: #18181b;
+}
+
+.qr-code-main-page-card table {
+  margin: 24px 0px;
+}
+
+.qr-code-table-img {
+  width: 40px;
+  height: 40px;
+}
+
+.qr-code-main-page-card .qr-inner-page {
+  padding: 37px 32px 0;
+}
+
+.tags_delete_red {
+  padding: 8px;
+  gap: 8px;
+  width: 40px;
+  height: 40px;
+  background: #ffced3;
+  border-radius: 8px;
+}
+.edit_underscor {
+  padding: 8px;
+  gap: 8px;
+  width: 40px;
+  height: 40px;
+  background: #dcfce7;
+  border-radius: 8px;
+}
+
+.edit-delete-icons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.icon-btn {
+  border: none;
+  outline: none;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .give-me-fleed-back-sec mat-card-subtitle {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    text-align: center;
+    color: #71717a;
+  }
+
+  .qr-code-main-page-card .qr-inner-page {
+    padding: 37px 32px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .create-emploay-button-width {
+    width: 100%;
+    height: 48px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .edit-delete-icons {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 960px) {
+  .give-me-fleed-back-sec mat-card-title {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+
+  .qr-code-svg {
+    width: 170px;
+    height: 170px;
+  }
+
+  .download-qr-code-button-width {
+    margin: 20px 0 0;
+  }
+
+  .edit_underscor {
+    padding: 8px;
+    gap: 8px;
+    width: 40px;
+    height: 40px;
+    background: #dcfce7;
+    border-radius: 8px;
+  }
+
+  .tags_delete_red {
+    padding: 8px;
+    gap: 8px;
+    width: 40px;
+    height: 40px;
+    background: #ffced3;
+    border-radius: 8px;
+  }
+  .edit_underscor_delete_red_gap {
+    margin-right: 16px;
+  }
+  .give-me-fleed-back-sec mat-card-subtitle {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    color: #71717a;
+  }
+
+  .download-qr-code-button-width mat-icon {
+    margin: 0px;
+  }
+  .breadcrumb {
+    align-items: baseline;
+  }
+
+  .qr-code-main-page-card .qr-inner-page {
+    padding: 37px 32px 0;
+  }
+
+  @media (max-width: 600px) {
+    .create-emploay-button-width {
+      width: 100%;
+      height: 48px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    .give-me-fleed-back-sec mat-card-title {
+      font-size: 20px;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+
+    .qr-code-svg {
+      width: 170px;
+      height: 170px;
+    }
+
+    .download-qr-code-button-width {
+      margin: 20px 0 0;
+    }
+
+    .edit_underscor {
+      padding: 8px;
+      gap: 8px;
+      width: 40px;
+      height: 40px;
+      background: #dcfce7;
+      border-radius: 8px;
+    }
+
+    .tags_delete_red {
+      padding: 8px;
+      gap: 8px;
+      width: 40px;
+      height: 40px;
+      background: #ffced3;
+      border-radius: 8px;
+    }
+    .edit_underscor_delete_red_gap {
+      margin-right: 16px;
+    }
+    .give-me-fleed-back-sec mat-card-subtitle {
+      font-family: "Manrope";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: center;
+      color: #71717a;
+    }
+
+    .download-qr-code-button-width mat-icon {
+      margin: 0px;
+    }
+    .breadcrumb {
+      align-items: baseline;
+    }
+
+    .qr-code-main-page-card .qr-inner-page {
+      padding: 20px;
+    }
+
+    .qr-code-main-content {
+      margin: 0 !important;
+      padding: 0 20px 20px;
+    }
+
+    .give-me-fleed-back-sec {
+      margin: 0 !important;
+    }
+
+    .qr-code-main-page-card table {
+      margin: 16px 0px 20px;
+    }
+  }
+}
+
+.align-right {
+  margin-left: auto; 
+}
+
+.align-right {
+  display: flex;
+  align-items: center; 
+}
+
+.align-right img {
+  margin-right: 8px; 
+}

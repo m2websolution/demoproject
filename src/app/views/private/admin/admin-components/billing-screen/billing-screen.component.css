@@ -1,0 +1,255 @@
+.billing-buttom-margin-sec button {
+  width: max-content;
+}
+
+.small-dec-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #18181b;
+}
+
+.mobile-btn {
+  display: none;
+}
+.web-btn {
+  display: block;
+}
+
+@media (max-width: 680px) {
+  .visa-expires-sec-center-responsive-time .atm-number-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    text-align: center !important;
+    color: #3f3f46 !important;
+  }
+  .visa-expires-sec-center-responsive-time .visa-expire-date-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    text-align: center !important;
+    color: #18181b;
+  }
+  .small-dec-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+
+    color: #18181b;
+  }
+
+  .billing-screen-sub-card-dic-main-sec {
+    margin: 0px 0px 50px;
+  }
+  .add-manual-buttons .secondary-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 12px 14px !important;
+    width: 93%;
+    height: 44px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+    margin: 10px;
+  }
+
+  .add-manual-buttons .primary-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 14px !important;
+    gap: 8px;
+    height: 44px !important;
+    border-radius: 16px;
+    margin: 0px !important;
+  }
+
+  /* billed card */
+  .billed-monthly-month-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    color: #18181b;
+  }
+  .billed-monthly-dollur-font {
+    text-align: right;
+  }
+  .billed-monthly-dollur-lg-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: #18181b;
+  }
+
+  .next-payment-font {
+    text-align: right;
+  }
+
+  .payment-method-card-ref .primary-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 12px 14px !important;
+    width: 97%;
+    height: 44px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+    margin: 10px;
+  }
+
+  .payment-method-card-ref .billing-screen-sub-card-dic-main-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 25px auto 16px;
+  }
+
+  .visa-card-img {
+    margin-bottom: 16px;
+  }
+  .visa-expires-sec-center-responsive-time {
+    text-align: center;
+  }
+
+  .mobile-btn {
+    display: block;
+    width: 100%;
+  }
+  .web-btn {
+    display: none;
+  }
+
+  .common-container-card-raf mat-card {
+    gap: 0px !important;
+  }
+}
+
+/* billed card */
+.billed-monthly-month-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+
+  color: #18181b;
+}
+.billed-monthly-dollur-font {
+  text-align: right;
+}
+.billed-monthly-dollur-lg-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #18181b;
+  text-align: right;
+}
+
+.next-payment-font {
+  text-align: right;
+}
+.visa-card-img {
+  width: 160.17px;
+  height: 96.31px;
+}
+
+.download_white_icon {
+  padding: 8px;
+  gap: 8px;
+  width: 40px;
+  height: 40px;
+  background: #008eff;
+  border-radius: 8px;
+}
+
+.status_icon {
+  padding: 8px;
+  gap: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.common-container-card-raf mat-card {
+  margin-bottom: 10px;
+}
+.visa-expires-sec-center-responsive-time .atm-number-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+
+  color: #3f3f46;
+}
+.visa-expires-sec-center-responsive-time .visa-expire-date-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #18181b;
+}
+@media only screen and (min-width: 968px) and (max-width: 1600px) {
+}
+@media (max-width: 360px) {
+  .upgrade-your-plan--column-sec {
+    display: flex;
+    flex-direction: column !important;
+  }
+  .your-current-plan-sec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .your-current-plan-sec .small-dec-font {
+    margin-left: 26px;
+  }
+
+  .add-manual-buttons .primary-button {
+  }
+  .payment-method-card-ref .primary-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 12px 14px !important;
+    width: 93%;
+    height: 44px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+    margin: 10px !important;
+  }
+}
+.success-icon {
+  color: #a7f0a7;
+  background: #dcfce7;
+}
+
+.cancelled-icon {
+  color: #eca8a8;
+  background: #ecdcdc;
+}

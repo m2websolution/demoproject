@@ -1,0 +1,198 @@
+<mat-card-actions
+  style="display: flex; flex-direction: column; align-items: center"
+  class="tab-content-title-margin"
+>
+  <mat-card-title class="customization-option-tab-content-header-font"
+    >Layout Option's</mat-card-title
+  >
+</mat-card-actions>
+<label class="layout"> Thumbs Layout </label>
+<form [formGroup]="layoutForm" (ngSubmit)="submit()">
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  fxLayoutGap="10px"
+  class="row-card-input-container-margin-bottom p-0"
+>
+  <div class="row-card-input-container-width">
+    <label class="common-label-font">Good Experience Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        placeholder="Review Request Message"
+        formControlName="GoodExperienceMessage"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          layoutForm.get('GoodExperienceMessage').touched &&
+          layoutForm.get('GoodExperienceMessage').hasError('required')
+        "
+        >Good experience message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+    <label class="common-label-font">Bad Experience Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        placeholder="Bad experience message"
+        formControlName="BadExperienceMessage"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          layoutForm.get('BadExperienceMessage').touched &&
+          layoutForm.get('BadExperienceMessage').hasError('required')
+        "
+        >Bad experience message is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+
+<label class="layout"> NPS Layout </label>
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  fxLayoutGap="10px"
+  class="row-card-input-container-margin-bottom p-0"
+>
+  <div class="row-card-input-container-width">
+    <label class="common-label-font">Not Likely At All Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        formControlName="NotLikelyAtAllMessage"
+        placeholder="Public Review Message"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          layoutForm.get('NotLikelyAtAllMessage').touched &&
+          layoutForm.get('NotLikelyAtAllMessage').hasError('required')
+        "
+        >Not likely at all message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+    <label class="common-label-font">Extremely Likely Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        formControlName="ExtremelyLikelyMessage"
+        placeholder="Extremely likely message"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          layoutForm.get('ExtremelyLikelyMessage').touched &&
+          layoutForm.get('ExtremelyLikelyMessage').hasError('required')
+        "
+        >Extremely likely message is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+<label class="layout"> Face Layout </label>
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  fxLayoutGap="10px"
+  class="row-card-input-container-margin-bottom p-0 face-layout-sec"
+>
+  <div class="row-card-input-container-width">
+    <label class="common-label-font">Good Face Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        formControlName="GoodFaceMessage"
+        placeholder="Good"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          layoutForm.get('GoodFaceMessage').touched &&
+          layoutForm.get('GoodFaceMessage').hasError('required')
+        "
+        >Good face message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+    <label class="common-label-font">Okay Face Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        formControlName="OkayFaceMessage"
+        placeholder="Okay"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          layoutForm.get('OkayFaceMessage').touched &&
+          layoutForm.get('OkayFaceMessage').hasError('required')
+        "
+        >Okay face message is required</mat-error
+      >
+  </div>
+  <div class="row-card-input-container-width">
+    <label class="common-label-font">Bad Face Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input type="text" matInput formControlName="BadFaceMessage" placeholder="Bad" />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          layoutForm.get('BadFaceMessage').touched &&
+          layoutForm.get('BadFaceMessage').hasError('required')
+        "
+        >Bad face message is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+
+<div class="mt-4 btn-save d-flex justify-content-end">
+  <button type="submit" mat-flat-button color="primary" [disabled]="layoutForm.invalid">Save Changes</button>
+</div>
+</form>

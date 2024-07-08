@@ -1,0 +1,168 @@
+<mat-card-actions class="tab-content-title-margin">
+  <mat-card-title class="customization-option-tab-content-header-font"
+    >First Review Request</mat-card-title
+  >
+</mat-card-actions>
+<form [formGroup]="headerForm" (ngSubmit)="submit()">
+  <mat-card-actions
+    fxLayout="row "
+    fxLayout.xs="column "
+    fxLayoutGap="10px"
+    class="row-card-input-container-margin-bottom p-0"
+  >
+    <div class="row-card-input-container-width">
+      <label class="common-label-font">Header Font Color</label>
+      <app-color-picker-field
+        [id]="'fontColor'"
+        [value]="headerForm.get('HeaderFontColor').value"
+        (handleChange)="changehandler($event)"
+      ></app-color-picker-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          headerForm.get('HeaderFontColor').touched &&
+          headerForm.get('HeaderFontColor').hasError('required')
+        "
+        >Font color is required</mat-error
+      >
+    </div>
+
+    <div class="row-card-input-container-width">
+      <label class="common-label-font">Header Background Color</label>
+      <app-color-picker-field
+        [id]="'backColor'"
+        [value]="headerForm.get('HeaderBackgroundColor').value"
+        (handleChange)="changehandler($event)"
+      ></app-color-picker-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          headerForm.get('HeaderBackgroundColor').touched &&
+          headerForm.get('HeaderBackgroundColor').hasError('required')
+        "
+        >Background color is required</mat-error
+      >
+    </div>
+  </mat-card-actions>
+
+  <mat-card-actions
+    fxLayout="row "
+    fxLayout.xs="column "
+    fxLayoutGap="10px"
+    class="row-card-input-container-margin-bottom p-0"
+  >
+    <div class="row-card-input-container-width">
+      <label class="common-label-font">Header Message</label>
+      <mat-form-field
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          formControlName="HeaderMessage"
+          placeholder="Help us. Help others. You’re invited to review:"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          headerForm.get('HeaderMessage').touched &&
+          headerForm.get('HeaderMessage').hasError('required')
+        "
+        >Header message is required</mat-error
+      >
+    </div>
+
+    <div class="row-card-input-container-width">
+      <label class="common-label-font">Welcome Message</label>
+      <mat-form-field
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          formControlName="WelcomeMessage"
+          placeholder="Thanks for being our customer."
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          headerForm.get('WelcomeMessage').touched &&
+          headerForm.get('WelcomeMessage').hasError('required')
+        "
+        >Welcome message is required</mat-error
+      >
+    </div>
+  </mat-card-actions>
+
+  <mat-card-actions
+    fxLayout="row "
+    fxLayout.xs="column "
+    fxLayoutGap="10px"
+    class="row-card-input-container-margin-bottom p-0"
+  >
+    <div class="row-card-input-container-width">
+      <label class="common-label-font">Body Message</label>
+      <mat-form-field
+        class="input-full-width mh-76"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          formControlName="BodyMessage"
+        ></textarea>
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          headerForm.get('BodyMessage').touched &&
+          headerForm.get('BodyMessage').hasError('required')
+        "
+        >Body message is required</mat-error
+      >
+      
+    </div>
+
+    <div class="row-card-input-container-width">
+      <label class="common-label-font">Thank You Message</label>
+      <mat-form-field
+        class="input-full-width mh-76"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          formControlName="ThankyouMessage"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          headerForm.get('ThankyouMessage').touched &&
+          headerForm.get('ThankyouMessage').hasError('required')
+        "
+        >Thank you message is required</mat-error
+      >
+    </div>
+  </mat-card-actions>
+
+  <div class="mt-4 btn-save d-flex justify-content-end">
+    <button type="submit" mat-flat-button color="primary" [disabled]="headerForm.invalid">Save Changes</button>
+  </div>
+</form>

@@ -1,0 +1,164 @@
+.my-review-activities-review-profile-giid-section {
+  display: flex !important;
+}
+.my-review-footer-pagination {
+  padding: 1em 0;
+}
+.your-landing-page-section {
+  display: grid;
+  justify-content: flex-start;
+}
+.your-landing-page-section h6 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #18181b;
+}
+.my-review-title-row-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin: 0px 0px 17px 0px;
+}
+.my-review-pagination-sapce-beetwing {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline !important;
+}
+
+.sort-selecte-section {
+  display: flex;
+  width: 100px;
+  margin: 10px;
+}
+
+.my-review-activities-review-profile-giid-section .abd {
+  display: flex;
+  width: 60% !important;
+}
+.auto-respose-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.ng-star-inserted .view-more-button.view-less .mat-icon {
+  rotate: 180deg;
+}
+.ng-star-inserted .view-more-button.view-less .mat-icon svg {
+  vertical-align: baseline;
+}
+.view-more-button {
+  margin-top: 8px;
+}
+
+@media (min-width: 320px) and (max-width: 359px) {
+  .add-manual-review-main-section h5 {
+    font-size: 17px !important;
+    line-height: 25px !important;
+  }
+  .add-manual-stars app-start-rating .mat-icon {
+    height: 22px;
+    width: 22px;
+    line-height: 0;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 600px) {
+  .add-manual-review-main-section h5 {
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+  .add-manual-stars app-start-rating .mat-icon {
+    height: 24px;
+    width: 24px;
+    line-height: 0;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  .mat-mdc-card-avatar ~ .mat-mdc-card-header-text .mat-mdc-card-title,
+  .mat-mdc-card-avatar ~ .mat-mdc-card-header-text .mat-mdc-card-subtitle {
+    padding: 6px 13px 0 !important;
+  }
+  .my-review-title {
+    font-size: 20px !important;
+    line-height: 28px !important;
+    margin-bottom: 1em;
+  }
+  .rating-point {
+    font-size: 20px !important;
+  }
+  .add-review-manually-button button {
+    height: 48px !important;
+    font-size: 13px !important;
+  }
+  .add-manual-stars app-start-rating .mat-icon {
+    margin-right: 4px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .add-manual-stars app-start-rating .mat-icon {
+    margin-right: 8px;
+  }
+  .add-manual-review-main-section h5 {
+    font-size: 21px !important;
+    line-height: 26px !important;
+  }
+}
+@media (max-width: 1080px) {
+  .my-review-title-row-section {
+    margin: 0px;
+  }
+  .my-review-activities-review-profile-giid-section {
+    display: grid !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+  .my-review-ratings-card-responsive {
+    display: contents;
+  }
+  .my-review-ratings-card-responsive .mat-grid-tile-content {
+    display: block !important;
+    padding-bottom: 5px !important;
+  }
+  .sort-selecte-section {
+    display: flex;
+    width: none !important;
+    margin: 0px !important;
+  }
+  .add-review-manually-button-responsive {
+    display: flex !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin: 10px 0px !important;
+  }
+  .add-review-manually-button-responsive button {
+    width: 100% !important;
+  }
+  .sort-selecte-section-text-responsive-none {
+    display: none !important;
+  }
+}
+
+.no-data-img {
+  height: 350px;
+  margin-left: 20%;
+}
+
+@media (max-width: 600px) {
+  .no-data-img {
+    height: 350px;
+    margin-left: 0% !important; /* Given important as overlapped by other style*/
+    width: 350px;
+  }
+}

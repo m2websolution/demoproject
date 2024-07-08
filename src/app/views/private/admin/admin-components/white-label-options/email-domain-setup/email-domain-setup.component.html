@@ -1,0 +1,184 @@
+<div class="email-domain-setup">
+  <div
+    class="common-container-card"
+    [ngClass]="
+      isDomainAvailable ? 'd-none' : ''
+    "
+  >
+  
+    <div class="primary-email-domain w-100">
+      <form [formGroup]="emailDomainSetupForm" (ngSubmit)="createEmailDomain()">
+        <div class="mb-4 admin-form-group">
+          <label class="common-label-font"
+            >Enter your primary email domain*</label
+          >
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              matInput
+              type="text"
+              placeholder="mydomain.com"
+              formControlName="DomainName"
+            />
+          </mat-form-field>
+          <mat-error
+            class="error-message"
+            *ngIf="
+              emailDomainSetupForm.get('DomainName').touched &&
+              emailDomainSetupForm.get('DomainName').hasError('required')
+            "
+            >Domain name is required</mat-error
+          >
+          <mat-error
+            class="error-message"
+            *ngIf="
+                emailDomainSetupForm.get('DomainName').touched && !emailDomainSetupForm.get('DomainName').hasError('required') &&
+                emailDomainSetupForm.get('DomainName').errors?.['invalidDomain']
+              "
+            >Invalid domain name format</mat-error
+          >
+        </div>
+        <div class="domain-button">
+          <button type="submit" mat-flat-button color="primary" [disabled]="emailDomainSetupForm.invalid">Set domain</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div
+    class="common-container-card mt-3 flex-column"
+    [ngClass]="
+      isDomainAvailable && !isVerify ? '' : 'd-none'
+    "
+  >
+    <div>
+      <h3 class="text-center">Email Domain: {{ emailDomainDetail.domain }}</h3>
+    </div>
+    <div class="record-container">
+      <div class="domain-table-text">
+        <p class="text-dark">
+          To continue, please set the sending dns records of {{emailDomainDetail.domain}} as
+          listed below
+        </p>
+        <div class="domain-record-table">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef class="text-start">Type</th>
+              <td mat-cell *matCellDef="let element" class="text-start ps-3">
+                {{ element.type }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="host">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="text-start"
+                style="width: 600px !important"
+              >
+                Host
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start ps-3"
+                style="width: 600px !important"
+              >
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    {{ element.host }}
+                  </div>
+                  <div>
+                    <mat-icon
+                      (click)="copyItem(element.host)"
+                      [svgIcon]="'copy_keyboard'"
+                    />
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="text-start"
+                style="width: 600px !important"
+              >
+                Value
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start ps-3"
+                style="width: 600px !important"
+              >
+                <div class="d-flex justify-content-between">
+                  <div class="word-break">
+                    <p>{{ element.data }}</p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <mat-icon
+                      (click)="copyItem(element.value)"
+                      [svgIcon]="'copy_keyboard'"
+                    />
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef class="text-center">
+                Status
+              </th>
+              <td mat-cell *matCellDef="let element" class="text-center ps-3">
+                <mat-icon
+                  [svgIcon]="element.valid ? 'tick_square' : 'red_cross'"
+                ></mat-icon>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+      <div class="verify-container">
+        <div [ngClass]="isVerify ? 'd-none' : ''" class="not-verified">
+          <mat-icon [svgIcon]="'red_cross'"></mat-icon
+          ><label class="not-verified-text">Not verified</label>
+        </div>
+        <div class="verify-btn-group">
+          <button [ngClass]="isVerify ? 'd-none' : ''"
+            (click)="verifyEmailDomain()"
+            type="button"
+            mat-flat-button
+            color="primary"
+          >
+            Verify Domain
+          </button>
+          <button
+            (click)="deleteEmailDomain()"
+            type="button"
+            mat-flat-button
+            color="warn"
+          >
+            Delete Domain
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="common-container-card mt-3 d-flex flex-column justify-content-center align-items-center"
+    [ngClass]="isDomainAvailable && isVerify ? '' : 'd-none'"
+  >
+    <mat-icon class="tick-icon" [svgIcon]="'action_tick_filled'"></mat-icon>
+    <h3>
+      Domain Name:
+      <span class="text-primary">{{emailDomainDetail.domain}}</span>
+    </h3>
+    <h4>You can start using the above domain</h4>
+    <button type="button" (click)="deleteEmailDomain()" mat-flat-button color="warn">
+      Delete Domain
+    </button>
+  </div>
+</div>

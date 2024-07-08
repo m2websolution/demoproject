@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .custom-container {
+    width: 780px !important;
+    max-width: 100% !important;
+    position: static !important;
+    padding: 20px !important;
+    height: 711px !important;
+  }
+}

@@ -1,0 +1,73 @@
+/* Header Options section */
+label {
+  margin-bottom: 0.5em;
+}
+
+
+
+.suffix-field-color {
+  padding-right: 20px;
+}
+
+.color-input-width-height {
+  width: 24px;
+  height: 24px
+}
+
+.mh-76 {
+  min-height: 76px;
+}
+
+.row-card-input-container-margin-bottom {
+  margin-bottom: 24px;
+  align-items: baseline
+}
+
+.tab-content-title-margin {
+  margin-bottom: 28px;
+  padding: 0 !important;
+  min-height: unset;
+}
+
+
+/* Heta Css Start */
+
+.mt-4.btn-save {
+  margin-top: 32px !important;
+}
+
+
+@media (max-width: 1439px) {
+  .row-card-input-container-margin-bottom {
+    align-items: baseline;
+  }
+
+  .row-card-input-container-width {
+    width: 49%;
+  }
+}
+
+@media (max-width: 960px) {
+  .row-card-input-container-margin-bottom {
+    margin-bottom: 12px;
+  }
+
+  .tab-content-title-margin {
+    margin-bottom: 16px !important;
+  }
+
+  label {
+    margin-bottom: 0.25em;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-save button {
+    width: 100%;
+    height: 48px;
+  }
+
+  .row-card-input-container-width {
+    width: 100% !important;
+  }
+}

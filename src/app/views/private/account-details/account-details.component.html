@@ -1,0 +1,19 @@
+<div class="title-text">{{authenticationWith === 'Facebook' ? 'Choose Facebook Profile to Connect' : 'Choose Google
+    Profile to Connect'}}</div>
+<div class="container mt-4">
+    <div class="row cart-item mt-3" *ngFor="let accountDetail of accountDetails">
+        <div class="container-wallpaper">
+            <div *ngIf="authenticationWith === 'Facebook'">
+                <div class="info-title">{{ accountDetail?.name }}</div>
+                <div class="info-des">{{ accountDetail?.category }}</div>
+            </div>
+            <div *ngIf="authenticationWith === 'Google'">
+                <div class="info-title">{{ accountDetail?.LocationName }}</div>
+                <div class="info-des">{{ accountDetail?.Address }}</div>
+            </div>
+            <div class="button-container">
+                <button class="btn btn-primary btn-connect mt-3" (click)="connect(accountDetail)">Connect</button>
+            </div>
+        </div>
+    </div>
+</div>

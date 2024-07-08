@@ -1,0 +1,41 @@
+.web-solution-section{
+    margin: 24px 32px;
+}
+
+.connected-platform {
+    height: 40vh;
+    overflow: auto;
+}
+
+.card-text {
+    color: black;
+}
+
+.custom-dialog-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .selected-card {
+    opacity: 0.5;
+  }
+
+.web-solution-section--help-font{
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 26px;
+color: #18181B;
+}
+
+.web-solution-section--help-margin{
+    margin: 24px 0px;
+}
+
+
+.web-solution-section--help-font-margin{
+    margin: 40px 0px;
+}

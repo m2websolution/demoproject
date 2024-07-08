@@ -1,0 +1,94 @@
+<div class="">
+  <mat-card-actions class="my-review-title-row-section">
+    <h3 class="common-main-title-font">Private Feedback</h3>
+  </mat-card-actions>
+
+  <mat-card-actions
+    class="d-flex w-100 m-0 justify-content-between"
+    style="padding: 0px 0px 0px 0px"
+  >
+    <div
+      fxLayout="row"
+      fxLayout.lt-sm="column"
+      fxLayout.lt-md="column"
+      fxLayoutGap="16"
+      fxLayoutAlign="center center"
+      ngClass.lt-lg="w-100"
+      ngClass.gt-md="w-50"
+    >
+      <div
+        fxLayout.xs="row"
+        fxLayout.lt-md="row"
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxLayoutGap.xs="5px"
+        fxLayoutGap.lt-md="5px"
+        class="w-100 add-review-manually-button"
+        style="align-items: center"
+      >
+        <button
+          fxHide.gt-lg
+          fxHide.gt-md
+          fxHide.md
+          mat-flat-button
+          color="accent"
+          (click)="openBottomSheet()"
+        >
+          <img src="assets/svg/icons//filled/Slider.svg" />
+        </button>
+      </div>
+    </div>
+  </mat-card-actions>
+
+  <app-paginator
+    #feedbackPaginatorComponent
+    [hidden]="pagedItems.length > 0"
+    [pager]="pager"
+    [selectedSortItem]="negativeFeedbackModel.pagesize"
+    (setPage)="setPage($event)"
+    (setItems)="setItemsSorting($event)"
+  ></app-paginator>
+
+  <div fxLayout="row" ngClass="row" class="justify-content-center">
+    <div ngClass.gt-md="col-9" ngClass.lt-md="col-12">
+      <div *ngFor="let data of pagedItems" style="margin-bottom: 15px">
+        <app-my-review-profile-card
+          *ngIf="pagedItems.length > 0"
+          [feedbackPaginatorComponent]="feedbackPaginatorComponent"
+          [privateFeedbackData]="data"
+          [isPrivateFeedbackData]="true"
+          (updateprivateFeedbackFilter)="updateprivateFeedbackFilters($event)"
+        ></app-my-review-profile-card>
+      </div>
+
+      <div *ngIf="(!pagedItems || pagedItems.length === 0) && !loading">
+        <img
+          class="no-data-img"
+          alt="No Data Available"
+          src="assets/svg/icons/Grab Review - Common Icons/no-review.svg"
+        />
+      </div>
+    </div>
+    <div
+      ngClass.gt-md="col-3"
+      fxShow
+      fxHide.lt-lg="true"
+      *ngIf="pagedItems.length > 0 || isFilterApplied"
+    >
+      <app-my-review-activities-form
+        [myReviewActivitesPermission]="false"
+        [feedbackPaginatorComponent]="feedbackPaginatorComponent"
+        [isPrivateFeedbackData]="true"
+        (updateprivateFeedbackFilter)="updateprivateFeedbackFilters($event)"
+      ></app-my-review-activities-form>
+    </div>
+  </div>
+
+  <app-paginator
+    #feedbackPaginatorComponent
+    [hidden]="pagedItems.length > 0"
+    [pager]="pager"
+    [selectedSortItem]="negativeFeedbackModel.pagesize"
+    (setPage)="setPage($event)"
+    (setItems)="setItemsSorting($event)"
+  ></app-paginator>
+</div>

@@ -1,0 +1,186 @@
+<div
+  fxLayout.gt-sm="row wrap"
+  fxLayout.sm="column-reverse"
+  fxLayout.xs="column-reverse"
+  fxLayoutGap="20px"
+  class="common-container-card-raf"
+>
+  <mat-card
+    class="common-container-card select-plan-section"
+    fxFlex.lt-md="0 1 calc(100%-10px)"
+    fxFlex.gt-xs="0 1 calc(40%-10px)"
+  >
+    <h6 class="common-main-title-font mb-3">Select plan</h6>
+    <ng-container [ngSwitch]="tabIndex">
+      <div *ngSwitchCase="1">
+        <div
+          *ngFor="let item of planListTab1; index as i"
+          [ngClass]="
+            firstGroup == item.id
+              ? 'container-sub-planListTab1-card container-sub-planListTab1-card-bg-active'
+              : 'container-sub-planListTab1-card'
+          "
+        >
+          <div fxLayout="column" class="radio-margin-sec">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div>
+                <div
+                  class="input select-plan-radio inactive-radio-border-color"
+                >
+                  <mat-radio-group
+                    [(ngModel)]="firstGroup"
+                    class="radio-group"
+                    (ngModelChange)="onFirstGroupChange(item, 'agency')"
+                  >
+                    <mat-radio-button
+                      style="scale: 1.5"
+                      class="radio-button"
+                      [value]="item.id"
+                      [checked]="i === 0"
+                      color="primary"
+                    >
+                    <div class="d-flex gap">
+                      <span class="common-mat-dialog-header-title">{{
+                        item?.title
+                        }}</span>
+                    </div>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div>
+                <h6 class="selected-plan-dollur-font">$ {{ item?.dollar }}</h6>
+              </div>
+            </div>
+
+            <div class="planListTab1-desc-margin-sec">
+              <mat-card-subtitle class="planListTab1-desc-font">{{
+                item.dec
+              }}</mat-card-subtitle>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchDefault>
+        <div
+          *ngFor="let item of businessPlanList; index as i"
+          [ngClass]="
+            firstGroup == item.id
+              ? ' container-sub-planListTab1-card-bg-active container-sub-inactive-card'
+              : 'container-sub-inactive-card'
+          "
+        >
+          <div fxLayout="column" class="radio-margin-sec">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div>
+                <div
+                  class="input select-plan-radio inactive-radio-border-color"
+                >
+                  <mat-radio-group
+                    [(ngModel)]="firstGroup"
+                    class="radio-group"
+                    (ngModelChange)="onFirstGroupChange(item, 'business')"
+                  >
+                    <mat-radio-button
+                      style="scale: 1.5"
+                      class="radio-button"
+                      [value]="item.id"
+                      [checked]="i === 0"
+                      color="primary"
+                    >
+                    <div class="d-flex gap">
+                      <span class="common-mat-dialog-header-title">{{
+                        item?.title
+                        }}</span>
+                        <div class="save-percentage-sec current-plan"
+                          *ngIf="billingDetails?.BillingDetails?.PlanName?.toUpperCase() === item?.title?.toUpperCase() && 
+                                                                               (+billingDetails?.BillingDetails?.Amount / 100) === 
+                                                                               +(!toggleValueStandard ? item?.dollar : (((item?.dollar * 12) - (((item?.dollar * 20 / 100) * 12))).toFixed(0)))">
+                          Current
+                        </div>
+                      </div>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div>
+                <h6 class="selected-plan-dollur-font">$ {{ !toggleValueStandard ? item?.dollar : (((item?.dollar)*12) - (((item?.dollar)*20 / 100)*12)).toFixed(0) }}</h6>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let subDiscList of item.subDiscList; index as j">
+            <div fxLayout="row" fxLayoutGap="8" fxLayoutAlign="start center"  *ngIf="j < 5">
+              <div>
+                <mat-icon
+                  matPrefix
+                  mat-dialog-close
+                  [svgIcon]="
+                    firstGroup == item.id
+                      ? 'right_redius_active'
+                      : 'right_redius_inactive'
+                  "
+                ></mat-icon>
+              </div>
+              <h6 class="m-0 unlimited-review-platform-font">
+                {{ subDiscList.title }}
+              </h6>
+            </div>
+          </div>
+          <div *ngIf="item.subDiscList.length > 5" class="more-items">
+            <p>And {{ item.subDiscList.length - 5 }} more...</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </mat-card>
+
+  <div
+    fxFlex.lt-md="0 1 calc(100%-10px)"
+    fxFlex.gt-xs="0 1 calc(60%-10px)"
+    fxLayout="column"
+    fxLayoutGap="20px"
+    fxLayout.xs="column-reverse"
+  >
+    <mat-card class="common-container-card tabbing-ref">
+      <mat-tab-group
+        [selectedIndex]="tabIndex"
+        (selectedIndexChange)="onChange($event)"
+      >
+        <mat-tab label="BUSINESS">
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="start center"
+            fxLayoutAlign.xs="center center"
+            style="gap: 16px"
+            class="mat-tab-group-selecte-plan-sec"
+          >
+            <h6 class="m-0">Bill Monthly</h6>
+
+            <mat-card-actions fxLayout="row wrap">
+              <mat-slide-toggle [(ngModel)]="toggleValueStandard"></mat-slide-toggle>
+              <h6 class="m-0">Bill Annually</h6>
+            </mat-card-actions>
+            <div class="save-percentage-sec">Save 20%</div>
+          </div>
+        </mat-tab>
+        <mat-tab label="AGENCY">
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="start center"
+            style="gap: 14px"
+            fxLayoutAlign.xs="center center"
+            class="mat-tab-group-selecte-plan-sec"
+          >
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+
+    <div class="product-paymentdetail-d-none-sm">
+      <app-paymentdetail tabIndex="{{ tabIndex }}" [plan]="selectedPlan" [toggleValueStandard]="toggleValueStandard" [planName]="planName" [currentPlan]="currentPlan"></app-paymentdetail>
+    </div>
+  </div>
+</div>
+<div class="product-paymentdetail-d-show-sm" style="margin-top: 20px">
+  <app-paymentdetail tabIndex="{{ tabIndex }}" [plan]="selectedPlan" [toggleValueStandard]="toggleValueStandard" [planName]="planName" [currentPlan]="currentPlan"></app-paymentdetail>
+</div>

@@ -1,0 +1,258 @@
+.from-to-date {
+  display: flex;
+  gap: 32px;
+}
+
+.report-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.report-page h2 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+  margin: 0px;
+}
+
+.report-page h1 {
+  margin: 0px;
+}
+
+.report-page p {
+  margin-bottom: 0px;
+}
+
+.report-page hr {
+  border: 1.5px solid #fafafa;
+  margin: 0.5rem !important;
+}
+
+.report-page .mdc-card__actions {
+  padding: 0px;
+}
+
+.report-page label {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.report-page
+  .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+  > .mat-mdc-tab-header
+  .mat-mdc-tab {
+  margin-right: 10px !important;
+  padding: 0px 15px !important;
+}
+
+.all-pr-sec {
+  background: #ffffff;
+  padding: 24px 32px 32px;
+  border-radius: 16px;
+  gap: 20px;
+}
+
+.card-stars {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.my-report-card-container .card-stars mat-icon {
+  width: 32px;
+  height: 40px;
+}
+
+.review-platform-card .chart-container {
+  /* height: 350px; */
+  width: 100%;
+  overflow: visible !important;
+}
+
+.review-platform-card .chart-container canvas {
+  /* padding: 20px; */
+  overflow: visible !important;
+}
+
+.chart-label-container {
+  display: flex;
+  /* gap: 50px; */
+  gap: 5%;
+  align-items: center;
+}
+.chart-label-container .label-container {
+  /* display: flex;
+  flex-wrap: wrap; 
+  gap: 32px; */
+  gap: 32px 0px;
+}
+
+.label-circle-container {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.label-circle {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 10px;
+  background-image: url("../../../../assets/images/dot-bg.svg") !important;
+  background-blend-mode: exclusion;
+}
+
+.chart-labels {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.text-align-start-force {
+  text-align: start !important;
+}
+
+.text-align-center-force {
+  text-align: center !important;
+}
+
+/* .dropdown-custom-design mat-option {
+  height: 45px !important;
+} */
+
+.dropdown-option {
+  margin: 0px !important;
+  height: 45px !important;
+  border-radius: 0px !important;
+  border-bottom: 1px solid #e4e4e7;
+  padding: 12px 16px 12px 20px !important;
+}
+
+.review-rating-card-header-section {
+  flex-wrap: wrap;
+}
+
+.report-page .breadcrumb-wrap {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1130px) {
+  .report-page hr {
+    margin: 0px;
+  }
+
+  .all-pr-sec {
+    width: 100%;
+  }
+
+  .card-stars {
+    gap: 4px;
+  }
+
+  .review-platform-card .chart-container {
+    height: 100%;
+  }
+
+  .review-platform-card .chart-container canvas {
+    padding: 0px;
+  }
+
+  .chart-label-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px;
+  }
+  .chart-label-container .label-container {
+    gap: 20px 0px;
+  }
+
+  .chart-labels {
+    margin-top: 20px;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .card-stars {
+    gap: 2px;
+  }
+
+  .my-report-card-container .card-stars mat-icon {
+    width: 25px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .report-page h3 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .report-page h2 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .report-page h1 {
+    font-weight: 600;
+    font-size: 18px !important;
+    line-height: 24px;
+  }
+
+  .report-page label {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .from-to-date {
+    gap: 4%;
+    width: 100%;
+  }
+  .from-to-date .from-to-date-component {
+    width: 48%;
+  }
+  .from-to-date .from-to-date-component mat-form-field {
+    max-width: 100%;
+  }
+
+  .all-pr-sec {
+    width: 100%;
+    padding: 12px 20px 20px;
+  }
+
+  .report-page .breadcrumb .first-item a,
+  .report-page .breadcrumb .actives {
+    font-weight: 600 !important;
+    font-size: 18px !important;
+  }
+
+  /* .show-web {
+    display: none;
+  }
+
+  .show-mobile {
+    display: block;
+  } */
+}
+
+@media (max-width: 400px) {
+  .from-to-date {
+    gap: 2%;
+  }
+
+  .from-to-date .from-to-date-component {
+    width: 49%;
+  }
+
+  .report-page .pagination-section {
+    gap: 10px 0px !important;
+    flex-direction: column !important;
+  }
+}

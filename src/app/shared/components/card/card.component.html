@@ -1,0 +1,25 @@
+<mat-card
+  class="backgroud-set dashboard-card"
+  (click)="selectItem(data.id)"
+  [ngClass]="data.selected ? 'selectedBG' : ''"
+>
+  <mat-card-header>
+    <mat-card-title [ngClass]="data.selected ? 'selectedCT' : ''">{{
+      data.title
+    }}</mat-card-title>
+    <mat-icon
+      class="common-primary-bg"
+      [ngClass]="data.selected ? 'selectedTick ' : ''"
+      >{{ !data.selected ? data.icon : "check" }}</mat-icon
+    >
+  </mat-card-header>
+  <mat-card-content [ngClass]="data.selected ? 'selectedCC' : ''">
+    <p (window:resize)="onResize($event)">
+      {{
+        data.discription.length > discriptionLendth
+          ? (data.discription | slice : 0 : discriptionLendth) + "..."
+          : data.discription
+      }}
+    </p>
+  </mat-card-content>
+</mat-card>

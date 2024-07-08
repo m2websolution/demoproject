@@ -1,0 +1,93 @@
+.add-sms-email-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 8px;
+    width: 261px;
+    height: 49px;
+    background: var(--primary-color);
+    border-radius: 8px;
+    color: #ffffff;
+    border: #008eff;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 680px) {
+    .add-sms-email-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 5px 8px;
+      gap: 8px;
+      width: max-content;
+      height: 40px;
+      background:  var(--primary-color);
+      border-radius: 8px;
+      color: #ffffff;
+      border: #008eff;
+    }
+}
+
+@media (max-width: 680px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+.error {
+  color: red;
+}
+
+
+.input-field {
+	width: 100%;
+	padding: 10px;
+	text-align: left;
+}
+
+.counter-main-sec {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-margin-sec {
+  margin-top: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+
+.form-container {
+  margin-top: 30px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.form-item {
+  flex-grow: 1;
+}
+
+.Left{
+margin-left: 20px;
+}
+
+.right{
+  margin-left: 4em;
+}
+
+.mat-form-field {
+  position: relative;
+}
+
+.mat-form-field .fa {
+  cursor: pointer;
+  padding-right: 10px; /* Adjust padding as needed */
+}
+

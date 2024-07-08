@@ -1,0 +1,82 @@
+table {
+  width: 100% !important;
+  box-shadow: none !important;
+  border: 1px solid #d4d4d8 !important;
+  border-radius: 16px !important;
+  border-collapse: unset !important;
+  overflow: hidden !important;
+}
+
+table thead th {
+  background-color: #f4f4f5 !important;
+}
+
+table thead th,
+table tbody tr td {
+  text-align: center !important;
+}
+
+table td {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #18181b;
+  padding: 2px !important;
+}
+
+.complete {
+  background: #dcfce7;
+  padding: 10px;
+  width: 100px;
+  border-radius: 8px;
+  color: #22c55e;
+}
+
+.inqueue {
+  background: #ffeaef;
+  padding: 10px;
+  width: 100px;
+  border-radius: 8px;
+  color: #fe3f34;
+}
+
+.errorlog {
+  display: inline-block;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #fff9c3;
+}
+
+.page-no {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background: #ffffff;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.page-no-resp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background: #ffffff;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}

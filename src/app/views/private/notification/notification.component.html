@@ -1,0 +1,125 @@
+<div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Notification</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+<mat-card class="common-container-card">
+  <mat-card class="app-sub-card">
+    <div class="py-0 masterCardContent">
+      <label>Send email notification to</label>
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="start"
+        fxLayout.xs="column "
+        fxLayoutAlign.xs="start"
+      >
+        <div
+          *ngFor="let item of updateNotification.Email; let i = index"
+          class="custom-chip mb-3 me-2"
+        >
+          <label class="responsive-time-dot">{{ item }}</label>
+          <button
+            type="button"
+            mat-mini-fab
+            color="warn"
+            *ngIf="updateNotification.Email.length > 1"
+            (click)="removeEmail(i)"
+          >
+            <mat-icon [svgIcon]="'delete'"></mat-icon>
+          </button>
+        </div>
+        <div>
+          <input
+            type="button"
+            *ngIf="inputEmail"
+            class="custom-input"
+            #newEmailInput
+            type="text"
+            [formControl]="emailControl"
+            placeholder="Enter new email"
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+            (blur)="onEnterEmail()"
+            (keydown.enter)="onEnterEmail()"
+          />
+          <mat-error
+            class="error-message input-error"
+            *ngIf="emailControl.invalid && emailControl.touched"
+          >
+            <span *ngIf="emailControl.errors['pattern']"
+              >Invalid email format.</span
+            >
+          </mat-error>
+        </div>
+        <div (click)="addCustomChip()" class="custom-chip-2">
+          <mat-icon
+            [svgIcon]="'add'"
+            color="primary"
+            class="custom-chip-icon common-primary-bg"
+          ></mat-icon>
+          <label class="common-primary-text">Add Email</label>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card
+    class="app-sub-card not_qualto_icon_ref gap-2"
+    fxLayout="row wrap"
+    fxLayoutAlign="start center"
+    fxLayout.xs="row "
+    fxLayoutAlign.xs="start center"
+  >
+    <img
+      src="assets/svg/icons/filled/not_qualto_icon.svg"
+      class="not_qualto_icon"
+    />
+    <h6 class="receive-notification-email-font common-font-14px m-0">
+      Your will receive individual notification email for each profile.
+    </h6>
+  </mat-card>
+
+  <div fxLayout="column " fxLayout.xs="column" fxAlign.xs="start" class="d-fle">
+    <h6 class="common-container-card-innner-title mb-3">Review Summary</h6>
+
+    <span class="notification-toggle-margin-bottom notification-toggle-width">
+      <span>Daily Notification</span>
+
+      <mat-slide-toggle
+        [(ngModel)]="notificationList.IsDailyNotification"
+        class="pr-1"
+      ></mat-slide-toggle>
+    </span>
+
+    <span class="notification-toggle-margin-bottom notification-toggle-width">
+      <span> Weekly Notification </span>
+
+      <mat-slide-toggle
+        [(ngModel)]="notificationList.IsMonthlyNotification"
+        class="pr-1"
+      ></mat-slide-toggle>
+    </span>
+
+    <span class="notification-toggle-margin-bottom notification-toggle-width">
+      <span> Monthly Notification </span>
+
+      <mat-slide-toggle
+        [(ngModel)]="notificationList.IsWeeklyNotification"
+        class="pr-1"
+      ></mat-slide-toggle>
+    </span>
+  </div>
+  <div class="d-flex justify-content-lg-end justify-content-sm-end">
+    <button
+      (click)="updateNotificationList()"
+      fxFlex.xs="0 1 calc(100%)"
+      mat-flat-button
+      color="primary"
+    >
+      Save Changes
+    </button>
+  </div>
+</mat-card>

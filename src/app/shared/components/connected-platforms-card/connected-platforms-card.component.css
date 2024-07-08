@@ -1,0 +1,148 @@
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.edit-btn {
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
+  color: #fff !important;  /* Given important as overlapped by other style*/
+}
+
+.mat-card-actions-margin {
+  margin-right: 7px;
+}
+
+.active {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 24px;
+  gap: 8px;
+  height: 48px;
+  background: #196cfa;
+  width: 100%;
+  border-radius: 0px 0px 8px 8px;
+  color: #ffffff;
+}
+
+.in-inactive {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 24px;
+  gap: 8px;
+  height: 48px;
+  background: #f4f4f5;
+  border-radius: 0px 0px 14px 14px;
+  width: 100%;
+}
+
+.borderactive {
+  border: 1px;
+  border-style: solid;
+  border-color: #196cfa;
+  border-radius: 10px !important;
+}
+
+.edit-background-color .mat-icon {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.edit-background-color {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  position: absolute;
+  min-width: 28px;
+  height: 28px;
+  right: 8px;
+  top: 8px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: #ffffff;
+}
+.conected-platform-img-section {
+  box-sizing: border-box;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.imgs {
+  width: 60px;
+  height: 60px;
+}
+.conected-platform-name-title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.connected-platform-section p {
+  margin: 0px;
+}
+
+/* When custom platform is added from review-platform screen, if image is not there, use this class for setting image */
+.img-custom-platform {
+  width: 60px;
+  height: 60px;
+  background-color: #0078d4; /* Microsoft Teams blue color */
+  color: #fff; /* White text */
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+@media (max-width: 1440px) {
+  .connected-platform-section p {
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .in-inactive {
+    padding: 14px 17px !important;
+  }
+
+  .connected-platform-section mat-card-title {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .connected-platform-section p {
+    font-weight: 500;
+    font-size: 12px;
+    color: #71717a;
+  }
+  .imgs {
+    width: 40px;
+    height: 40px;
+  }
+
+  .active {
+    padding: 0px;
+  }
+}

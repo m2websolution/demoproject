@@ -1,0 +1,221 @@
+.opt-main-page-card {
+  border-radius: 20px;
+  margin-bottom: 24px;
+  padding: 32px;
+}
+
+.copy-item {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.password-sec .mat-mdc-text-field-wrapper.mdc-text-field {
+  width: 50% !important;
+}
+
+label {
+  margin-bottom: 0.5em;
+}
+
+::placeholder {
+  color: #a1a1aa !important;
+}
+
+
+
+.otp-invite-customer-card {
+  padding: 24px 32px;
+  gap: 24px;
+  width: 100%;
+  background: #FAFAFB;
+  background-image: url("../../../../../assets/svg/icons/filled/invite_customber_bg_img.svg");
+  background-repeat: no-repeat;
+  border: 1px solid #f4f4f5;
+  border-radius: 8px;
+  background-position: top right;
+  background-size: contain;
+}
+
+.customization_invite_customber_svg {
+  width: 401px;
+  height: 215.13px;
+}
+
+.input-margin-bottom-prefrenc mat-form-field {
+  margin-bottom: 1em;
+}
+
+.input-margin-bottom-prefrenc {
+  padding: 2em 0 0 0 !important;
+}
+
+.copy-bord-color .mat-mdc-form-field-input-control.mdc-text-field__input,
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+  height: auto;
+  color: #196cfa;
+}
+
+.figma-icon-sec {
+  padding: 76px;
+  gap: 10px;
+  width: 100%;
+  height: 472px;
+  border: 2px solid #E4E4E7;
+  border-radius: 16px;
+}
+
+.btn-blue-send button, .btn-blue-save button {
+  padding: 16px 24px;
+}
+
+.inner-pot-card.mb-32{
+  margin-bottom: 32px;
+}
+
+.inner-pot-card.mb-16{
+  margin-bottom: 16px;
+}
+
+@media (max-width: 1399px) {
+  .input-margin-bottom-prefrenc mat-form-field{
+    margin-bottom: 0.5em;
+  }
+  .checkbox-dis-font {
+    font-size: 13px !important;
+    line-height: 22px !important;
+    text-align: justify;
+  }
+  .customer-sec{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .btn-blue-send.mt-4{
+    margin-top: 16px !important;
+  }
+}
+
+@media (max-width: 959px) {
+  .otp-invite-customer {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+    color: #18181b;
+  }
+
+  .your-grab-review-team-dic {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #71717a;
+  }
+
+  .checkbox-dis-font {
+    font-size: 12px !important;
+    line-height: 20px !important;
+    text-align: justify;
+  }
+
+  .otp-invite-customer-card {
+    padding: 20px !important;
+    background-size: cover;
+  }
+
+  .otp-invite-customer-card .mdc-card__actions {
+    padding: 0 !important;
+  }
+
+  .customization_invite_customber_svg_responsive_right {
+    margin-left: auto;
+    display: flex;
+  }
+
+  .opt-main-page-card {
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .customization_invite_customber_svg {
+    width: 200px !important;
+    height: 107.3px !important;
+  }
+
+  .breadcrumb {
+    align-items: baseline;
+  }
+
+ 
+  
+  .figma-icon-sec {
+    height: 140px;
+    padding: 37px;
+  }
+
+  .input-margin-bottom-prefrenc mat-form-field{
+    margin-bottom: 1em !important;
+  }
+    
+}
+
+@media (max-width: 767px) {
+  .inner-pot-card.mb-16, .mb-12{
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 599px) {
+  .input-margin-bottom-prefrenc {
+    padding: 1.5em 0 0 0 !important;
+  }
+
+  .input-margin-bottom-prefrenc .inner-prefrence {
+    margin-bottom: 16px !important;
+  }
+
+  .input-margin-bottom-prefrenc mat-form-field {
+    margin-bottom: 0.75em !important;
+  }
+
+  .btn-blue-send {
+    margin: 0 !important;
+    margin-top: 16px !important;
+  }
+
+  .btn-blue-send button,
+  .btn-blue-save button {
+    width: 100%;
+    height: 48px;
+  }
+
+  .btn-blue-save {
+    margin: 0 !important;
+    margin-top: 1rem !important;
+  }
+
+  .inner-pot-card.password-sec .w-50 {
+    width: 100% !important;
+  }
+
+  .w-100.copy-bord-color.mb-12 {
+    margin-bottom: 12px;
+  }
+
+  .inner-pot-card.mb-32{
+    margin-bottom: 20px;
+  }
+
+}
+
+.checkbox-dis-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #52525b;
+}

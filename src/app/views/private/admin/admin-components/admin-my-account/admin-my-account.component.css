@@ -1,0 +1,27 @@
+.admin-account-card {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.admin-account-card .admin-account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-account-card .admin-account-form .name-container {
+  display: flex;
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .admin-account-card .admin-account-form {
+    gap: 12px;
+  }
+
+  .admin-account-card .admin-account-form .name-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

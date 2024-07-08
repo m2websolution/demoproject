@@ -1,0 +1,45 @@
+<div class="web-solution-section">
+  <mat-card-actions class="d-flex justify-content-between">
+    <h6 class="common-main-title-font">{{dialogData.data.CompanyName}}</h6>
+    <mat-icon
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      class="cursor-pointer"
+    ></mat-icon>
+  </mat-card-actions>
+  <hr />
+  <div class="  ">
+    <h6 class="web-solution-section--help-font">
+      {{dialogData.data.ReviewPageSettings.ReviewRequestMessage}}
+    </h6>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10px" class="d-flex flex-wrap connected-platform justify-content-center pt-2">
+    <div
+      *ngFor="
+        let data of breakpoint == 1
+          ? dialogData.data.ReviewSource.slice(0, connectedPlatformCount)
+          : dialogData.data.ReviewSource
+      "
+    >
+      <div class="mb-3" (click)="redirectToLink(data)">
+        <app-connected-platforms-card [ngClass]="data.linkClicked ? 'selected-card' : ''" [connected]="2" [isLandingPage]="landingPage" [data]="data">
+        </app-connected-platforms-card>
+      </div>
+    </div>
+  </div>
+  <div class="web-solution-section--help-font-margin">
+    <h6 class="web-solution-section--help-font">
+      {{dialogData.data.ReviewPageSettings.PublicReviewMessage}} <a (click)="redirectToPrivateFeedback()"> {{dialogData.data.ReviewPageSettings.PublicReviewLinkText}}</a>
+    </h6>
+  </div>
+</div>
+
+<ng-template #dialogContent>
+  <mat-dialog-content class= "d-flex justify-content-center" >
+    <h4 class="card-text">Thank you for your feedback.</h4>   
+  </mat-dialog-content>
+  <mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-button mat-dialog-close>OK</button>
+  </mat-dialog-actions>
+</ng-template>

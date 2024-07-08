@@ -1,0 +1,192 @@
+<div
+  fxLayout="row wrap"
+  fxLayoutGap.gt-sm="10px"
+  class="common-container-card-raf"
+  *ngIf="billingDetails"
+>
+  <mat-card
+    class="common-container-card"
+    fxFlex.lt-md="0 1 calc(100%)"
+    fxFlex.gt-sm="0 1 calc(50%-10px)"
+  >
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between baseline"
+      class="upgrade-your-plan--column-sec"
+    >
+      <div class="your-current-plan-sec">
+        <h6 class="common-main-title-font">Your current plan</h6>
+        <h6 class="small-dec-font">{{billingDetails?.BillingDetails?.PlanName === 'Agency' ?
+          billingDetails?.BillingDetails?.SubAgencyPlanname : billingDetails?.BillingDetails?.PlanName}}</h6>
+        <p class="text-danger" *ngIf="billingDetails?.BillingDetails?.PlanName === 'Free Trial'">Your Trial Expired on
+          {{billingDetails?.BillingDetails?.NextBilling}}</p>
+      </div>
+      <div>
+        <div
+          fxLayout="row"
+          fxLayout.xs="column"
+          align="end"
+          class="add-manual-buttons gap-2 billing-buttom-margin-sec"
+        >
+          <button
+            mat-dialog-close
+            class="secondary-button"
+            fxFlex.xs="0 1 calc(100%-10px)"
+            fxFlex.sm="0 1 calc(100%-10px)"
+            (click)="onCancelSubcription()"
+            *ngIf="billingDetails?.BillingDetails?.PlanName !== 'Free Trial'"
+          >
+            Cancel Plan
+          </button>
+          <button
+            color="primary"
+            class="primary-button common-primary-bg me-2"
+            fxFlex.xs="0 1 calc(100%-10px)"
+            fxFlex.sm="0 1 calc(100%-10px)"
+            (click)="onUpgradeYourPlan(1)"
+            *ngIf="billingDetails?.BillingDetails?.PlanName !== 'Agency'"
+            [disabled]="!billingDetails"
+          >
+            Upgrade Your Plan
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card
+    class="common-container-card bill-monthly-card-margin { margin-bottom: 32px; }"
+    fxFlex.lt-md="0 1 calc(100%)"
+    fxFlex.gt-sm="0 1 calc(50%-10px)"
+    *ngIf="billingDetails?.BillingDetails?.PlanName !== 'Free Trial'"
+  >
+    <div>
+      <div fxLayout="row" fxLayoutAlign="space-between baseline">
+        <h6 class="billed-monthly-month-font">
+          Billed {{billingDetails?.BillingDetails?.PlanName !== 'Agency' ? (billingDetails?.BillingDetails?.PlanType.split(' -
+          ')[1]) : ''}}
+        </h6>
+        <h6 class="billed-monthly-dollur-font common-mat-dialog-header-title">
+          $ {{+billingDetails?.BillingDetails?.Amount / 100}}
+        </h6>
+      </div>
+      <hr />
+    </div>
+    <div>
+      <h6 class="billed-monthly-dollur-lg-font">$ {{+billingDetails?.BillingDetails?.Amount / 100}}</h6>
+      <h6 class="next-payment-font common-font-16px" *ngIf="billingDetails?.BillingDetails?.PlanName !== 'Free Trial'">
+        Next Payment $ {{+billingDetails?.BillingDetails?.NextBillingAmt / 100}} Due {{billingDetails?.BillingDetails?.NextBilling}}
+      </h6>
+    </div>
+  </mat-card>
+
+  <ng-container *ngIf="billingDetails?.BillingDetails?.PlanName !== 'Free Trial'">
+    <mat-card
+      class="common-container-card payment-method-card-ref"
+      fxFlex.lt-md="0 1 calc(100%)"
+      fxFlex.gt-sm="0 1 calc(50%-10px)"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between ">
+        <div>
+          <h6 class="common-main-title-font">Payment Method</h6>
+        </div>
+        <div class="">
+          <div
+            fxLayout="row"
+            align="end"
+            class="add-manual-buttons gap-2 billing-buttom-margin-sec"
+          >
+            <button
+              mat-flat-button
+              color="primary"
+              class="web-btn"
+              (click)="onUpdateCard()"
+            >
+              Update Card
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div
+        fxLayout="row"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign.gt-sm="start center"
+        fxLayoutAlign.lt-sm="center center"
+        fxLayoutGap.gt-sm="31px"
+        class="billing-screen-sub-card-dic-main-sec"
+      >
+        <div>
+          <img
+            [src]="cardDetails?.Brand === 'mastercard' ? '../../../../../../assets/images/mastercard.png' : cardDetails?.Brand === 'visa' ? '../../../../../../assets/images/billing_visa.jpg' : '../../../../../../assets/images/american-express.png'"
+            class="visa-card-img" />
+        </div>
+        <div class="visa-expires-sec-center-responsive-time">
+          <h6 class="atm-number-font">**** **** **** {{cardDetails?.LastDigits}}</h6>
+          <h6 class="visa-expire-date-font">Visa expires on {{cardDetails?.ExpMonth}}/{{cardDetails?.ExpYear}}</h6>
+        </div>
+      </div>
+      <button
+        color="primary"
+        mat-flat-button
+        class="mobile-btn"
+        (click)="onUpdateCard()"
+      >
+        Update Card
+      </button>
+    </mat-card>
+  </ng-container>
+
+  <mat-card
+    class="common-container-card"
+    fxFlex.lt-md="0 1 calc(100%)"
+    fxFlex.gt-sm="0 1 calc(50%-10px)"
+    style="overflow: auto"
+    *ngIf="billingDetails?.BillingDetails?.PlanName !== 'Free Trial'"
+  >
+    <div fxLayout="row" fxLayoutAlign="space-between baseline">
+      <div>
+        <h6 class="common-main-title-font">Invoice History</h6>
+      </div>
+    </div>
+
+    <div style="overflow: auto">
+      <table mat-table [dataSource]="pagedItems" class="mat-elevation-z8">
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon 
+              [ngClass]="{'success-icon': element.status === 'paid', 'cancelled-icon': element.status !== 'paid'}" 
+              class="status_icon">
+              {{ element.status === 'paid' ? 'check_circle' : 'cancel' }}
+            </mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Download</th>
+          <td mat-cell *matCellDef="let element">
+            <span (click)="downloadInvoice(element)">
+              <mat-icon
+                [svgIcon]="'download_white_icon'"
+                class="download_white_icon"
+              ></mat-icon>
+            </span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <app-paginator [pager]="pager" (setPage)="setPage($event)" (setItems)="setItemsSorting($event)"></app-paginator>
+  </mat-card>
+</div>

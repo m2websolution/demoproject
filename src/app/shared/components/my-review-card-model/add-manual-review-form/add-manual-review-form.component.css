@@ -1,0 +1,300 @@
+.mat-mdc-form-field {
+  margin-bottom: 1em;
+}
+.add-manual-review-main-section {
+  padding: 24px 32px 32px;
+}
+
+.add-manual-review-start-img-defurance-beetweem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  padding: 24px;
+  height: 240px;
+  background: #fafafb;
+  border: 1px solid #f4f4f5;
+  border-radius: 8px;
+  position: relative;
+}
+.add-manual-review-start-img-defurance-beetweem .star-grap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.add-manual-input-row {
+  display: flex;
+  gap: 10px;
+}
+.add-manual-input-row label {
+  margin-bottom: 0.5em;
+}
+.input-full-width {
+  margin-bottom: 1em;
+}
+label {
+  margin-bottom: 0.5em;
+}
+.star-container mat-icon {
+  height: 34px;
+  width: 34px;
+}
+
+.avatar-photo {
+  width: 100px;
+  height: 100px;
+
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d4d4d8;
+  border-radius: 50px;
+}
+
+@media (min-width: 320px) and (max-width: 359px) {
+  .add-manual-review-start-img-defurance-beetweem img {
+    width: 130px;
+    height: 99px;
+    right: 0;
+    position: absolute;
+    margin: 5px;
+  }
+  .add-manual-buttons {
+    padding: 0;
+  }
+  .add-manual-buttons button {
+    padding: 12px 12px !important;
+    width: 130px;
+    height: 44px !important;
+    font-size: 12px;
+  }
+}
+@media (min-width: 360px) and (max-width: 767px) {
+  .add-manual-review-start-img-defurance-beetweem img {
+    width: 155px;
+    height: 110px;
+    right: 0;
+    position: absolute;
+    margin: 10px;
+  }
+
+  .add-manual-buttons button {
+    padding: 15px !important;
+    width: 130px;
+    height: 44px !important;
+    font-size: 13px;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  label {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .add-manual-input-row label {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .add-manual-review-main-section {
+    padding: 20px;
+  }
+  .add-manual-review-main-section .add-manual-stars app-start-rating .mat-icon {
+    width: 14px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  label {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .add-manual-input-row label {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .add-manual-review-main-section {
+    padding: 20px;
+  }
+
+  .add-manual-review-start-img-defurance-beetweem img {
+    width: 265px;
+  }
+}
+
+.custom-upload-btn {
+  position: relative;
+  border-radius: 50%;
+}
+
+.custom-upload-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.add-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  font-size: smaller;
+}
+
+.add-image-container .image-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 150%;
+  background: #f4f4f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#avatar-container {
+  position: relative;
+}
+
+#avatar-container1 {
+  position: relative;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.24);
+  border-radius: 50%;
+  margin: 14px 0px;
+}
+
+.avtar-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  height: auto;
+  min-height: auto;
+  overflow-x: auto;
+}
+
+#add-photo-overlay {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d4d4d8;
+  border-radius: 50px;
+}
+
+#add-photo-overlay {
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  background-color: rgba(233, 236, 239, 0.6);
+}
+
+#add-avatar-photo-button {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+#remove-avatar-photo-button {
+  position: absolute;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  top: 5%;
+  right: 5%;
+  z-index: 3;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.57);
+  border-radius: 12px;
+}
+
+#remove-avatar-photo-button:hover {
+  background-color: #e74c3c;
+}
+
+.preview-image-button {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.preview-image-button .preview-icon-container {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  box-shadow: 2.12766px 2.12766px 8.51064px rgba(0, 0, 0, 0.08);
+  border-radius: 26px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.preview-image-button .preview-icon-container mat-icon {
+  height: 30px;
+  width: 21px;
+}
+.add-manual-start-image img {
+  display: none;
+}
+.add-manual-review-start-img-defurance-beetweem {
+  height: auto;
+  padding: 15px;
+}
+.add-manual-review-start-img-defurance-beetweem .star-grap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 10px;
+}
+@media (max-width: 480px) {
+  .add-manual-review-start-img-defurance-beetweem .star-grap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+  }
+}
+@media (max-width: 575px) {
+  .add-manual-input-row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .preview-image-button .preview-icon-container {
+    width: 30px;
+    height: 30px;
+  }
+
+  .preview-image-button .preview-icon-container mat-icon {
+    height: 30px;
+    width: 18px;
+  }
+}

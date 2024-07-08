@@ -1,0 +1,199 @@
+<div class="add-manual-review-main-section">
+  <div
+    class="dailog-box-contant-fixed-responsive-time"
+    [formGroup]="addManualReviewForm"
+  >
+    <mat-card-actions
+      style="display: flex; justify-content: space-between; align-items: center"
+    >
+      <h5 class="common-main-title-font">Add Manual Review</h5>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+    <mat-card-actions class="add-manual-review-start-img-defurance-beetweem">
+      <div class="star-grap h-100">
+        <h5 class="m-0">Add Your Ratings</h5>
+        <div class="start-responsive-time">
+          <span class="material-icons add-manual-stars">
+            <app-start-rating
+              [starClickable]="true"
+              [id]="{ stars: rating, selected: true }"
+              (ratingChanged)="setValues($event)"
+            ></app-start-rating>
+          </span>
+        </div>
+      </div>
+
+      <div class="add-manual-start-image">
+        <img src="assets/svg/logos/add-manual-review-logo.svg" />
+      </div>
+    </mat-card-actions>
+    <mat-error class="error-message" *ngIf="rating < 1"
+      >Please fill ratings</mat-error
+    >
+
+    <div class="add-manual-input-row">
+      <div class="form-group">
+        <label class="common-label-font">First Name</label>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            type="text"
+            placeholder="Enter Customer First Name"
+            formControlName="FirstName"
+          />
+        </mat-form-field>
+        <mat-error
+          class="error-message"
+          *ngIf="
+            addManualReviewForm.get('FirstName').touched &&
+            addManualReviewForm.get('FirstName').hasError('required')
+          "
+          >First name is required</mat-error
+        >
+      </div>
+      <div class="form-group">
+        <label class="common-label-font">Last Name</label>
+        <mat-form-field appearance="outline">
+          <input
+            formControlName="LastName"
+            matInput
+            type="text"
+            placeholder="Enter Customer Last Name"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <label class="common-label-font">Add Image</label>
+    <div class="add-manual-input-row">
+      <mat-card-actions class="avtar-row">
+        <div id="avatar-container" class="custom-upload-btn" *ngIf="photos.length < 1">
+          <div class="avatar-photo"></div>
+          <button class="add-image-container">
+            <span class="image-icon">
+              <mat-icon
+                class="center-positon-absolute"
+                [svgIcon]="'image_icon'"
+              />
+            </span>
+            Add Image
+          </button>
+
+          <input
+            #fileInput
+            class="custom-upload-file-input"
+            type="file"
+            (change)="addPhoto($event)"
+            name="avatar"
+            accept="image/png, image/jpeg"
+          />
+        </div>
+        <div id="avatar-container1" *ngFor="let item of photos; let i = index">
+          <img
+            id="avatar-photo"
+            #avatarImg
+            class="avatar-photo"
+            [src]="item"
+            (mouseenter)="showAddPhotoOverlay[i] = true"
+            alt="avatar photo"
+          />
+
+          <div
+            *ngIf="showAddPhotoOverlay[i]"
+            id="add-photo-overlay"
+            class="avatar-photo"
+            (mouseleave)="showAddPhotoOverlay[i] = false"
+          >
+            <button class="preview-image-button">
+              <div class="preview-icon-container">
+                <mat-icon [svgIcon]="'edit_icon'" />
+                <input
+                  #fileInput
+                  type="file"
+                  class="custom-upload-file-input"
+                  (change)="editPhoto($event, i)"
+                  name="avatar"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
+              <div class="preview-icon-container">
+                <mat-icon [svgIcon]="'delete_icon'" (click)="removePhoto(i)" />
+              </div>
+            </button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </div>
+
+    <label class="common-label-font">Feedback</label>
+    <mat-form-field class="input-full-width" appearance="outline">
+      <textarea
+        formControlName="Comment"
+        matInput
+        placeholder="Write Somthing..."
+        value=""
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+      class="error-message"
+      *ngIf="
+        addManualReviewForm.get('Comment').touched &&
+        addManualReviewForm.get('Comment').hasError('required')
+      "
+      >Feedback is required</mat-error
+    >
+
+    <label class="common-label-font">Date</label>
+    <mat-form-field appearance="outline" class="form-element input-full-width">
+      <input
+        matInput
+        placeholder="mm-dd-yyyy"
+        formControlName="ReviewDate"
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-error
+      class="error-message"
+      *ngIf="
+        addManualReviewForm.get('ReviewDate').touched &&
+        addManualReviewForm.get('ReviewDate').hasError('required')
+      "
+      >Date is required</mat-error
+    >
+
+    <!-- <mat-form-field class="input-full-width" appearance="outline">
+      <input matInput type="date" placeholder="Enter Url" value="" />
+    </mat-form-field> -->
+  </div>
+  <mat-card-actions align="end" class="mt-2 add-manual-buttons p-0">
+    <button
+      mat-flat-button
+      color="primary"
+      class="primary-button me-2"
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      [disabled]="loading || rating < 1 || !addManualReviewForm.valid"
+      (click)="addManualReview()"
+    >
+      Add Review
+    </button>
+    <button
+      mat-dialog-close
+      class="secondary-button"
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+    >
+      Cancel
+    </button>
+  </mat-card-actions>
+</div>

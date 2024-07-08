@@ -1,0 +1,118 @@
+<div class="review-platform-container" *ngIf="filteredConnectedData.length > 0">
+  <h5 class="common-main-title-font">Connected Platforms</h5>
+  <div class="row connected-platform-card-row connect-platforms-scroll connected-platform-cards-scroll">
+    <div
+      *ngFor="
+        let data of filteredConnectedData
+      "
+      class="col-md-4 col-sm-6 col-6 col-lg-2 connected-platform-card"
+    >
+      <app-connected-platforms-card [connected]="1" [data]="data">
+      </app-connected-platforms-card>
+    </div>
+  </div>
+</div>
+
+<div class="review-platform-container" *ngIf="filteredCollectAndgetReviewsData.length > 0">
+  <h5 class="common-main-title-font">Collect and Get Reviews</h5>
+  <div class="row connected-platform-card-row">
+    <div
+      *ngFor="
+        let data of breakpoint === 1
+          ? filteredCollectAndgetReviewsData.slice(0, collectCount)
+          : filteredCollectAndgetReviewsData
+      "
+      class="col-md-4 col-sm-6 col-6 col-lg-2 my-2 connected-platform-card"
+    >
+      <app-connected-platforms-card
+        [connected]="0"
+        [getconnected]="1"
+        [data]="data"
+      >
+      </app-connected-platforms-card>
+    </div>
+  </div>
+  <div
+    *ngIf="filteredCollectAndgetReviewsData.length <= collectCount; else other_content1"
+  >
+    <div>
+      <button *ngIf="filteredCollectAndgetReviewsData.length > 0"
+        class="view-more-button view-less mt-2"
+        [ngClass]="breakpoint === 1 ? '' : 'd-none'"
+        (click)="viewLess(0)"
+      >
+      <!-- (click)="viewLess(1)" -->
+        View Less
+        <mat-icon
+          [svgIcon]="'down_arrow'"
+          style="transform: rotate(180deg)"
+        ></mat-icon>
+      </button>
+    </div>
+  </div>
+  <ng-template #other_content1>
+    <div>
+      <button *ngIf="filteredCollectAndgetReviewsData.length > 0"
+        class="view-more-button view-less mt-2"
+        [ngClass]="breakpoint === 1 ? '' : 'd-none'"
+        (click)="viewMore(0)"
+      >
+      <!-- (click)="viewMore(1)" -->
+        View More
+        <mat-icon [svgIcon]="'down_arrow'"></mat-icon>
+      </button>
+    </div>
+  </ng-template>
+</div>
+
+<div class="review-platform-container" *ngIf="filteredGetReviewsData.length > 0">
+  <h5 class="common-main-title-font">Get Reviews</h5>
+  <div class="row connected-platform-card-row">
+    <div
+      *ngFor="
+        let data of breakpoint === 1
+          ? filteredGetReviewsData.slice(0, getReviewsCount)
+          : filteredGetReviewsData
+      "
+      class="col-md-4 col-sm-6 col-6 col-lg-2 my-2 connected-platform-card"
+    >
+      <app-connected-platforms-card
+        [connected]="0"
+        [getconnected]="1"
+        [data]="data"
+      >
+      </app-connected-platforms-card>
+    </div>
+  </div>
+  <div
+    *ngIf="filteredGetReviewsData.length <= getReviewsCount; else other_content2"
+  >
+    <div>
+      <button *ngIf="filteredGetReviewsData.length > 0"
+        class="view-more-button view-less mt-2"
+        [ngClass]="breakpoint === 1 ? '' : 'd-none'"
+        (click)="viewLess(1)"
+      >
+      <!-- (click)="viewLess(1)" -->
+        View Less
+        <mat-icon
+          [svgIcon]="'down_arrow'"
+          style="transform: rotate(180deg)"
+        ></mat-icon>
+      </button>
+    </div>
+  </div>
+  <ng-template #other_content2>
+    <div>
+      <button *ngIf="filteredGetReviewsData.length > 0"
+        class="view-more-button view-less mt-2"
+        [ngClass]="breakpoint === 1 ? '' : 'd-none'"
+        (click)="viewMore(1)"
+      >
+      <!-- (click)="viewMore(1)" -->
+        View More
+        <mat-icon [svgIcon]="'down_arrow'"></mat-icon>
+      </button>
+    </div>
+  </ng-template>
+</div>

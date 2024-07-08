@@ -1,0 +1,139 @@
+<mat-card
+  class="connected-platform-section"
+  (click)="connected !== 1 ? collecteDialog(data) : ''"
+  [ngClass]="{
+    'borderactive common-border-primary': data.IsActive,
+    'cursor-pointer': connected !== 1
+  }"
+>
+  <div *ngIf="connected === 1">
+    <button
+      class="edit-background-color"
+      mat-flat-button
+      color="accent"
+      (click)="collectEditDialog(data)"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="edit"
+        class="edit-btn"
+      ></mat-icon>
+    </button>
+  </div>
+
+  <div class="conected-platform-img-section">
+    <img
+      class="imgs"
+      mat-card-image
+      [src]="
+        data.IsCustom
+          ? data.ImageURL
+            ? data.ImageURL
+            : ''
+          : 'assets/social-logo/' + data.ReviewSiteName + '.png'
+      "
+      alt="Image"
+      *ngIf="data.ImageURL || (data.ReviewSiteName && !data.IsCustom)"
+    />
+
+    <div
+      class="img-custom-platform imgs"
+      *ngIf="!data.ImageURL && data.ReviewSiteName && data.IsCustom"
+    >
+      {{ data.ReviewSiteName.substring(0, 1) }}
+    </div>
+  </div>
+  <mat-card-title class="conected-platform-name-title common-font-16px">{{
+    data.ReviewSiteName
+  }}</mat-card-title>
+
+  <ng-container [ngSwitch]="true">
+    <div
+      *ngSwitchCase="connected === 1"
+      class="w-100"
+      (click)="confirmDialog(data)"
+    >
+      <mat-card-footer
+        [ngClass]="data.IsActive ? 'active common-primary-bg' : 'in-inactive'"
+      >
+        <mat-card-actions>
+          <span class="mat-card-actions-margin">
+            <mat-icon
+              [svgIcon]="connected ? 'unlink' : 'link'"
+              [ngClass]="!data.IsActive ? 'connected-card-footer-buttons' : ''"
+            />
+          </span>
+
+          <p
+            class="cursor-pointer"
+            [ngClass]="data.IsActive ? 'text-white' : ''"
+          >
+            {{ data.IsActive ? "Disconnect" : "Connect" }}
+          </p>
+        </mat-card-actions>
+      </mat-card-footer>
+    </div>
+    <div *ngSwitchCase="connected === 3" class="w-100">
+      <mat-card-footer
+        [ngClass]="{
+          active: data.IsActive,
+          'in-inactive': !data.IsActive
+        }"
+      >
+        <mat-card-actions>
+          <span class="mat-card-actions-margin">
+            <mat-icon
+              [svgIcon]="connected ? 'unlink' : 'link'"
+              [ngClass]="!data.IsActive ? 'connected-card-footer-buttons' : ''"
+            />
+          </span>
+
+          <p
+            class="cursor-pointer"
+            [ngClass]="data.IsActive ? 'text-white' : ''"
+          >
+            {{ data.IsActive ? "Leave message" : "Leave message" }}
+          </p>
+        </mat-card-actions>
+      </mat-card-footer>
+    </div>
+    <div *ngSwitchCase="connected === 2" class="w-100">
+      <mat-card-footer
+        [ngClass]="{
+          active: data.IsActive,
+          'in-inactive': !data.IsActive
+        }"
+      >
+        <mat-card-actions>
+          <span class="mat-card-actions-margin">
+            <mat-icon
+              [svgIcon]="connected ? 'unlink' : 'link'"
+              [ngClass]="!data.IsActive ? 'connected-card-footer-buttons' : ''"
+            />
+          </span>
+
+          <p
+            class="cursor-pointer"
+            [ngClass]="data.IsActive ? 'text-white' : ''"
+          >
+            {{ data.IsActive ? "You are logged in" : "You are logged in" }}
+          </p>
+        </mat-card-actions>
+      </mat-card-footer>
+    </div>
+    <mat-card-footer *ngSwitchDefault [ngClass]="'in-inactive'">
+      <mat-card-actions>
+        <span class="mat-card-actions-margin">
+          <mat-icon
+            [svgIcon]="connected ? 'unlink' : 'link'"
+            [ngClass]="!data.IsActive ? 'connected-card-footer-buttons' : ''"
+          />
+        </span>
+        <p class="cursor-pointer">
+          {{ data.IsActive ? "Disconnect" : "Connect" }}
+        </p>
+      </mat-card-actions>
+    </mat-card-footer>
+  </ng-container>
+

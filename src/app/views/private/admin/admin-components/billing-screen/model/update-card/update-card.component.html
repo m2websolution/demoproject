@@ -1,0 +1,33 @@
+<div class="common-mat-dialog-padding">
+  <div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <h6 class="common-mat-dialog-header-title">Update your card</h6>
+    <mat-icon matPrefix mat-dialog-close [svgIcon]="'close_icon_blue'" style="width: 20px; height: 25px"
+      class="cursor-pointer"></mat-icon>
+  </div>
+  <hr />
+  <div>
+    <div class="row-card-input-container-width row-card-input-container-margin-bottom p-0">
+      <label class="common-label-font">Card Number</label>
+      <div id="cardNumber"></div>
+      <div *ngIf="invalidCard" class="text-danger mb-2">
+        Invalid card number
+      </div>
+    </div>
+    <mat-card-actions fxLayout="row " fxLayoutGap.gt-sm="10px"
+      class="row-card-input-container-margin-bottom p-0 expiry-date-ccv-width-sec-responsive">
+      <div class="row-card-input-container-width">
+        <label class="common-label-font">Expiry Date</label>
+        <div id="cardExpiryDate"></div>
+      </div>
+
+      <div class="row-card-input-container-width">
+        <label class="common-label-font">CVC</label>
+        <div id="cardCvv"></div>
+      </div>
+    </mat-card-actions>
+  </div>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="update-model-buttom-footer-margin-sec mt-2">
+    <button color="primary" class="primary-button" fxFlex.xs="0 1 calc(100%)" fxFlex.sm="0 1 calc(100%)"
+      (click)="submitForm()">Submit</button>
+  </mat-card-actions>
+</div>

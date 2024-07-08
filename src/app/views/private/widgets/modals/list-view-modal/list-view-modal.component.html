@@ -1,0 +1,162 @@
+<div class="widget-main-modal modal-padding">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="d-flex justify-content-between">
+      <h2>List View</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+
+    <div class="widget-modal-container">
+      <div class="modal-header modal-header-mobile" [hidden]="isShowJsCodeBlock" *ngIf="!dialogData.isAllow">
+        <h6>Upgrade your plan to access this widget</h6>
+        <button color="primary" class="primary-button">UPGRADE NOW</button>
+      </div>
+      <div class="left-part">
+        <app-widget-customize
+        [totalReviews]="listViewData.TotalReviews"
+        [widgetData]="dialogData"
+        (fieldValuesChanged)="onFieldValuesChanged($event)"
+        (customizationDataChanged)="widgetDataChanged($event)"
+        (showReviewSummaryData)="showOverallRatings($event)"
+        (isShowJsBlock)="showJsBlock($event)"
+        ></app-widget-customize>
+      </div>
+      <div class="right-part" [hidden]="isShowJsCodeBlock">
+        <div class="modal-header modal-header-web" *ngIf="!dialogData.isAllow">
+          <h6>Upgrade your plan to access this widget</h6>
+          <button color="primary" class="primary-button">UPGRADE NOW</button>
+        </div>
+        <div
+          class="overall-rating-component mt-4"
+          *ngIf="listViewData.Reviews && isShowOverallRatingsBlock"
+        >
+          <div>
+            <h3>Overall Rating</h3>
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="m-0 me-2">
+                <strong class="">{{
+                  isRatingNaN(listViewData.AverageRating)
+                    ? 0
+                    : listViewData.AverageRating
+                }}</strong>
+              </h3>
+              <app-start-rating
+                [starClickable]="false"
+                [id]="{
+                  stars: isRatingNaN(listViewData.AverageRating)
+                    ? 0
+                    : listViewData.AverageRating,
+                  selected: true
+                }"
+              ></app-start-rating>
+            </div>
+            <div class="mt-3">
+              <h3>{{ listViewData.TotalReviews }} reviews</h3>
+            </div>
+          </div>
+          <div>
+            <button class="secondary-button">LEAVE A REVIEW</button>
+          </div>
+        </div>
+        <div class="mt-3">
+          <h3>Preview</h3>
+          <div class="preview-cards" *ngIf="listViewData.Reviews">
+            <mat-card
+              class="widget-review-card"
+              *ngFor="let item of listViewData.Reviews; let i = index"
+              [ngStyle]="{ background: state.backColor }"
+            >
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <img
+                    mat-card-image
+                    class="widget-review-avatar me-2"
+                    [src]="item.ProfileImgUrl"
+                    alt="Google Icon"
+                  />
+                  <div>
+                    <h5 class="m-0" [ngStyle]="{ color: state.fontColor }">
+                      <strong class="list-grid-card-name-font">{{
+                        item.ReviewBy
+                      }}</strong>
+                    </h5>
+                    <p
+                      class="m-0 common-primary-text"
+                      [ngStyle]="{
+                        color: state.date_disc
+                      }"
+                    >
+                      {{ item.Date }}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <p class="list-view-stars mt-3">
+                    <app-start-rating
+                      [starClickable]="false"
+                      [id]="{ stars: item.Rating, selected: true }"
+                    ></app-start-rating>
+                  </p>
+                </div>
+              </div>
+              <div class="list-view-preview-bottom">
+                <div class="read-more-section">
+                  <div class="row customer-review-sec">
+                    <div class="p-0 review-container">
+                      <div
+                        [ngStyle]="{
+                          color: state.date_disc
+                        }"
+                        class="list-grid-card-description-font expand-content"
+                        #descriptionElement
+                        [innerHTML]="item.ReviewDetails"
+                        [class.expanded]="isDescriptionExpanded[i]"
+
+                      ></div>
+                      <a
+                        *ngIf="descriptionElementHeights[i] >= 96"
+                        href="javascript:;"
+                        (click)="toggleDescription(i)"
+                        [ngClass]="{ 'ms-2': isDescriptionExpanded[i] }"
+                        >{{ isDescriptionExpanded[i] ? 'read less' : 'read more' }}</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="card-footer-logo-img"
+                  *ngIf="item.ReviewSource !== 'Other'"
+                >
+                  <img
+                    mat-card-image
+                    class="widget-review-logo"
+                    src="assets/social-logo/{{ item.ReviewSource }}.png"
+                    alt="Google Icon"
+                  />
+                </div>
+                <div
+                  class="card-footer-logo-img"
+                  *ngIf="item.ReviewSource === 'Other'"
+                >
+                  <img
+                    mat-card-image
+                    class="widget-review-logo"
+                    src="favicon.ico"
+                    alt="Google Icon"
+                  />
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

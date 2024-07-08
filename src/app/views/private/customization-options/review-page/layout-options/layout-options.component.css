@@ -1,0 +1,82 @@
+/* Header Options section */
+
+label {
+  margin-bottom: 0.5em;
+}
+
+.row-card-input-container-margin-bottom {
+  margin-bottom: 24px;
+}
+
+label.layout {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #27272A;
+}
+
+.tab-content-title-margin {
+  margin-bottom: 28px;
+  padding: 0 !important;
+  min-height: unset;
+}
+
+@media (max-width: 1439px) {
+  .row-card-input-container-margin-bottom {
+    align-items: baseline;
+  }
+
+  .row-card-input-container-width {
+    width: 49%;
+  }
+}
+
+@media (max-width: 960px) {
+  .row-card-input-container-margin-bottom {
+    margin-bottom: 12px;
+  }
+
+  .tab-content-title-margin {
+    margin-bottom: 16px !important;
+    padding: 0 !important;
+    min-height: unset;
+    align-items: baseline !important;
+  }
+
+  .provate-form-responsive-width {
+    padding: 0 !important;
+  }
+
+  label {
+    margin-bottom: 0.25em;
+  }
+
+  label.layout {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .face-layout-sec {
+    display: block !important;
+  }
+
+  .face-layout-sec .row-card-input-container-width{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-save button {
+    width: 100%;
+    height: 48px;
+  }
+
+  .row-card-input-container-width {
+    width: 100% !important;
+  }
+}

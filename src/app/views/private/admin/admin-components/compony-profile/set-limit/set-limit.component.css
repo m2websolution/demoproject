@@ -1,0 +1,179 @@
+.btn-decrement {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  min-width: 48px;
+  height: 48px;
+  background: #fe3f34;
+  border-radius: 16px;
+}
+.btn-increment {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 16px;
+}
+
+.counter-main-sec {
+  display: grid;
+  justify-content: space-around;
+}
+.note-card-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 8px;
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+}
+.note-card-section .note-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #18181b;
+}
+
+.note-card-section .mat-card-subtitle {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #18181b;
+}
+
+.note-font mat-icon {
+  width: 18.5px;
+  height: 30px;
+}
+
+.counter-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #27272a;
+}
+
+.vertical-line {
+  width: 96px;
+  border: 1px solid #f4f4f5;
+  transform: rotate(-90deg);
+  top: 32px;
+  position: relative;
+}
+
+.set-limit-count-main-sec-margin {
+  margin: 24px 0px 40px 0px;
+}
+.set-limit-buttom-footer-margin-sec {
+  margin: 40px 0px 0px 0px;
+}
+
+.counter-main-sec .togggle-margin-sec {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 500px) {
+  .note-card-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px;
+    gap: 8px;
+    width: 100%;
+    height: 100px;
+    background: #fafafa;
+    border: 1px solid #e4e4e7;
+    border-radius: 16px;
+  }
+  .unlimited-email-sms-text-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    color: #18181b;
+  }
+  .btn-decrement {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    min-width: 40px;
+    height: 40px;
+    background: #fe3f34;
+    border-radius: 16px;
+  }
+  .btn-increment {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 16px;
+  }
+
+  .vertical-line {
+    display: none;
+    width: 0px;
+    border: 1px solid #f4f4f5;
+    transform: rotate(-90deg);
+    top: 32px;
+    position: relative;
+  }
+}
+
+.increment-decrement-sec mat-icon {
+  height: 2.125rem;
+}
+
+.set-limit-buttom-footer-margin-sec button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px !important;
+  width: 136px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+.unlimited-email-sms-text-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #18181b;
+}
+.note-card-section {
+  padding: 14px;
+}
+
+.set-limit-buttom-footer-margin-sec {
+  margin: 24px 0px 0px 0px;
+}
+
+@media (max-width: 400px) {
+  .set-limit-count-main-sec-margin {
+    gap: 4px;
+  }
+}

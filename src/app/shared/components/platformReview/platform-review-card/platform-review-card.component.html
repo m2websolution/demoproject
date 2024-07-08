@@ -1,0 +1,22 @@
+<mat-card
+  [ngClass]="
+    data.id == 10
+      ? 'platformreviewcardactive common-primary-bg  '
+      : 'platform-review-card cursor-pointer'
+  "
+>
+  <mat-card-header>
+    <mat-card-title class="platform-review-title">{{
+      data.Sitename
+    }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <p>
+      {{ data.Before_GYR_TotalReview }} ->
+      {{ data.TotalReview }}
+      <span>({{ data.TotalReview - data.Before_GYR_TotalReview }})</span>
+    </p>
+
+    <img class="img" mat-card-image [src]="'assets/social-logo/' + data.Sitename + '.png'" alt="any" />
+  </mat-card-actions>
+</mat-card>

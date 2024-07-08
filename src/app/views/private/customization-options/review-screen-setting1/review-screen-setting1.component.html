@@ -1,0 +1,112 @@
+<mat-card
+  class="m-webwsolution-main-card"
+  *ngIf="this.reviewScreenDetails.ReviewPageSettings"
+>
+  <app-review-screen-setting-header
+    [header]="this.reviewScreenDetails.ReviewPageSettings.HeaderMessage"
+    [headerFontColor]="this.reviewScreenDetails.ReviewPageSettings.HeaderFontColor"
+    [headerBackgroundColor]="this.reviewScreenDetails.ReviewPageSettings.HeaderBackgroundColor"
+  ></app-review-screen-setting-header>
+  <div class="m-webwsolution-section-linke-dislike-sec">
+    <div>
+      <h6 class="customberibeing-section-font">
+       {{ this.reviewScreenDetails.ReviewPageSettings.WelcomeMessage }}
+      </h6>
+      <h6 class="customberibeing-section-font">
+       {{ this.reviewScreenDetails.ReviewPageSettings.BodyMessage }}
+      </h6>
+      <div
+        class="m-webwsolution-main-logo-sec"
+        *ngIf="reviewScreenDetails.Logo && reviewScreenDetails.Logo !== ''"
+      >
+        <img
+          color="success"
+          class="m2websolutionlogo_svg"
+          [src]="reviewScreenDetails.Logo"
+          alt="company"
+        />
+      </div>
+      <div
+        class="m-webwsolution-main-logo-sec"
+        *ngIf="!(reviewScreenDetails.Logo && reviewScreenDetails.Logo !== '')"
+      >
+        <h1>{{ reviewScreenDetails.CompanyName }}</h1>
+      </div>
+    </div>
+    <div
+      *ngIf="this.reviewScreenDetails.LayoutName === 'Thumbs'"
+      class="m2solutionlikedislike-svg-section"
+    >
+      <div
+        fxLayout="row    "
+        fxLayout.xs="row "
+        fxLayoutGap="22px"
+        fxLayout.md="row "
+        fxFlexAlign="center"
+        class=""
+      >
+        <div class="review_screen_opecity">
+          <mat-icon
+            (click)="handleLikeReview()"
+            matSuffix
+            color="success"
+            class="m2solutionlikedislike-svg"
+            [svgIcon]="'m2solutionlike'"
+          ></mat-icon>
+          <h6>
+            {{
+              this.reviewScreenDetails.ReviewPageSettings.GoodExperienceMessage
+            }}
+          </h6>
+        </div>
+        <div class="review_screen_opecity">
+          <mat-icon
+            (click)="handleDislikeReview()"
+            matSuffix
+            color="success"
+            class="m2solutionlikedislike-svg"
+            [svgIcon]="'m2solutiondislike'"
+          ></mat-icon>
+          <h6>
+            {{
+              this.reviewScreenDetails.ReviewPageSettings.BadExperienceMessage
+            }}
+          </h6>
+        </div>
+      </div>
+    </div>
+    <app-review-screen-setting
+      [reviewScreen]="reviewScreenDetails"
+      [nid]="nid"
+      [id]="id"
+      [slug]="slug"
+      *ngIf="reviewScreenDetails.LayoutName === 'Review Platforms'"
+    ></app-review-screen-setting>
+    <app-review-screen-setting2
+      [reviewScreenNps]="reviewScreenDetails"
+      [nid]="nid"
+      [id]="id"
+      [slug]="slug"
+      *ngIf="reviewScreenDetails.LayoutName === 'NPS'"
+    ></app-review-screen-setting2>
+    <app-review-screen-setting3
+      [reviewScreenStars]="reviewScreenDetails"
+      [nid]="nid"
+      [id]="id"
+      [slug]="slug"
+      *ngIf="reviewScreenDetails.LayoutName === 'Stars'"
+    ></app-review-screen-setting3>
+    <app-review-screen-setting4
+      [reviewScreenFaces]="reviewScreenDetails"
+      [nid]="nid"
+      [id]="id"
+      [slug]="slug"
+      *ngIf="reviewScreenDetails.LayoutName === 'Faces'"
+    ></app-review-screen-setting4>
+    <h6 class="customberibeing-section-font mt-5">
+      {{
+        this.reviewScreenDetails.ReviewPageSettings.PublicReviewThankyouMessage
+      }}
+    </h6>
+  </div>
+</mat-card>

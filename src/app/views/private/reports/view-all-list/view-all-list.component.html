@@ -1,0 +1,81 @@
+<mat-card-actions fxLayout="row " fxLayoutAlign="space-between baseline" fxLayout.sm="column" fxLayout.xs="column"
+  style="margin-bottom: 16px">
+  <div fxLayout.xs="row" fxLayout.sm="row" fxAlign.xs="start" style="width: max-content">
+    <nav class="header-breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item first-item">
+          <a class="common-main-title-font pointer">Reports</a>
+        </li>
+        <li class="breadcrumb-item actives my-report pointer" routerLink="/reports/my-report" aria-current="page">My Report</li>
+        <li class="breadcrumb-item actives pointer" aria-current="page">Sentiment Report</li>
+      </ol>
+    </nav>
+  </div>
+<div class="custom-container">
+    <span>
+        <mat-icon class="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+    </span>
+    <div routerLink="/reports/my-report">
+        Back to Integrations
+    </div>
+</div>
+</mat-card-actions>
+<div class="all-pr-sec department-leaderboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <!-- <h4>Sentiment Report</h4> -->
+            </div>
+            <div class="col-md-6 mb-3 d-flex justify-content-end">
+                <mat-form-field appearance="outline" value="All">
+                    <mat-select [(ngModel)]="selectedOption" (selectionChange)="onSelectionChange($event)">
+                        <mat-option value="all">All</mat-option>
+                        <mat-option *ngFor="let item of sentimentReport" [value]="item.value"
+                            class="dropdown-option">{{item.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <table mat-table [dataSource]="pagedItems" class="mat-elevation-z8">
+        <ng-container matColumnDef="word">
+            <th mat-header-cell *matHeaderCellDef class="text-align-start-force width">
+                Word
+            </th>
+            <td mat-cell *matCellDef="let element" class="text-align-start-force ps-3">
+                {{ element.word | titlecase }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ReviewSentiment">
+            <th mat-header-cell *matHeaderCellDef class="text-align-start-force">
+                Sentiment
+            </th>
+            <td mat-cell *matCellDef="let element" class="text-align-start-force px-3"
+                [ngClass]="{'positive': element.ReviewSentiment === 'Positive', 'mixed': element.ReviewSentiment === 'Mixed', 'negative': element.ReviewSentiment === 'Negative'}">
+                <div>{{ element.ReviewSentiment }}</div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Count">
+            <th mat-header-cell *matHeaderCellDef class="text-align-start-force">
+                Count
+            </th>
+            <td mat-cell *matCellDef="let element" class="text-align-start-force px-3">
+                <div>{{ element.Count }}</div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length">
+                Sentiments not found.
+            </mat-footer-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <mat-footer-row *matFooterRowDef="['noData']" [hidden]="pagedItems && pagedItems.length > 0"></mat-footer-row>
+    </table>
+</div>
+<app-paginator [pager]="pager" (setPage)="setPage($event)" (setItems)="setItemsSorting($event)"></app-paginator>

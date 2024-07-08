@@ -1,0 +1,67 @@
+<div class="employee-qr-code-main-section">
+  <form [formGroup]="employeeForm" (ngSubmit)="generateEmployeeQR()">
+  <mat-card-actions class="d-flex justify-content-between">
+    <h5 class="common-main-title-font">Employee QR Code</h5>
+    <mat-icon
+      matPrefix
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      class="cursor-pointer"
+    ></mat-icon>
+  </mat-card-actions>
+  <hr />
+  <div class="add-manual-input-row">
+    <div class="form-group">
+       <label class="common-label-font">Employee First Name</label>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Employee First Name" formControlName="EmployeeFirstName"/>
+      </mat-form-field>
+      <mat-error
+              class="error-message"
+              *ngIf="
+                employeeForm.get('EmployeeFirstName').touched &&
+                employeeForm.get('EmployeeFirstName').hasError('required')
+              "
+              >First name is required</mat-error
+            >
+    </div>
+    <div class="form-group">
+      <label class="common-label-font">Employee Last Name</label>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Enter Customer Last Name" formControlName="EmployeeLastName" />
+      </mat-form-field>
+      <mat-error
+              class="error-message"
+              *ngIf="
+                employeeForm.get('EmployeeLastName').touched &&
+                employeeForm.get('EmployeeLastName').hasError('required')
+              "
+              >Last name is required</mat-error
+            >
+    </div>
+  </div>
+
+  <div class="w-100">
+    <label class=" common-font-16px">Department</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input matInput type="text" placeholder="Enter Your Department" formControlName="Department"/>
+    </mat-form-field>
+    <mat-error
+              class="error-message"
+              *ngIf="
+                employeeForm.get('Department').touched &&
+                employeeForm.get('Department').hasError('required')
+              "
+              >Department is required</mat-error
+            >
+  </div>
+  <mat-card-actions align="end" class="mt-2 gap-2">
+    <button type="submit" color="primary" class="primary-button me-2">Generate</button>
+    <button type="button" mat-dialog-close class="secondary-button">Cancel</button>
+  </mat-card-actions>
+</form>
+</div>

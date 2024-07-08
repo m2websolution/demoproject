@@ -1,0 +1,148 @@
+<div class="" (window:resize)="onResize($event)">
+  <nav
+    class="header-breadcrumb"
+    style="
+      --bs-breadcrumb-divider: url(
+        &#34;data:image/svg + xml,
+        %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+      );
+    "
+    aria-label="breadcrumb"
+  >
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Get Reviews</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">
+        Template Settings
+      </li>
+    </ol>
+  </nav>
+  <mat-card class="app-main-card" [ngClass]="breakPoint == 1 ? 'p-3' : 'p-4'">
+    <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+      <!-- --------------In Queue Tab------------ -->
+      <mat-tab label="Email Settings">
+        <hr />
+
+        <!-- ----------- Select Component for Responsive------------ -->
+        <mat-form-field
+          appearance="outline"
+          value="selectedTabEmail"
+          class="tab-select-component"
+        >
+          <mat-select
+            [(ngModel)]="selectedTabEmail"
+            (ngModelChange)="tabGroup1.selectedIndex = selectedTabEmail"
+          >
+            <mat-option
+              *ngFor="let tab of emailTemplates; let i = index"
+              [value]="i"
+              >{{ tab.EmailName }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <!-- ----------- Tabs Component for Desktop------------ -->
+        <div class="tab-group">
+          <mat-tab-group #tabGroup1 (selectedTabChange)="tabChanged1($event)">
+            <!-- --------------In Queue Tab------------ -->
+            <mat-tab
+              label="{{ emailTemplate.EmailName }}"
+              *ngFor="let emailTemplate of emailTemplates; let i = index"
+            >
+              <app-get-review-template
+                [templateData]="emailTemplate.EmailName"
+                [isCreateTemplate]="false"
+                [templateType]="'Email'"
+                [areTags]="true"
+                [data]="emailTemplate"
+                [index]="i"
+                (apiEmailSuccess)="onAPIEmailSuccess()"
+              ></app-get-review-template>
+            </mat-tab>
+            <mat-tab
+              label="Create New Template"
+              *ngIf="emailTemplates.length < 5 && isEmailTemplateLoaded"
+            >
+              <app-get-review-template
+                [templateData]="'Create New Template'"
+                [isCreateTemplate]="true"
+                [inputFields]="2"
+                [templateType]="'Email'"
+                (apiEmailSuccess)="onAPIEmailSuccess()"
+              ></app-get-review-template
+            ></mat-tab>
+          </mat-tab-group>
+        </div>
+      </mat-tab>
+      <mat-tab label="SMS/Text Template">
+        <hr />
+
+        <!-- ----------- Select Component for Responsive------------ -->
+        <mat-form-field
+          appearance="outline"
+          value="selectedTabSMS"
+          class="tab-select-component"
+        >
+          <mat-select
+            [(ngModel)]="selectedTabSMS"
+            (ngModelChange)="tabGroup2.selectedIndex = selectedTabSMS"
+          >
+            <mat-option
+              *ngFor="let tab of smsDetails; let i = index"
+              [value]="i"
+              >{{ tab.TemplateTitle }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <!-- ----------- Tabs Component for Desktop------------ -->
+        <div class="tab-group">
+          <mat-tab-group #tabGroup2 (selectedTabChange)="tabChanged2($event)">
+            <mat-tab
+              label="{{ sms.TemplateTitle }}"
+              *ngFor="let sms of smsDetails; let i = index"
+            >
+              <app-get-review-template
+                [templateData]="sms.TemplateTitle"
+                [isCreateTemplate]="false"
+                [templateType]="'SMS'"
+                [data]="sms"
+                [templateDropDown]="templateDropDown"
+                (apiSmsSuccess)="onAPISmsSuccess()"
+              ></app-get-review-template
+            ></mat-tab>
+            <mat-tab label="Create New Template" *ngIf="smsDetails.length < 5 && isSMSTemplateLoaded">
+              <app-get-review-template
+                [templateData]="'Create New Template'"
+                [isCreateTemplate]="true"
+                [inputFields]="2"
+                [templateType]="'SMS'"
+                (apiSmsSuccess)="onAPISmsSuccess()"
+              ></app-get-review-template
+            ></mat-tab>
+            
+          </mat-tab-group>
+        </div>
+      </mat-tab>
+
+  <!-- ----------- Tabs Component for Desktop------------ -->
+
+      <mat-tab
+        label="Private Feedback Template"
+        *ngFor="let feedback of privateFeedback; let i = index"
+      >
+        <hr />
+        <app-get-review-template
+          [templateData]="'Private Feedback Template'"
+          [isCreateTemplate]="true"
+          [inputFields]="2"
+          [templateType]="'Feedback'"
+          [data]="feedback"
+          class="get-feedback"
+          (apiFeedbackSuccess)="onAPIFeedbackSuccess()"
+        ></app-get-review-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>

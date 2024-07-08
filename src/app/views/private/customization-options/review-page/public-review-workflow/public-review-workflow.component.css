@@ -1,0 +1,71 @@
+/* Header Options section */
+
+
+label {
+  margin-bottom: 0.5em;
+}
+
+.instructions-presented-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3f3f46;
+}
+
+.row-card-input-container-margin-bottom {
+  margin-bottom: 24px;
+  align-items: baseline
+}
+
+.tab-content-title-margin {
+  margin-bottom: 28px;
+  padding: 0 !important;
+  min-height: unset;
+}
+
+@media (max-width: 1439px) {
+  .row-card-input-container-margin-bottom {
+    align-items: baseline;
+  }
+
+  .row-card-input-container-width {
+    width: 49%;
+  }
+}
+
+@media (max-width: 960px) {
+  .instructions-presented-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #3f3f46;
+  }
+
+  .row-card-input-container-margin-bottom {
+    margin-bottom: 12px;
+  }
+
+  .tab-content-title-margin {
+    margin-bottom: 16px !important;
+  }
+
+  label {
+    margin-bottom: 0.25em;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-save button {
+    width: 100%;
+    height: 48px;
+  }
+
+  .row-card-input-container-width {
+    width: 100% !important;
+  }
+
+}

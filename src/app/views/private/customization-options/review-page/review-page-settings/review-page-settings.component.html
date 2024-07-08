@@ -1,0 +1,516 @@
+<div
+  fxLayout="row "
+  fxLayoutAlign="space-between "
+  fxLayout.xs="column "
+  fxLayout.sm="column "
+  fxLayoutGap="32px"
+  fxLayout.md="column"
+  class="mt-4"
+>
+  <div
+    fxFlex.sm="0 1 calc(100%-10px)"
+    fxFlex.md="0 1 calc(100%-10px)"
+    fxFlex.xs="0 1 calc(100%-10px)"
+    fxFlex.gt-md="0 1 calc(30%-10px)"
+    fxFlex.gt-sm="0 1 calc(100%-10px)"
+    fxFlex.gt-lg="0 1 calc(30%-10px)"
+    class="review-setting"
+  >
+    <h6 class="common-container-card-innner-title mb-4">
+      Review Page Settings
+    </h6>
+
+    <h6 class="choose-review-page-font">Choose Review Page Layout</h6>
+    <div
+      fxLayout.xs="row wrap "
+      fxLayout="row wrap"
+      class="mb-4"
+      *ngIf="layoutListSettings"
+    >
+      <mat-card
+        *ngIf="thumbs"
+        fxFlex.sm="0 1 calc(50%-10px)"
+        fxFlex.md="0 1 calc(200px-0px)"
+        class="review-page-layout-card common-border-primary"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+        [class.review-page-layout-card-active]="active[thumbsId]"
+        (click)="selectedCard('Thumbs', thumbsId)"
+      >
+        <mat-card-title class="review-page-layout-card-title"
+          >Thumbs</mat-card-title
+        >
+        <div class="review-page-layout-card-sub-contant">
+          <span>
+            <mat-icon
+              [svgIcon]="'thumb-down-up'"
+              class="thum-icont-width"
+            ></mat-icon>
+          </span>
+          <span>
+            <mat-icon
+              [svgIcon]="'thumb-down-down'"
+              class="thum-icont-width"
+            ></mat-icon>
+          </span>
+        </div>
+      </mat-card>
+      <mat-card
+        *ngIf="stars"
+        class="review-page-layout-card common-border-primary"
+        fxFlex.sm="0 1 calc(50%-10px)"
+        fxFlex.md="0 1 calc(200px-0px)"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+        [class.review-page-layout-card-active]="active[starsId]"
+        (click)="selectedCard('Stars', starsId)"
+      >
+        <mat-card-title class="review-page-layout-card-title"
+          >Stars</mat-card-title
+        >
+        <div class="review-page-layout-card-sub-contant gap-1">
+          <span>
+            <mat-icon class="star" [svgIcon]="'review_start_active'"></mat-icon>
+          </span>
+          <span>
+            <mat-icon class="star" [svgIcon]="'review_start_active'"></mat-icon>
+          </span>
+          <span>
+            <mat-icon class="star" [svgIcon]="'review_start_active'"></mat-icon>
+          </span>
+          <span>
+            <mat-icon
+              class="star"
+              [svgIcon]="'review_start_inactive'"
+            ></mat-icon>
+          </span>
+          <span>
+            <mat-icon
+              class="star"
+              [svgIcon]="'review_start_inactive'"
+            ></mat-icon>
+          </span>
+        </div>
+      </mat-card>
+      <mat-card
+        *ngIf="faces"
+        class="review-page-layout-card common-border-primary"
+        fxFlex.sm="0 1 calc(50%-10px)"
+        fxFlex.md="0 1 calc(200px-0px)"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+        [class.review-page-layout-card-active]="active[facesId]"
+        (click)="selectedCard('Faces', facesId)"
+      >
+        <mat-card-title class="review-page-layout-card-title"
+          >Faces</mat-card-title
+        >
+        <div class="review-page-layout-card-sub-contant">
+          <span>
+            <mat-icon
+              class="smile-natureal-icon-width"
+              [svgIcon]="'smile 1'"
+            ></mat-icon>
+          </span>
+          <span>
+            <mat-icon
+              class="smile-natureal-icon-width"
+              [svgIcon]="'neutral 1'"
+            ></mat-icon>
+          </span>
+          <span>
+            <mat-icon
+              class="smile-natureal-icon-width"
+              [svgIcon]="'unhappy 1'"
+            ></mat-icon>
+          </span>
+        </div>
+      </mat-card>
+      <mat-card
+        *ngIf="nps"
+        class="review-page-layout-card common-border-primary"
+        fxFlex.sm="0 1 calc(50%-10px)"
+        fxFlex.md="0 1 calc(200px-0px)"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+        [class.review-page-layout-card-active]="active[npsId]"
+        (click)="selectedCard('NPS', npsId)"
+      >
+        <mat-card-title class="review-page-layout-card-title"
+          >NPS</mat-card-title
+        >
+        <div class="review-page-layout-card-sub-contant">
+          <span>
+            <mat-icon class="icon-number" [svgIcon]="'Numbers'"></mat-icon>
+          </span>
+        </div>
+      </mat-card>
+      <mat-card
+        *ngIf="location && hasMultiLocation"
+        class="review-page-layout-card common-border-primary"
+        fxFlex.sm="0 1 calc(50%-10px)"
+        fxFlex.md="0 1 calc(200px-0px)"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+        [class.review-page-layout-card-active]="active[locationId]"
+        (click)="selectedCard('Location', locationId)"
+      >
+        <mat-card-title class="review-page-layout-card-title"
+          >Location</mat-card-title
+        >
+        <div class="review-page-layout-card-sub-contant">
+          <span>
+            <mat-icon class="icon-number" [svgIcon]="'Numbers'"></mat-icon>
+          </span>
+        </div>
+      </mat-card>
+      <mat-card
+        *ngIf="reviewPlatform"
+        class="review-page-layout-card common-border-primary"
+        fxFlex.sm="0 1 calc(50%-10px)"
+        fxFlex.md="0 1 calc(200px-0px)"
+        fxFlex.gt-lg="0 1 calc(50%-10px)"
+        fxFlex.gt-md="0 1 calc(50%-10px)"
+        [class.review-page-layout-card-active]="active[reviewPlatformId]"
+        (click)="selectedCard('Review Platforms', reviewPlatformId)"
+      >
+        <mat-card-title class="review-page-layout-card-title"
+          >Review Platform</mat-card-title
+        >
+        <div class="review-page-layout-card-sub-contant">
+          <span>
+            <mat-icon
+              [svgIcon]="'thumb-down-up'"
+              class="thum-icont-width"
+            ></mat-icon>
+          </span>
+          <span>
+            <mat-icon
+              [svgIcon]="'thumb-down-down'"
+              class="thum-icont-width"
+            ></mat-icon>
+          </span>
+        </div>
+      </mat-card>
+    </div>
+    <div class="minimum-value-review-platform-main-sec">
+      <div class="review-page-setting-input-width dropdown mb-4">
+        <span class="sort-selecte-section-text-responsive-none">
+          Minimum Value to prompt review platform :&nbsp;</span
+        >
+        <section class="mat-typography prompt-review-dropdown-section">
+          <mat-form-field
+            class="review-page-setting-input-width downIcon"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-select
+              placeholder="All to review platform"
+              disableOptionCentering
+              class="company-dropdown"
+              (selectionChange)="onSelectionChange($event)"
+              [(ngModel)]="landingPageSettings.Threshold"
+            >
+              <mat-option *ngFor="let review of selectedReviews" [value]="review"
+                >{{ review }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+      </div>
+
+      <div
+        class="send-manual-review-replay-border-first-section resolving-issues-sec mb-4"
+      >
+        <div>
+          <h6>
+            Resolving issues before consumers leave reviews is good customer
+            service.
+            <span>
+              <b>Some publishers may consider it "gaming" reviews.</b
+              ><mat-icon
+                style="width: 18px; height: 18px; overflow: initial"
+                matPrefix
+                [svgIcon]="'qustion_mark'"
+                class="cursor-pointer ms-2"
+              ></mat-icon>
+            </span>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <mat-card-actions
+      fxLayout="column wrap"
+      fxLayoutAlign="space-between start"
+    >
+      <div
+        fxLayout="column "
+        fxLayout.xs="column"
+        fxAlign.xs="start"
+        class="d-flex mb-4"
+      >
+        <span style="margin-bottom: 16px">
+          <mat-slide-toggle
+            class="pr-1"
+            [(ngModel)]="landingPageSettings.AutoRedirection"
+            (change)="onToggleChange()"
+          ></mat-slide-toggle>
+          <span>Autoredirection</span>
+        </span>
+
+        <span>
+          <mat-slide-toggle
+            class="pr-1"
+            [(ngModel)]="landingPageSettings.IsOpenSameTab"
+            (change)="onToggleChange()"
+          ></mat-slide-toggle>
+          <span> Redirect in same tab </span>
+        </span>
+      </div>
+      <div class="send-manual-review-replay-border-first-section mb-4">
+        <h6>Auto - redirect user to primary review platform.</h6>
+      </div>
+      <div class="w-100 mb-4">
+        <span class="sort-selecte-section-text-responsive-none">
+          Review Platforms:&nbsp;</span
+        >
+        <section class="mat-typography d-flex w-100" style="margin-top: 8px">
+          <div
+            cdkDropList
+            class="example-listOld"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="example-boxOld"
+              *ngFor="let item of connectedPlatforms; let i = index"
+              cdkDrag
+            >
+              <img
+                alt="img"
+                class="reviewSiteImg"
+                [src]="
+                  '../../../../../../assets/social-logo/' +
+                  item.ReviewSiteName +
+                  '.png'
+                "
+              />
+              <div
+                class="col-10 flexClass"
+                *ngIf="connectedPlatforms.length > 0"
+              >
+                <div id="profileImage">
+                  <b class="custContentNameOld" id="demo">{{
+                    item.ReviewSiteName
+                  }}</b>
+                </div>
+              </div>
+              <div class="col-2 text-right text-1-5x star-parentOld">
+                <i
+                  class="fas fa-star star-iconOld"
+                  [ngClass]="{ 'primry-icon': i == 0 }"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </mat-card-actions>
+  </div>
+  <div
+    fxFlex.sm="0 1 calc(100%-10px)"
+    fxFlex.md="0 1 calc(100%-10px)"
+    fxFlex.xs="0 1 calc(100%-10px)"
+    fxFlex.gt-md="0 1 calc(70%-10px)"
+    fxFlex.gt-sm="0 1 calc(100%-10px)"
+    fxFlex.gt-lg="0 1 calc(70%-10px)"
+  >
+    <h6 class="common-container-card-innner-title mb-4">Preview</h6>
+
+    <mat-card class="review-setting-preview-section">
+      <mat-card-header [style.backgroundColor]="headerOptions?.HeaderBackgroundColor" style="width: 100%;">
+        Help us. Help others. You’re invited to review
+      </mat-card-header>
+
+      <mat-card-content>
+        <h6 class="tanks-for-customber-font">
+          {{ headerOptions?.WelcomeMessage }} <br>
+          {{ headerOptions?.BodyMessage }} </h6>
+        <div
+          fxLayout="row  "
+          fxLayout.xs="column "
+          fxLayout.md="row "
+          class="preview-inner-sec"
+        >
+          <div *ngIf="active[thumbsId]">
+            <div class="m-webwsolution-main-logo-sec">
+              <img 
+              id="avatar-photo"
+              #avatarImg
+              class="avatar-photo"
+              [src]="landingPageSettings.LogoURL ?
+               landingPageSettings.LogoURL
+                  : 'assets/images/default_image.jpg'"
+            />
+            </div>
+            <div
+              class="m2solutionlikedislike-svg-section d-flex justify-content-center"
+            >
+              <div
+                fxLayout="row"
+                fxLayout.xs="row"
+                fxLayoutGap="22px"
+                fxLayout.md="row"
+                fxFlexAlign="center"
+                class=""
+              >
+                <div class="review_screen_opecity">
+                  <mat-icon
+                    matSuffix
+                    color="success"
+                    class="m2solutionlikedislike-svg"
+                    [svgIcon]="'m2solutionlike'"
+                  ></mat-icon>
+                  <h6 class="text-center">Like</h6>
+                </div>
+                <div class="review_screen_opecity">
+                  <mat-icon
+                    matSuffix
+                    color="success"
+                    class="m2solutionlikedislike-svg"
+                    [svgIcon]="'m2solutiondislike'"
+                  ></mat-icon>
+                  <h6 class="text-center">Dislike</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="active[npsId]">
+            <div class="m-webwsolution-main-logo-sec">
+              <img 
+              id="avatar-photo"
+              #avatarImg
+              class="avatar-photo"
+              [src]="landingPageSettings.LogoURL ?
+               landingPageSettings.LogoURL
+                  : 'assets/images/default_image.jpg'"
+            />
+            </div>
+            <div class="m-3 m-webwsolution-main-content">
+              <div class="m2solutionlikedislike-svg-section">
+                <div class="d-flex flex-column">
+                  <div class="pagination-section-review-screen">
+                    <div
+                      *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                      class="pag-section"
+                      [ngStyle]="{
+                        backgroundColor: updatedPage === item ? '#FAA81A' : '',
+                        color: updatedPage === item ? '#ffffff' : '#000'
+                      }"
+                    >
+                      {{ item }}
+                    </div>
+                  </div>
+                  <div class="paggination-after-sub-content">
+                    <div>
+                      <h6 class="paggination-after-sub-content-font">
+                        👎 Not likely at all
+                      </h6>
+                    </div>
+                    <div>
+                      <h6 class="paggination-after-sub-content-font">
+                        Extremely likely 👍
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="active[starsId]">
+            <div class="m-webwsolution-main-logo-sec">
+              <img 
+              id="avatar-photo"
+              #avatarImg
+              class="avatar-photo"
+              [src]="landingPageSettings.LogoURL ?
+               landingPageSettings.LogoURL
+                  : 'assets/images/default_image.jpg'"
+            />
+            </div>
+            <div class="m-3 m-webwsolution-main-content">
+              <div class="m2solutionlikedislike-svg-section">
+                <div class="d-flex justify-content-center">
+                  <span (window:resize)="onResize($event)">
+                    <app-start-rating
+                      [starType]="'custom'"
+                      (ratingChanged)="setValues($event)"
+                      [starwidth]="starwidth"
+                    ></app-start-rating>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="active[facesId]">
+            <div class="m-webwsolution-main-logo-sec">
+              <img 
+              id="avatar-photo"
+              #avatarImg
+              class="avatar-photo"
+              [src]="landingPageSettings.LogoURL ?
+               landingPageSettings.LogoURL
+                  : 'assets/images/default_image.jpg'"
+            />
+            </div>
+            <div class="m-3 m-webwsolution-main-content">
+              <div class="m2solutionlikedislike-svg-section">
+                <div
+                  class="d-flex justify-content-center review-screen-sectting-emoji-sec"
+                >
+                  <span class="review_screen_opecity">
+                    <mat-icon
+                      matPrefix
+                      [svgIcon]="'review_screen_smile'"
+                      class="cursor-pointer review-screen-sectting-emoji-sec"
+                    ></mat-icon>
+
+                    <h6 class="review-screen-sectting-emoji-sub-sec-font">
+                      Great
+                    </h6>
+                  </span>
+
+                  <span class="review_screen_opecity">
+                    <mat-icon
+                      matPrefix
+                      [svgIcon]="'review_screen_neutral'"
+                      class="cursor-pointer"
+                    ></mat-icon>
+
+                    <h6 class="review-screen-sectting-emoji-sub-sec-font">
+                      Good
+                    </h6>
+                  </span>
+                  <span class="review_screen_opecity">
+                    <mat-icon
+                      matPrefix
+                      [svgIcon]="'review_screen_unhappy'"
+                      class="cursor-pointer"
+                    ></mat-icon>
+                    <h6 class="review-screen-sectting-emoji-sub-sec-font">
+                      Bad
+                    </h6>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <footer fxFlexOffset="auto" class="thank-feedback-text-end">
+        {{ headerOptions?.ThankyouMessage }}
+      </footer>
+    </mat-card>
+  </div>
+</div>
+

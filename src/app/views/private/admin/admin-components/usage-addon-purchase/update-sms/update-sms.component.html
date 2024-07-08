@@ -1,0 +1,84 @@
+<div class="common-mat-dialog-padding">
+  <div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <h6 class="common-mat-dialog-header-title">Additional Email Credits</h6>
+    <mat-icon
+      matPrefix
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      style="width: 20px; height: 25px"
+      class="cursor-pointer"
+    ></mat-icon>
+  </div>
+  <hr />
+
+  <div style="display: flex; flex-direction: column; gap: 24px">
+    <div class="sms-card">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        style="height: 100%"
+      >
+        <div
+          fxLayout="column"
+          fxLayoutAlign="space-between"
+          style="height: 100%"
+        >
+          <h6 class="add-more-sms-font">Add more SMS</h6>
+          <h6 class="add-more-sms-font">₹50 per 1000 SMS</h6>
+        </div>
+        <div>
+          <mat-icon
+            matPrefix
+            mat-dialog-close
+            [svgIcon]="'update_sms'"
+            style="width: 180px; height: 180px"
+          ></mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="increment-dec-sec">
+      <h6>How many?</h6>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between baseline"
+        fxLayoutGap="12px"
+        fxLayoutGap.lt-sm="16px"
+      >
+        <button
+          mat-flat-button
+          color="primary"
+          class="btn-decrement"
+          (click)="decrement()"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_minus_icon'"
+          ></mat-icon>
+        </button>
+        <span class="counter-font">{{ counter }}</span>
+        <button
+          mat-flat-button
+          color="primary"
+          class="btn-increment"
+          (click)="increment()"
+        >
+          <mat-icon
+            style="margin: 0px"
+            [svgIcon]="'counter_add_icon'"
+          ></mat-icon>
+        </button>
+      </div>
+      <h6>“Your registered credit card will be changed immediately.</h6>
+
+      <button
+        color="primary"
+        class="primary-button me-2"
+        fxFlex.xs="0 1 calc(100%-10px)"
+        fxFlex.sm="0 1 calc(100%-10px)"
+      >
+        Update SMS
+      </button>
+    </div>
+  </div>
+</div>

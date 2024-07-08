@@ -1,0 +1,144 @@
+<div class="your-nanding-page-card">
+  <mat-card-actions
+    class="your-landing-page-section d-flex flex-column w-100 m-10"
+  >
+    <div
+      class="d-flex justify-content-between w-100"
+      [ngClass]="isOverall ? 'd-block' : 'd-none'"
+    >
+      <h3>Over All Review & Ratings</h3>
+      <mat-icon
+        matPrefix
+        [svgIcon]="'close_icon_blue'"
+        class="cursor-pointer review-icon"
+        (click)="closeBottomSheet()"
+      ></mat-icon>
+    </div>
+    <h6>Your Landing Page</h6>
+    <mat-card-actions class="p-0 landingpage-card">
+      <button [routerLink]="'/customization-options/review-page'" mat-flat-button color="primary" class="edit-btn">
+        <img src="assets/svg/icons/filled/Edit_underscro.svg" />
+      </button>
+      <button (click)="openExternalUrl()" mat-flat-button color="primary">
+        <img src="assets/svg/icons/outlined/Extra Icon.svg" />
+      </button>
+    </mat-card-actions>
+  </mat-card-actions>
+</div>
+
+<mat-card class="all-activity-card">
+  <mat-card-actions class="all-activity-mat-card">
+    <h6 class="common-toggle-text-font">All activities</h6>
+  </mat-card-actions>
+
+  <label class="platform-review-title common-font-16px">Review</label>
+  <mat-form-field
+    class="input-full-width"
+    appearance="outline"
+    subscriptSizing="dynamic"
+  >
+    <input
+      type="text"
+      matInput
+      placeholder="Search"
+      [(ngModel)]="searchString"
+    />
+    <mat-icon matSuffix color="#A1A1AA" svgIcon="search_icon_grey" />
+  </mat-form-field>
+
+  <section class="mat-typography">
+    <label class="platform-review-title common-font-16px">Ratings</label>
+    <mat-form-field appearance="outline" class="form-element">
+      <mat-select
+        placeholder="4 star & up"
+        disableOptionCentering
+        [(ngModel)]="selectedRating"
+      >
+        <mat-option value="4">4 star & up</mat-option>
+        <mat-option value="3">3 star & up</mat-option>
+        <mat-option value="2">2 star & up</mat-option>
+        <mat-option value="1">1 star & up</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+
+  <section class="mat-typography review-activity-date">
+    <label class="platform-review-title common-font-16px">Date</label>
+
+    <section class="mat-typography overall-review-select d-flex">
+      <div #dateRangeFilter id="dateRangeFilter" class="range-picker-ui" [ngClass]="{'all-text': isAllSelected}">
+        <i class="fa fa-calendar"></i>&nbsp;
+        <ng-container *ngIf="!startDate && !endDate; else dateRangeList">
+          <div class="all-text">All</div>
+        </ng-container>
+        <ng-template #dateRangeList>
+          <span class="range-picker-sepened-fornt">{{ startDate }} - {{ endDate }}</span>
+        </ng-template>
+        <i class="fa fa-caret-down"></i>
+      </div>
+
+    </section>
+  </section>
+  <section class="mat-typography">
+    <label class="platform-review-title common-font-16px">Replied</label>
+
+    <mat-form-field appearance="outline" class="form-element">
+      <mat-select
+        placeholder="All"
+        disableOptionCentering
+        [(ngModel)]="selectedReplied"
+      >
+        <mat-option value="all">All</mat-option>
+        <mat-option value="yes">Yes</mat-option>
+        <mat-option value="no">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+
+  <div [ngClass]="isToggle ? 'd-block' : 'd-none'">
+    <hr class="hr_tag" />
+    <h6 class="sentimant-channels-font">Sentiment</h6>
+
+    <div *ngFor="let item of sentimentdata; let i = index">
+      <mat-checkbox
+        color="primary"
+        [checked]="item.checked"
+        (change)="onChange(i, item)"
+        class="sentiment-label"
+      >
+        {{ item.label }}
+      </mat-checkbox>
+    </div>
+
+    <hr class="hr_tag" />
+    <h6 class="sentimant-channels-font">Channels</h6>
+
+    <div *ngFor="let item of getReviewsData; let i = index">
+      <mat-checkbox
+        color="primary"
+        [checked]="checkedState[item.SiteName]"
+        (change)="onChange(i, item)"
+        class="sentiment-label"
+      >
+        {{ item.SiteName }}
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <button
+    mat-flat-button
+    color="primary"
+    class="acivity-search"
+    (click)="searchReviews()"
+  >
+    Search
+  </button>
+  <button [disabled]="!isFilterActive"
+    mat-stroked-button
+    color="basic"
+    class="acivity-search"
+    (click)="clearSearchReviews()"
+  >
+    Clear
+  </button>
+</mat-card>

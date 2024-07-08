@@ -1,0 +1,266 @@
+<div class="send-manual-review-replay-main-section" *ngIf="!dialogData.isPrivateFeedbackData">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="send-manual-review-replay-profile-dbeetween">
+      <div class="send-manual-review-replay-profile-name-row">
+        <img
+          class="example-header-image"
+          *ngIf="dialogData.reviewData.ProfileImgUrl"
+          [src]="
+            dialogData.reviewData.ProfileImgUrl
+              ? dialogData.reviewData.ProfileImgUrl
+              : ''
+          "
+          alt="Google Icon"
+        />
+        <div
+          class="custom-img"
+          *ngIf="
+            !dialogData.reviewData.ProfileImgUrl &&
+            dialogData.reviewData.ReviewBy
+          "
+        >
+          {{ dialogData.reviewData.ReviewBy.substring(0, 1) }}
+        </div>
+        <div>
+          <h5>{{ dialogData.reviewData.ReviewBy }}</h5>
+        </div>
+      </div>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        class="cursor-pointer close-button"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+    <div class="send-manual-review-sub-title-section">
+      <h2>Review</h2>
+      <div class="send-manual-review-replay-border-first-section">
+        <div class="customer-review-sec">
+          <h6
+            #descriptionElement
+            class="common-font-14px"
+            [innerHTML]="dialogData.reviewData.ReviewDetails"
+            [class.expanded]="showMore"
+          ></h6>
+        </div>
+        <div *ngIf="isShowButton" class="expand-button-container">
+          <button
+            mat-button
+            color="primary"
+            class="expand-button"
+            (click)="toggleShowMore()"
+          >
+            {{ showMore ? "read less" : "read more" }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Reply</h2>
+    <div class="send-manual-review-replay-input-lable-section">
+      <div>
+        <label class="common-label-font">Feedback</label>
+      </div>
+      <div>
+        <mat-card-actions class="reply-right-cols">
+          <span
+            class="response-left-font text-warp-common"
+            [ngStyle]="{
+              color: autoGenerateResponse.pendingResponseCredit === 0 ? '#f95250' : '#22c55e'
+            }"
+            >{{ autoGenerateResponse.pendingResponseCredit }} Response Left</span
+          >
+          <button
+            [disabled]="autoGenerateResponse.pendingResponseCredit === 0"
+            mat-flat-button
+            class="shrink-primary-button"
+            color="primary"
+            (click)="generateAutoResponse(dialogData.reviewData.Id)"
+          >
+          <mat-icon style="height: 25px;" svgIcon="generate_caption"></mat-icon>
+            <span
+              >Generate 
+              <span class="response-hide-responsivetime">Response</span></span
+            >
+          </button>
+        </mat-card-actions>
+      </div>
+    </div>
+    <div>
+      <mat-form-field
+        appearance="outline"
+        class="mt-1 w-100 mb-3"
+        [formGroup]="sendReplyOnReviewForm"
+      >
+        <textarea
+          matInput
+          class="text-container reply-text-container"
+          placeholder="Write something..."
+          formControlName="Comment"
+          rows="5"
+        ></textarea>
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          sendReplyOnReviewForm.get('Comment').touched &&
+          sendReplyOnReviewForm.get('Comment').hasError('required')
+        "
+        >Feedback is Required</mat-error
+      >
+    </div>
+    <div
+      fxLayout.xs="row wrap"
+      fxLayout="row wrap"
+      fxLayoutGap="10px"
+      ngClass.gt-xs="ml-10"
+    >
+      <div
+        fxFlex.xs="0 1 unset"
+        fxFlex.sm="0 1 unset"
+        fxFlex.md="0 1 unset"
+        fxFlex.gt-md="0 1 unset"
+        *ngFor="let templateData of reviewReplyTemplateModel"
+        class="mb-3"
+        (click)="
+          selectedTemplateData = templateData.Template; insertTemplateData()
+        "
+      >
+        <div class="send-manual-review-replay-border">
+          <h5 class="common-font-14px">{{ templateData.Template }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-card-actions
+    align="end"
+    class="send-manual-buttons p-0"
+    fxLayoutGap="8px"
+  >
+    <button
+      mat-flat-button
+      color="primary"
+      class="primary-button"
+      [disabled]="!sendReplyOnReviewForm.valid"
+      (click)="sendReplyOnReview(dialogData.reviewData.ReviewId)"
+    >
+      Send Reply
+    </button>
+    <button mat-dialog-close class="secondary-button">Cancel</button>
+  </mat-card-actions>
+</div>
+
+<div class="send-manual-review-replay-main-section" *ngIf="dialogData.isPrivateFeedbackData">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="send-manual-review-replay-profile-dbeetween">
+      <div class="send-manual-review-replay-profile-name-row">
+        <div class="custom-img">
+          {{ dialogData.privateFeedbackData.Name.substring(0, 1) }}
+        </div>
+        <div>
+          <h5>{{ dialogData.privateFeedbackData.Name }}</h5>
+        </div>
+      </div>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        class="cursor-pointer close-button"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+    <div class="send-manual-review-sub-title-section">
+      <h2>Review</h2>
+      <div class="send-manual-review-replay-border-first-section">
+        <div class="customer-review-sec">
+          <h6
+            #descriptionElement
+            class="common-font-14px"
+            [innerHTML]="dialogData.privateFeedbackData.FeedBack"
+            [class.expanded]="showMore"
+          ></h6>
+        </div>
+        <div *ngIf="isShowButton" class="expand-button-container">
+          <button
+            mat-button
+            color="primary"
+            class="expand-button"
+            (click)="toggleShowMore()"
+          >
+            {{ showMore ? "read less" : "read more" }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Reply</h2>
+    <div class="send-manual-review-replay-input-lable-section">
+      <div>
+        <label class="common-label-font">Feedback</label>
+      </div>
+    </div>
+    <div>
+      <mat-form-field
+        appearance="outline"
+        class="mt-1 w-100 mb-3"
+        [formGroup]="replyNegativeFeedbackForm"
+      >
+        <textarea
+          matInput
+          class="text-container reply-feedback-container"
+          placeholder="Write something..."
+          formControlName="Comment"
+          rows="5"
+        ></textarea>
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          replyNegativeFeedbackForm.get('Comment').touched &&
+          replyNegativeFeedbackForm.get('Comment').hasError('required')
+        "
+        >Feedback is Required</mat-error
+      >
+    </div>
+    <div
+      fxLayout.xs="row wrap"
+      fxLayout="row wrap"
+      fxLayoutGap="10px"
+      ngClass.gt-xs="ml-10"
+    >
+      <div
+        fxFlex.xs="0 1 unset"
+        fxFlex.sm="0 1 unset"
+        fxFlex.md="0 1 unset"
+        fxFlex.gt-md="0 1 unset"
+        *ngFor="let templateData of reviewReplyTemplateModel"
+        class="mb-3"
+        (click)="
+          selectedTemplateData = templateData.Template; insertTemplateData()
+        "
+      >
+        <div class="send-manual-review-replay-border">
+          <h5 class="common-font-14px">{{ templateData.Template }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-card-actions
+    align="end"
+    class="send-manual-buttons p-0"
+    fxLayoutGap="8px"
+  >
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      class="primary-button"
+      [disabled]="!replyNegativeFeedbackForm.valid"
+      (click)="sendReplyOnFeedback(dialogData.privateFeedbackData.Id)"
+    >
+      Send Reply
+    </button>
+    <button type="button" mat-dialog-close class="secondary-button">Cancel</button>
+  </mat-card-actions>
+</div>

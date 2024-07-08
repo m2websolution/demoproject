@@ -1,0 +1,176 @@
+<div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Integrations</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+<div
+  class="my-2 mb-4 d-flex justify-content-end d-xl-none d-md-none arrow-left-ref cursor-pointer"
+  fxLayout="row "
+  fxLayoutGap="16px"
+  fxLayoutGap.xs="8px"
+  (click)="toggleScreen()"
+>
+  <span>
+    <mat-icon class="keyboard_arrow_left" color="primary"
+      >keyboard_arrow_left</mat-icon
+    >
+  </span>
+  <div class="back-to-intingrations-font common-primary-text">
+    Back to Integrations
+  </div>
+</div>
+
+<mat-card class="common-container-card">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="integrations-detail-right-input-margin"
+  >
+    <div class="flex-item isn-ref">
+      <mat-icon [svgIcon]="'isn_blue'"></mat-icon>
+    </div>
+    <div
+      class="flex-item arrow-left-ref keyboard_arrow_left_none cursor-pointer d-none d-sm-none d-md-flex"
+      fxLayout="row "
+      fxLayoutGap="16px"
+      (click)="toggleScreen()"
+    >
+      <span>
+        <mat-icon class="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+      </span>
+      <span class="back-to-intingrations-font">Back to Integrations</span>
+    </div>
+  </div>
+  <div
+    fxLayout.xs="column  "
+    fxLayout.sm="column  "
+    fxLayout="row "
+    fxLayoutAlign.gt-lg="center start"
+    fxLayoutAlign.gt-md="center start"
+    fxLayoutAlign.gt-sm="center start"
+    fxLayoutGap.gt-lg="32px"
+    fxLayoutGap.gt-md="32px"
+    fxLayoutGap.gt-sm="32px"
+    class="app-get-review-template-margin-section"
+  >
+    <div
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+      class="app-get-review-template-margin-bottom"
+    >
+    <form  [formGroup]="isnIntegrationForm">
+      <div class="integrations-detail-right-input-margin">
+        <div>
+          <label class="common-label-font">Company Key</label>
+          <div
+            fxLayout="row "
+            fxLayoutAlign="center center"
+            fxLayoutGap="16px"
+            fxLayoutGap.xs="8px"
+          >
+            <div class="w-100 admin-form-group">
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput type="text" placeholder="Company Key" formControlName="CompanyKey" />
+              </mat-form-field>
+              <mat-error class="error-message" *ngIf="isnIntegrationForm.get('CompanyKey').touched &&
+              isnIntegrationForm.get('CompanyKey').hasError('required')">* Company key is required</mat-error>
+            </div>
+            <mat-icon color="primary" style="width: 26px">info</mat-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="integrations-detail-right-input-margin">
+        <h6>Choose whom to send review request</h6>
+
+        <div fxLayout="row wrap">
+            <div>
+              <mat-checkbox formControlName="Customer" color="primary">Customer</mat-checkbox>
+              <mat-checkbox formControlName="Seller" color="primary">Seller</mat-checkbox>
+              <mat-checkbox formControlName="Buyer" color="primary">Buyer</mat-checkbox>
+            </div>
+            <div *ngIf="!isAtLeastOneCheckboxChecked()">
+              <span style="color: red;">* At least one checkbox must be selected</span>
+            </div>     
+        </div>
+        &nbsp; &nbsp;
+        <div>
+          <input type="text" formControlName="webhookURL" *ngIf="isButton"
+            style="border: hidden; background-color:#f2f2f2 !important;  height: 45px; width: 100% !important;" readonly>
+        </div>
+
+      </div>
+      <div class="mt-4 mb-4 d-flex justify-content-end">
+        <button mat-flat-button color="primary" *ngIf="isButtonActive" (click)="addISNAPI()">Activate</button>
+        <button mat-flat-button color="primary" *ngIf="isButton" (click)="updateISNDetails()">Update</button>
+        <button mat-button color="warn" *ngIf="isButton" (click)="deleteIntegration(isnIntegrationId)">Delete</button>
+      </div>
+    </form>
+
+    </div>
+    <div
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      fxFlex.md="0 1 calc(50%-10px)"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      fxFlex.gt-md="0 1 calc(50%-10px)"
+    >
+      <mat-card class="integrations-detail-right-card">
+        <h6>Instructions</h6>
+
+        <ol class="ml-1">
+          <li>
+            Get company key under your ISN account by navigating to "Settings" →
+            "My Access Keys" and is usually some form of your company name.
+            <mat-icon style="top: 7px; position: relative" color="primary"
+              >info</mat-icon
+            >
+          </li>
+          <li>
+            Choose whom you want to send review request to: Customer, Seller or
+            Buyer.
+            <mat-icon style="top: 7px; position: relative" color="primary"
+              >info</mat-icon
+            >
+          </li>
+          <li>
+            Click on Activate button below to enable the integration.
+            <mat-icon style="top: 7px; position: relative" color="primary"
+              >info</mat-icon
+            >
+          </li>
+          <li>
+            Go to your ISN account and navigate to "Settings" → "Working with
+            Other Applications" → "Web Hooks".
+          </li>
+          <li>
+            Click on Add Web Hook.
+            <mat-icon style="top: 7px; position: relative" color="primary"
+              >info</mat-icon
+            >
+          </li>
+
+          <li>
+            Copy the Webhook URL from left and enter in URL textbox in ISN,
+            choose "Type" as "Order Completed" (or any status when you want
+            review request to go out) and "Method" as "POST".
+          </li>
+          <li>
+            Click on Save in ISN New Web Hook Page.
+            <mat-icon style="top: 7px; position: relative" color="primary"
+              >info</mat-icon
+            >
+          </li>
+        </ol>
+      </mat-card>
+    </div>
+  </div>
+</mat-card>

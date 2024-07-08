@@ -1,0 +1,131 @@
+/* Global MaterialUi Override */
+.mat-drawer-container {
+  height: 100%;
+}
+mat-card-header mat-card-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #18181b;
+}
+mat-card-header mat-card-subtitle {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+.mat-mdc-form-field {
+  background: #ffffff;
+  border-radius: 16px;
+}
+.mat-mdc-option {
+  padding: 0 8px !important;
+}
+.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-top-left-radius: 0;
+  border-top-right-radius: var(--mdc-shape-small, 16px) !important;
+  border-bottom-right-radius: var(--mdc-shape-small, 16px) !important;
+  border-bottom-left-radius: 0;
+  border-top: 1.5px #e4e4e7 solid;
+  border-bottom: 1.5px #e4e4e7 solid;
+  border-right: 1.5px #e4e4e7 solid;
+}
+.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
+  border-top-left-radius: var(--mdc-shape-small, 16px) !important;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: var(--mdc-shape-small, 16px) !important;
+  border-top: 1.5px #e4e4e7 solid;
+  border-bottom: 1.5px #e4e4e7 solid;
+  border-left: 1.5px #e4e4e7 solid;
+}
+.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
+  width: max(12px, var(--mdc-shape-small, 16px)) !important;
+}
+
+.mdc-list-item--activated .mdc-list-item__primary-text {
+  color: #fff !important;
+}
+.mdc-list-item {
+  align-items: center;
+  /* padding: 0 0 0 24px !important; */
+  height: 65px !important;
+  background-color: transparent !important;
+  margin: 5px 0;
+  border-radius: 16px !important;
+}
+.mdc-list-item__primary-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-style: normal;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: #52525b !important;
+}
+
+.mat-mdc-button.mat-mdc-button-base,
+.mat-mdc-raised-button.mat-mdc-button-base,
+.mat-mdc-unelevated-button.mat-mdc-button-base,
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  height: 56px;
+  border-radius: 16px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+.mat-mdc-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before {
+  background-color: transparent !important;
+}
+.mat-mdc-tab .mdc-tab__ripple::before {
+  border-radius: 16px;
+}
+
+/* -------------mat switch design modify----------- */
+.mat-mdc-slide-toggle
+  .mdc-switch.mdc-switch--selected.mdc-switch--checked:hover
+  .mdc-switch__shadow {
+  background-color: white !important;
+}
+.mat-mdc-slide-toggle
+  .mdc-switch.mdc-switch--selected.mdc-switch--checked:not(:hover)
+  .mdc-switch__shadow {
+  background-color: white !important;
+}
+/* -------------White background on active set--------------- */
+.mat-mdc-slide-toggle .mdc-switch:enabled:active .mdc-switch__track::after {
+  background-color: transparent !important;
+}
+
+/* ---------------- Dropdown Icon Change--------------- */
+
+.mat-mdc-select-arrow-wrapper {
+  height: 20px;
+  width: 20px;
+}
+.mat-mdc-select-arrow {
+  height: 100% !important;
+  width: 100% !important;
+  background: url("../svg/icons/down_icon.svg") no-repeat !important;
+}
+
+.mat-mdc-select-arrow svg {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .mat-mdc-button.mat-mdc-button-base,
+  .mat-mdc-raised-button.mat-mdc-button-base,
+  .mat-mdc-unelevated-button.mat-mdc-button-base,
+  .mat-mdc-outlined-button.mat-mdc-button-base {
+    height: 44px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

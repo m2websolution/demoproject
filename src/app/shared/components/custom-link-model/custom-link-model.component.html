@@ -1,0 +1,162 @@
+<div class="custom-link-form" [formGroup]="customPlatformModelForm">
+  <mat-card-actions class="custom-card-header">
+    <h2 class="common-main-title-font">Custom Link test</h2>
+    <mat-icon
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      class="cursor-pointer"
+    ></mat-icon>
+  </mat-card-actions>
+  <mat-divider></mat-divider>
+  <mat-card-actions class="pt-4 avtar-row">
+    <div class="add-manual-input-row">
+      <mat-card-actions class="avtar-row">
+        <div id="avatar-container" class="custom-upload-btn" *ngIf="photos.length < 1">
+          <div class="avatar-photo"></div>
+          <button class="add-image-container" type="button">
+            <span class="image-icon">
+              <mat-icon
+                class="center-positon-absolute"
+                [svgIcon]="'image_icon'"
+              />
+            </span>
+            Add Image
+          </button>
+
+          <input
+            #fileInput
+            class="custom-upload-file-input"
+            type="file"
+            (change)="addPhoto($event)"
+            name="avatar"
+            accept="image/png, image/jpeg"
+          />
+        </div>
+        <div id="avatar-container1" *ngFor="let item of photos; let i = index">
+          <img
+            id="avatar-photo"
+            #avatarImg
+            class="avatar-photo"
+            [src]="item"
+            (mouseenter)="showAddPhotoOverlay[i] = true"
+            alt="avatar photo"
+          />
+
+          <div
+            *ngIf="showAddPhotoOverlay[i]"
+            id="add-photo-overlay"
+            class="avatar-photo"
+            (mouseleave)="showAddPhotoOverlay[i] = false"
+          >
+            <button class="preview-image-button" type="button">
+              <div class="preview-icon-container">
+                <mat-icon>edit</mat-icon>
+                <input
+                  #fileInput
+                  type="file"
+                  class="custom-upload-file-input"
+                  (change)="editPhoto($event, i)"
+                  name="avatar"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
+              <div class="preview-icon-container">
+                <mat-icon (click)="removePhoto(i)">delete</mat-icon>
+              </div>
+            </button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </div>
+    <div style="display: grid !important; width: 100% !important">
+      <label class="mb-2 common-font-16px">Link Text</label>
+      <mat-form-field class="example-full-width mb-3" appearance="outline">
+        <input type="text"
+          matInput
+          placeholder="Write here..."
+          value=""
+          formControlName="SiteName"
+        />
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf=" customPlatformModelForm.get('SiteName').hasError('required')
+        "
+        >Link Text is required</mat-error
+      >
+      <label class="mb-2 common-font-16px">URL</label>
+
+      <mat-form-field class="example-full-width mb-4" appearance="outline">
+        <input
+          matInput type="text"
+          placeholder="Enter URL"
+          value=""
+          formControlName="SiteUrl"
+        />
+      </mat-form-field>
+      <mat-error
+        class="error-message"
+        *ngIf="
+          customPlatformModelForm.get('SiteUrl').hasError('required')
+        "
+        >Url is required</mat-error
+      >
+      <mat-error
+        class="error-message"
+        *ngIf="
+          customPlatformModelForm.get('SiteUrl').hasError('pattern')
+        "
+        >Please enter a valid URL starting with 'http://' or
+        'https://'.</mat-error
+      >
+    </div>
+  </mat-card-actions>
+
+  <div class="mt-2 instruction-display">
+    <label class="mb-2">Instruction</label>
+    <mat-form-field class="mb-4" appearance="outline">
+      <textarea rows="4" matInput placeholder="Enter your slide content here and format it for easier reading!"
+      formControlName="instruction"></textarea>
+    </mat-form-field>
+    <mat-error
+      class="error-message"
+      *ngIf="
+        customPlatformModelForm.get('instruction').hasError('required')
+      "
+      >Instuction is required</mat-error
+    >
+    <mat-error
+      class="error-message"
+      *ngIf="
+        customPlatformModelForm.get('instruction').hasError('noHtmlTags')
+      "
+      >HTML tags are not allowed.</mat-error
+    >
+  </div>
+  <mat-card-actions
+    fxLayoutAlign.lt-sm="end"
+    fxLayoutAlign="end"
+    class="mt-2 custom-link-actions p-0 pt-2"
+  >
+    <button
+      mat-flat-button
+      fxFlex.xs="0 1 calc(100%-10px)"
+      color="primary"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      class="custom-btn primary-button me-2"
+      [disabled]="loading || !customPlatformModelForm.valid"
+      (click)="addCustomPlatform()"
+    >
+      Submit
+    </button>
+
+    <button
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+      mat-dialog-close
+      class="custom-btn secondary-button"
+    >
+      Cancel
+    </button>
+  </mat-card-actions>
+</div>

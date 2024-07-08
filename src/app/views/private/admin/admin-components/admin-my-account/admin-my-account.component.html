@@ -1,0 +1,58 @@
+<div class="admin-my-account">
+  <div class="common-container-card admin-account-card">
+    <form [formGroup]="adminAccountsForm" (ngSubmit)="submit()">
+      <div class="admin-account-form">
+        <div class="name-container">
+          <div class="w-100 admin-form-group">
+            <label class="common-label-font">First Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput type="text" placeholder="Enter Your First Name" formControlName="FirstName" />
+            </mat-form-field>
+            <mat-error class="error-message" *ngIf="
+              adminAccountsForm.get('FirstName').touched &&
+              adminAccountsForm.get('FirstName').hasError('required')
+              ">First name is required</mat-error>
+          </div>
+          <div class="w-100 admin-form-group">
+            <label class="common-label-font">Last Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput type="text" placeholder="Enter Your Last Name" formControlName="LastName" />
+            </mat-form-field>
+            <mat-error class="error-message" *ngIf="
+              adminAccountsForm.get('LastName').touched &&
+              adminAccountsForm.get('LastName').hasError('required')
+              ">Last name is required</mat-error>
+          </div>
+        </div>
+        <div class="name-container">
+          <div class="w-100 admin-form-group">
+            <label class="common-label-font">Email</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput type="text" placeholder="sejal.snehal@gmail.com" formControlName="Email" />
+            </mat-form-field>
+          </div>
+          <div class="w-100 admin-form-group">
+            <label class="common-label-font">Phone Number</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput #phoneNumberInput type="text" placeholder="Phone Number" formControlName="PhoneNumber"
+                minlength="10" maxlength="10" />
+            </mat-form-field>
+            <mat-error class="error-message" *ngIf="adminAccountsForm.get('PhoneNumber').touched &&
+             (adminAccountsForm.get('PhoneNumber').hasError('required') || adminAccountsForm.get('PhoneNumber')
+             .hasError('minlength') || adminAccountsForm.get('PhoneNumber').hasError('maxlength'))">
+              <span *ngIf="adminAccountsForm.get('PhoneNumber').hasError('required')">Phone number is required</span>
+              <span *ngIf="adminAccountsForm.get('PhoneNumber').hasError('minlength') || adminAccountsForm.get('PhoneNumber')
+              .hasError('maxlength')">Phone number must be exactly 10 digits</span>
+            </mat-error>
+          </div>
+        </div>
+      </div>
+      <div class="admin-footer-btn mt-4">
+        <button mat-flat-button color="primary" type="submit" [disabled]="isButtonDisabled ||
+
+        adminAccountsForm.invalid">Save</button>
+
+      </div>
+    </form>
+  </div>
+</div>

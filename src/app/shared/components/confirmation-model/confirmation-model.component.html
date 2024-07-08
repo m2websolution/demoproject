@@ -1,0 +1,100 @@
+<!-- Dialog for confirmation -->
+<div
+  class="px-3 py-4"
+  [ngClass]="{ 'disconnect-modal': !dialogData.isPrivateFeedbackData }"
+>
+  <mat-card-actions class="mat-card">
+    <h5 [style.visibility]="dialogData.isPrivateFeedbackData ? 'visible' : 'hidden'" class="fw-bold">Details</h5>
+    <i class="material-icons skyblue-font" mat-dialog-close> close </i>
+  </mat-card-actions>
+  <hr class="light-grey" *ngIf="!upgradeMessage"/>
+  <!-- Private Feedback view more details section -->
+  <div *ngIf="dialogData.isPrivateFeedbackData">
+    <div class="dc-dialog-sec d-flex">
+      <label class="fw-bold col-sm-5 common-font-16px black-color">
+        {{ dialogData.privateFeedbackData.Name }}
+      </label>
+      <label class="col-sm-7 common-font-14px date-label">
+        Reviewed on {{ dialogData.privateFeedbackData.FeedbackDate }}
+      </label>
+    </div>
+    <div class="dialog-box dc-dialog-sec d-flex">
+      <label class="col-sm-3 skyblue-font fw-bold common-font-14px">
+        Feedback:
+      </label>
+      <div class="col-sm-9 common-font-14px p-0">
+        <div
+          class="expand-content"
+          #replyElement
+          [innerHTML]="dialogData.privateFeedbackData.FeedBack"
+          [class.expanded]="showMore"
+          [ngClass]="{ 'd-inline': showMore }"
+        ></div>
+        <a
+          *ngIf="isReplyShowButton"
+          href="javascript:;"
+          (click)="toggleShowMore()"
+          [ngClass]="{ 'ml-5': showMore }"
+          >{{ showMore ? "read less" : "read more" }}</a
+        >
+      </div>
+    </div>
+    <div class="dc-dialog-sec">
+      <h1 class="fw-bold common-font-14px black-color">Contact Details</h1>
+    </div>
+    <div class="dialog-box dc-dialog-sec d-flex">
+      <label class="col-sm-3 skyblue-font fw-bold common-font-14px">
+        Email:
+      </label>
+      <label class="col-sm-9 common-font-14px">
+        {{ dialogData.privateFeedbackData.Email }}
+      </label>
+    </div>
+    <div class="dialog-box dc-dialog-sec d-flex">
+      <label class="col-sm-3 skyblue-font fw-bold common-font-14px">
+        Phone Number:
+      </label>
+      <label class="col-sm-9 common-font-14px">
+        {{ dialogData.privateFeedbackData.Phone }}
+      </label>
+    </div>
+  </div>
+  <!-- Message for confirmation -->
+  <div class="dialog-message" *ngIf="!dialogData.isPrivateFeedbackData && !upgradeMessage">
+    <p *ngIf="dialogData.message === 'Do you continue on session.'">
+      Continuing in {{ timer }} seconds...
+    </p>
+    <div class="dc-dialog-sec">
+      <h1 mat-dialog-title class="common-font-16px">
+        {{ dialogData.message }}
+      </h1>
+    </div>
+
+    <div mat-dialog-actions class="d-flex flex-nowrap justify-content-center">
+      <button type="button" mat-flat-button color="warn" class="me-2" (click)="confirm()">
+        {{ dialogData.buttonText ? dialogData.buttonText : "Yes" }}
+      </button>
+
+      <button type="button" mat-dialog-close class="secondary-button" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <div class="dialog-message" *ngIf="!dialogData.isPrivateFeedbackData && upgradeMessage">
+    <img src="assets/svg/icons/outlined/Blue_Unlock.svg" class="upgrade-img"/>
+    <div class="dc-dialog-sec">
+      <h1 mat-dialog-title class="common-font-16px">
+        {{ dialogData.message }}
+      </h1>
+    </div>
+    <div mat-dialog-actions class="d-flex flex-nowrap justify-content-center">
+      <button type="button" mat-flat-button color="primary" class="me-2" (click)="confirm()">
+        {{ dialogData.buttonText ? dialogData.buttonText : "Upgrade Now" }}
+      </button>
+      <button type="button" mat-dialog-close class="secondary-button" (click)="cancel()">
+        No
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+.circular-progress-container .chart-container {
+  width: 200px;
+  height: 200px;
+}
+
+.overall-bar {
+  /* height: 600px; */
+  /* width: 100%; */
+}
+
+.overall-bar canvas {
+  /* width: 100% !important; */
+}
+
+.doughnut-chart {
+  height: 500px;
+}
+
+@media (max-width: 600px) {
+  .doughnut-chart {
+    height: 320px;
+  }
+
+  .chart-container canvas {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+  .circular-progress-container .chart-container {
+    width: 170px !important;
+    height: 170px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .circular-progress-container .chart-container {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .doughnut-chart {
+    height: 250px;
+  }
+}
+
+@media (max-width: 330px) {
+  .circular-progress-container .chart-container {
+    width: 100% !important;
+    height: 140px !important;
+    display: flex;
+    justify-content: center;
+  }
+}

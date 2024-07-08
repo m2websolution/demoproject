@@ -1,0 +1,272 @@
+<div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+  <nav class="px-2 header-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item first-item">
+        <a href="#" class="common-main-title-font">Customization Options</a>
+      </li>
+      <li class="breadcrumb-item actives" aria-current="page">Opt In Page</li>
+    </ol>
+  </nav>
+</div>
+
+<mat-card class="opt-main-page-card">
+  <div class="d-flex justify-content-end m-2">
+    <span>Share this to your customers to invite customers: <a href="domainName">{{ domainName }}</a></span>
+    <mat-icon
+    class="copy-item"
+      (click)="copyItem(domainName)"
+      matSuffix
+      color="success"
+      [svgIcon]="'copy_key_bord'"
+    ></mat-icon>
+  </div>
+  <mat-card class="otp-invite-customer-card">
+    <mat-card-actions
+      fxLayout="row "
+      fxLayoutAlign="space-between center"
+      fxLayout.xs="column-reverse  "
+    >
+      <div fxLayout.xs="column" fxAlign.xs="start" style="gap: 4px">
+        <mat-card-title class="common-main-title-font"
+          >Invite Customer</mat-card-title
+        >
+
+        <mat-card-subtitle class="your-grab-review-team-dic"
+          >Your Grab Review Team is ready to go, know a few friends or customer
+          who’d like to explore review with you?</mat-card-subtitle
+        >
+      </div>
+      <mat-icon
+        class="customization_invite_customber_svg customization_invite_customber_svg_responsive_right"
+        [svgIcon]="'customization_invite_customber'"
+      ></mat-icon>
+    </mat-card-actions>
+  </mat-card>
+  <div class="d-flex justify-content-end">
+    <mat-checkbox
+      color="primary"
+      class="example-margin"
+      matInput
+      name="customerInfo.isok"
+      [(ngModel)]="showEmailField"
+    >
+    Email
+    </mat-checkbox>
+    <mat-checkbox
+      color="primary"
+      class="example-margin"
+      matInput
+      name="customerInfo.isok"
+      [(ngModel)]="showPhoneNumberField"
+    >
+    SMS
+    </mat-checkbox>
+  </div>
+  <mat-card-actions
+    fxLayout="row "
+    fxLayoutAlign="space-between "
+    fxLayout.lt-md="column "
+    fxLayoutGap="32px"
+    class="input-margin-bottom-prefrenc"
+  >
+    <div
+      fxFlex.sm="0 1 calc(100%-10px)"
+      fxFlex.md="0 1 calc(100%-10px)"
+      fxFlex.gt-md="0 1 calc(100%-10px)"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      class="inner-prefrence"
+    >
+      <div class="figma-icon-sec">
+        <img class="otp_figma_svg_heigh-width w-100 h-100" [src]="otpinPageDetails.LogoUrl" alt="img">
+      </div>
+    </div>
+    <div
+      fxFlex.sm="0 1 calc(100%-10px)"
+      fxFlex.md="0 1 calc(100%-10px)"
+      fxFlex.gt-md="0 1 calc(100%-10px)"
+      fxFlex.gt-lg="0 1 calc(50%-10px)"
+      class="customer-sec"
+    >
+      <label class="common-label-font">First Name</label>
+      <mat-form-field
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <input type="text" matInput placeholder="Enter Customer First Name" />
+      </mat-form-field>
+      <label class="common-label-font">Last Name</label>
+      <mat-form-field
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <input type="text" matInput placeholder="Enter Customer Last Name" />
+      </mat-form-field>
+      <label class="common-label-font" *ngIf="showEmailField">Email Address</label>
+      <mat-form-field *ngIf="showEmailField"
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <input type="text" matInput placeholder="Enter Your Email Address" />
+      </mat-form-field>
+      <label class="common-label-font" *ngIf="showPhoneNumberField">Phone Number</label>
+      <mat-form-field *ngIf="showPhoneNumberField"
+        class="input-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <input type="text" matInput placeholder="Enter Phone number" />
+      </mat-form-field>
+      <div fxLayout="row">
+        <mat-checkbox
+          color="primary"
+          class="example-margin"
+          matInput
+          name="customerInfo.isok"
+        >
+        </mat-checkbox>
+        <div class="text-wrap checkbox-dis-font">
+          I certify that all customers have opted in to receive these
+          communications. I further certify that I am an authorized
+          representative of Your Company Name and I understand and accept the
+          Email/SMS service provider's terms of service.
+        </div>
+      </div>
+      <div class="mt-4 btn-blue-send d-flex justify-content-start">
+        <button type="button" mat-flat-button color="primary" [disabled]="true">Send</button>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="opt-main-page-card">
+  <mat-card-actions
+    fxLayout="row "
+    fxLayoutAlign="space-between baseline"
+    class="inner-pot-card mb-32"
+  >
+    <mat-card-title class="customization-option-tab-content-header-font"
+      >Authentication</mat-card-title
+    >
+
+    <span>
+      <mat-slide-toggle
+        class="pr-2"
+        [(ngModel)]="otpinPageDetails.IsAuthentication"
+      ></mat-slide-toggle>
+    </span>
+  </mat-card-actions>
+  <form
+    class="signin-form"
+    [formGroup]="otpinAuthenticationForm"
+    (ngSubmit)="submit()"
+  >
+    <mat-card-actions
+      fxLayout="row "
+      fxLayout.xs="column"
+      class="inner-pot-card mb-16 row"
+    >
+      <div class="col-md-6 mb-12" *ngIf="otpinPageDetails.IsAuthentication">
+        <label class="common-label-font">Username</label>
+        <mat-form-field
+          class="input-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <input
+            type="text"
+            matInput
+            placeholder="test@gmail.com"
+            formControlName="UserName"
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,4}$"
+          />
+        </mat-form-field>
+        <mat-error
+          class="error-message"
+          *ngIf="
+            otpinAuthenticationForm.get('UserName').touched &&
+            otpinAuthenticationForm.get('UserName').hasError('required')
+          "
+          >Username is required</mat-error
+        >
+        <mat-error
+              class="error-message"
+              *ngIf="
+                otpinAuthenticationForm.get('UserName').touched &&
+                otpinAuthenticationForm.get('UserName').hasError('pattern')
+              "
+              >Invalid username format</mat-error
+            >
+      </div>
+
+      <div class="copy-bord-color col-md-6">
+        <label class="common-label-font">Magic Link</label>
+        <mat-form-field
+          class="input-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <input
+            type="text"
+            matInput
+            placeholder="Thank You Message"
+            formControlName="MagicLink"
+          />
+          <mat-icon
+            (click)="copyItem(otpinAuthenticationForm.get('MagicLink').value)"
+            matSuffix
+            color="success"
+            [svgIcon]="'copy_key_bord'"
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+    </mat-card-actions>
+
+    <mat-card-actions
+      fxLayout="row "
+      fxLayout.xs="column"
+      class="inner-pot-card password-sec row"
+    >
+      <div class="col-md-6" *ngIf="otpinPageDetails.IsAuthentication">
+        <label class="common-label-font">Password </label>
+        <mat-form-field
+          class="input-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <input
+            type="text"
+            matInput
+            placeholder="krunal@6236"
+            formControlName="Password"
+          />
+        </mat-form-field>
+        <mat-error
+          class="error-message"
+          *ngIf="
+            otpinAuthenticationForm.get('Password').touched &&
+            otpinAuthenticationForm.get('Password').hasError('required')
+          "
+          >Password is required</mat-error
+        >
+      </div>
+      <div></div>
+    </mat-card-actions>
+
+    <div
+      class="mt-4 btn-blue-save d-flex justify-content-start"
+      *ngIf="otpinPageDetails.IsAuthentication"
+    >
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        [disabled]="otpinAuthenticationForm.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</mat-card>

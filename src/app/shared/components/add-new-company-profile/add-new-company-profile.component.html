@@ -1,0 +1,38 @@
+<div class="common-mat-dialog-padding">
+  <div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <h6 class="common-mat-dialog-header-title">New Company Profile</h6>
+    <mat-icon
+      matPrefix
+      mat-dialog-close
+      [svgIcon]="'close_icon_blue'"
+      style="width: 20px; height: 25px"
+      class="cursor-pointer"
+    ></mat-icon>
+  </div>
+  <hr />
+  <div class="form-group">
+    <label class="common-label-font">Company Name</label>
+    <mat-form-field appearance="outline">
+      <input matInput type="text" placeholder="Enter company Name" />
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <label class="common-label-font">Last Name</label>
+    <mat-form-field appearance="outline">
+      <input matInput type="text" placeholder="Enter Customer Last Name" />
+    </mat-form-field>
+  </div>
+  <mat-card-actions
+    align="end"
+    class="update-model-buttom-footer-margin-sec mt-3"
+  >
+    <button
+      color="primary"
+      class="primary-button me-2"
+      fxFlex.xs="0 1 calc(100%-10px)"
+      fxFlex.sm="0 1 calc(100%-10px)"
+    >
+      Submit
+    </button>
+  </mat-card-actions>
+</div>

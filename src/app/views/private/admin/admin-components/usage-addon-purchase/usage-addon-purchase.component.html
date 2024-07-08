@@ -1,0 +1,57 @@
+<mat-card class="common-container-card">
+  <h6 class="common-main-title-font">Usage</h6>
+  <div style="overflow: auto">
+    <table mat-table [dataSource]="pagedItems" class="mat-elevation-z8">
+      <ng-container matColumnDef="icon">
+        <td mat-cell *matCellDef="let element" class="px-3">
+          <mat-icon [svgIcon]="element.icon"></mat-icon>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="used">
+        <td class="description text-start" mat-cell *matCellDef="let element">
+          {{ element.used }}
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="recurring">
+        <td mat-cell *matCellDef="let element">
+          <div class="edit_underscor_delete_red_gap" [ngClass]="{'margin-right': element.type !== 'Email' && element.type !== 'SMS'}"
+          >
+            <span>
+              <button
+                color="primary"
+                class="add-sms-email-btn me-2"
+                (click)="onAdditionalEmailCredits(element)"
+                [disabled]="isActionDisabled(element)"
+                [ngClass]="{ 'disabled-btn': isActionDisabled(element) }"
+              >
+                Add {{element.type}}
+              </button>
+            </span>
+            <span matTooltip="information!!">
+              <mat-icon
+                [svgIcon]="'yellow_border_i_cion'"
+                class="yellow_border_i_cion"
+              ></mat-icon>
+            </span>
+            <mat-card-actions
+              fxLayout="row"
+              fxLayoutAlign="space-between baseline"
+              class="togggle-margin-sec"
+              *ngIf="element.type === 'Email' || element.type === 'SMS'"
+              >
+              <mat-slide-toggle [(ngModel)]="element.recurring" (change)="onToggleChange($event,element)"></mat-slide-toggle>
+              <h6>Recurring</h6>
+            </mat-card-actions>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <!-- <button color="primary" class="primary-button me-2" (click)="onUpdateSMS()">
+      Update SMS
+    </button> -->
+  </div>
+</mat-card>

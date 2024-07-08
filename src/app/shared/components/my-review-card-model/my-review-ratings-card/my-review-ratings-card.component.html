@@ -1,0 +1,46 @@
+<mat-card
+  class="my-review-catings-card backgroud-set mb-0"
+  [ngClass]="data.title === 'Average Ratings' ? 'active common-primary-bg' : ''"
+>
+  <mat-card-header>
+    <mat-card-title class="my-review-title common-mat-dialog-header-title"
+      >{{ data.ReviewSiteName }} Ratings</mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-actions class="my-review-footer-section" *ngFor="let badge of badgeData">
+    <div *ngIf="badge.Source === data.ReviewSiteName">
+      <div class="rating-point">
+        {{ badge.Rating }}
+      </div>
+      <div class="avg-rating-stars">
+        <app-start-rating
+            [starClickable]="false"
+            [id]="{ stars: badge.Rating, selected: true }"
+          ></app-start-rating>
+      </div>
+    </div>
+
+    <div class="image-container" *ngIf="badge.Source === data.ReviewSiteName">
+      <img
+        ngStyle.gt-lg="min-width: 100px"
+        ngStyle.lt-lg="min-width: 50px"
+        mat-card-image
+        [src]="
+          data.IsCustom
+            ? data.ImageURL
+              ? data.ImageURL
+              : ''
+            : 'assets/social-logo/' + data.ReviewSiteName + '.png'
+        "
+        alt="Image"
+        *ngIf="data.ImageURL || (data.ReviewSiteName && !data.IsCustom)"
+      />
+      <div
+        class="img-custom-platform imgs"
+        *ngIf="!data.ImageURL && data.ReviewSiteName && data.IsCustom"
+      >
+        {{ data.ReviewSiteName.substring(0, 1) }}
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

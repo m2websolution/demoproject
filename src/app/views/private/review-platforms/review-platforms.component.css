@@ -1,0 +1,128 @@
+.mat-mdc-tab-header {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+
+.title-row {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.button-add {
+  width: fit-content;
+}
+.input-full-width {
+  width: 80%;
+}
+.review-platform-tab-label {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #71717a;
+}
+
+.title-row .actions {
+  justify-self: end;
+  display: flex;
+  align-items: baseline;
+}
+
+.input-full-width:hover .mat-icon {
+  color: #196cfa;
+}
+@media (max-width: 600px) {
+  .title-row {
+    display: contents;
+  }
+  .input-full-width {
+    width: 100%;
+  }
+  .title-row .actions {
+    display: grid;
+    align-items: baseline;
+    margin-top: 16px;
+  }
+  .title-row .actions .mat-typography {
+    display: contents !important;
+    width: 100% !important;
+  }
+  .actions button {
+    width: 100% !important;
+  }
+
+  .actions label {
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+}
+
+/* ---------------Tab Design------------------- */
+.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+  > .mat-mdc-tab-header
+  .mat-mdc-tab {
+  max-width: 160px !important;
+  min-height: 56px;
+  height: auto;
+  padding: 16px 24px;
+  margin-right: 20px !important;
+  border-radius: 16px !important;
+}
+
+/* ---------tab border blue none------------------ */
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
+  .mdc-tab-indicator__content--underline {
+  border: none !important;
+}
+
+.mdc-tab--active,
+.mdc-tab-indicator--active {
+  background-color: #e2f2ff !important;
+}
+
+.mdc-tab--active:hover,
+.mdc-tab-indicator--active :hover {
+  background-color: #e2f2ff !important;
+  border-radius: 16px !important;
+}
+
+@media (max-width: 500px) {
+  .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+    > .mat-mdc-tab-header
+    .mat-mdc-tab {
+    max-width: 160px !important;
+    min-height: 44px;
+    height: auto;
+    padding: 4px 8px;
+    margin-right: 20px !important;
+    border-radius: 16px !important;
+  }
+}
+.actions {
+  gap: 16px;
+}
+
+@media (max-width: 960px) {
+  .custom-container {
+    height: 662px !important;
+    overflow: scroll;
+  }
+}
+.button-add-icon-ref button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13px;
+  width: 50px;
+  height: 55px !important;
+}
+.button-add-icon-ref mat-icon {
+  height: 30px !important;
+  margin: 0px !important;
+}

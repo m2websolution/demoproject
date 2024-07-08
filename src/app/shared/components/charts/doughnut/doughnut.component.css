@@ -1,0 +1,66 @@
+.data-box {
+  padding: 14px 40px;
+  margin: 3px 0px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.data-box span {
+  opacity: 0.8;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.sentiment {
+  display: flex;
+  flex-direction: column;
+}
+
+.sentiment-word {
+  flex: 1;
+}
+
+.label-circle-container.sentiment {
+  font-size: 12px;
+}
+
+.sentiment .sub-label {
+  font-size: 10px;
+  color: rgba(161, 161, 170, 1);
+}
+
+.label-circle-container .label-circle {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+@media (max-width: 1440px) {
+  .data-box {
+    padding: 10px 20px;
+  }
+
+  .label-circle-container {
+    font-size: 12px;
+  }
+
+  .label-circle-container .label-circle {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .all-pr-sec {
+    padding: 10px;
+  }
+}
+
+.font-size {
+  font-size: 13px !important;
+}
+
+.gap {
+  gap: 5px;
+}

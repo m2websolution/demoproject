@@ -1,0 +1,191 @@
+<mat-card-actions
+  class="tab-content-title-margin"
+  style="display: flex; flex-direction: column; align-items: start"
+>
+  <mat-card-title class="customization-option-tab-content-header-font"
+    >Public Review Workflow</mat-card-title
+  >
+  <mat-card-subtitle class="instructions-presented-font">
+    Instructions presented to customers on your review landing page.
+  </mat-card-subtitle>
+</mat-card-actions>
+<form [formGroup]="PublicReviewWorkflow" (ngSubmit)="submit()">
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  fxLayoutGap="10px"
+  class="row-card-input-container-margin-bottom p-0"
+>
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Review Request Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        placeholder=""
+        formControlName="ReviewRequestMessage"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          PublicReviewWorkflow.get('ReviewRequestMessage').touched &&
+          PublicReviewWorkflow.get('ReviewRequestMessage').hasError('required')
+        "
+        >Review request message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Leave Review Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        placeholder=""
+        formControlName="LeaveReviewMessage"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          PublicReviewWorkflow.get('LeaveReviewMessage').touched &&
+          PublicReviewWorkflow.get('LeaveReviewMessage').hasError('required')
+        "
+        >Leave request message is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  fxLayoutGap="10px"
+  class="row-card-input-container-margin-bottom p-0"
+>
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Public Review Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        formControlName="PublicReviewMessage"
+        placeholder="Public Review Message"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          PublicReviewWorkflow.get('PublicReviewMessage').touched &&
+          PublicReviewWorkflow.get('PublicReviewMessage').hasError('required')
+        "
+        >Public review message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Public Review Link Text</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <input
+        type="text"
+        matInput
+        formControlName="PublicReviewLinkText"
+        placeholder="Click Here"
+      />
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          PublicReviewWorkflow.get('PublicReviewLinkText').touched &&
+          PublicReviewWorkflow.get('PublicReviewLinkText').hasError('required')
+        "
+        >Public review link text is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+
+<mat-card-actions
+  fxLayout="row "
+  fxLayout.xs="column "
+  fxLayoutGap="10px"
+  class="row-card-input-container-margin-bottom p-0"
+>
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Public Review Appreciate Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        formControlName="PublicReviewAppreciateMessage"
+        placeholder=""
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          PublicReviewWorkflow.get('PublicReviewAppreciateMessage').touched &&
+          PublicReviewWorkflow.get('PublicReviewAppreciateMessage').hasError('required')
+        "
+        >Public review appreciate message is required</mat-error
+      >
+  </div>
+
+  <div class="row-card-input-container-width">
+     <label class="common-label-font">Public Review Thank you Message</label>
+    <mat-form-field
+      class="input-full-width"
+      appearance="outline"
+      subscriptSizing="dynamic"
+    >
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        formControlName="PublicReviewThankyouMessage"
+        placeholder=""
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <mat-error
+        class="error-message"
+        *ngIf="
+          PublicReviewWorkflow.get('PublicReviewThankyouMessage').touched &&
+          PublicReviewWorkflow.get('PublicReviewThankyouMessage').hasError('required')
+        "
+        >Public review thank you message is required</mat-error
+      >
+  </div>
+</mat-card-actions>
+
+<div class="mt-4 btn-save d-flex justify-content-end">
+  <button type="submit" mat-flat-button color="primary" [disabled]="PublicReviewWorkflow.invalid">Save Changes</button>
+</div>
+</form>

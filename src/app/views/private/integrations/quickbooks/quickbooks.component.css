@@ -1,0 +1,165 @@
+label {
+    margin-bottom: 0.5em;
+  }
+  
+  .integrations-detail-right-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    background: #fafafa;
+    border: 1px solid #e4e4e7;
+    border-radius: 16px;
+  }
+  
+  .integrations-detail-right-card h6 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #18181b;
+  }
+  
+  .integrations-detail-right-input-margin h6 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+    color: #18181b;
+    margin-bottom: 1.5em;
+  }
+
+      
+  .invitation{
+    font-size: 19px;
+    margin-top: 15px;
+    font-weight: 700;
+  }
+  
+  .integrations-detail-right-card ol {
+    padding-left: 1em;
+  }
+  
+  .integrations-detail-right-input-margin {
+    margin-bottom: 40px;
+  }
+  
+  .integrations-detail-right-card ol li {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #18181b;
+  }
+  
+  .quickbooks-ref mat-icon {
+    width: 500px;
+    height: 115.76px;
+  }
+  
+  .back-to-intingrations-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: right;
+  }
+  
+  @media (max-width: 960px) {
+    .common-container-card {
+      gap: 0px !important;
+    }
+  
+    .app-get-review-template-margin-bottom {
+      margin-bottom: 10px;
+    }
+
+    .integrations-detail-right-input-margin {
+      margin-bottom: 20px;
+    }
+
+    .quickbooks-ref mat-icon {
+      width: 250px;
+      height: 145.76px;
+    }
+
+  
+    .back-to-intingrations-font {
+      font-family: "Manrope";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: right;
+    }
+  
+    .integrations-detail-right-input-margin h6 {
+      font-family: "Manrope";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      color: #18181b;
+      margin-bottom: 16px;
+    }
+  }
+  
+  /* Add Css for QuickBooks */
+  .centered-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+  
+  .add {
+    height: 2.5em;
+    width: 15em;
+    cursor: pointer;
+    color: white;
+    font-family: "Manrope";
+    font-style: normal;
+    font-size: 17px;
+    line-height: 11px;
+  }
+  
+  .login-container {
+    align-items: center;
+    background: #29b629;
+  }
+  
+  .centered-content-inner {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+
+  
+  .font-weight{
+    font-family: "Manrope";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 32px;
+      color: var(--accent-color);
+  }
+  
+  .primary{
+    padding: 7px 13px;
+    background: #3683cf;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .common-main-title-font {
+    font-weight: 700;
+    font-size: 20px;
+  }

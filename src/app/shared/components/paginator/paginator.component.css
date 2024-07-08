@@ -1,0 +1,15 @@
+.downIcon {
+  width: 100px;
+}
+
+.pagination-select-sort {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .pagination-select-sort {
+    gap: 8px;
+  }
+}

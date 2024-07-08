@@ -1,0 +1,145 @@
+.my-review-activities-review-profile-giid-section {
+  display: flex !important;
+}
+
+.search-field ::placeholder {
+  color: #a1a1aa !important;
+}
+
+@media (max-width: 600px) {
+  .add-review-manually-button button {
+    height: 48px !important;
+    font-size: 13px !important;
+  }
+  .justify-content-between {
+    margin-bottom: 16px;
+  }
+  .no-data-img {
+    height: 350px;
+    margin-left: 0% !important; /* Given important as overlapped by other style*/
+    width: 350px;
+  }
+  .search-selection-section {
+    display: grid !important;
+  }
+  .sort-selecte-section {
+    display: flex;
+    width: none !important;
+    margin: 0px !important;
+  }
+
+  .add-review-manually-button-responsive {
+    display: flex !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .add-review-manually-button-responsive button {
+    width: 100%;
+  }
+  .sort-selecte-section-text-responsive-none {
+    display: none !important;
+  }
+
+  .auto-response-toggle-section-web-time {
+    display: none !important;
+  }
+  .search-selection-section {
+    width: 100% !important;
+  }
+
+  .search-selection-section,
+  .search-selection-section .search-selection-sub {
+    width: 100% !important;
+  }
+  .pagination-select {
+    margin: 15px 0px;
+  }
+  .addReviewBtn-row {
+    margin-top: 20px;
+  }
+}
+.your-landing-page-section {
+  display: grid;
+  justify-content: flex-start;
+}
+.your-landing-page-section h6 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #18181b;
+}
+
+.my-review-title-row-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.my-review-catings-card {
+  background-color: #fff !important;
+  border: 1px solid #e4e4e7 !important;
+  border-radius: 16px !important;
+  height: -webkit-fill-available;
+  margin-bottom: 5px;
+}
+.my-review-catings-card:hover {
+  background-color: #196cfa !important;
+  border: "none" !important;
+  color: #fff !important;
+}
+.my-review-pagination-sapce-beetwing {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline !important;
+}
+
+.sort-selecte-section {
+  display: flex;
+  width: 100px;
+  margin: 10px;
+}
+
+.add-review-manually-button-responsive {
+  display: none;
+}
+.search-selection-section {
+  display: flex;
+  flex-direction: row !important;
+  gap: 10px;
+  width: auto;
+}
+
+.auto-response-toggle-section-web-time {
+  display: block;
+}
+
+@media (min-width: 600px) and (max-width: 1080px) {
+  .my-review-activities-review-profile-giid-section {
+    display: grid !important;
+    justify-content: center !important;
+  }
+  .pagination-select {
+    margin: 15px 0px;
+  }
+  .addReviewBtn-row {
+    margin-top: 20px;
+  }
+}
+.search-selection-section {
+  width: 100%;
+}
+@media (min-width: 1081px) and (max-width: 1279px) {
+  .addReviewBtn-row {
+    margin-top: 20px;
+  }
+}
+
+.no-data-img {
+  height: 350px;
+  margin-left: 20%;
+}

@@ -1,0 +1,47 @@
+<ng-container [ngSwitch]="true">
+  <div *ngSwitchCase="starType == 'custom'">
+    <mat-icon
+      [ngStyle]="starwidth"
+      *ngFor="let star of stars"
+      (click)="starClickable ? rate(star) : ''"
+      [ngClass]="starClickable ? 'star' : ''"
+      title="{{ star.display }}"
+      class="material-icons star-is-active"
+      [svgIcon]="star.checked ? 'review_start_active' : 'review_start_inactive'"
+    >
+    </mat-icon>
+  </div>
+  <div *ngSwitchCase="starType == 'orange'">
+    <mat-icon
+      [ngStyle]="starwidth"
+      *ngFor="let star of stars"
+      title="{{ star.display }}"
+      [ngClass]="starClickable ? 'star' : ''"
+      class="material-icons star-is-active star-height"
+      [svgIcon]="
+        id.selected && star.checked
+          ? 'review_start_active'
+          : star.checked
+          ? 'star_grey'
+          : !id.selected && !star.checked
+          ? 'star_outlined'
+          : 'start_orage_border'
+      "
+    >
+    </mat-icon>
+  </div>
+  <div
+    *ngSwitchDefault class="star-display"
+  >
+    <mat-icon
+      [ngStyle]="starwidth"
+      *ngFor="let star of stars"
+      (click)="starClickable ? rate(star) : ''"
+      title="{{ star.display }}"
+      [ngClass]="starClickable ? 'star' : ''"
+      class="material-icons star-is-active"
+      [svgIcon]="star.checked ? 'star' : 'star_outlined'"
+    >
+    </mat-icon>
+  </div>
+</ng-container>

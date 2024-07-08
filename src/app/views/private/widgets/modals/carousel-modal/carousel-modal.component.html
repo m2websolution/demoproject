@@ -1,0 +1,229 @@
+<div class="widget-main-modal modal-padding">
+  <div class="dailog-box-contant-fixed-responsive-time">
+    <mat-card-actions class="d-flex justify-content-between">
+      <h2>Carousel</h2>
+      <mat-icon
+        matPrefix
+        mat-dialog-close
+        [svgIcon]="'close_icon_blue'"
+        style="width: 20px; height: 25px"
+        class="cursor-pointer"
+      ></mat-icon>
+    </mat-card-actions>
+    <hr />
+
+    <div class="widget-modal-container">
+      <div
+        class="modal-header modal-header-mobile"
+        [hidden]="isShowJsCodeBlock"
+        *ngIf="!dialogData.isAllow"
+      >
+        <h6>Upgrade your plan to access this widget</h6>
+        <button color="primary" class="primary-button">UPGRADE NOW</button>
+      </div>
+      <div class="left-part">
+        <app-widget-customize
+          [widgetData]="dialogData"
+          (fieldValuesChanged)="onFieldValuesChanged($event)"
+          (customizationDataChanged)="widgetDataChanged($event)"
+          (isShowJsBlock)="showJsBlock($event)"
+          (autoPlayCarouselData)="autoPlayCarousel($event)"
+        ></app-widget-customize>
+      </div>
+      <div class="right-part" [hidden]="isShowJsCodeBlock">
+        <div class="modal-header modal-header-web" *ngIf="!dialogData.isAllow">
+          <h6>Upgrade your plan to access this widget</h6>
+          <button color="primary" class="primary-button">UPGRADE NOW</button>
+        </div>
+        <div class="mt-3">
+          <h3>Preview</h3>
+          <div class="preview-cards" [ngStyle]="{'height': isAutoPlayCarousel? 'unset': '600px'}">
+            <div [hidden]="isAutoPlayCarousel">
+              <section fxHide.lt-md class="swiper-arrow-possiton">
+                <mat-toolbar class="swiper-toolbar-custom">
+                  <div class="swiper-button-prev"></div>
+                </mat-toolbar>
+              </section>
+            </div>
+
+            <div [hidden]="!isAutoPlayCarousel">
+              <mat-card
+                class="widget-carousel-card autoplay-position"
+                [ngStyle]="{ background: state.backColor}"
+                [@fadeIn]="i === currentCardIndex ? 'visible' : 'hidden'"
+                *ngFor="let data of carousel.Reviews; let i = index"
+              >
+                <img
+                  mat-card-image
+                  class="widget-carousel-avatar mb-4"
+                  [src]="data.ProfileImgUrl"
+                  alt="Google Icon"
+                />
+                <p class="d-flex align-items-center mb-4">
+                  <app-start-rating
+                    [starClickable]="false"
+                    [id]="{
+                      stars: data.Rating,
+                      selected: true
+                    }"
+                  ></app-start-rating>
+                </p>
+                <div class="text-center mb-4">
+                  <h5 class="m-0" [ngStyle]="{ color: state.fontColor }">
+                    <strong>{{ data.ReviewBy }}</strong>
+                  </h5>
+                  <p
+                    class="m-0"
+                    [ngStyle]="{
+                      color: state.date_disc
+                    }"
+                  >
+                    {{ data.Date }}
+                  </p>
+                </div>
+                {{isDescriptionExpandedAuto[i]}}
+                <div class="row customer-review-sec">
+                  <div class="p-0 review-container">
+                    <div
+                      [ngStyle]="{
+                        color: state.date_disc
+                      }"
+                      class="masonry-grid-card-description-font expand-content"
+                      #descriptionElementAuto
+                      [innerHTML]="data.ReviewDetails"
+                      [class.expanded]="isDescriptionExpandedAuto[i]"
+                      [ngClass]="{ 'me-2': isDescriptionExpandedAuto[i] }"
+                    ></div>
+                    <a
+                      *ngIf="isAutoPlayCarousel && descriptionElementHeightsAuto[i] >= 96"
+                      href="javascript:;"
+                      (click)="toggleDescriptionAuto(currentCardIndex)"
+                      >{{ isDescriptionExpandedAuto[i] ? 'read less' : 'read more' }}</a
+                    >
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                  <h5 class="m-0 me-2" [ngStyle]="{ color: state.date_disc }">
+                    Verified on
+                  </h5>
+                  <div *ngIf="data.ReviewSource !== 'Other'">
+                    <img
+                      mat-card-image
+                      class="widget-carousel-logo"
+                      src="assets/social-logo/{{ data.ReviewSource }}.png"
+                      alt="Google Icon"
+                    />
+                  </div>
+                  <div *ngIf="data.ReviewSource === 'Other'">
+                    <img
+                      mat-card-image
+                      class="widget-carousel-logo"
+                      src="favicon.ico"
+                      alt="Google Icon"
+                    />
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+
+            <swiper
+              [config]="configplatform"
+              class="carousel-swiper"
+              [hidden]="isAutoPlayCarousel"
+            >
+              <div class="swiper-wrapper">
+                <mat-card
+                  class="widget-carousel-card swiper-slide"
+                  [ngStyle]="{ background: state.backColor }"
+                  *ngFor="let data of carousel.Reviews; let i = index"
+                >
+                  <img
+                    mat-card-image
+                    class="widget-carousel-avatar mb-4"
+                    [src]="data.ProfileImgUrl"
+                    alt="Google Icon"
+                  />
+                  <p class="d-flex align-items-center mb-4">
+                    <app-start-rating
+                      [starClickable]="false"
+                      [id]="{
+                        stars: data.Rating,
+                        selected: true
+                      }"
+                    ></app-start-rating>
+                  </p>
+                  <div class="text-center mb-4">
+                    <h5 class="m-0" [ngStyle]="{ color: state.fontColor }">
+                      <strong>{{ data.ReviewBy }}</strong>
+                    </h5>
+                    <p
+                      class="m-0"
+                      [ngStyle]="{
+                        color: state.date_disc
+                      }"
+                    >
+                      {{ data.Date }}
+                    </p>
+                  </div>
+
+                  <div class="row customer-review-sec">
+                    <div class="p-0 review-container">
+                      <div
+                        [ngStyle]="{
+                          color: state.date_disc
+                        }"
+                        class="masonry-grid-card-description-font expand-content"
+                        #descriptionElement
+                        [innerHTML]="data.ReviewDetails"
+                        [class.expanded]="isDescriptionExpanded[i]"
+                        [ngClass]="{ 'me-2': isDescriptionExpanded[i] }"
+                      ></div>
+
+                      <a
+                        *ngIf="descriptionElementHeights[i] >= 96"
+                        href="javascript:;"
+                        (click)="toggleDescription(i)"
+                        >{{ isDescriptionExpanded[i] ? 'read less' : 'read more' }}</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-center">
+                    <h5 class="m-0 me-2" [ngStyle]="{ color: state.date_disc }">
+                      Verified on
+                    </h5>
+                    <div *ngIf="data.ReviewSource !== 'Other'">
+                      <img
+                        mat-card-image
+                        class="widget-carousel-logo"
+                        src="assets/social-logo/{{ data.ReviewSource }}.png"
+                        alt="Google Icon"
+                      />
+                    </div>
+                    <div *ngIf="data.ReviewSource === 'Other'">
+                      <img
+                        mat-card-image
+                        class="widget-carousel-logo"
+                        src="favicon.ico"
+                        alt="Google Icon"
+                      />
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+            </swiper>
+
+            <div [hidden]="isAutoPlayCarousel">
+              <section fxHide.lt-md class="swiper-arrow-possiton">
+                <mat-toolbar class="swiper-toolbar-custom">
+                  <div class="swiper-button-next"></div>
+                </mat-toolbar>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

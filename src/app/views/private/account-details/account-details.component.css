@@ -1,0 +1,35 @@
+.cart-item {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.btn-connect {
+    border-radius: 10px;
+    display: flex;
+    float: inline-end;
+}
+
+.title-text {
+    font-size: 24px;
+}
+
+.info-title {
+    font-size: 20px;
+}
+
+.info-des {
+    font-size: 14px;
+    color: #71717A;
+}
+
+.container-wallpaper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-container {
+    text-align: center;
+}

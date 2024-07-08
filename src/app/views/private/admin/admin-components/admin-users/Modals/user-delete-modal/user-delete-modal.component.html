@@ -1,0 +1,26 @@
+<div class="user-delete-modal">
+  <div class="user-delete-header">
+    <h5></h5>
+    <i
+      class="material-icons"
+      mat-dialog-close
+      style="color: black; font-size: 20px"
+    >
+      close
+    </i>
+  </div>
+  <div class="delete-image-label">
+    <div class="delete-image-container">
+      <img src="assets/images/delete_user_modal.svg" />
+    </div>
+    <div class="">
+      <label class="text-center"
+        >Are you sure? You want to delete this user.</label
+      >
+    </div>
+  </div>
+  <div class="delete-cancel-btns">
+    <button type="button" mat-flat-button color="warn" class="delete-user-btn" (click)="confirm()">Delete</button>
+    <button type="button" mat-dialog-close class="secondary-button" (click)="cancel()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,221 @@
+.selected-plan-dollur-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #18181b;
+}
+
+.unlimited-review-platform-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #71717a;
+}
+
+.container-sub-active-card {
+  background: #e2f2ff;
+  border-radius: 16px;
+}
+.container-sub-inactive-card {
+  padding: 20px 32px;
+  gap: 64px;
+  width: 100%;
+  height: max-content;
+  border-radius: 16px;
+}
+
+.save-percentage-sec {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px 16px;
+  gap: 10px;
+  width: 125px;
+  height: 44px;
+  background: #fff9c3;
+  border-radius: 8px;
+  color: #faa81a;
+  justify-content: center;
+  align-items: center;
+}
+
+.bill-monthly-card-margin {
+  margin-bottom: 32px;
+}
+
+.mat-tab-group-selecte-plan-sec {
+  margin: 20px 0px 0px;
+}
+.radio-margin-sec {
+  margin-bottom: 24px;
+}
+.common-container-card {
+  gap: 0px;
+}
+
+@media (max-width: 680px) {
+  .bill-monthly-card-margin {
+    margin-bottom: 32px;
+
+    margin-top: 32px;
+  }
+
+  .radio-margin-sec {
+    margin-bottom: 16px;
+  }
+
+  .selected-plan-dollur-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    text-align: right;
+
+    color: #18181b;
+  }
+  .unlimited-review-platform-font {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    color: #71717a;
+  }
+
+  .container-sub-active-card-margin {
+    padding: 12px;
+  }
+
+  .tabbing-ref
+    .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+    > .mat-mdc-tab-header
+    .mat-mdc-tab {
+    height: 40px;
+    /* min-width: 130px !important; */
+    padding: 0px !important;
+  }
+
+  .tabbing-ref .mat-mdc-tab .mdc-tab__content span {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+  }
+}
+.planListTab1-desc-font {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #71717a;
+}
+.container-sub-planListTab1-card {
+  padding: 32px;
+  gap: 64px;
+  width: 100%;
+  height: max-content;
+  border-radius: 16px;
+}
+
+.container-sub-planListTab1-card-bg-active {
+  background: #e2f2ff;
+}
+
+.planListTab1-desc-margin-sec {
+  margin-top: 16px;
+}
+@media (max-width: 360px) {
+  .container-sub-inactive-card {
+    padding: 10px;
+  }
+
+  .container-sub-planListTab1-card {
+    padding: 10px;
+  }
+}
+.tabbing-ref .mat-mdc-tab-labels {
+  padding: 8px;
+  background: #f4f4f5;
+  border-radius: 26px;
+  width: max-content;
+  gap: 10px;
+}
+/* ---------tab size------------------ */
+.tabbing-ref
+  .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+  > .mat-mdc-tab-header
+  .mat-mdc-tab {
+  border-radius: 16px !important;
+  margin-right: 0px !important;
+  padding: 0px 30px;
+  min-width: 150px;
+}
+/* ---------tab border blue none------------------ */
+.tabbing-ref
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled)
+  .mdc-tab-indicator__content--underline,
+.tabbing-ref.mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
+  .mdc-tab-indicator__content--underline {
+  border: none !important;
+}
+
+.tabbing-ref .mdc-tab--active .mdc-tab__text-label,
+.tabbing-ref .mdc-tab-indicator--active .mdc-tab__text-label {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff !important;
+}
+
+.tabbing-ref .mat-mdc-tab .mdc-tab__content span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.tabbing-ref .modal-field-group {
+  display: flex;
+  gap: 6%;
+}
+
+.tabbing-ref .modal-field-group .modal-field {
+  width: 47%;
+}
+
+.product-paymentdetail-d-none-sm {
+  display: block;
+}
+.product-paymentdetail-d-show-sm {
+  display: none;
+}
+
+@media (max-width: 970px) {
+  .product-paymentdetail-d-none-sm {
+    display: none;
+  }
+  .product-paymentdetail-d-show-sm {
+    display: block;
+  }
+}
+
+.select-plan-section .mat-mdc-radio-button .mdc-form-field {
+  gap: 10px;
+}
+
+.current-plan {
+  width: 70px;
+  height: 30px;
+}
+
+.gap {
+  gap: 10px;
+}

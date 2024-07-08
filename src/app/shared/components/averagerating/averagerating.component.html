@@ -1,0 +1,70 @@
+<div
+  class="row aveage-rating-main"
+  style="
+    border-radius: 10px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  "
+>
+  <div class="column average-rating-section">
+    <mat-card-header>
+      <div class="average-rating-title">Average Ratings</div>
+    </mat-card-header>
+    <div class="left-content">
+      <div class="average-rattings-contant" *ngFor="let item of data">
+        <div class="number-star">
+          <span class="average-rating-text">{{ item.number }}</span>
+          <mat-icon [svgIcon]="'star'"></mat-icon>
+        </div>
+        <mat-slider min="1" max="5" step="0.5" value="item.value">
+          <input matSliderThumb value="{{ item.value }}" #itemHeight />
+        </mat-slider>
+        <span>{{ item.total }}</span>
+      </div>
+
+      <div class="rating-start-section">
+        <div>
+          <span class="rating-number-font" *ngIf="ratingModel">{{ratingModel.data.Total_Star_Rating.TotalAvg}}</span>
+        </div>
+
+        <div class="star-group">
+          <mat-icon
+            [svgIcon]="'star'"
+            *ngFor="let item of [1, 2, 3, 4, 5]"
+            style="height: 34px; width: 33px"
+          ></mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column average-rating-section2">
+    <mat-card-header>
+      <div class="over-all-review-title">Over All Review</div>
+    </mat-card-header>
+    <div class="right-content" *ngIf="ratingModel && ratingModel.data">
+      <mat-card-actions class="text-container" *ngFor="let item of ratingModel.data.Platform_Ratings_Dashboard">
+        <div class="img-section">
+          <img
+            class="img"
+            mat-card-image
+            [src]="'assets/social-logo/' + item.Sitename + '.png'"
+            alt="Photo of a Shiba Inu"
+          />
+        </div>
+        <span class="overall-text"
+          >{{ item.Before_GYR_TotalReview +" → "+ (item.TotalReview) }}
+          <span class="overall-text-small">{{ "("+ (item.TotalReview - item.Before_GYR_TotalReview) +")" }}</span></span
+        >
+      </mat-card-actions>
+      <div class="right-section-end">
+        <mat-card-actions class="total-Review-text-section">
+          <span>Total Review: </span>
+          <h3>{{ratingModel.data.Total_Star_Rating.FiveStars + ratingModel.data.Total_Star_Rating.FourStars + ratingModel.data.Total_Star_Rating.ThreeStars + ratingModel.data.Total_Star_Rating.TwoStars + ratingModel.data.Total_Star_Rating.OneStars }}</h3>
+        </mat-card-actions>
+        <div class="view-all-review-button">
+          <a>View All Review</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

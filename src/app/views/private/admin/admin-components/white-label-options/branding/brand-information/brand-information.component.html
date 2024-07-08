@@ -1,0 +1,151 @@
+<div
+  class="my-2 mb-3 d-flex justify-content-end d-xl-none d-md-none arrow-left-ref cursor-pointer text-primary"
+  fxLayout="row "
+  fxLayoutGap="16px"
+  fxLayoutGap.xs="8px"
+  (click)="toggleScreen()"
+>
+  <span>
+    <mat-icon class="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+  </span>
+  <div class="back-to-intingrations-font">Back to Branding</div>
+</div>
+
+<mat-card class="common-container-card">
+  <form [formGroup]="brandingForm">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="integrations-detail-right-input-margin"
+    >
+      <h3>Brand Information</h3>
+      <!-- <div
+      class="flex-item arrow-left-ref keyboard_arrow_left_none cursor-pointer d-none d-sm-none d-md-flex text-primary"
+      fxLayout="row "
+      fxLayoutGap="16px"
+      (click)="toggleScreen()"
+    >
+      <span>
+        <mat-icon class="keyboard_arrow_left">keyboard_arrow_left</mat-icon>
+      </span>
+      <span class="back-to-intingrations-font">Back to Branding</span>
+    </div> -->
+    </div>
+
+    <div class="brand-info-data">
+      <div class="w-100 admin-form-group">
+        <label class="common-label-font">Brand Name</label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input
+            matInput
+            type="text"
+            placeholder="Brand name"
+            formControlName="BrandName"
+          />
+        </mat-form-field>
+        <mat-error
+            class="error-message"
+            *ngIf="
+              brandingForm.get('BrandName').touched &&
+              brandingForm.get('BrandName').hasError('required')
+            "
+            >Brand name is required</mat-error
+          >
+      </div>
+      <div class="w-100 admin-form-group">
+        <label class="common-label-font">Logo (Maximum Image size 1 MB)</label>
+
+        <div id="avatar-container">
+          <img
+            id="avatar-photo"
+            #avatarImg
+            class="avatar-photo"
+            [src]="
+              brandingDetails.LogoUrl
+                ? brandingDetails.LogoUrl
+                : 'assets/images/default_image.jpg'
+            "
+            (mouseenter)="showAddPhotoOverlay = true"
+            alt="avatar photo"
+          />
+
+          <div
+            *ngIf="showAddPhotoOverlay"
+            id="add-photo-overlay"
+            class="avatar-photo"
+            (mouseleave)="showAddPhotoOverlay = false"
+          >
+            <mat-card-actions
+              fxLayoutGap="10px"
+              class="center-positon-absolute"
+            >
+              <button type="button"
+                mat-icon-button
+                (click)="openFileInput(fileInput)"
+                class="edit_icon_delete_background"
+              >
+                <mat-icon [svgIcon]="'edit_icon_blue'"></mat-icon>
+              </button>
+              <button type="button"
+                mat-icon-button
+                *ngIf="photo && photo !== ''"
+                (click)="removePhoto()"
+                class="edit_icon_delete_background"
+              >
+                <mat-icon [svgIcon]="'delete_warring_icon'"> </mat-icon>
+              </button>
+            </mat-card-actions>
+          </div>
+
+          <input
+            #fileInput
+            type="file"
+            (change)="addPhoto($event)"
+            name="avatar"
+            accept="image/png, image/jpeg"
+            class="d-none"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-color-data">
+      <div>
+        <h3>Brand Colors</h3>
+      </div>
+      <div>
+        <div class="color-selector-container">
+          <div class="modal-field admin-form-group">
+            <label class="">Primary Color</label>
+            <div class="color-field-width">
+              <app-color-picker-field
+                [id]="'primaryColor'"
+                [value]="state.primaryColor"
+                (handleChange)="changehandler($event)"
+              ></app-color-picker-field>
+            </div>
+          </div>
+          <div class="modal-field admin-form-group">
+            <label class="">Secondary Color</label>
+            <div class="color-field-width">
+              <app-color-picker-field
+                [id]="'seondaryColor'"
+                [value]="state.seondaryColor"
+                (handleChange)="changehandler($event)"
+              ></app-color-picker-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="save-section">
+      <button [disabled]="brandingForm.invalid" type="submit" mat-flat-button color="primary" class="save-button" (click)="submit('save')">
+        Save Changes
+      </button>
+      <button type="button" mat-flat-button color="primary" (click)="submit('resetButton')">
+        Reset
+      </button>
+    </div>
+  </form>
+</mat-card>
