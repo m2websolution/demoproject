@@ -29,7 +29,7 @@ import { PerformanceReportComponent } from './reports/performance-report/perform
 import { ReviewScreenSettingMainComponent } from './customization-options/review-screen-setting-main/review-screen-setting-main.component';
 import { QrReportComponent } from './reports/qr-report/qr-report.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { AdminLayoutComponent } from 'src/app/shared/Components/layouts/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from 'src/app/shared/components/layouts/admin-layout/admin-layout.component';
 import { IntegrationsDetailComponent } from './integrations-detail/integrations-detail.component';
 
 import { IntegrationsJobberComponent } from './integrations/integrations-jobber/integrations-jobber.component';

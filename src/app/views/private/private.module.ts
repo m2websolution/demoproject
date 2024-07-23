@@ -88,7 +88,7 @@ import { ReviewScreenSetting3Component } from './customization-options/review-sc
 import { ReviewScreenSetting4Component } from './customization-options/review-screen-setting4/review-screen-setting4.component';
 import { ReviewScreenSettingHeaderComponent } from './customization-options/review-screen-setting-header/review-screen-setting-header.component';
 import { ReviewScreenSettingMainComponent } from './customization-options/review-screen-setting-main/review-screen-setting-main.component';
-import { AdminLayoutComponent } from 'src/app/shared/Components/layouts/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from 'src/app/shared/components/layouts/admin-layout/admin-layout.component';
 import { AdministratorComponent } from './admin/administrator/administrator.component';
 import { BrandingComponent } from './admin/admin-components/white-label-options/branding/branding.component';
 
